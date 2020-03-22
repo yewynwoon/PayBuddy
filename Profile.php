@@ -36,8 +36,10 @@
                                    else {
                                    print "Logged in as " . $_SESSION['username'];
                                    }
-                            ?>
 
+                                   
+                            ?>
+                                   <br><a href="addfunds.php">Add Funds</a>
                                    <br><a href="logout.php">Log Out</a>
                      </div>
 
