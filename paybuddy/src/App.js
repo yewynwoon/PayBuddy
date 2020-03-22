@@ -17,7 +17,7 @@ function Product({ product }) {
               {
                 description: product.description,
                 amount: {
-                  currency_code: 'AUD',
+                  currency_code: 'USD',
                   value: product.price,
                 },
               },
