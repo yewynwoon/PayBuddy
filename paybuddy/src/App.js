@@ -11,10 +11,15 @@ function Product({ product }) {
   useEffect(() => {
     window.paypal
       .Buttons({
+        style: {
+          layout: 'horizontal',
+          label: 'checkout',
+          color: 'white',
+          shape: 'pill',
+        },
         createOrder: (data, actions) => {
           return actions.order.create({
-            purchase_units: [
-              {
+            purchase_units: [{
                 description: product.description,
                 amount: {
                   currency_code: 'USD',

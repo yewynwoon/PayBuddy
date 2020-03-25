@@ -1,0 +1,42 @@
+---
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata:
+  name: "paybuddy"
+  namespace: "default"
+  labels:
+    app: "paybuddy"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: "paybuddy"
+  template:
+    metadata:
+      labels:
+        app: "paybuddy"
+    spec:
+      containers:
+      - name: "paybuddy-sha256-1"
+        image: "gcr.io/paybuddy-jeremy/paybuddy@sha256:f97d0d83372f105153e861b4d712f9928dd2e65b63299ba6c3501859c7567be1"
+---
+apiVersion: "autoscaling/v2beta1"
+kind: "HorizontalPodAutoscaler"
+metadata:
+  name: "paybuddy-hpa-2lc3"
+  namespace: "default"
+  labels:
+    app: "paybuddy"
+spec:
+  scaleTargetRef:
+    kind: "Deployment"
+    name: "paybuddy"
+    apiVersion: "apps/v1"
+  minReplicas: 1
+  maxReplicas: 5
+  metrics:
+  - type: "Resource"
+    resource:
+      name: "cpu"
+      targetAverageUtilization: 80
+---
