@@ -6,30 +6,10 @@
 	include("nav.inc");
 ?>
 
-<main>
+<main id=cous>
 
-<div class="parallax"></div>
-
-<div class="textbar">
-crap crap crap crap crap crap crap crap crap crap crap crap crap crap crap crap 
-crap crap crap crap crap crap crap crap
+<div>
 </div>
-
-
-<div class="parallax1"></div>
-
-<div class="textbar">
-crap crap crap crap crap crap crap crap crap crap crap crap crap crap crap crap 
-crap crap crap crap crap crap crap crap
-</div>
-
-<div class="parallax2"></div>
-
-<div class="textbar">
-crap crap crap crap crap crap crap crap crap crap crap crap crap crap crap crap 
-crap crap crap crap crap crap crap crap
-</div>
-
 
 
 

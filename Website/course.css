@@ -1,6 +1,6 @@
 body
 {
-width: 1000px;
+max-width:1000px;
 margin: auto;
 background-color:#424c55
   
@@ -15,55 +15,6 @@ header
 	padding-left: 15px;
 	
 }
-
-
-
-
-.parallax {
-    /* The image used */
-    background-image: url("img/pexels0.jpg");
-
-    /* Set a specific height */
-    min-height: 500px; 
-
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.parallax1 {
-    /* The image used */
-    background-image: url("img/pexels2.jpeg");
-
-    /* Set a specific height */
-    min-height: 500px; 
-
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.parallax2 {
-    /* The image used */
-    background-image: url("img/pexels3.jpeg");
-
-    /* Set a specific height */
-    min-height: 500px; 
-
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-
-
-
 
 
 
