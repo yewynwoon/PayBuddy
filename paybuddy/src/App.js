@@ -26,13 +26,16 @@ function Product({ product }) {
               {
                 description: product.description,
                 amount: {
-                  value: product.price,
+                  value: product.price
                 },
               },
             ],
           });
         },
         onApprove: async (data, actions) => {
+
+          {/* PAYPAL DEPOSIT SUCCEFUL - REROUTE TO CONFIRMATION PAGE */}
+
           const order = await actions.order.capture();
           setPaidFor(true);
           console.log(order);
@@ -44,10 +47,6 @@ function Product({ product }) {
       })
       .render(paypalRef.current);
   }, [product.description, product.price]);
-
-  if (paidFor) {
-    {/* PAYPAL DEPOSIT SUCCEFUL - REROUTE TO CONFIRMATION PAGE */}
-  }
 
   return (
     <div>
