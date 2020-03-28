@@ -14,6 +14,12 @@
 # [START gae_quickstart_yaml]
 runtime: nodejs10
 env: standard
+env_variables:
+  SQL_USER: jeremy
+  SQL_PASSWORD: hello
+  SQL_DATABASE: paybuddy_db
+  SQL_CONNECTION_NAME: paybuddy-jeremy:australia-southeast1:paybuddy-sqlserver-db
+  GOOGLE_APPLICATION_CREDENTIALS: bb2f294d4e36da2f1098c73a4880e0ae16dad50a
 instance_class: F2
 handlers:
 - url: /(.*\.(gif|media|json|ico|eot|ttf|woff|woff2|png|jpg|css|js))$
@@ -22,4 +28,9 @@ handlers:
 - url: /(.*)
   static_files: build/index.html
   upload: build/index.html
+custom:
+  webpack:
+    includeModules:
+      forceInclude:
+        - mysql (or your db provider)
 # [END gae_quickstart_yaml]
