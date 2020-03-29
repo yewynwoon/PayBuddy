@@ -1,25 +1,30 @@
 use paybuddy_db;
 
-IF NOT EXISTS (select * from sysobjects where name='users' and xtype='U')
-	CREATE TABLE users
-	(
-		cust_id int IDENTITY(1,1) Primary Key,
-		fname varchar(25) NOT NULL,
-		lname varchar(25) NOT NULL,
-		account_value int default 0,
-		email varchar(25) NOT NULL,
-		password varchar(25) NOT NULL
-	);
+CREATE TABLE IF NOT EXISTS users
+(
+	cust_id int not null AUTO_INCREMENT,
+	fname varchar(25) NOT NULL,
+	lname varchar(25) NOT NULL,
+	account_value int default 0,
+	email varchar(25) NOT NULL,
+	password varchar(25) NOT NULL,
 
-IF NOT EXISTS (select * from sysobjects where name='cust_transfer' and xtype='U')
-	CREATE TABLE cust_transfer (
+	PRIMARY KEY (cust_id)
+);
 
-		transact_id int IDENTITY(1,1) Primary Key,
-		src_cust_id int Foreign Key references users(cust_id),
-		dest_cust_id int Foreign Key references users(cust_id),
-		amount int NOT NULL,
-		description varchar(120)
-	);
+
+CREATE TABLE IF NOT EXISTS cust_transfer (
+
+	transact_id int not null AUTO_INCREMENT,
+	src_cust_id int not null,
+	dest_cust_id int not null,
+	amount int NOT NULL,
+	description varchar(120),
+
+	PRIMARY KEY (transact_id),
+	FOREIGN KEY (src_cust_id) references users(cust_id),
+	FOREIGN KEY (dest_cust_id) references users(cust_id)
+);
 
 /*  Test users */
 insert into users (fname,lname,email,password)

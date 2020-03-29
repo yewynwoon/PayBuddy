@@ -1,7 +1,99 @@
 import './App.css';
 import React, { useState, useRef, useEffect } from 'react';
-import gif from './giphy.gif';
 import Logo from './Icon.png';
+
+/*const mysql = require('mysql');
+
+let connection = mysql.createConnection({
+  database: 'test',
+  user: 'root',
+  password: 'ufMLsc8azOMcxI3N',
+  host: '127.0.0.1',
+  port: 3306
+  socketPath: `/cloudsql/paybuddy-jeremy:australia-southeast1:paybuddy-mysql-db`,
+});
+
+console.log('Hello');
+
+connection.connect(function(err) {
+  if (err) {
+    console.log('Error connecting' + err.stack);
+    return
+  }
+  console.log('Connected as thread id: ' + connection.threadId);
+});
+
+var app = new require('express')();
+const mysql = require('promise-mysql');
+const bodyParser = require('body-parser');
+
+app.enable('trust proxy');
+
+app.get('/', function(req, res){
+  res.send('<h1>Hello world</h1>');
+});
+
+app.listen(3000, () => console.log('listening on 3000'));
+
+let pool;
+const createPool = async () => {
+  pool = await mysql.createPool({
+    user: 'root',
+    password: 'ufMLsc8azOMcxI3N',
+    database: 'test',
+    // If connecting via unix domain socket, specify the path
+    socketPath: `/cloudsql/paybuddy-jeremy:australia-southeast1:paybuddy-mysql-db`,
+    // If connecting via TCP, enter the IP and port instead
+    host: '127.0.0.1',
+    port: 3306,
+
+    connectionLimit: 5,
+    connectTimeout: 10000, // 10 seconds
+    acquireTimeout: 10000, // 10 seconds
+    waitForConnections: true, // Default: true
+    queueLimit: 0
+  });
+
+  console.log('Hello');
+};
+createPool();
+
+const recentVotesQuery = pool.query(
+  'SELECT * FROM users;'
+);
+console.log(recentVotesQuery); */
+
+
+const Datastore = require('@google-cloud/datastore');
+
+const projectId = 'paybuddy-jeremy2';
+
+// Instantiate a datastore client
+const datastore = new Datastore({
+  projectId: projectId,
+});
+
+// The kind for the new entity
+const kind = 'Task';
+// The name/ID for the new entity
+const name = 'sampletask1';
+// The Cloud Datastore key for the new entity
+const taskKey = datastore.key([kind, name]);
+
+// Prepares the new entity
+const task = {
+  key: taskKey,
+  data: {
+    description: 'Buy milk',
+  },
+};
+
+// Saves the entity
+datastore.save(task).then(() => {
+  console.log(`Saved ${task.key.name}: ${task.data.description}`);
+  }).catch(err => {
+    console.error('ERROR:', err);
+  });
 
 
 function Product({ product }) {
@@ -281,6 +373,8 @@ class FundsDeposit extends React.Component {
       <div>
        {!this.state.showCheckout ? <ProductSelection addToCart1={this.addToCart1} addToCart2={this.addToCart2} addToCart3={this.addToCart3} />
                                  : <PayPalCheckout cartValue={this.state.cartValue} cancelCart={this.cancelCart} />}
+      
+      {/* recentVotesQuery */}
       </div>
     );
   }

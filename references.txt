@@ -16,3 +16,5 @@ PayPal php backend integration: https://www.youtube.com/watch?v=5MNC1NX0gm8
 
 Paypal flow example: https://www.youtube.com/watch?v=T1q7JipHR48
 
+gclou mysql connect: https://cloud.google.com/sql/docs/mysql/quickstart
+
