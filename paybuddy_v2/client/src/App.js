@@ -7,7 +7,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { apiResponse: "" };
-  }
+  }/* 
 
   callAPI() {
       fetch("http://localhost:9000/server")
@@ -17,13 +17,13 @@ class App extends React.Component {
 
   componentWillMount() {
       this.callAPI();
-  }
+  } */
 
   render () {
     return (
       <div className="App">
         <FundsDeposit />
-        {this.state.apiResponse}
+        {/* {this.state.apiResponse} */}
       </div>
     );
   }

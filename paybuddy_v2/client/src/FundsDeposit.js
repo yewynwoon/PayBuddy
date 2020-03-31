@@ -30,20 +30,29 @@ function Product({ product }) {
             ],
           });
         },
-        onApprove: async (data, actions) => {
-
-          {/* PAYPAL DEPOSIT SUCCEFUL - REROUTE TO CONFIRMATION PAGE */}
-
-          const order = await actions.order.capture();
-          setPaidFor(true);
-          console.log(order);
-        },
-        onError: err => {
-          setError(err);
-          console.error(err);
-        },
-      })
-      .render(paypalRef.current);
+        onApprove: async function (data, actions) {
+          return actions.order.capture().then(function (details) {
+            alert('success!');
+            const responsePromise = fetch('http://localhost:9000/depositFundsPost', {
+              method: 'post',
+              headers: {
+                'content-type': 'application/json'
+              },
+                body: JSON.stringify({
+                  orderID: data.orderID,
+                  value: product.price,
+               })
+            });
+            responsePromise.then(function (responseFromServer) {
+              if(responseFromServer.status === 200) {
+                //console.log('Success');
+                window.location.href = "/";
+              } else {
+                console.log('smth went wrong');
+              }})
+          })
+        }
+      }).render(paypalRef.current);
   }, [product.description, product.price]);
 
   return (
@@ -242,10 +251,20 @@ class FundsDeposit extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { showCheckout: false, cartValue: 10}
+    this.state = { showCheckout: false, cartValue: 10, apiResponse: ""}
     this.addToCart = this.addToCart.bind(this);
     this.cancelCart = this.cancelCart.bind(this);
   }
+
+  callAPI() {
+    fetch("http://localhost:9000/depositFundsPost")
+        .then(res => res.text())
+        .then(res => this.setState({ apiResponse: res }));
+}
+
+componentWillMount() {
+    this.callAPI();
+}
 
   addToCart1 = () => {
     this.addToCart(5)
@@ -280,7 +299,7 @@ class FundsDeposit extends React.Component {
        {!this.state.showCheckout ? <ProductSelection addToCart1={this.addToCart1} addToCart2={this.addToCart2} addToCart3={this.addToCart3} />
                                  : <PayPalCheckout cartValue={this.state.cartValue} cancelCart={this.cancelCart} />}
       
-      {/* recentVotesQuery */}
+      { this.state.apiResponse }
       </div>
     );
   }
