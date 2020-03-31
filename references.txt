@@ -18,3 +18,4 @@ Paypal flow example: https://www.youtube.com/watch?v=T1q7JipHR48
 
 gclou mysql connect: https://cloud.google.com/sql/docs/mysql/quickstart
 
+express and react connection: https://www.freecodecamp.org/news/create-a-react-frontend-a-node-express-backend-and-connect-them-together-c5798926047c/
