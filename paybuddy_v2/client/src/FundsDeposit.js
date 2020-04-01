@@ -32,7 +32,6 @@ function Product({ product }) {
         onApprove: async function (data, actions) {
           return actions.order.capture().then(function (details) {
 
-            //alert('payment success!');
             const responsePromise = fetch('http://localhost:9000/depositFundsPost', {
               method: 'post',
               headers: {
@@ -46,6 +45,8 @@ function Product({ product }) {
             responsePromise.then(function (responseFromServer) {
               if(responseFromServer.status == 200) {
                 console.log('responseFromServer');
+
+                //Page re-route
                 window.location.href = "/";
               } else {
                 console.log('API error');
@@ -78,7 +79,7 @@ const ProductSelection = props => {
                 <div class="rMY2T _3kqWw _2-iar" id="box-body-id">
                   <div class="_2vRlH">
                     <span class="_16YfQ">
-                      <img class="logo-image" src={Logo}/>
+                      <img class="logo-image" src={Logo} alt="paybuddy-logo"/>
                     </span>
                     <h3 class="GMZpj">
                       Australia
@@ -111,7 +112,7 @@ const ProductSelection = props => {
                 <div class="rMY2T _3kqWw _2-iar">
                   <div class="_2vRlH">
                     <span class="_16YfQ">
-                      <img class="logo-image" src={Logo}/>
+                      <img class="logo-image" src={Logo} alt="paybuddy-logo"/>
                     </span>
                     <h3 class="GMZpj">
                       Australia
@@ -144,7 +145,7 @@ const ProductSelection = props => {
                 <div class="rMY2T _3kqWw _2-iar">
                   <div class="_2vRlH">
                     <span class="_16YfQ">
-                      <img class="logo-image" src={Logo}/>
+                      <img class="logo-image" src={Logo} alt="paybuddy-logo"/>
                     </span>
                     <h3 class="GMZpj">
                       Australia
@@ -255,16 +256,6 @@ class FundsDeposit extends React.Component {
     this.addToCart = this.addToCart.bind(this);
     this.cancelCart = this.cancelCart.bind(this);
   }
-
-  /* callAPI() {
-    fetch("http://localhost:9000/depositFundsPost")
-      .then(res => res.text())
-      .then(res => this.setState({ apiResponse: res }));
-  }
-
-componentWillMount() {
-    this.callAPI();
-} */
 
   addToCart1 = () => {
     this.addToCart(5)

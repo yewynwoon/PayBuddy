@@ -4,6 +4,12 @@ const express = require('express');
 const mysql = require('promise-mysql');
 const bodyParser = require('body-parser');
 
+var router = express.Router();
+
+// Automatically parse request body as form data.
+router.use(bodyParser.urlencoded({extended: false}));
+router.use(bodyParser.json());
+
 // [START cloud_sql_mysql_mysql_create]
 let pool;
 const createPool = async () => {
@@ -27,39 +33,12 @@ const createPool = async () => {
   });
 };
 createPool();
-// [END cloud_sql_mysql_mysql_create]
-
-var router = express.Router();
-
-// Automatically parse request body as form data.
-router.use(bodyParser.urlencoded({extended: false}));
-router.use(bodyParser.json());
-
-// Serve the index page, showing vote tallies.
-router.get('/', async (req, res) => {
-  
-  /* const query = pool.query(
-    'select * from users;'
-  );
-
-  // Run queries concurrently, and wait for them to complete
-  // This is faster than await-ing each query object as it is created
-  const queryResult = await query;
-
-  res.send(queryResult); */  
-});
 
 router.post('/', async (req, res) => {
   
-  // [START cloud_sql_mysql_mysql_connection]
-
   const custID = req.body.custID;
   const amount = req.body.value;
   const dateStamp = new Date();
-
-  console.log(typeof custID);
-  console.log(typeof amount);
-  console.log(dateStamp);
 
   try {
      
@@ -79,7 +58,6 @@ router.post('/', async (req, res) => {
     //Run queries
     await pool.query(depositTableQuery, [custID, amount, dateStamp]);
     await pool.query(setAcctValueQuery);
-    
     
   } catch (err) {
     // If something goes wrong, handle the error in this section. This might
