@@ -2,6 +2,7 @@
 
 const express = require('express');
 const mysql = require('promise-mysql');
+const bodyParser = require('body-parser');
 
 // [START cloud_sql_mysql_mysql_create]
 let pool;
@@ -23,13 +24,16 @@ const createPool = async () => {
     acquireTimeout: 10000,
     waitForConnections: true,
     queueLimit: 0,
-    
   });
 };
 createPool();
 // [END cloud_sql_mysql_mysql_create]
 
 var router = express.Router();
+
+// Automatically parse request body as form data.
+router.use(bodyParser.urlencoded({extended: false}));
+router.use(bodyParser.json());
 
 // Serve the index page, showing vote tallies.
 router.get('/', async (req, res) => {
@@ -48,26 +52,45 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   
   // [START cloud_sql_mysql_mysql_connection]
+
+  const custID = req.body.custID;
+  const amount = req.body.value;
+  const dateStamp = new Date();
+
+  console.log(typeof custID);
+  console.log(typeof amount);
+  console.log(dateStamp);
+
   try {
-    req.body.value
-    const stmt = `insert into cust_transfer (src_cust_id, dest_cust_id, amount, description) values (3, 1, ${500}, 'test3');`;
+     
+    //Create new deposit record
+    const depositTableQuery = 'insert into cust_deposit (cust_id, amount, date_stamp) values (?, ?, ?);';
+
+    //Get current acct_value of customer
+    const getAcctValueQuery = 'select account_value from users where cust_id = ' + custID + ';';
+
+    //Run query - fetch response
+    var oldAcctValue = await pool.query(getAcctValueQuery);
+    var newAcctTotal = oldAcctValue[0].account_value + amount;
+
+    //Get current acct_value of customer
+    const setAcctValueQuery = 'update users set account_value=' + newAcctTotal + ' where cust_id=' + custID + ';';
+
+    //Run queries
+    await pool.query(depositTableQuery, [custID, amount, dateStamp]);
+    await pool.query(setAcctValueQuery);
     
-    // Pool.query automatically checks out, uses, and releases a connection
-    // back into the pool, ensuring it is always returned successfully.
-    await pool.query(stmt);
+    
   } catch (err) {
     // If something goes wrong, handle the error in this section. This might
     // involve retrying or adjusting parameters depending on the situation.
     // [START_EXCLUDE]
-    logger.err(err);
-    res.status(500).send(
-      'Unable to successfully insert transaction!'
-    ).end();
+    res.status(500).send('Unable to successfully insert transaction!').end();
     // [END_EXCLUDE]
   }
   // [END cloud_sql_mysql_mysql_connection]
 
-  res.status(200).send(`req.body.value`).end();
+  res.status(200).send(`Succesfull insertion!`).end();
 });
 
 module.exports = router;

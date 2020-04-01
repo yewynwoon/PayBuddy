@@ -3,7 +3,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import Logo from './Icon.png';
 
 function Product({ product }) {
-  const [paidFor, setPaidFor] = useState(false);
   const [error, setError] = useState(null);
   const paypalRef = useRef();
 
@@ -32,23 +31,24 @@ function Product({ product }) {
         },
         onApprove: async function (data, actions) {
           return actions.order.capture().then(function (details) {
-            alert('success!');
+
+            //alert('payment success!');
             const responsePromise = fetch('http://localhost:9000/depositFundsPost', {
               method: 'post',
               headers: {
                 'content-type': 'application/json'
               },
-                body: JSON.stringify({
-                  orderID: data.orderID,
-                  value: product.price,
-               })
+              body: JSON.stringify({
+                custID: 1,
+                value: product.price,
+              })
             });
             responsePromise.then(function (responseFromServer) {
-              if(responseFromServer.status === 200) {
-                //console.log('Success');
+              if(responseFromServer.status == 200) {
+                console.log('responseFromServer');
                 window.location.href = "/";
               } else {
-                console.log('smth went wrong');
+                console.log('API error');
               }})
           })
         }
@@ -256,15 +256,15 @@ class FundsDeposit extends React.Component {
     this.cancelCart = this.cancelCart.bind(this);
   }
 
-  callAPI() {
+  /* callAPI() {
     fetch("http://localhost:9000/depositFundsPost")
-        .then(res => res.text())
-        .then(res => this.setState({ apiResponse: res }));
-}
+      .then(res => res.text())
+      .then(res => this.setState({ apiResponse: res }));
+  }
 
 componentWillMount() {
     this.callAPI();
-}
+} */
 
   addToCart1 = () => {
     this.addToCart(5)

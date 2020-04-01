@@ -26,6 +26,17 @@ CREATE TABLE IF NOT EXISTS cust_transfer (
 	FOREIGN KEY (dest_cust_id) references users(cust_id)
 );
 
+CREATE TABLE IF NOT EXISTS cust_deposit (
+
+	deposit_id int not null AUTO_INCREMENT,
+	cust_id int not null,
+	amount int NOT NULL,
+	date_stamp TIMESTAMP not null,
+
+	PRIMARY KEY (deposit_id),
+	FOREIGN KEY (cust_id) references users(cust_id)
+);
+
 /*  Test users */
 insert into users (fname,lname,email,password)
 values ('jeremy', 'beresh', 'j.beresh@hotmail.com', 'hello');
@@ -49,6 +60,7 @@ values (2, 4, 20, 'test1');
 
 insert into cust_transfer (src_cust_id, dest_cust_id, amount, description)
 values (4, 3, 20, 'test2');
+
 
 select * from users;
 select * from cust_transfer;
