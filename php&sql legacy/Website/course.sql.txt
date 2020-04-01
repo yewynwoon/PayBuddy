@@ -1,0 +1,14 @@
+
+create database college;
+use college;
+show tables;
+create table course(
+    course_id serial primary key,
+ course_code text,
+ name text,
+ subject text,
+ instructor text,
+ weeks int,
+ description text);
+
+describe course

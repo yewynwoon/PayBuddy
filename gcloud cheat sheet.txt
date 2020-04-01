@@ -1,0 +1,4 @@
+gcloud config set project <PROJECT-ID>
+
+gcloud app deploy <APP.YAML>
+gcloud app browse
