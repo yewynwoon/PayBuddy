@@ -6,15 +6,10 @@
 	include("nav.inc");
 ?>
 
+
 <main id=cous>
 
-<div>
-</div>
-
-
-
 </main>
-
 
 
 

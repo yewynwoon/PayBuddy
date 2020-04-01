@@ -1,6 +1,6 @@
 body
 {
-width: 1000px;
+max-width:1000px;
 margin: auto;
 background-color:#424c55
   
@@ -15,55 +15,6 @@ header
 	padding-left: 15px;
 	
 }
-
-
-
-
-.parallax {
-    /* The image used */
-    background-image: url("img/pexels0.jpg");
-
-    /* Set a specific height */
-    min-height: 500px; 
-
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.parallax1 {
-    /* The image used */
-    background-image: url("img/pexels2.jpeg");
-
-    /* Set a specific height */
-    min-height: 500px; 
-
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.parallax2 {
-    /* The image used */
-    background-image: url("img/pexels3.jpeg");
-
-    /* Set a specific height */
-    min-height: 500px; 
-
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-
-
-
 
 
 
@@ -151,7 +102,7 @@ footer {
 	
 }
 
-
+/*
 input, select {
     width: 100%;
     padding: 12px 20px;
@@ -161,34 +112,7 @@ input, select {
     border-radius: 4px;
     box-sizing: border-box;
 }
-
-
-
-
- #tab {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-
-#tab td, #tab th {
-    border: 1px solid #ddd;
-    padding: 8px;
-	background-color:White;
-	color:black;
-}
-
-#tab tr:nth-child(even){background-color: #f2f2f2;}
-
-#tab tr:hover {background-color: #red;}
-
-#tab th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #4CAF50;
-    color: black;
-}
+*/
 
 
 
