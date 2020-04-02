@@ -43,7 +43,7 @@ function Product({ product }) {
               })
             });
             responsePromise.then(function (responseFromServer) {
-              if(responseFromServer.status == 200) {
+              if(responseFromServer.status === 200) {
                 console.log('responseFromServer');
 
                 //Page re-route

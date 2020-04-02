@@ -1,29 +1,28 @@
 import React from 'react';
 import './App.css';
+import Header from './Header';
 import FundsDeposit from './FundsDeposit';
+import NavigationBar from './NavigationBar';
+import Footer from './Footer';
 
 class App extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = { apiResponse: "" };
-  }/* 
-
-  callAPI() {
-      fetch("http://localhost:9000/server")
-          .then(res => res.text())
-          .then(res => this.setState({ apiResponse: res }));
   }
-
-  componentWillMount() {
-      this.callAPI();
-  } */
 
   render () {
     return (
       <div className="App">
-        <FundsDeposit />
-        {/* {this.state.apiResponse} */}
+        <Header />
+        <NavigationBar/>
+
+        {/* <body>
+          <FundsDeposit />
+        </body> */}
+        
+        <Footer/>
       </div>
     );
   }
