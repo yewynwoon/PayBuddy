@@ -553,3 +553,7 @@ body {
 .logo-image {
   width: 50px
 }
+
+.home-image {
+  float: left;
+}
