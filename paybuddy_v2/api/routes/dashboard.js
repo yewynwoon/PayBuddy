@@ -36,23 +36,23 @@ createPool();
 
 router.get('/', async (req, res) => {
   
-  const custID = req.body.custID;
+  const userID = req.param('user_id');
 
   try {
      
     //Get current acct_value of customer
-    const getAcctValueQuery = 'select account_value from users where cust_id = ' + custID + ';';
+    const getAcctValueQuery = 'select account_value from users where cust_id = ' + userID + ';';
 
+    //Get past transactions of customer
+    const getPastTransactionQuery = 'select deposit_id, amount, date_stamp from cust_deposit where cust_id=' + userID + ';';
+    
     //Run query - fetch response
     var acctValue = await pool.query(getAcctValueQuery);
-    var acctValueString = acctValue[0];
+    var pastTransactions = await pool.query(getPastTransactionQuery);
 
-    //Get current acct_value of customer
-    const setAcctValueQuery = 'select * from transaction where custID=' + custID + ';';
-
-    //Run queries
-    await pool.query(depositTableQuery, [custID, amount, dateStamp]);
-    await pool.query(setAcctValueQuery);
+    /* console.log(userID);
+    console.log(acctValue);
+    console.log(pastTransactions); */
     
   } catch (err) {
     // If something goes wrong, handle the error in this section. This might
@@ -60,10 +60,10 @@ router.get('/', async (req, res) => {
     // [START_EXCLUDE]
     res.status(500).send('Unable to successfully insert transaction!').end();
     // [END_EXCLUDE]
-  } */
+  } 
   // [END cloud_sql_mysql_mysql_connection]
 
-  res.send(`Succesfull connection!`).end();
+  res.send(JSON.stringify({userID: userID, acctValue: acctValue, pastTransactions: pastTransactions})).end();
 });
 
 module.exports = router;
