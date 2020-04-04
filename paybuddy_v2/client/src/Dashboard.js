@@ -31,6 +31,18 @@ class Dashboard extends React.Component {
         this.callAPI();
     }
 
+    renderTableData() {
+        return Object.keys(this.state.cust_transactions).map((key) => {
+            return (
+                <tr key={key}>
+                    <td>{this.state.cust_transactions[key].deposit_id}</td>
+                    <td>{this.state.cust_transactions[key].amount}</td>
+                    <td>{this.state.cust_transactions[key].date_stamp}</td>
+                </tr>
+            )
+        })
+    }
+
     render () {
         return (
             <div>
@@ -51,18 +63,15 @@ class Dashboard extends React.Component {
                     </table>
                     <b></b>
                     <table id='tab'>
-                        <thead>
+                        { <thead>
                             <tr>
                                 <th>Deposit ID</th>
                                 <th>Amount</th>
                                 <th>Transaction Date</th>
-                                <th></th>
                             </tr>
-                        </thead>
+                        </thead>}
                         <tbody>
-                            <tr>
-                               
-                            </tr>
+                            {this.renderTableData()}
                         </tbody>
                     </table>
                 </main>
