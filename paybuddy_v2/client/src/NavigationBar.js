@@ -56,7 +56,7 @@ export default function NavigationBar() {
 function Index() {
   return (
     <div>
-      <DashboardComp/>
+      <DashboardComp user_id="1"/>
     </div>
   );
 }
