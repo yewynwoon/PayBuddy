@@ -45,37 +45,35 @@ class Dashboard extends React.Component {
 
     render () {
         return (
-            <div>
-                {this.state.apiResponse}
-                
-                <main id='cous'>
-                    <table>
+            <main id='cous'>
+                <table>
+                    <tr>
+                        <h1 class='welcomeText'>
+                            Current Customer {this.state.cust_acct_value}
+                        </h1>
+                    </tr>
+                    <tc>
+                        <h1 class='welcomeText'>
+                            Account Balance Placeholder
+                        </h1>
+                    </tc>
+                </table>
+                <b></b>
+                <table id='tab'>
+                    { <thead>
                         <tr>
-                            <h1 class='welcomeText'>
-                                Current Customer {this.state.cust_acct_value}
-                            </h1>
+                            <th>Deposit ID</th>
+                            <th>Amount</th>
+                            <th>Transaction Date</th>
                         </tr>
-                        <tc>
-                            <h1 class='welcomeText'>
-                                Account Balance Placeholder
-                            </h1>
-                        </tc>
-                    </table>
-                    <b></b>
-                    <table id='tab'>
-                        { <thead>
-                            <tr>
-                                <th>Deposit ID</th>
-                                <th>Amount</th>
-                                <th>Transaction Date</th>
-                            </tr>
-                        </thead>}
-                        <tbody>
-                            {this.renderTableData()}
-                        </tbody>
-                    </table>
-                </main>
-            </div>
+                    </thead>}
+                    <tbody>
+                        {this.renderTableData()}
+                    </tbody>
+                </table>
+                
+                {this.state.apiResponse}
+            </main>
         )
     }
 }

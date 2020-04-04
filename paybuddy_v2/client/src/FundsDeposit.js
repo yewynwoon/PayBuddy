@@ -66,113 +66,111 @@ function Product({ product }) {
 
 const ProductSelection = props => {
   return (
-    <div>
-      <div class="_3o1Fr" id="block-id">
-        <div class="_3mYpM" id="header-id">
-          <h2 class="_00004">Select deposit amount</h2>
-        </div>
-        <ul class="_23RYk" id="body-id">
-          <li class="_2j5BM">
-            <div class="_1fm9z">
-              <div class="_25xBd _2jWsC _2LHSO">
-                <div class="_1GLWk" id="box-header-id"></div>
-                <div class="rMY2T _3kqWw _2-iar" id="box-body-id">
-                  <div class="_2vRlH">
-                    <span class="_16YfQ">
-                      <img class="logo-image" src={Logo} alt="paybuddy-logo"/>
-                    </span>
-                    <h3 class="GMZpj">
-                      Australia
-                      <small>PayBuddy Deposit</small>
-                    </h3>
-                  </div>
-                  <div class="WekeV">
-                    <div class="_3PiID _2wSlB">
-                      <div class="_76Q-5">
-                        <div class="_3CENX">AU$5.00</div>
-                        <div class="_1euEK"></div>
-                      </div>
-                      <div class="em8W4">
-                        <div class="_3dX_-">
-                          <button class="IzjkL _2Y_WL FiOTW" id="selection-1" onClick={props.addToCart1}>
-                            <span class="_2pjgR">Continue</span>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="_2j5BM">
-            <div class="_1fm9z">
-              <div class="_25xBd _2jWsC _2LHSO">
-                <div class="_1GLWk"></div>
-                <div class="rMY2T _3kqWw _2-iar">
-                  <div class="_2vRlH">
-                    <span class="_16YfQ">
-                      <img class="logo-image" src={Logo} alt="paybuddy-logo"/>
-                    </span>
-                    <h3 class="GMZpj">
-                      Australia
-                      <small>PayBuddy Deposit</small>
-                    </h3>
-                  </div>
-                  <div class="WekeV">
-                    <div class="_3PiID _2wSlB">
-                      <div class="_76Q-5">
-                        <div class="_3CENX">AU$10.00</div>
-                        <div class="_1euEK"></div>
-                      </div>
-                      <div class="em8W4">
-                        <div class="_3dX_-">
-                          <button class="IzjkL _2Y_WL FiOTW" id="selection-2" onClick={props.addToCart2}>
-                            <span class="_2pjgR">Continue</span>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="_2j5BM">
-            <div class="_1fm9z">
-              <div class="_25xBd _2jWsC _2LHSO">
-                <div class="_1GLWk"></div>
-                <div class="rMY2T _3kqWw _2-iar">
-                  <div class="_2vRlH">
-                    <span class="_16YfQ">
-                      <img class="logo-image" src={Logo} alt="paybuddy-logo"/>
-                    </span>
-                    <h3 class="GMZpj">
-                      Australia
-                      <small>PayBuddy Deposit</small>
-                    </h3>
-                  </div>
-                  <div class="WekeV">
-                    <div class="_3PiID _2wSlB">
-                      <div class="_76Q-5">
-                        <div class="_3CENX">AU$25.00</div>
-                        <div class="_1euEK"></div>
-                      </div>
-                      <div class="em8W4">
-                        <div class="_3dX_-">
-                          <button class="IzjkL _2Y_WL FiOTW" id="selection-3" onClick={props.addToCart3}>
-                            <span class="_2pjgR">Continue</span>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
+    <div class="_3o1Fr" id="block-id">
+      <div class="_3mYpM" id="header-id">
+        <h2 class="_00004">Select deposit amount</h2>
       </div>
+      <ul class="_23RYk" id="body-id">
+        <li class="_2j5BM">
+          <div class="_1fm9z">
+            <div class="_25xBd _2jWsC _2LHSO">
+              <div class="_1GLWk" id="box-header-id"></div>
+              <div class="rMY2T _3kqWw _2-iar" id="box-body-id">
+                <div class="_2vRlH">
+                  <span class="_16YfQ">
+                    <img class="logo-image" src={Logo} alt="paybuddy-logo"/>
+                  </span>
+                  <h3 class="GMZpj">
+                    Australia
+                    <small>PayBuddy Deposit</small>
+                  </h3>
+                </div>
+                <div class="WekeV">
+                  <div class="_3PiID _2wSlB">
+                    <div class="_76Q-5">
+                      <div class="_3CENX">AU$5.00</div>
+                      <div class="_1euEK"></div>
+                    </div>
+                    <div class="em8W4">
+                      <div class="_3dX_-">
+                        <button class="IzjkL _2Y_WL FiOTW" id="selection-1" onClick={props.addToCart1}>
+                          <span class="_2pjgR">Continue</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="_2j5BM">
+          <div class="_1fm9z">
+            <div class="_25xBd _2jWsC _2LHSO">
+              <div class="_1GLWk"></div>
+              <div class="rMY2T _3kqWw _2-iar">
+                <div class="_2vRlH">
+                  <span class="_16YfQ">
+                    <img class="logo-image" src={Logo} alt="paybuddy-logo"/>
+                  </span>
+                  <h3 class="GMZpj">
+                    Australia
+                    <small>PayBuddy Deposit</small>
+                  </h3>
+                </div>
+                <div class="WekeV">
+                  <div class="_3PiID _2wSlB">
+                    <div class="_76Q-5">
+                      <div class="_3CENX">AU$10.00</div>
+                      <div class="_1euEK"></div>
+                    </div>
+                    <div class="em8W4">
+                      <div class="_3dX_-">
+                        <button class="IzjkL _2Y_WL FiOTW" id="selection-2" onClick={props.addToCart2}>
+                          <span class="_2pjgR">Continue</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="_2j5BM">
+          <div class="_1fm9z">
+            <div class="_25xBd _2jWsC _2LHSO">
+              <div class="_1GLWk"></div>
+              <div class="rMY2T _3kqWw _2-iar">
+                <div class="_2vRlH">
+                  <span class="_16YfQ">
+                    <img class="logo-image" src={Logo} alt="paybuddy-logo"/>
+                  </span>
+                  <h3 class="GMZpj">
+                    Australia
+                    <small>PayBuddy Deposit</small>
+                  </h3>
+                </div>
+                <div class="WekeV">
+                  <div class="_3PiID _2wSlB">
+                    <div class="_76Q-5">
+                      <div class="_3CENX">AU$25.00</div>
+                      <div class="_1euEK"></div>
+                    </div>
+                    <div class="em8W4">
+                      <div class="_3dX_-">
+                        <button class="IzjkL _2Y_WL FiOTW" id="selection-3" onClick={props.addToCart3}>
+                          <span class="_2pjgR">Continue</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
   )
 }

@@ -8,6 +8,7 @@ import {
 
 import DashboardComp from './Dashboard';
 import FundsDepositComp from './FundsDeposit';
+import PayBillComp from './PayBill';
 
 // This site has 3 pages, all of which are rendered
 // dynamically in the browser (not server rendered).
@@ -21,31 +22,30 @@ import FundsDepositComp from './FundsDeposit';
 export default function NavigationBar() {
   return (
     <Router>
-      <div>
-        <nav class='header'>
-          <div class="topnav">
-            <Link to="/Dashboard">Home</Link>
-            <Link to="/FundsDeposit">Deposit Funds</Link>
+      <nav class='header'>
+        <div class="topnav nav-text">
+          <Link to="/Dashboard"><a>Home</a></Link>
+          <Link to="/FundsDeposit"><a>Deposit Funds</a></Link>
+          <Link to="/PayBill"><a>Pay a Bill</a></Link>
+          <br/>
 
-            <br/>
-
-            {/*
-              A <Switch> looks through all its children <Route>
-              elements and renders the first one whose path
-              matches the current URL. Use a <Switch> any time
-              you have multiple routes, but you want only one
-              of them to render at a time
-            */}
-            
-          </div>
-          <body>
-              <Switch>
-                <Route path="/Dashboard"><Index /></Route>
-                <Route path="/FundsDeposit"><FundsDeposit /></Route>
-              </Switch>
-            </body>
-        </nav>
-      </div>
+          {/*
+            A <Switch> looks through all its children <Route>
+            elements and renders the first one whose path
+            matches the current URL. Use a <Switch> any time
+            you have multiple routes, but you want only one
+            of them to render at a time
+          */}
+          
+        </div>
+        <body>
+            <Switch>
+              <Route path="/Dashboard"><Index /></Route>
+              <Route path="/FundsDeposit"><FundsDeposit /></Route>
+              <Route path="/PayBill"><PayBill /></Route>
+            </Switch>
+          </body>
+      </nav>
     </Router>
   );
 }
@@ -65,6 +65,14 @@ function FundsDeposit() {
   return (
     <div>
       <FundsDepositComp/>
+    </div>
+  );
+}
+
+function PayBill() {
+  return (
+    <div>
+      <PayBillComp/>
     </div>
   );
 }
