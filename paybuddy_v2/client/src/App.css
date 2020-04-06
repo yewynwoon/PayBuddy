@@ -119,6 +119,7 @@ ul {
 }
 
 ._1fm9z {
+  background-color: #fefff8;
   max-width: 100%;
   width: 100%;
   display: flex;
@@ -126,7 +127,6 @@ ul {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  background-color: #fff;
 }
 
 .rMY2T._2-iar {
@@ -145,7 +145,7 @@ ul {
   box-sizing: border-box;
 }
 .rMY2T {
-  background-color: #f2f2f2;
+  background-color: inherit;
   text-align: center;
   overflow: auto;
   padding: 38px 5px;

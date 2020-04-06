@@ -26,26 +26,16 @@ export default function NavigationBar() {
         <div class="topnav nav-text">
           <Link to="/Dashboard"><a>Home</a></Link>
           <Link to="/FundsDeposit"><a>Deposit Funds</a></Link>
-          <Link to="/PayBill"><a>Pay a Bill</a></Link>
-          <br/>
-
-          {/*
-            A <Switch> looks through all its children <Route>
-            elements and renders the first one whose path
-            matches the current URL. Use a <Switch> any time
-            you have multiple routes, but you want only one
-            of them to render at a time
-          */}
-          
+          <Link to="/PayBill"><a>Pay a Bill</a></Link>     
         </div>
-        <body>
-            <Switch>
-              <Route path="/Dashboard"><Index /></Route>
-              <Route path="/FundsDeposit"><FundsDeposit /></Route>
-              <Route path="/PayBill"><PayBill /></Route>
-            </Switch>
-          </body>
       </nav>
+      <body>
+        <Switch>
+          <Route path="/Dashboard"><Index /></Route>
+          <Route path="/FundsDeposit"><FundsDeposit /></Route>
+          <Route path="/PayBill"><PayBill /></Route>
+        </Switch>
+      </body>
     </Router>
   );
 }
@@ -56,7 +46,7 @@ export default function NavigationBar() {
 function Index() {
   return (
     <div>
-      <DashboardComp user_id="1"/>
+      <DashboardComp user_id='1'/>
     </div>
   );
 }

@@ -156,6 +156,23 @@ input, select {
 }
 
 
+
+
+.box  {
+    box-sizing: border-box;
+    display: flex;
+    width: 33.33333%;
+    padding: 15px;
+    margin-left: 200px;
+    text-align: -webkit-match-parent;
+}
+
+
+
+
+
+
+
 #tab {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
