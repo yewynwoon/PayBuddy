@@ -1,10 +1,9 @@
 body
 {
-max-width:1000px;
-margin: auto;
-background-color:#fefff8;
-  
-  }
+    max-width:1000px;
+    margin: auto;
+    background-color:white;  
+}
 
 header
 {
@@ -76,10 +75,10 @@ header
  */
 
 .textbar {
-/* height:100px; */
-padding:10px;
-font-size:25px;
-border:1px solid
+    /* height:100px; */
+    padding:10px;
+    font-size:25px;
+    border:1px solid
 }
 
 
@@ -158,14 +157,7 @@ input, select {
 
 
 
-.box  {
-    box-sizing: border-box;
-    display: flex;
-    width: 33.33333%;
-    padding: 15px;
-    margin-left: 200px;
-    text-align: -webkit-match-parent;
-}
+
 
 
 
