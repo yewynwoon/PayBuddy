@@ -12,19 +12,20 @@ class PayBill extends React.Component {
 
         this.state = {
             billerCode: '',
-            apiResponse: ''
+            apiResponse: '',
+            crn: '',
+            amount: '',
+            descrip: ''
         }
     }
 
-    verifyBiilerCode = (event) => {
-
+    verifyBillerCode = (event) => {
         if(event.target.value === '') {
             this.setState({
                 billerCode: ''
             });
             return;
-        }
-        else {
+        } else {
             fetch(`http://localhost:9000/bpay/biller/${event.target.value}`)
             .then((response) => {
                 return response.json();
@@ -33,14 +34,58 @@ class PayBill extends React.Component {
                 this.setState({
                     billerCode: data
                 })
-                return this.state.billerCode;
+                //console.log(this.state.billerCode);
+                return;
             });
         }
     }
 
-    validatePayment = (e) => {
+    setCRN = (event) => {
 
-        console.log('hhello');
+        if(event.target.value === '') {
+            this.setState({
+                crn: ''
+            });
+            return;
+        }
+        else {
+            this.state.crn = event.target.value;
+            //console.log(this.state.crn);
+            return;
+        }
+    }
+
+    setAmount = (event) => {
+
+        if(event.target.value === '') {
+            this.setState({
+                amount: ''
+            });
+            return;
+        }
+        else {
+            this.state.amount = event.target.value;
+            //console.log(this.state.amount);
+            return;
+        }
+    }
+
+    setDescrip = (event) => {
+
+        if(event.target.value === '') {
+            this.setState({
+                descrip: ''
+            });
+            return;
+        }
+        else {
+            this.state.descrip = event.target.value;
+            //console.log(this.state.descrip);
+            return;
+        }
+    }
+
+    validatePayment = (e) => {
 
         fetch(`http://localhost:9000/bpay/validatePayment`, {
             method: 'POST',
@@ -49,9 +94,9 @@ class PayBill extends React.Component {
             },
             body: JSON.stringify({
                 payment: {
-                    billerCode: "65284",
-                    crn: "65112345672",
-                    amount: 1045.98,
+                    billerCode: this.state.billerCode.billerCode,//"65284",
+                    crn: this.state.crn,//"65112345672",
+                    amount: parseFloat(this.state.amount),//1045.98,
                     settlementDate: "2017-10-23",
                     paymentMethod: "001",
                     paymentDate: "2019-01-10"
@@ -83,8 +128,8 @@ class PayBill extends React.Component {
                                 <div class="bpay bpay-logo"> <img class="bpay-logo-img" src={BPayLogo} alt="paybuddy-logo"/></div>
                                 <div class='bpay'>
                                     <div class='bpay-payment-details'>
-                                        <div class='text-line'><input type="text" size='32' placeholder=' Biller Code *' onBlur={this.verifyBiilerCode.bind(this)}/></div>
-                                        <div class='text-line'><input type="text" size='32' placeholder=' Ref Number *'/></div>
+                                        <div class='text-line'><input type="text" size='32' placeholder=' Biller Code *' onBlur={this.verifyBillerCode.bind(this)} /></div>
+                                        <div class='text-line'><input type="text" size='32' placeholder=' Ref Number *' onBlur={this.setCRN.bind(this)} /></div>
                                     </div>
                                 </div>
                             </div>
@@ -96,8 +141,8 @@ class PayBill extends React.Component {
                             </div>
                             <div class='middle-inner-box'>
                                 <div class='payment-details'>
-                                    <input class='payment-amount-text-box' type="text" size='6' placeholder=' Amount *'/>
-                                    <input class='payment-dexcription-text-box' type="text" size='6' placeholder=' Description'/>
+                                    <input class='payment-amount-text-box' type="text" size='6' placeholder=' Amount *' onBlur={this.setAmount.bind(this)} />
+                                    <input class='payment-dexcription-text-box' type="text" size='6' placeholder=' Description' onBlur={this.setDescrip.bind(this)} />
                                 </div>
                             </div>
                             <div class='lower-inner-box'>
