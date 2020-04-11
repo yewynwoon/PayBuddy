@@ -1,6 +1,6 @@
 import React from 'react';
 import './course.css';
-import Logo from './img/paybuddy_text.png';
+import Logo from './img/paybuddytext.png';
 
 class Header extends React.Component {
 
