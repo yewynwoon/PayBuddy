@@ -31,8 +31,7 @@ function Product({ product }) {
         },
         onApprove: async function (data, actions) {
           return actions.order.capture().then(function (details) {
-
-            const responsePromise = fetch('http://localhost:9000/depositFundsPost', {
+            fetch('http://localhost:9000/depositFundsPost', {
               method: 'post',
               headers: {
                 'content-type': 'application/json'
@@ -41,13 +40,12 @@ function Product({ product }) {
                 custID: 1,
                 value: product.price,
               })
-            });
-            responsePromise.then(function (responseFromServer) {
+            }).then(function (responseFromServer) {
               if(responseFromServer.status === 200) {
                 console.log('responseFromServer');
 
                 //Page re-route
-                window.location.href = "/";
+                window.location.href = "/Dashboard?user_id=1";
               } else {
                 console.log('API error');
               }})
