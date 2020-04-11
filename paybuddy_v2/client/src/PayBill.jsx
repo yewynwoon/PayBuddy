@@ -11,46 +11,38 @@ class PayBill extends React.Component {
         super(props);
 
         this.state = {
-            billerDetails: '',
+            billerCode: '',
             apiResponse: ''
         }
     }
 
     verifyBiilerCode = (event) => {
 
-        if(event.target.value === '')
-        {
+        if(event.target.value === '') {
             this.setState({
-                ...this.state,
-                billerDetails: ''
+                billerCode: ''
             });
-
             return;
         }
-
-        var url = `http://localhost:9000/bpay/biller/${event.target.value}`;
-
-        fetch(url)
-        .then((response) => {
-            return response.json();
-        })
-        .then((data) => {
-            this.setState({
-                ...this.state,
-                billerDetails: data
+        else {
+            fetch(`http://localhost:9000/bpay/biller/${event.target.value}`)
+            .then((response) => {
+                return response.json();
             })
-
-            console.log(this.state.billerDetails);
-        });
+            .then((data) => {
+                this.setState({
+                    billerCode: data
+                })
+                return this.state.billerCode;
+            });
+        }
     }
 
-    validatePayment(e) {
-
-        var url = `http://localhost:9000/bpay/validatePayment`;
+    validatePayment = (e) => {
 
         console.log('hhello');
 
-        fetch(url, {
+        fetch(`http://localhost:9000/bpay/validatePayment`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -71,7 +63,6 @@ class PayBill extends React.Component {
         })
         .then((data) => {
             this.setState({
-                ...this.state,
                 apiResponse: data
             })
 
@@ -87,30 +78,32 @@ class PayBill extends React.Component {
                 </div>
                 <div class="box">
                     <div class="inner-box" id="box-body-id">
-                        <div class='upper-inner-box'>
-                            <div class="bpay bpay-logo"> <img class="bpay-logo-img" src={BPayLogo} alt="paybuddy-logo"/></div>
-                            <div class='bpay'>
-                                <div class='bpay-payment-details'>
-                                    <div class='text-line'><input type="text" size='32' placeholder=' Biller Code *' onBlur={this.verifyBiilerCode.bind(this)}/></div>
-                                    <div class='text-line'><input type="text" size='32' placeholder=' Ref Number *'/></div>
+                        <form  onSubmit={this.validatePayment}>
+                            <div class='upper-inner-box'>
+                                <div class="bpay bpay-logo"> <img class="bpay-logo-img" src={BPayLogo} alt="paybuddy-logo"/></div>
+                                <div class='bpay'>
+                                    <div class='bpay-payment-details'>
+                                        <div class='text-line'><input type="text" size='32' placeholder=' Biller Code *' onBlur={this.verifyBiilerCode.bind(this)}/></div>
+                                        <div class='text-line'><input type="text" size='32' placeholder=' Ref Number *'/></div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class='middle-inner-box'>
-                            <div class='biller-details'>
-                                <div>Biller Name:</div>
-                                <div class='biller-name'>{this.state.billerDetails.longName}</div>
+                            <div class='middle-inner-box'>
+                                <div class='biller-details'>
+                                    <div>Biller Name:</div>
+                                    <div class='biller-name'>{this.state.billerCode.longName}</div>
+                                </div>
                             </div>
-                        </div>
-                        <div class='middle-inner-box'>
-                            <div class='payment-details'>
-                                <input class='payment-amount-text-box' type="text" size='6' placeholder=' Amount *'/>
-                                <input class='payment-dexcription-text-box' type="text" size='6' placeholder=' Description'/>
+                            <div class='middle-inner-box'>
+                                <div class='payment-details'>
+                                    <input class='payment-amount-text-box' type="text" size='6' placeholder=' Amount *'/>
+                                    <input class='payment-dexcription-text-box' type="text" size='6' placeholder=' Description'/>
+                                </div>
                             </div>
-                        </div>
-                        <div class='lower-inner-box'>
-                            <input type='submit' class="IzjkL _2Y_WL FiOTW continue-button _2pjgR" value='Continue'  onSubmit={this.validatePayment}/>
-                        </div>
+                            <div class='lower-inner-box'>
+                                <input type='submit' class="IzjkL _2Y_WL FiOTW continue-button _2pjgR" value='Continue'/>
+                            </div>
+                        </form>
                     </div>
                 </div>
             
