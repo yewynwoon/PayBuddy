@@ -3,8 +3,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request-promise');
-var jwtDecode = require('jwt-decode');
-var jwt = require('jwt-simple');
 
 var router = express.Router();
 
