@@ -1,18 +1,19 @@
-@font-face {
+/*@font-face {
     font-family: 'Sen', sans-serif;
     src: url("https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap");
-}
+}*/
 
 body
-{
-max-width:1000px;
-margin: auto;
-background-color:white
+{   
+    font-family: 'Times New Roman', Times, serif;
+    max-width:1000px;
+    margin: auto;
+    background-color:white
 }
 
 header
 {
-	background-color: white;
+    font-weight: normal;
 	color: #5e5e5e;
 	height: 100px;
 	padding-left: 15px;

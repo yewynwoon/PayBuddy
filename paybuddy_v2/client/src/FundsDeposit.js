@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState, useRef, useEffect } from 'react';
-import Logo from './Icon.png';
+import Logo from './img/paybuddyicon.png';
 
 function Product({ product }) {
   const [error, setError] = useState(null);
