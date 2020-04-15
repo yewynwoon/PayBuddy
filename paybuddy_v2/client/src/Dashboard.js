@@ -55,7 +55,6 @@ class Dashboard extends React.Component {
                         <span id='heading'>WELCOME BACK, </span>
                         <span id='customercontents'>
                             <img id='profilepic' src={DP}></img>
-                            {this.state.cust_acct_value}
                             <span id='name'>THOMAS</span>
                         </span>
                         <a href="a" id='editacc'>EDIT ACCOUNT</a>
@@ -65,7 +64,7 @@ class Dashboard extends React.Component {
                         <hr></hr>
                         <span id='moneycontents'>
                             <span id="currency">AUD</span>
-                            <span id='accbalance'>$270.20</span>
+                            <span id='accbalance'>${parseFloat(this.state.cust_acct_value).toFixed(2)}</span>
                         </span>
                         <a href="a" id='editfunds'>ADD FUNDS</a>
                     </div>
@@ -78,9 +77,9 @@ class Dashboard extends React.Component {
                         { 
                             <thead>
                                 <tr>
-                                    <th>TRANSACTION DATE</th>
                                     <th>DEPOSIT ID</th>
                                     <th>AMOUNT</th>
+                                    <th>TRANSACTION DATE</th>
                                 </tr>
                             </thead>
                         }

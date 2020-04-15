@@ -50,9 +50,9 @@ router.get('/', async (req, res) => {
     var acctValue = await pool.query(getAcctValueQuery);
     var pastTransactions = await pool.query(getPastTransactionQuery);
 
-    /* console.log(userID);
+    console.log(userID);
     console.log(acctValue);
-    console.log(pastTransactions); */
+    console.log(pastTransactions);
     
   } catch (err) {
     // If something goes wrong, handle the error in this section. This might
