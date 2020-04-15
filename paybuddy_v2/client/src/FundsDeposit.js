@@ -47,7 +47,7 @@ function Product({ product }) {
                 console.log('responseFromServer');
 
                 //Page re-route
-                window.location.href = "/";
+                window.location.href = "/Dashboard";
               } else {
                 console.log('API error');
               }})
