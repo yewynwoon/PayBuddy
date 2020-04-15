@@ -1,5 +1,5 @@
 import React from 'react';
-import './course.css';
+import './client.css';
 import './paybill.css'
 
 class PayBill extends React.Component {

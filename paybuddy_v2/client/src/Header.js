@@ -1,6 +1,6 @@
-import React from 'react';
-import './course.css';
-import Logo from './img/paybuddy.png';
+import React, { useDebugValue } from 'react';
+import './client.css';
+import Logo from './img/paybuddyicon.png';
 
 class Header extends React.Component {
 
@@ -11,12 +11,11 @@ class Header extends React.Component {
 
     render () {
         return (
-            <div>
-                <header class='header'>
-                    <h1><a href="/Dashboard" ><img class='home-image' src={Logo} alt="paybuddy-logo" width="205" height="56"/></a></h1>
+                <header>
+                        <a href="/Dashboard" ><img id='homeimage' src={Logo} alt="paybuddy-logo" height="70" width="auto"/></a>
+                        DASHBOARD
                 </header>
-            </div>
-        )
+        );
     }
 }
 

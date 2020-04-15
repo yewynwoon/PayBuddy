@@ -1,4 +1,5 @@
 import React from "react";
+import { useLocation } from 'react-router-dom'
 import {
   BrowserRouter as Router,
   Switch,
@@ -24,9 +25,15 @@ export default function NavigationBar() {
     <Router>
       <nav class='header'>
         <div class="topnav nav-text">
-          <Link to="/Dashboard"><a>Home</a></Link>
-          <Link to="/FundsDeposit"><a>Deposit Funds</a></Link>
-          <Link to="/PayBill"><a>Pay a Bill</a></Link>
+          <Link to="/Dashboard">
+            <ActiveHome />
+          </Link>
+          <Link to="/FundsDeposit">
+            <ActiveFunds />
+          </Link>
+          <Link to="/PayBill">
+            <ActivePayBill />
+          </Link>
           <br/>
 
           {/*
@@ -75,4 +82,48 @@ function PayBill() {
       <PayBillComp/>
     </div>
   );
+}
+
+function GetLocation() {
+  let location = useLocation();
+  console.log(location.pathname);
+  return (
+    location.pathname
+  );
+}
+
+function ActiveHome() {
+  if (GetLocation() == '/Dashboard') {
+    return (
+      <a id="activeNav">HOME</a>
+    )
+  } else {
+    return (
+      <a>HOME</a>
+    )
+  }
+}
+
+function ActiveFunds() {
+  if (GetLocation() == '/FundsDeposit') {
+    return (
+      <a id="activeNav">DEPOSIT FUNDS</a>
+    )
+  } else {
+    return (
+      <a>DEPOSIT FUNDS</a>
+    )
+  }
+}
+
+function ActivePayBill() {
+  if (GetLocation() == '/PayBill') {
+    return (
+      <a id="activeNav">PAY BILL</a>
+    )
+  } else {
+    return (
+      <a>PAY BILL</a>
+    )
+  }
 }
