@@ -54,7 +54,7 @@ body
     font-family: 'robotolite';
     max-width:1000px;
     margin: auto;
-    background-color:#fefff8;
+    background-color: white;
 }
 
 header {
@@ -142,19 +142,16 @@ a:hover {
 }
 
 #detailscontainer {
-    width: 98%;
-    margin-left: 2%;
-    margin-right: 2%;
     overflow: hidden;
 }
 
 #customerbox {
     position: relative;
-    width: 43.5%;
+    width: 47%;
+    margin-right: 2%;
+    padding: 2%;
     height: 140px;
     float: left;
-    padding: 2%;
-    margin: 1%;
     border-radius: 15px;
     border: 1px solid #5e5e5e;
     background-color: #5e5e5e;
@@ -187,18 +184,16 @@ a:hover {
     position: absolute;
     bottom: 0;
     right: 0;
-    margin-right: 5%;
-    margin-bottom: 2%;
+    margin-right: 4%;
+    margin-bottom: 4%;
     font-size: 12px;
 }
 
 #moneybox {
     position: relative;
     overflow: hidden;
-    width: 43%;
     height: 140px;
     padding: 2%;
-    margin: 1%;
     border-radius: 15px;
     border: 1px solid #5e5e5e;
     color: #5e5e5e;
@@ -232,8 +227,8 @@ a:hover {
     position: absolute;
     bottom: 0;
     right: 0;
-    margin-right: 5%;
-    margin-bottom: 2%;
+    margin-right: 4%;
+    margin-bottom: 4%;
     font-size: 12px;
 }
 
@@ -258,16 +253,16 @@ input, select {
 */
 
 #tablecontainer {
-    width: 94%;
-    margin-left: 3%;
-    margin-right: 3%;
+    width: 96%;
+    margin-top: 2%;
+    padding-left: 2%;
+    padding-right: 2%;
     padding-bottom: 15px;
     border-radius: 15px;
     border: 1px solid #5e5e5e;
 }
 
 #tableheading {
-    margin-left: 2%;
     margin-top: 2%;
     text-align: left;
     font-family: 'robotoreg';
@@ -278,8 +273,6 @@ input, select {
 #table {
     border-collapse: collapse;
     width: 94%;
-    margin-left: 2%;
-    margin-left: 2%;
 }
 
 #table th {
@@ -301,8 +294,6 @@ input, select {
 hr { 
     display: block; 
     overflow: hidden; 
-    margin-left: 2%;
-    margin-right: 2%;
     border-style: inset; 
     border-width: 1px;
 }
