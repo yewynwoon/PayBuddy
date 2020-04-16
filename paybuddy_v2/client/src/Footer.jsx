@@ -1,5 +1,5 @@
 import React from 'react';
-import './course.css';
+import './client.css';
 
 class Header extends React.Component {
 
@@ -12,7 +12,7 @@ class Header extends React.Component {
         return (
             <div>
                 <footer class='footer'>
-		            <p  class='footerText'>&copy; 2020 PP1 Group15</p>
+		            <p  class='footerText'>&copy; 2020 PP1 Group 15</p>
 	            </footer>
             </div>
         )

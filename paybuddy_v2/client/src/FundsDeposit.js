@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState, useRef, useEffect } from 'react';
-import Logo from './Icon.png';
+import Logo from './img/paybuddyicon.png';
 
 function Product({ product }) {
   const [error, setError] = useState(null);
@@ -66,7 +66,7 @@ const ProductSelection = props => {
   return (
     <div class="_3o1Fr" id="block-id">
       <div class="_3mYpM" id="header-id">
-        <h2 class="_00004">Select deposit amount</h2>
+        <h2 class="_00004">SELECT DEPOSIT AMOUNT</h2>
       </div>
       <ul class="_23RYk" id="body-id">
         <li class="_2j5BM">
@@ -75,9 +75,9 @@ const ProductSelection = props => {
               <div class="_1GLWk" id="box-header-id"></div>
               <div class="rMY2T _3kqWw _2-iar" id="box-body-id">
                 <div class="_2vRlH">
-                  <span class="_16YfQ">
+                  <div class="_16YfQ">
                     <img class="logo-image" src={Logo} alt="paybuddy-logo"/>
-                  </span>
+                  </div>
                   <h3 class="GMZpj">
                     Australia
                     <small>PayBuddy Deposit</small>
@@ -92,7 +92,7 @@ const ProductSelection = props => {
                     <div class="em8W4">
                       <div class="_3dX_-">
                         <button class="IzjkL _2Y_WL FiOTW" id="selection-1" onClick={props.addToCart1}>
-                          <span class="_2pjgR">Continue</span>
+                          <span class="_2pjgR">CONTINUE</span>
                         </button>
                       </div>
                     </div>
@@ -125,7 +125,7 @@ const ProductSelection = props => {
                     <div class="em8W4">
                       <div class="_3dX_-">
                         <button class="IzjkL _2Y_WL FiOTW" id="selection-2" onClick={props.addToCart2}>
-                          <span class="_2pjgR">Continue</span>
+                          <span class="_2pjgR">CONTINUE</span>
                         </button>
                       </div>
                     </div>
@@ -158,7 +158,7 @@ const ProductSelection = props => {
                     <div class="em8W4">
                       <div class="_3dX_-">
                         <button class="IzjkL _2Y_WL FiOTW" id="selection-3" onClick={props.addToCart3}>
-                          <span class="_2pjgR">Continue</span>
+                          <span class="_2pjgR">CONTINUE</span>
                         </button>
                       </div>
                     </div>
@@ -187,16 +187,34 @@ const PayPalCheckout = props => {
         <div class="_3mYpM" id="header-id">
           <h2 class="_00004">Confirm order and pay</h2>
         </div>
+        <div class="c1vnA">
+          <div class="jvzF1">
+            <div class="_1cMq5">
+              <div class="_1l2tM _nfdh4">Your order</div>
+            </div>
+            <div class="_1cMq6">
+              <div class="_nfdh4">PayBuddy Deposit</div>
+              <div class="_Drf47" data-basket-field="totalPrice">AU${props.cartValue}.00</div>
+            </div>
+            <div class="_1cMq5">
+              <div class="_6jTY7">
+                <span class="_35e-z">Total</span>
+              </div>
+              <div class="_Drf47" data-basket-field="totalPrice">AU${props.cartValue}.00</div>
+            </div>
+            <div class="TgisE">
+              <span>
+                In some cases, your default currency will not be supported by a payment method directly. To solve this we convert the cost of your order automatically at prevailing European Central Bank rates.
+              </span>
+            </div>
+          </div>
+        </div>
         <div class="_2xuF0" aria-live="assertive">
           <div class="_3YW0V">
             <div class="_2OPBO">
-              <div class="_32Oc5 _2onyo">
+              <div class="_2onyo">
                 <div class="_1zJje">
-                  <span>
-                    <span>
-                      By clicking "Pay now", you agree to the <a class="_2rLR4" role="link" target="_blank">PayPuddy Services Agreement</a> and <a class="_2rLR4" role="link" target="_blank">Privacy and Cookies policy</a>, and you authorize PayBuddy to store your payment details.
-                    </span>
-                  </span>
+                    By clicking "Pay now", you agree to the <a class="_2rLR4" role="link" target="_blank">PayPuddy Services Agreement</a> and <a class="_2rLR4" role="link" target="_blank">Privacy and Cookies policy</a>, and you authorize PayBuddy to store your payment details.
                 </div>
                 <div class="_1zJje">
                   <span></span>
@@ -209,33 +227,12 @@ const PayPalCheckout = props => {
                 <div class="_lksW2">
                   <Product product={product} />
                 </div>
-                <div class="_lksW2">
-                  <button id="cancelButton" onClick={props.cancelCart} class="_16apt _2Y_Wp _2sGmV">
+                <div class="_lksW3">
+                  <button id="cancelButton" onClick={props.cancelCart} class="_16apt _2Y_Wp">
                     <span>Cancel</span>
                   </button>
                 </div>                
               </div>
-            </div>
-          </div>
-        </div>
-        <div class="c1vnA">
-          <div class="jvzF1">
-            <div class="_1cMq5">
-              <div class="_1l2tM _nfdh5">Your order</div>
-            </div>
-            <div class="_1cMq5">
-              <div class="_nfdh4">PayBuddy Deposit</div>
-            </div>
-            <div class="_1cMq5 _1Fz0I">
-              <div class="_6jTY7">
-                <span class="_35e-z">Total</span>
-              </div>
-              <div class="_Drf47" data-basket-field="totalPrice"><b>AU${props.cartValue}.00</b></div>
-            </div>
-            <div class="TgisE">
-              <span>
-                In some cases, your default currency will not be supported by a payment method directly. To solve this we convert the cost of your order automatically at prevailing European Central Bank rates.
-              </span>
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import './course.css';
+import './client.css';
 import './paybill.css'
 import BPayLogo from './img/bpay_logo.png';
 
