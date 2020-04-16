@@ -1,7 +1,7 @@
 import React from 'react';
 import './client.css';
 import './paybill.css'
-import BPayLogo from './img/bpay_logo.png';
+import BPayLogo from './img/bpay_logo.jpg';
 
 const PayBillForm = props => {
     return (
