@@ -6,35 +6,71 @@ import BPayLogo from './img/bpay_logo.png';
 const PayBillForm = props => {
     return (
         <main id='cous'>
-            <div class="_3mYpM" id="header-id">
-                <h2 class="_00004">Enter bill details</h2>
+            <div id='header-id'>
+                <h2 id='header-text'>Enter bill details</h2>
             </div>
-            <div class="box">
-                <div class="inner-box" id="box-body-id">
+            <div class='box'>
+                <div class='inner-box' id='box-body-id'>
                     <div class='upper-inner-box'>
-                        <div class="bpay bpay-logo"> <img class="bpay-logo-img" src={BPayLogo} alt="paybuddy-logo"/></div>
+                        <div class='bpay-logo'> <img class='bpay-logo-img' src={BPayLogo} alt='paybuddy-logo'/></div>
+                        <hr></hr>
                         <div class='bpay'>
-                            <div class='bpay-payment-details'>
-                                <div class='text-line'><input type="text" size='32' placeholder=' Biller Code *' onBlur={props.verifyBillerCode.bind(this)} /></div>
-                                <div class='text-line'><input type="text" size='32' placeholder=' Ref Number *' onBlur={props.setCRN.bind(this)} /></div>
+                            <div>
+                                <div class='text-line'>
+                                    Biller Code: *
+                                    <input 
+                                        type='text' 
+                                        size='32' 
+                                        placeholder=' BILLER CODE' 
+                                        onBlur={props.verifyBillerCode.bind(this)}
+                                    />
+                                </div>
+                                <div class='text-line'>
+                                    Reference Number: *
+                                    <input 
+                                        type='text' 
+                                        size='32' 
+                                        placeholder=' REFERENCE NUMBER' 
+                                        onBlur={props.setCRN.bind(this)} 
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class='middle-inner-box'>
                         <div class='biller-details'>
-                            <div>Biller Name:</div>
+                            <div>BILLER NAME:</div>
                             <div class='biller-name'>{props.billerName}</div>
                         </div>
                     </div>
+                    <hr></hr>
                     <div class='middle-inner-box'>
                         <div class='payment-details'>
-                            <input class='payment-amount-text-box' type="text" size='6' placeholder=' Amount *' onBlur={props.setAmount.bind(this)} />
-                            <input class='payment-dexcription-text-box' type="text" size='6' placeholder=' Description' onBlur={props.setDescrip.bind(this)} />
+                            <div class='text-line'>
+                                Amount: *
+                                <input 
+                                    class='payment-amount-text-box' 
+                                    type='text' 
+                                    size='32' 
+                                    placeholder=' AMOUNT' 
+                                    onBlur={props.setAmount.bind(this)} 
+                                />
+                            </div>
+                            <div class='text-line'>
+                                Dscription: *
+                                <input 
+                                    class='payment-description-text-box' 
+                                    type='text' 
+                                    size='32' 
+                                    placeholder=' DESCRIPTION' 
+                                    onBlur={props.setDescrip.bind(this)} 
+                                />
+                            </div>
                         </div>
                     </div>
                     <div class='lower-inner-box'>
-                        <button class="IzjkL _2Y_WL FiOTW continue-button" onClick={props.onClick} id="submit-button">
-                            <span class="_2pjgR">Continue</span>
+                        <button class='IzjkL _2Y_WL FiOTW continue-button' onClick={props.onClick} id='submit-button'>
+                            <span class='_2pjgR'>Continue</span>
                         </button>
                     </div>
                 </div>
@@ -46,11 +82,11 @@ const PayBillForm = props => {
 const PayBillConfirm = props => {
     return (
         <main id='cous'>
-            <div class="_3mYpM" id="header-id">
-                <h2 class="_00004">Confirm your payment</h2>
+            <div class='_3mYpM' id='header-id'>
+                <h2 class='_00004'>Confirm your payment</h2>
             </div>
-            <div class="box">
-                <div class="inner-box" id="box-body-id">
+            <div class='box'>
+                <div class='inner-box' id='box-body-id'>
                     <div class='upper-inner-box'>
                         <div class='biller-details'>
                             <div class='biller-name'>{props.crn}</div>
@@ -60,11 +96,11 @@ const PayBillConfirm = props => {
                     </div>
                     {/* <form  onSubmit={props.validatePayment}>
                         <div class='upper-inner-box'>
-                            <div class="bpay bpay-logo"> <img class="bpay-logo-img" src={BPayLogo} alt="paybuddy-logo"/></div>
+                            <div class='bpay bpay-logo'> <img class='bpay-logo-img' src={BPayLogo} alt='paybuddy-logo'/></div>
                             <div class='bpay'>
                                 <div class='bpay-payment-details'>
-                                    <div class='text-line'><input type="text" size='32' placeholder=' Biller Code *' onBlur={props.verifyBillerCode.bind(this)} /></div>
-                                    <div class='text-line'><input type="text" size='32' placeholder=' Ref Number *' onBlur={props.setCRN.bind(this)} /></div>
+                                    <div class='text-line'><input type='text' size='32' placeholder=' Biller Code *' onBlur={props.verifyBillerCode.bind(this)} /></div>
+                                    <div class='text-line'><input type='text' size='32' placeholder=' Ref Number *' onBlur={props.setCRN.bind(this)} /></div>
                                 </div>
                             </div>
                         </div>
@@ -76,12 +112,12 @@ const PayBillConfirm = props => {
                         </div>
                         <div class='middle-inner-box'>
                             <div class='payment-details'>
-                                <input class='payment-amount-text-box' type="text" size='6' placeholder=' Amount *' onBlur={props.setAmount.bind(this)} />
-                                <input class='payment-dexcription-text-box' type="text" size='6' placeholder=' Description' onBlur={props.setDescrip.bind(this)} />
+                                <input class='payment-amount-text-box' type='text' size='6' placeholder=' Amount *' onBlur={props.setAmount.bind(this)} />
+                                <input class='payment-dexcription-text-box' type='text' size='6' placeholder=' Description' onBlur={props.setDescrip.bind(this)} />
                             </div>
                         </div>
                         <div class='lower-inner-box'>
-                            <input type='submit' class="IzjkL _2Y_WL FiOTW continue-button _2pjgR" value='Continue'/>
+                            <input type='submit' class='IzjkL _2Y_WL FiOTW continue-button _2pjgR' value='Continue'/>
                         </div>
                     </form> */}
                 </div>
@@ -178,9 +214,9 @@ class PayBill extends React.Component {
                     billerCode: this.state.billerCode.billerCode,
                     crn: this.state.crn,
                     amount: parseFloat(this.state.amount),
-                    settlementDate: "2017-10-23",
-                    paymentMethod: "001",
-                    paymentDate: "2019-01-10"
+                    settlementDate: '2017-10-23',
+                    paymentMethod: '001',
+                    paymentDate: '2019-01-10'
                 }
             })
         })
@@ -207,7 +243,7 @@ class PayBill extends React.Component {
             {
                 return;
             } 
-            console.log("Hello");
+            console.log('Hello');
          this.state.showConfirm = true;
 
         this.state.paymentDetials = {
