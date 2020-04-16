@@ -54,6 +54,26 @@ router.get('/biller/:billerCode', async (req, res) => {
 });
 
 router.post('/validatePayment', async (req, res) => {
+
+  const userAcctBalance = 0;
+
+  debugger
+
+  request('http://localhost:9000/sql/userAcctBalance/1', {
+    method: 'GET'
+  }).then((response) => {
+    if(response.status === 200)
+    {
+      debugger;
+      userAcctBalance = response.body;
+    }
+  })
+
+  console.log(userAcctBalance);
+
+
+
+  
   const options = {
     url: 'https://sandbox.api.bpaygroup.com.au/oauth/token',
     method: 'POST',
