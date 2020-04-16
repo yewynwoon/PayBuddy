@@ -1,0 +1,103 @@
+.box  {
+  box-sizing: border-box;
+  display: flex;
+  display: flex;
+  flex-direction: column;
+  background-color: #fefff8;
+  display: flex;
+  position: relative;
+  min-width: 240px;
+  max-width: 600px;
+  height: 100%;
+  text-align: center;
+  display: -webkit-inline-box;
+  box-sizing: border-box;
+  font-family: -apple-system,
+  BlinkMacSystemFont,
+  'Segoe UI',
+  'Roboto',
+  'Oxygen',
+  'Ubuntu',
+  'Cantarell',
+  'Fira Sans',
+  'Droid Sans',
+  'Helvetica Neue',
+  sans-serif;
+}
+
+.inner-box {
+  width: 420px;
+  border-radius: 0 0 6px 6px;
+  border: 2px solid #e5e5e5;
+  box-sizing: border-box;
+  display: block;
+  background-color: inherit;
+  text-align: center;
+  overflow: auto;
+  padding: 15px;
+}
+
+.upper-inner-box {
+  height: 120px;
+}
+
+.bpay {
+  float: left;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.bpay-logo {
+  width: 20%;
+  margin-left: 4px;
+}
+
+.bpay-logo-img {
+  width: 50px;
+}
+
+.bpay-payment-details {
+  margin-left: 20px;;
+}
+
+.text-line {
+  padding-top: 15px;
+}
+
+.middle-inner-box {
+  height: 60px;
+}
+
+.payment-details {
+  padding: 5px;
+}
+
+.payment-amount-text-box {
+  text-align: left;
+  width: 40%;
+  margin-right: 20px;
+}
+
+.payment-dexcription-text-box {
+  text-align: left;
+  width: 40%;
+  margin-left: 20px;
+}
+
+.lower-inner-box {
+  height: 60px;
+}
+
+.continue-button {
+  background-color: #d74019;
+}
+
+.biller-details {
+  text-align: left;
+  padding-top: 4px;
+  padding-left: 17px;
+}
+
+.biller-name {
+  padding-top: 5px;
+}

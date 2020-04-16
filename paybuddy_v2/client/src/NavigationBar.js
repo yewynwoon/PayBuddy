@@ -45,14 +45,14 @@ export default function NavigationBar() {
           */}
           
         </div>
-        <body>
-            <Switch>
-              <Route path="/Dashboard"><Index /></Route>
-              <Route path="/FundsDeposit"><FundsDeposit /></Route>
-              <Route path="/PayBill"><PayBill /></Route>
-            </Switch>
-          </body>
       </nav>
+      <body>
+        <Switch>
+          <Route path="/Dashboard"><Index /></Route>
+          <Route path="/FundsDeposit"><FundsDeposit /></Route>
+          <Route path="/PayBill"><PayBill /></Route>
+        </Switch>
+      </body>
     </Router>
   );
 }
@@ -63,7 +63,7 @@ export default function NavigationBar() {
 function Index() {
   return (
     <div>
-      <DashboardComp user_id="1"/>
+      <DashboardComp user_id='1'/>
     </div>
   );
 }

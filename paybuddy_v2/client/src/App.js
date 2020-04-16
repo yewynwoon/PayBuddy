@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import Header from './Header';
-import FundsDeposit from './FundsDeposit';
 import NavigationBar from './NavigationBar';
 import Footer from './Footer';
 
@@ -16,12 +15,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header />
-        <NavigationBar/>
-
-        {/* <body>
-          <FundsDeposit />
-        </body> */}
-        
+        <NavigationBar/>        
         <Footer/>
       </div>
     );
