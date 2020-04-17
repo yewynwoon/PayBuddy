@@ -1,103 +1,189 @@
+@font-face {
+  font-family: 'robotoreg';
+  src: url(./font/Roboto-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'robotoregita';
+  src: url(./font/Roboto-Italic.ttf);
+}
+
+@font-face {
+  font-family: 'robotothin';
+  src: url(./font/Roboto-Thin.ttf);
+}
+
+@font-face {
+  font-family: 'robotothinita';
+  src: url(./font/Roboto-ThinItalic.ttf);
+}
+
+@font-face {
+  font-family: 'robotomed';
+  src: url(./font/Roboto-Medium.ttf);
+}
+
+@font-face {
+  font-family: 'robotomedita';
+  src: url(./font/Roboto-MediumItalic.ttf);
+}
+
+@font-face {
+  font-family: 'robotolite';
+  src: url(./font/Roboto-Light.ttf);
+}
+
+@font-face {
+  font-family: 'robotoliteita';
+  src: url(./font/Roboto-LightItalic.ttf);
+}
+
+@font-face {
+  font-family: 'robotobold';
+  src: url(./font/Roboto-Bold.ttf);
+}
+
+@font-face {
+  font-family: 'robotoboldita';
+  src: url(./font/Roboto-BoldItalic.ttf);
+}
+
+#header-text {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 28px;
+  font-weight: lighter;
+  text-align: left;
+  margin-left: 2%;
+  color: #5e5e5e;
+}
+
 .box  {
   box-sizing: border-box;
-  display: flex;
-  display: flex;
-  flex-direction: column;
-  background-color: #fefff8;
-  display: flex;
-  position: relative;
-  min-width: 240px;
-  max-width: 600px;
+  display: block;
+  padding-top: 16px;
+  width: 100%;
   height: 100%;
   text-align: center;
-  display: -webkit-inline-box;
-  box-sizing: border-box;
-  font-family: -apple-system,
-  BlinkMacSystemFont,
-  'Segoe UI',
-  'Roboto',
-  'Oxygen',
-  'Ubuntu',
-  'Cantarell',
-  'Fira Sans',
-  'Droid Sans',
-  'Helvetica Neue',
-  sans-serif;
+  font-family: 'robotolite';
+  background-color: white;
 }
 
 .inner-box {
-  width: 420px;
-  border-radius: 0 0 6px 6px;
-  border: 2px solid #e5e5e5;
+  border-radius: 15px;
+  margin-left: 2%;
+  margin-right: 2%;
+  border: 1px solid #5e5e5e;
   box-sizing: border-box;
   display: block;
-  background-color: inherit;
   text-align: center;
   overflow: auto;
-  padding: 15px;
+  padding: 2%;
 }
 
 .upper-inner-box {
-  height: 120px;
-}
-
-.bpay {
-  float: left;
-  box-sizing: border-box;
-  padding: 10px;
+  height: auto;
+  min-width: 600px;
+  width: 100%;
 }
 
 .bpay-logo {
-  width: 20%;
   margin-left: 4px;
+  padding-bottom: 1%;
 }
 
 .bpay-logo-img {
-  width: 50px;
+  height: 70px;
 }
 
-.bpay-payment-details {
-  margin-left: 20px;;
+.bpay {
+  padding-top: 1%;
+  padding-bottom: 1%;
+  width: 100%;
 }
 
 .text-line {
-  padding-top: 15px;
+  height: fit-content;
+  margin-bottom: 5px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-right: 15%;
+  color: #5e5e5e;
+  font-size: 18px;
+  text-align: right;
+}
+
+.text-line input {
+  float: right;
+  margin-left: 5%;
+  margin-right: 10%;
+  border-radius: 5px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border: 0.5px solid #aaa;
+}
+
+.text-line input::placeholder{
+  color: #bbb;
+  text-transform: uppercase;
+}
+
+.text-line input:focus::placeholder{
+  color: transparent;
 }
 
 .middle-inner-box {
-  height: 60px;
-}
-
-.payment-details {
-  padding: 5px;
-}
-
-.payment-amount-text-box {
-  text-align: left;
-  width: 40%;
-  margin-right: 20px;
-}
-
-.payment-dexcription-text-box {
-  text-align: left;
-  width: 40%;
-  margin-left: 20px;
-}
-
-.lower-inner-box {
-  height: 60px;
-}
-
-.continue-button {
-  background-color: #d74019;
+  height: fit-content;
+  min-width: 600px;
+  color: #5e5e5e;
 }
 
 .biller-details {
-  text-align: left;
-  padding-top: 4px;
-  padding-left: 17px;
+  text-align: center;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  font-size: 16px;
+  font-family: 'robotoregita';
+  color: #5e5e5e;
 }
 
 .biller-name {
   padding-top: 5px;
+}
+
+.payment-details {
+  width: 100%;
+  display: block;
+  font-size: 18px;
+  padding: 1%;
+}
+
+.payment-box {
+  padding-top: 1%;
+  padding-bottom: 1%;
+  text-align: center;
+}
+
+.lower-inner-box {
+  display: block;
+  height: fit-content;
+  width: 100%;
+}
+
+.continue-button {
+  margin: 2%;
+  background-color: #f2b377;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.continue-button:hover {
+  background-color: #E3A971;
+}
+
+hr { 
+  display: block; 
+  overflow: hidden; 
+  border-style: inset; 
+  border-width: 0.5px;
 }

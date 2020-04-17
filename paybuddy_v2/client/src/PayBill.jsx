@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import './client.css';
 import './paybill.css'
-import BPayLogo from './img/bpay_logo.png';
+import BPayLogo from './img/bpay_logo.jpg';
 
 const PayBillForm = props => {
     return (
         <main id='cous'>
-            <div class="_3mYpM" id="header-id">
-                <h2 class="_00004">Enter bill details</h2>
+            <div id='header-id'>
+                <h2 id='header-text'>Enter bill details</h2>
             </div>
             <div class="box">
                 <div class="inner-box" id="box-body-id">
@@ -36,7 +36,7 @@ const PayBillForm = props => {
                         <div class='lower-inner-box'>
                             <input type ='submit' class="IzjkL _2Y_WL FiOTW continue-button"id="submit-button"/>
                         </div>
-                    </form>
+                  </form>
                 </div>
             </div>
         </main>
@@ -47,11 +47,11 @@ const PayBillConfirm = props => {
     //debugger;
     return (
         <main id='cous'>
-            <div class="_3mYpM" id="header-id">
-                <h2 class="_00004">Confirm your payment</h2>
+            <div class='_3mYpM' id='header-id'>
+                <h2 class='_00004'>Confirm your payment</h2>
             </div>
-            <div class="box">
-                <div class="inner-box" id="box-body-id">
+            <div class='box'>
+                <div class='inner-box' id='box-body-id'>
                     <div class='upper-inner-box'>
                         <div>
                             BillerName:

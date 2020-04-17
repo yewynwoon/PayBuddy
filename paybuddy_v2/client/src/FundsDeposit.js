@@ -66,7 +66,7 @@ const ProductSelection = props => {
   return (
     <div class="_3o1Fr" id="block-id">
       <div class="_3mYpM" id="header-id">
-        <h2 class="_00004">SELECT DEPOSIT AMOUNT</h2>
+        <h2 class="_00004">Select Deposit Amount</h2>
       </div>
       <ul class="_23RYk" id="body-id">
         <li class="_2j5BM">
