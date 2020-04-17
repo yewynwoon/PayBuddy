@@ -1,8 +1,8 @@
 'use strict';
 
 const express = require('express');
+const mysql = require('promise-mysql');
 const bodyParser = require('body-parser');
-const request = require('request-promise');
 
 var router = express.Router();
 
@@ -33,29 +33,37 @@ const createPool = async () => {
 };
 createPool();
 
-router.get('/userAcctBalane/:user_id', async (req, res) => {
 
-    const userID = req.params.user_id;
 
+async function getAccountBalance(userID) {
     try {
-     
-        //Get current acct_value of customer
         const getAcctValueQuery = 'select account_value from users where cust_id = ' + userID + ';';
     
-        //Run query - fetch response
         var acctValue = await pool.query(getAcctValueQuery);
         
         console.log(acctValue[0]);
         
-        res.send(JSON.stringify({acctValue: acctValue})).end();
-        
+        return acctValue[0];
       } catch (err) {
-        // If something goes wrong, handle the error in this section. This might
-        // involve retrying or adjusting parameters depending on the situation.
-        // [START_EXCLUDE]
-        res.status(500).send('Unable to successfully insert transaction!').end();
-        // [END_EXCLUDE]
+        return null;
       }
+}
+
+router.get('/userAcctBalance/:user_id', async (req, res) => {
+
+    var userID = req.params.user_id;
+
+    console.log(userID);
+
+    var userAcctBalance = await getAccountBalance(userID);
+
+    console.log(userAcctBalance);
+
+    if (userAcctBalance == null) {
+        res.status(500).send('Unable to successfully insert transaction!').end();
+    } else {
+        res.status(200).send(userAcctBalance).end();
+    }
 });
 
 router.post('/validatePayment', async (req, res) => {

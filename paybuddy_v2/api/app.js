@@ -8,6 +8,7 @@ var cors = require('cors');
 var dashboard = require('./routes/dashboard');
 var depositFundsPost = require('./routes/depositFundsPost');
 var bpay = require('./routes/bpay');
+var sql = require('./routes/sql');
 
 var app = express();
 
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/dashboard', dashboard);
 app.use('/depositFundsPost', depositFundsPost);
 app.use('/bpay', bpay);
+app.use('/sql', sql);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
