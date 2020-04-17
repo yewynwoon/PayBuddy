@@ -13,7 +13,6 @@ class Header extends React.Component {
         return (
                 <header>
                         <a href="/Dashboard" ><img id='homeimage' src={Logo} alt="paybuddy-logo" height="70" width="auto"/></a>
-                        DASHBOARD
                 </header>
         );
     }

@@ -48,14 +48,30 @@
   src: url(./font/Roboto-BoldItalic.ttf);
 }
 
-#header-text {
+.header-text {
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-size: 28px;
+  font-size: calc(10px + 2vmin);
   font-weight: lighter;
   text-align: left;
   margin-left: 2%;
   color: #5e5e5e;
+}
+
+.header-id {
+  width: 100%;
+  padding-left: 1%;
+  display: inline-block;
+}
+
+.bpay-logo {
+  padding-top: 1%;
+  padding-bottom: 1%;
+  width: 100%;
+}
+
+.bpay-logo-img {
+  height: 70px;
 }
 
 .box  {
@@ -82,44 +98,30 @@
 }
 
 .upper-inner-box {
-  height: auto;
+  height: fit-content;
   min-width: 600px;
   width: 100%;
-}
-
-.bpay-logo {
-  margin-left: 4px;
-  padding-bottom: 1%;
-}
-
-.bpay-logo-img {
-  height: 70px;
-}
-
-.bpay {
   padding-top: 1%;
   padding-bottom: 1%;
-  width: 100%;
 }
 
 .text-line {
   height: fit-content;
   margin-bottom: 5px;
-  padding-bottom: 10px;
   padding-top: 10px;
-  padding-right: 15%;
   color: #5e5e5e;
   font-size: 18px;
   text-align: right;
 }
 
 .text-line input {
-  float: right;
+  width: 30%;
   margin-left: 5%;
-  margin-right: 10%;
+  margin-right: 25%;
   border-radius: 5px;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  font-size: 15px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   border: 0.5px solid #aaa;
 }
 
@@ -134,7 +136,6 @@
 
 .middle-inner-box {
   height: fit-content;
-  min-width: 600px;
   color: #5e5e5e;
 }
 
@@ -142,7 +143,7 @@
   text-align: center;
   padding-top: 1%;
   padding-bottom: 1%;
-  font-size: 16px;
+  font-size: 20px;
   font-family: 'robotoregita';
   color: #5e5e5e;
 }
@@ -152,16 +153,46 @@
 }
 
 .payment-details {
+  height: fit-content;
   width: 100%;
-  display: block;
+  min-width: 600px;
   font-size: 18px;
   padding: 1%;
 }
 
-.payment-box {
+.payment-details {
   padding-top: 1%;
   padding-bottom: 1%;
   text-align: center;
+}
+
+.payment-line {
+  height: fit-content;
+  margin-bottom: 5px;
+  padding-top: 10px;
+  color: #5e5e5e;
+  font-size: 18px;
+  text-align: right;
+}
+
+.payment-line input {
+  width: 20%;
+  margin-left: 5%;
+  margin-right: 36%;
+  border-radius: 5px;
+  font-size: 15px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border: 0.5px solid #aaa;
+}
+
+.payment-line input::placeholder{
+  color: #bbb;
+  text-transform: uppercase;
+}
+
+.payment-line input:focus::placeholder{
+  color: transparent;
 }
 
 .lower-inner-box {
@@ -175,6 +206,10 @@
   background-color: #f2b377;
   text-transform: uppercase;
   letter-spacing: 1px;
+  color: white;
+  font-family: 'robotomed';
+  font-weight: normal;
+  font-size: 18px;
 }
 
 .continue-button:hover {
@@ -182,8 +217,48 @@
 }
 
 hr { 
+  margin-left: 20%;
+  margin-right: 20%;
   display: block; 
   overflow: hidden; 
   border-style: inset; 
   border-width: 0.5px;
+}
+
+.detail-line {
+  width: 100%;
+  height: fit-content;
+}
+
+.payment-amount-text-box {
+  font-family: 'robotoregita';
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 3px;
+}
+
+.payment-dexcription-text-box {
+  letter-spacing: 1px;
+}
+
+.button-container {
+  width: 100%;
+  display: block;
+  padding-top: 2%;
+  padding-bottom: 1%;
+}
+
+#submit-button {
+  background-color: #f2b377;
+  color: white;
+  margin-right: 2%;
+}
+
+#submit-button:hover {
+  background-color: #E3A971;
+}
+
+#cancel-button {
+  margin-left: 2%;
+
 }
