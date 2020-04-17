@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './client.css';
 import './paybill.css'
 import BPayLogo from './img/bpay_logo.jpg';
@@ -9,70 +9,34 @@ const PayBillForm = props => {
             <div id='header-id'>
                 <h2 id='header-text'>Enter bill details</h2>
             </div>
-            <div class='box'>
-                <div class='inner-box' id='box-body-id'>
-                    <div class='upper-inner-box'>
-                        <div class='bpay-logo'> <img class='bpay-logo-img' src={BPayLogo} alt='paybuddy-logo'/></div>
-                        <hr></hr>
-                        <div class='bpay'>
-                            <div>
-                                <div class='text-line'>
-                                    Biller Code: *
-                                    <input 
-                                        type='text' 
-                                        size='32' 
-                                        placeholder=' BILLER CODE' 
-                                        onBlur={props.verifyBillerCode.bind(this)}
-                                    />
-                                </div>
-                                <div class='text-line'>
-                                    Reference Number: *
-                                    <input 
-                                        type='text' 
-                                        size='32' 
-                                        placeholder=' REFERENCE NUMBER' 
-                                        onBlur={props.setCRN.bind(this)} 
-                                    />
+            <div class="box">
+                <div class="inner-box" id="box-body-id">
+                    <form onSubmit={props.onSubmit}>
+                        <div class='upper-inner-box'>
+                            <div class="bpay bpay-logo"> <img class="bpay-logo-img" src={BPayLogo} alt="paybuddy-logo"/></div>
+                            <div class='bpay'>
+                                <div class='bpay-payment-details'>
+                                    <div class='text-line'><input id='bllerCode' type="text" size='32' placeholder=' Biller Code *' onBlur={props.verifyBillerCode.bind(this)} required/></div>
+                                    <div class='text-line'><input id='crn' type="text" size='32' placeholder=' Ref Number *' required/></div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class='middle-inner-box'>
-                        <div class='biller-details'>
-                            <div>BILLER NAME:</div>
-                            <div class='biller-name'>{props.billerName}</div>
-                        </div>
-                    </div>
-                    <hr></hr>
-                    <div class='middle-inner-box'>
-                        <div class='payment-details'>
-                            <div class='text-line'>
-                                Amount: *
-                                <input 
-                                    class='payment-amount-text-box' 
-                                    type='text' 
-                                    size='32' 
-                                    placeholder=' AMOUNT' 
-                                    onBlur={props.setAmount.bind(this)} 
-                                />
-                            </div>
-                            <div class='text-line'>
-                                Dscription: *
-                                <input 
-                                    class='payment-description-text-box' 
-                                    type='text' 
-                                    size='32' 
-                                    placeholder=' DESCRIPTION' 
-                                    onBlur={props.setDescrip.bind(this)} 
-                                />
+                        <div class='middle-inner-box'>
+                            <div class='biller-details'>
+                                <div>Biller Name:</div>
+                                <div class='biller-name'>{props.billerName}</div>
                             </div>
                         </div>
-                    </div>
-                    <div class='lower-inner-box'>
-                        <button class='IzjkL _2Y_WL FiOTW continue-button' onClick={props.onClick} id='submit-button'>
-                            <span class='_2pjgR'>Continue</span>
-                        </button>
-                    </div>
+                        <div class='middle-inner-box'>
+                            <div class='payment-details'>
+                                <input id='amount' class='payment-amount-text-box' type="text" size='6' placeholder=' Amount *' required/>
+                                <input id='descrip' class='payment-dexcription-text-box' type="text" size='6' placeholder=' Description'/>
+                            </div>
+                        </div>
+                        <div class='lower-inner-box'>
+                            <input type ='submit' class="IzjkL _2Y_WL FiOTW continue-button"id="submit-button"/>
+                        </div>
+                  </form>
                 </div>
             </div>
         </main>
@@ -80,6 +44,7 @@ const PayBillForm = props => {
 }
 
 const PayBillConfirm = props => {
+    //debugger;
     return (
         <main id='cous'>
             <div class='_3mYpM' id='header-id'>
@@ -88,122 +53,97 @@ const PayBillConfirm = props => {
             <div class='box'>
                 <div class='inner-box' id='box-body-id'>
                     <div class='upper-inner-box'>
-                        <div class='biller-details'>
-                            <div class='biller-name'>{props.crn}</div>
-                            <div class='biller-name'>{props.amount}</div>
-                            <div class='biller-name'>{props.billerCode}</div>
+                        <div>
+                            BillerName:
+                            {props.bill.billerName}
                         </div>
                     </div>
-                    {/* <form  onSubmit={props.validatePayment}>
-                        <div class='upper-inner-box'>
-                            <div class='bpay bpay-logo'> <img class='bpay-logo-img' src={BPayLogo} alt='paybuddy-logo'/></div>
-                            <div class='bpay'>
-                                <div class='bpay-payment-details'>
-                                    <div class='text-line'><input type='text' size='32' placeholder=' Biller Code *' onBlur={props.verifyBillerCode.bind(this)} /></div>
-                                    <div class='text-line'><input type='text' size='32' placeholder=' Ref Number *' onBlur={props.setCRN.bind(this)} /></div>
-                                </div>
-                            </div>
+                    <div class='middle-inner-box'>
+                        <div class='payment-details'>
+                            <div class='payment-amount-text-box'>CRN:</div>
+                            <div class='payment-dexcription-text-box'>{props.bill.crn.value}</div>
                         </div>
-                        <div class='middle-inner-box'>
-                            <div class='biller-details'>
-                                <div>Biller Name:</div> 
-                                <div class='biller-name'>{props.billerName}</div>
-                            </div>
+                    </div>
+                    <div class='middle-inner-box'>
+                        <div class='payment-details'>
+                            <div class='payment-amount-text-box'>Amount:</div>
+                            <div class='payment-dexcription-text-box'>{props.bill.amount.value}</div>
                         </div>
-                        <div class='middle-inner-box'>
-                            <div class='payment-details'>
-                                <input class='payment-amount-text-box' type='text' size='6' placeholder=' Amount *' onBlur={props.setAmount.bind(this)} />
-                                <input class='payment-dexcription-text-box' type='text' size='6' placeholder=' Description' onBlur={props.setDescrip.bind(this)} />
-                            </div>
+                    </div>
+                    <div class='middle-inner-box'>
+                        <div class='payment-details'>
+                            <div class='payment-amount-text-box'>Biller Code:</div>
+                            <div class='payment-dexcription-text-box'>{props.bill.billerCode.value}</div>
                         </div>
-                        <div class='lower-inner-box'>
-                            <input type='submit' class='IzjkL _2Y_WL FiOTW continue-button _2pjgR' value='Continue'/>
-                        </div>
-                    </form> */}
+                    </div>
+                    <button id="cancelButton" onClick={props.onSubmit} class="_16apt _2Y_Wp">
+                        <span>Submit</span>
+                    </button>
+                    <button id="cancelButton" onClick={props.cancelPayment} class="_16apt _2Y_Wp">
+                        <span>Cancel</span>
+                    </button>
                 </div>
             </div>
         </main>
     )
 }
 
-class PayBill extends React.Component {
+function PayBill(props) {
 
-    constructor(props) {
-        super(props);
+    const [show, setShow] = useState(false);
+    //const [err, setErr] = useState(false);
+    const [bill, setBill] = useState('');
+    const [api, setApi] = useState('');
 
-        this.state = {
-            apiResponse: '',
-            billerCode: '',
-            billerName: '',
-            crn: '',
-            amount: '',
-            descrip: '',
-            showConfirm: false,
-            paymentDetials: ''
+    const showConfirm = () => setShow(true);
+    const closeConfirm = () => {
+        //debugger;
+        setBill('');
+        setShow(false);
+    };
+
+    function handleSubmit(event) {
+        //debugger;
+        
+        event.preventDefault();
+        const { bllerCode, crn, amount, descrip } = event.target.elements;
+
+        if (bllerCode === '' || crn === '' || amount === '')
+        {
+            return;
+        }
+        else {
+            setBill({
+                userID: 1,
+                billerName: bill,
+                billerCode: bllerCode,
+                crn: crn,
+                amount: amount,
+                descrip: descrip
+            });
+    
+            showConfirm();
         }
     }
 
-    verifyBillerCode = (event) => {
+    function verifyBillerCode(event) {
         if(event.target.value === '') {
-            this.setState({
-                billerCode: ''
-            });
-            return;
+            setBill('');
         } else {
             fetch(`http://localhost:9000/bpay/biller/${event.target.value}`)
             .then((response) => {
                 return response.json();
             })
             .then((data) => {
-                this.state.billerCode = data;
-                this.state.billerName = data.longName;
-                console.log(this.state.billerCode);
-                console.log(this.state.billerName);
+                setBill(data.longName);
                 return;
             });
         }
     }
-
-    setCRN = (event) => {
-
-        if(event.target.value === '') {
-            this.setState({
-                crn: ''
-            });
-            return;
-        }
+    
+    function validatePayment(event) {
+        debugger;
         
-        this.setState({crn: event.target.value});
-        console.log(this.state.crn);
-    }
-
-    setAmount = (event) => {
-
-        if(event.target.value === '') {
-            this.setState({
-                amount: ''
-            });
-            return;
-        }
-
-        this.setState({amount: event.target.value});
-        console.log(this.state.amount);
-    }
-
-    setDescrip = (event) => {
-
-        if(event.target.value === '') {
-            this.setState({
-                descrip: ''
-            });
-            return;
-        }
-        
-        this.setState({descrip: event.target.value});
-        console.log(this.state.descrip);
-    }
-
-    validatePayment = (e) => {
         fetch(`http://localhost:9000/bpay/validatePayment`, {
             method: 'POST',
             headers: {
@@ -211,67 +151,38 @@ class PayBill extends React.Component {
             },
             body: JSON.stringify({
                 payment: {
-                    billerCode: this.state.billerCode.billerCode,
-                    crn: this.state.crn,
-                    amount: parseFloat(this.state.amount),
-                    settlementDate: '2017-10-23',
-                    paymentMethod: '001',
-                    paymentDate: '2019-01-10'
+                    billerCode: bill.billerCode.value,
+                    crn: bill.crn.value,
+                    amount: parseFloat(bill.amount.value),
+                    settlementDate: "2017-10-23",
+                    paymentMethod: "001",
+                    paymentDate: "2019-01-10"
                 }
             })
         })
         .then((response) => {
+            debugger;
             return response.json();
         })
         .then((data) => {
-            this.setState({
-                apiResponse: data
-            });
-
-            console.log(this.state.apiResponse);
+            debugger;
+            setApi(data);
+            console.log(api);
         });
     }
 
-    showConfirm = () => {
-        this.state.showConfirm = false;
-    }
-
-    /* showConfirm() {
-         if (this.state.billerCode === '' ||
-            this.state.crn === '' ||
-            this.state.amount === '')
+    return (
+        <div>
             {
-                return;
-            } 
-            console.log('Hello');
-         this.state.showConfirm = true;
-
-        this.state.paymentDetials = {
-            billerCode: this.state.billerCode,
-            crn: this.state.crn,
-            amount: this.state.amount
-        }; 
-
-        //console.log(this.state.paymentDetials);
-    } */
-
-    render() {
-
-        return (
-            <div>
-                {
-                    !this.state.showConfirm ? <PayBillForm verifyBillerCode={this.verifyBillerCode}
-                                                           setCRN={this.setCRN}
-                                                           setAmount={this.setAmount}
-                                                           setDescrip={this.verifyBillerCode}
-                                                           onClick={this.showConfirm}
-                                                           billerName={this.state.billerName}/>
-                                            : <PayBillConfirm billerName={this.state.billerName}
-                                                              crn={this.state.crn}
-                                                              amount={this.state.amount}/>
-                }
-            </div>);
-      }
+                !show ? <PayBillForm verifyBillerCode={verifyBillerCode}
+                                     onSubmit={handleSubmit}
+                                     billerName={bill}/>
+                      : <PayBillConfirm bill={bill}
+                                        onSubmit={validatePayment}
+                                        cancelPayment={closeConfirm}/>
+            }
+        </div>
+    );
 }
 
 export default PayBill;
