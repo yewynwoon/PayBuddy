@@ -25,18 +25,14 @@ const createPool = async () => {
 };
 createPool();
 
-async function runQuery(queryString) {
-  try {
-    const getAcctValueQuery = queryString
-
-    var acctValue = await pool.query(getAcctValueQuery);
-    
-    //console.log(acctValue[0]);
-    
-    return acctValue;
-  } catch (err) {
-    return null;
-  }
+var runQuery =  function runQuery(queryString, cb) {
+  pool.query(queryString, function (err1, res1, body1) {
+    cb(err1,res1,body1); // callback function
+  });
 }
 
-module.exports = runQuery;
+var serviceObject = {
+  "runQuery":runQuery
+}
+
+module.exports = serviceObject;
