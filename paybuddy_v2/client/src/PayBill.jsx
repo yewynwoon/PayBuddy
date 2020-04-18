@@ -130,7 +130,7 @@ function PayBill(props) {
         if(event.target.value === '') {
             setBill('');
         } else {
-            fetch(`http://localhost:9000/bpay/biller/${event.target.value}`)
+            fetch(`http://localhost:9000/payments/biller/${event.target.value}`)
             .then((response) => {
                 return response.json();
             })
@@ -144,7 +144,7 @@ function PayBill(props) {
     function validatePayment(event) {
         debugger;
         
-        fetch(`http://localhost:9000/bpay/validatePayment`, {
+        fetch(`http://localhost:9000/payments/validatePayment`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
