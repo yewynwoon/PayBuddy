@@ -13,23 +13,15 @@ router.use(bodyParser.json());
 
 //Get user account balance
 router.get('/acctBalance/:user_id', async (req, res) => {
-  try {
-    var userID = req.params.user_id;
+  var userID = req.params.user_id;
+  var query = 'select account_value from users where cust_id=' + userID + ';';
 
-    console.log(userID);
-
-    var userAcctBalance = sql('select account_value from users where cust_id=' + userID + ';');
-
-    console.log(userAcctBalance);
-  
-    if (userAcctBalance == null) {
-      res.status(500).send('Unable to validate billerCode').end();
-    } else {
-      res.status(200).send(userAcctBalance).end();
-    }
-  } catch {
-    res.status(500).send('Unable to validate billerCode').end();
-  }
+  sql.runQuery(query, function(err,response,data) {
+      if(!err) {
+          console.log(response)
+          res.send(response);
+      }
+  });
 });
 
 module.exports = router;

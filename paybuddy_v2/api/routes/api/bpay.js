@@ -99,4 +99,3 @@ var serviceObject = {
 }
 
 module.exports = serviceObject;
-//module.exports = validateBillerCode; /* {validateBillerCode, validatePayment}; */
