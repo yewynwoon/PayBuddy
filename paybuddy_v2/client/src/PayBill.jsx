@@ -150,6 +150,7 @@ function PayBill(props) {
                 'content-type': 'application/json',
             },
             body: JSON.stringify({
+                userID: '1',
                 payment: {
                     billerCode: bill.billerCode.value,
                     crn: bill.crn.value,
@@ -161,13 +162,18 @@ function PayBill(props) {
             })
         })
         .then((response) => {
-            debugger;
-            return response.json();
-        })
-        .then((data) => {
-            debugger;
-            setApi(data);
-            console.log(api);
+            //debugger;
+            console.log(response);
+
+            if(response.status === 200) {
+                console.log('responseFromServer');
+
+                //Page re-route
+                window.location.href = "/Dashboard?user_id=1";
+              } else {
+                console.log('API error');
+                return;
+            }
         });
     }
 
