@@ -34,9 +34,8 @@ const createPool = async () => {
 };
 createPool();
 
-router.get('/', async (req, res) => {
-  
-  const userID = req.param('user_id');
+router.get('/:user_id', async (req, res) => {
+  var userID = req.params.user_id;
 
   try {
      
@@ -44,27 +43,32 @@ router.get('/', async (req, res) => {
     const getAcctValueQuery = 'select account_value from users where cust_id = ' + userID + ';';
 
     //Get past transactions of customer
-    const getPastTransactionQuery = 'select deposit_id, amount, date_stamp from cust_deposit where cust_id=' + userID + ';';
+    const getPastDepositQuery = 'select deposit_id, amount, date_stamp from cust_deposit where cust_id=' + userID + ';';
+
+    //Get past transactions of customer
+    const getPastPaymentQuery = 'select bpay_payment_id, amount, date_stamp from cust_bpay_payments where cust_id=' + userID + ';';
     
     //Run query - fetch response
     var acctValue = await pool.query(getAcctValueQuery);
-    var pastTransactions = await pool.query(getPastTransactionQuery);
+    var pastDeposits = await pool.query(getPastDepositQuery);
+    var pastPayments = await pool.query(getPastPaymentQuery);
 
     console.log(userID);
     console.log(acctValue);
-    
-    console.log(pastTransactions);
+    console.log(pastDeposits);
+    console.log(pastPayments);
     
   } catch (err) {
     // If something goes wrong, handle the error in this section. This might
     // involve retrying or adjusting parameters depending on the situation.
     // [START_EXCLUDE]
-    res.status(500).send('Unable to successfully insert transaction!').end();
+    console.log(err);
+    res.status(500).end('Unable to successfully insert transaction!');
     // [END_EXCLUDE]
   } 
   // [END cloud_sql_mysql_mysql_connection]
 
-  res.send(JSON.stringify({userID: userID, acctValue: acctValue, pastTransactions: pastTransactions})).end();
+  res.end(JSON.stringify({userID: userID, acctValue: acctValue, pastDeposits: pastDeposits, pastPayments: pastPayments}));
 });
 
 module.exports = router;

@@ -50,7 +50,10 @@ CREATE TABLE IF NOT EXISTS cust_bpay_payments (
 );
 
 insert into cust_transfer (cust_id, biller_code, crn, amount)
-values (4, 3, 20, 'test2');
+
+select cust_bpay_payments.bpay_payment_id, cust_bpay_payments.amount, cust_bpay_payments.date_stamp from cust_bpay_payments and cust_bpay_payments where cust_id=
+
+select * from cust_deposit full outer join cust_bpay_payments on cust_deposit.cust_id=cust_bpay_payments=cust_id;
 
 
 
