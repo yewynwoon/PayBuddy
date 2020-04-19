@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './client.css';
 import './paybill.css'
 import BPayLogo from './img/bpay_logo.jpg';
+import { getAccBalance, checkBPayPayment } from './util/api-calls';
 
 const PayBillForm = props => {
     return (
@@ -82,6 +83,8 @@ const PayBillConfirm = props => {
                     <button id="cancelButton" onClick={props.cancelPayment} class="_16apt _2Y_Wp">
                         <span>Cancel</span>
                     </button>
+                    
+                    {props.error}
                 </div>
             </div>
         </main>
@@ -91,7 +94,7 @@ const PayBillConfirm = props => {
 function PayBill(props) {
 
     const [show, setShow] = useState(false);
-    //const [err, setErr] = useState(false);
+    const [err, setErr] = useState(false);
     const [bill, setBill] = useState('');
     const [api, setApi] = useState('');
 
@@ -120,7 +123,7 @@ function PayBill(props) {
                 crn: crn,
                 amount: amount,
                 descrip: descrip
-            });
+            }); 
     
             showConfirm();
         }
@@ -130,7 +133,7 @@ function PayBill(props) {
         if(event.target.value === '') {
             setBill('');
         } else {
-            fetch(`http://localhost:9000/bpay/biller/${event.target.value}`)
+            fetch(`http://localhost:9000/payments/biller/${event.target.value}`)
             .then((response) => {
                 return response.json();
             })
@@ -143,31 +146,60 @@ function PayBill(props) {
     
     function validatePayment(event) {
         debugger;
-        
-        fetch(`http://localhost:9000/bpay/validatePayment`, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json',
-            },
-            body: JSON.stringify({
-                payment: {
-                    billerCode: bill.billerCode.value,
-                    crn: bill.crn.value,
-                    amount: parseFloat(bill.amount.value),
-                    settlementDate: "2017-10-23",
-                    paymentMethod: "001",
-                    paymentDate: "2019-01-10"
-                }
-            })
-        })
-        .then((response) => {
+        getAccBalance(1, function(response) {
             debugger;
-            return response.json();
-        })
-        .then((data) => {
-            debugger;
-            setApi(data);
-            console.log(api);
+            console.log(response[0].account_value);
+
+            var billValue = bill.amount.value;
+
+            if(parseInt(response[0].account_value) > parseInt(billValue,10)) {
+
+                console.log('Sufficient funds');
+                debugger;
+
+                /* checkBPayPayment(bill, function(response) {
+                    console.log(response.text);
+                    debugger;
+                }); */
+                
+                fetch(`http://localhost:9000/payments/validatePayment`, {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        userID: '1',
+                        payment: {
+                            billerCode: bill.billerCode.value,
+                            crn: bill.crn.value,
+                            amount: parseFloat(bill.amount.value),
+                            settlementDate: "2017-10-23",
+                            paymentMethod: "001",
+                            paymentDate: "2019-01-10"
+                        }
+                    })
+                })
+                .then((response) => {
+                    debugger;
+                    console.log(response);
+                    console.log(response.status);
+
+                    if(response.status === 200) {
+                        console.log('responseFromServer');
+
+                        //Page re-route
+                        window.location.href = "/Dashboard?user_id=1";
+                    } else {
+                        console.log('API error');
+                        setErr('API error');
+                    }
+                });
+                debugger;
+            } else {
+                console.log('Not Valid');
+                setErr('Insufficient funds');
+                return;
+            }
         });
     }
 
@@ -179,6 +211,7 @@ function PayBill(props) {
                                      billerName={bill}/>
                       : <PayBillConfirm bill={bill}
                                         onSubmit={validatePayment}
+                                        error={err}
                                         cancelPayment={closeConfirm}/>
             }
         </div>

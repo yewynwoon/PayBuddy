@@ -52,6 +52,7 @@ router.get('/', async (req, res) => {
 
     console.log(userID);
     console.log(acctValue);
+    
     console.log(pastTransactions);
     
   } catch (err) {

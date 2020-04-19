@@ -37,6 +37,73 @@ CREATE TABLE IF NOT EXISTS cust_deposit (
 	FOREIGN KEY (cust_id) references users(cust_id)
 );
 
+CREATE TABLE IF NOT EXISTS cust_bpay_payments (
+	bpay_payment_id int not null AUTO_INCREMENT,
+	cust_id int not null,
+	biller_code varchar(25) not null,
+	crn varchar(25) not null,
+	amount float NOT NULL,
+	date_stamp TIMESTAMP not null,
+
+	PRIMARY KEY (bpay_payment_id),
+	FOREIGN KEY (cust_id) references users(cust_id)
+);
+
+insert into cust_transfer (cust_id, biller_code, crn, amount)
+values (4, 3, 20, 'test2');
+
+
+
+
 describe users;
++---------------+-------------+------+-----+---------+----------------+
+| Field         | Type        | Null | Key | Default | Extra          |
++---------------+-------------+------+-----+---------+----------------+
+| cust_id       | int(11)     | NO   | PRI | NULL    | auto_increment |
+| fname         | varchar(25) | NO   |     | NULL    |                |
+| lname         | varchar(25) | NO   |     | NULL    |                |
+| account_value | int(11)     | YES  |     | 0       |                |
+| email         | varchar(25) | NO   |     | NULL    |                |
+| password      | varchar(25) | NO   |     | NULL    |                |
++---------------+-------------+------+-----+---------+----------------+
+
 describe cust_transfer;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| transact_id  | int(11)      | NO   | PRI | NULL    | auto_increment |
+| src_cust_id  | int(11)      | NO   | MUL | NULL    |                |
+| dest_cust_id | int(11)      | NO   | MUL | NULL    |                |
+| amount       | int(11)      | NO   |     | NULL    |                |
+| description  | varchar(120) | YES  |     | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+
 describe cust_deposit;
++------------+-----------+------+-----+-------------------+-----------------------------+
+| Field      | Type      | Null | Key | Default           | Extra                       |
++------------+-----------+------+-----+-------------------+-----------------------------+
+| deposit_id | int(11)   | NO   | PRI | NULL              | auto_increment              |
+| cust_id    | int(11)   | NO   | MUL | NULL              |                             |
+| amount     | int(11)   | NO   |     | NULL              |                             |
+| date_stamp | timestamp | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
++------------+-----------+------+-----+-------------------+-----------------------------+
+
+describe cust_bpay_payments;
++-------------------------+---------+------+-----+---------+----------------+
+| Field                   | Type    | Null | Key | Default | Extra          |
++-------------------------+---------+------+-----+---------+----------------+
+| bpay_payment_id         | int(11) | NO   | PRI | NULL    | auto_increment |
+| cust_id                 | int(11) | NO   | MUL | NULL    |                |
+| bpay_payment_details_id | int(11) | NO   | MUL | NULL    |                |
++-------------------------+---------+------+-----+---------+----------------+
+
+describe bpay_payment_details;
++-------------------------+-----------+------+-----+-------------------+-----------------------------+
+| Field                   | Type      | Null | Key | Default           | Extra                       |
++-------------------------+-----------+------+-----+-------------------+-----------------------------+
+| bpay_payment_details_id | int(11)   | NO   | PRI | NULL              | auto_increment              |
+| biller_code             | int(11)   | NO   |     | NULL              |                             |
+| crn                     | int(11)   | NO   |     | NULL              |                             |
+| amount                  | int(11)   | NO   |     | NULL              |                             |
+| date_stamp              | timestamp | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
++-------------------------+-----------+------+-----+-------------------+-----------------------------+
