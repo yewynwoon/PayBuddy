@@ -161,46 +161,44 @@ function PayBill(props) {
                     console.log(response.text);
                     debugger;
                 }); */
-                try {
-                    fetch(`http://localhost:9000/payments/validatePayment`, {
-                        method: 'POST',
-                        headers: {
-                            'content-type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            userID: '1',
-                            payment: {
-                                billerCode: bill.billerCode.value,
-                                crn: bill.crn.value,
-                                amount: parseFloat(bill.amount.value),
-                                settlementDate: "2017-10-23",
-                                paymentMethod: "001",
-                                paymentDate: "2019-01-10"
-                            }
-                        })
-                    })
-                    .then((response) => {
-                        debugger;
-                        console.log(response);
-                        console.log(response.status);
-
-                        if(response.status === 200) {
-                            console.log('responseFromServer');
-
-                            //Page re-route
-                            //window.location.href = "/Dashboard?user_id=1";
-                        } else {
-                            console.log('API error');
-                            setErr('API error');
+                
+                fetch(`http://localhost:9000/payments/validatePayment`, {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        userID: '1',
+                        payment: {
+                            billerCode: bill.billerCode.value,
+                            crn: bill.crn.value,
+                            amount: parseFloat(bill.amount.value),
+                            settlementDate: "2017-10-23",
+                            paymentMethod: "001",
+                            paymentDate: "2019-01-10"
                         }
-                    });
-                } catch {
+                    })
+                })
+                .then((response) => {
                     debugger;
-                    console.log('Eroror');
-                }
+                    console.log(response);
+                    console.log(response.status);
+
+                    if(response.status === 200) {
+                        console.log('responseFromServer');
+
+                        //Page re-route
+                        window.location.href = "/Dashboard?user_id=1";
+                    } else {
+                        console.log('API error');
+                        setErr('API error');
+                    }
+                });
+                debugger;
             } else {
                 console.log('Not Valid');
                 setErr('Insufficient funds');
+                return;
             }
         });
     }

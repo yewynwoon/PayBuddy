@@ -40,7 +40,7 @@ router.post('/validatePayment', function(req, res) {
             if(!err) {
                 //console.log(data);
 
-                /* sql.runQuery(addTransactQuery, function(err1, response1, data1) {
+                sql.runQuery(addTransactQuery, function(err1, response1, data1) {
                     if(!err1) {
                         console.log(response1);
 
@@ -70,7 +70,7 @@ router.post('/validatePayment', function(req, res) {
                         console.log('Add transact sql error');
                         res.status(500).end();
                     }
-                }); */
+                });
             } else {
                 console.log('BPay Validate Payment error');
                 res.status(500).end();
