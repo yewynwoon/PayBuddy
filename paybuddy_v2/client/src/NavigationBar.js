@@ -10,6 +10,7 @@ import {
 import DashboardComp from './Dashboard';
 import FundsDepositComp from './FundsDeposit';
 import PayBillComp from './PayBill';
+import LoginPage from './Login';
 
 // This site has 3 pages, all of which are rendered
 // dynamically in the browser (not server rendered).
@@ -34,6 +35,9 @@ export default function NavigationBar() {
           <Link to="/PayBill">
             <ActivePayBill />
           </Link>
+          <Link to="/Login">
+            Login
+          </Link>
           <br/>
 
           {/*
@@ -51,6 +55,7 @@ export default function NavigationBar() {
           <Route path="/Dashboard"><Index /></Route>
           <Route path="/FundsDeposit"><FundsDeposit /></Route>
           <Route path="/PayBill"><PayBill /></Route>
+          <Route path="/Login"><Login /></Route>
         </Switch>
       </body>
     </Router>
@@ -80,6 +85,14 @@ function PayBill() {
   return (
     <div>
       <PayBillComp/>
+    </div>
+  );
+}
+
+function Login() {
+  return (
+    <div>
+      <LoginPage/>
     </div>
   );
 }
