@@ -68,29 +68,34 @@ var validatePayment =  function validatePayment(payment, cb) {
     json: true
   };
 
-  request(options, function (err, res, body) {
-    const options1 = {
-      url: 'https://sandbox.api.bpaygroup.com.au/payments/v1/validatepayments',
-      method: 'POST',
-      headers: {
-        Authorization: 'Bearer ' + body.access_token,
-        Accept: 'application/json',
-        'Content-Type': "application/json"
-      },
-      json: {
-        "payments": [
-          {
-            "tid": "1",
-            "payment": payment
-          }
-        ]
-      }
-    };
+  try {
+    request(options, function (err, res, body) {
+      const options1 = {
+        url: 'https://sandbox.api.bpaygroup.com.au/payments/v1/validatepayments',
+        method: 'POST',
+        headers: {
+          Authorization: 'Bearer ' + body.access_token,
+          Accept: 'application/json',
+          'Content-Type': "application/json"
+        },
+        json: {
+          "payments": [
+            {
+              "tid": "1",
+              "payment": payment
+            }
+          ]
+        }
+      };
 
-    request(options1, function (err1, res1, body1) {
-      cb(err1,res1,body1); // callback function
+      request(options1, function (err1, res1, body1) {
+        cb(err1,res1,body1); // callback function
+      });
     });
-  });
+  } catch(e) {
+    console.log(e);
+    console.log('Exception caught');
+  }
 }
 
 var serviceObject = {

@@ -13,6 +13,7 @@ class Dashboard extends React.Component {
     }
 
     callAPI() {
+        //console.log(getAcctBalance());
         fetch('http://localhost:9000/dashboard?user_id=1')
         .then((response) => {
             return response.json();

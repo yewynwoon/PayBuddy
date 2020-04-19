@@ -26,8 +26,8 @@ const createPool = async () => {
 createPool();
 
 var runQuery =  function runQuery(queryString, cb) {
-  pool.query(queryString, function (err1, res1, body1) {
-    cb(err1,res1,body1); // callback function
+  pool.query(queryString, function (err, res, body) {
+    cb(err,res,body); // callback function
   });
 }
 
