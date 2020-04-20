@@ -125,6 +125,8 @@ a:hover {
 /* Specialised CSS for Dashboard.js */
 #dashboardHome {
     font-family: 'robotolite';
+    margin-left: 2%;
+    margin-right: 2%;
 }
 
 #dashboardHome a {
