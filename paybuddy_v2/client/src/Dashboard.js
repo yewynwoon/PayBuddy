@@ -7,27 +7,32 @@ class Dashboard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            cust_acct_value: "", 
-            cust_transactions: ""
-        };
+            cust_acct_value: "",
+            pastPayments: "",
+            cust_transacts: ""
+        }
     }
 
     callAPI() {
-        fetch('http://localhost:9000/dashboard?user_id=1')
+        fetch('http://localhost:9000/dashboard/1')
         .then((response) => {
             return response.json();
         })
         .then((data) => {
 
-            console.log(data.pastTransactions);
+            //console.log(data.pastTransactions);
 
             this.setState({
                 ...this.state,
                 cust_acct_value: data.acctValue[0].account_value,
-                cust_transactions: data.pastTransactions
+                cust_transacts: data.pastPayments.concat(data.pastDeposits)
             })
 
-            console.log(this.state.cust_transactions[0].deposit_id);
+            /* console.log(this.state.cust_deposits);
+            console.log(this.state.cust_payments);
+            console.log(this.state.cust_deposits.concat(this.state.cust_payments)); */
+
+            //console.log(this.state.cust_deposits[0].deposit_id);
         });
     }
     
@@ -36,12 +41,13 @@ class Dashboard extends React.Component {
     }
 
     renderTableData() {
-        return Object.keys(this.state.cust_transactions).map((key) => {
+        return Object.keys(this.state.cust_transacts).map((key) => {
             return (
                 <tr key={key}>
-                    <td>{this.state.cust_transactions[key].deposit_id}</td>
-                    <td>{this.state.cust_transactions[key].amount}</td>
-                    <td>{this.state.cust_transactions[key].date_stamp}</td>
+                    <td>{this.state.cust_transacts[key].deposit_id}</td>
+                    <td>{this.state.cust_transacts[key].bpay_payment_id}</td>
+                    <td>{this.state.cust_transacts[key].amount}</td>
+                    <td>{this.state.cust_transacts[key].date_stamp}</td>
                 </tr>
             )
         })
@@ -78,6 +84,7 @@ class Dashboard extends React.Component {
                             <thead>
                                 <tr>
                                     <th>DEPOSIT ID</th>
+                                    <th>PAYMENT ID</th>
                                     <th>AMOUNT</th>
                                     <th>TRANSACTION DATE</th>
                                 </tr>
