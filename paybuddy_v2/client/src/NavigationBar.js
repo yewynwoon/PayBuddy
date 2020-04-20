@@ -11,6 +11,8 @@ import DashboardComp from './Dashboard';
 import FundsDepositComp from './FundsDeposit';
 import PayBillComp from './PayBill';
 import LoginPage from './Login';
+import AddFriendComp from './AddFriend';
+
 
 // This site has 3 pages, all of which are rendered
 // dynamically in the browser (not server rendered).
@@ -38,6 +40,7 @@ export default function NavigationBar() {
           <Link to="/Login">
             Login
           </Link>
+          <Link to="/AddFriend"><a>Add a Friend</a></Link>
           <br/>
 
           {/*
@@ -55,6 +58,7 @@ export default function NavigationBar() {
           <Route path="/Dashboard"><Index /></Route>
           <Route path="/FundsDeposit"><FundsDeposit /></Route>
           <Route path="/PayBill"><PayBill /></Route>
+          <Route path="/AddFriend"><AddFriend /></Route>
           <Route path="/Login"><Login /></Route>
         </Switch>
       </body>
@@ -97,6 +101,13 @@ function Login() {
   );
 }
 
+function AddFriend() {
+  return (
+    <div>
+      <AddFriendComp/>
+    </div>
+  );
+}
 function GetLocation() {
   let location = useLocation();
   console.log(location.pathname);
