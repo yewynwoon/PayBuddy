@@ -1,0 +1,42 @@
+Create Table SHOPS_ITEMS(
+shop_ID NUMBER(1),
+item_ID NUMBER(3),
+shop_Quantity Number(2),
+PRIMARY KEY(shop_ID, item_ID),
+FOREIGN KEY(shop_ID) REFERENCES Shops (shop_ID),
+FOREIGN KEY(item_ID) REFERENCES Items (item_ID));
+
+Create Table friends(
+cust_id1 int(5),
+cust_id2 int(5),
+cust_1req int(1) DEFAULT 1,
+cust_2res int(1) DEFAULT 0,
+PRIMARY KEY(cust_id1, cust_id2),
+FOREIGN KEY(cust_id1) REFERENCES users (cust_id),
+FOREIGN KEY(cust_id2) REFERENCES users (cust_id));
+
+file:///C:/Users/samer/OneDrive/Rmit%204/Buss%20data%20management%20&%20Ana/Week%204/2019_s1_db_L4_SQL-Relationships.pdf
+
+
+INSERT INTO friends (custID_1, custID_2) VALUES ('2', '3')
+
+INSERT INTO friends VALUES ('2', '3', '1', '1')
+
+
+query we want Jerrmy friends and his id is 4
+
+SELECT  CustID_1
+FROM    Friends
+WHERE   CustID_2 = 4
+AND Cust_2res = 1
+UNION ALL
+SELECT  CustID_2
+FROM    Friends
+WHERE   CustID_1 = 4
+AND Cust_2res = 1
+
+SELECT CustID_1 FROM Friends WHERE CustID_2 = 4 UNION ALL SELECT CustID_2 FROM Friends WHERE CustID_1 = 4 
+
+UPDATE friends
+SET cust_2res = 1
+WHERE ;
