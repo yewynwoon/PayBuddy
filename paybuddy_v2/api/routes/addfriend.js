@@ -34,16 +34,17 @@ const createPool = async () => {
 };
 createPool();
 
-router.get('/', async (req, res) => {
+router.get('/:user_id/:user_id2', async (req, res) => {
   
     const userID = req.param('user_id');
+    const userID2 = req.param('user_id2');
   
     try {
         // Get Friends list of customer
         const getReqFriendsList = 'SELECT CustID_1 FROM Friends WHERE CustID_2 = ' + userID + 'AND Cust_2res = 1 UNION ALL SELECT CustID_2 FROM Friends WHERE CustID_1 = ' + userID + 'AND Cust_2res = 1';
         
         // Add Friends 
-        const getAddFriend = 'INSERT INTO friends (CustID_1, CustID_2) VALUES ('userID', 'input')';
+        const getAddFriend = 'INSERT INTO friends (CustID_1, CustID_2) VALUES (' + userID + ', '+ userID2 + ')';
         
         // Friend respons -not complete
         const getFriendResp = 'UPDATE friends SET Cust_2res = 1 WHERE CustID_1 =  AND CustID_2 = ' + userID + '';

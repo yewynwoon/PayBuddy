@@ -9,6 +9,7 @@ var dashboard = require('./routes/dashboard');
 var depositFundsPost = require('./routes/depositFundsPost');
 var payments = require('./routes/payments');
 var user = require('./routes/user');
+var addFriend = require('./routes/addfriend');
 
 var app = express();
 
@@ -29,6 +30,7 @@ app.use('/dashboard', dashboard);
 app.use('/depositFundsPost', depositFundsPost);
 app.use('/payments', payments);
 app.use('/user', user);
+app.use('/addFriend', addFriend);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

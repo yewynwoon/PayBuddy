@@ -5,12 +5,11 @@ class AddFriend extends React.Component {
     constructor(props) {
         super(props);
         this.state = { friends_list: "" };
-        this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     callAPI() {
-        fetch('http://localhost:9000/dashboard?user_id=1')
+        fetch('http://localhost:9000/addfriend?user_id=1')
             .then((response) => {
                 return response.json();
             })
@@ -30,10 +29,9 @@ class AddFriend extends React.Component {
     }
 
 
-    handleChange(event) { this.setState({ value: event.target.value }); }
 
     handleSubmit(event) {
-        alert('You Have Added a : ' + this.state.value);
+        alert('You Have Added a : ' + event);
         event.preventDefault();
     }
 
@@ -56,7 +54,7 @@ class AddFriend extends React.Component {
                     <form onSubmit={this.handleSubmit}>
                         <label>
                             Name:
-                        <input type="text" value={this.state.value} onChange={this.handleChange} />        </label>
+                        <input type="text" />        </label>
                         <input type="submit" value="Submit" />
                     </form>
                 </div>
