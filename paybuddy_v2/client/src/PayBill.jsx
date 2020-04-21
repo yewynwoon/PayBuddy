@@ -88,6 +88,7 @@ const PayBillConfirm = props => {
                         <div class='details-line'>
                             Amount:
                             <div class='details'>${props.bill.amount.value}</div>
+
                         </div>
                     </div>
                     <div class='button-container'>

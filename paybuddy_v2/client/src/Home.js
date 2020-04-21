@@ -13,8 +13,8 @@
 import { useOktaAuth } from '@okta/okta-react';
 import React, { useState, useEffect } from 'react';
 import { Button, Header } from 'semantic-ui-react';
-import './Home.css';
-import PayBuddyLogo from './img/paybuddy.png';
+import PayBuddy from './img/paybuddytext.png';
+import './home.css'
 
 const Home = () => {
   const { authState, authService } = useOktaAuth();
@@ -42,8 +42,12 @@ const Home = () => {
   }
 
   return (
-    <div>
+    <div class='homecontainer'>
       <div>
+        <img src={PayBuddy}></img>
+        <hr></hr>
+        <h1>E-Wallet Service</h1>
+
         { authState.isAuthenticated && !userInfo
         && <div>Loading your information...</div>}
 
