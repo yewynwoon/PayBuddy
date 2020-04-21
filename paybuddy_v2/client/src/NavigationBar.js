@@ -11,6 +11,7 @@ import DashboardComp from './Dashboard';
 import FundsDepositComp from './FundsDeposit';
 import PayBillComp from './PayBill';
 import LoginPage from './Login';
+import { Container, Icon, Image , Menu} from 'semantic-ui-react';
 
 
 // This site has 3 pages, all of which are rendered
@@ -29,47 +30,33 @@ const login = async () => authService.login('/');
 const logout = async () => authService.logout('/');
 
   return (
-    <Router>
-      <nav class='header'>
-        <div class="topnav nav-text">
-          {authState.isAuthenticated && 
-          <Link to="/Dashboard">
-            <ActiveHome />
-          </Link>}
-          {authState.isAuthenticated && 
-          <Link to="/FundsDeposit">
-            <ActiveFunds />
-          </Link>}
-          {authState.isAuthenticated && 
-          <Link to="/PayBill">
-            <ActivePayBill />
-          </Link>}
-          {authState.isAuthenticated && 
-          <Link onClick={logout}>
-            Logout
-          </Link>}
-          <br/>
-
-
-          {/*
-            A <Switch> looks through all its children <Route>
-            elements and renders the first one whose path
-            matches the current URL. Use a <Switch> any time
-            you have multiple routes, but you want only one
-            of them to render at a time
-          */}
-          
-        </div>
-      </nav>
-      <body>
-        <Switch>
-          <Route path="/Dashboard"><Index /></Route>
-          <Route path="/FundsDeposit"><FundsDeposit /></Route>
-          <Route path="/PayBill"><PayBill /></Route>
-          <Route path="/Login"><Login /></Route>
-        </Switch>
-      </body>
-    </Router>
+    <div>
+      {authState.isAuthenticated && (
+      <Menu.Item as ="a" header href="/Dashboard">
+      Home
+      </Menu.Item>
+      )}
+      {authState.isAuthenticated && (
+      <Menu.Item as ="a" header href="/FundsDeposit">
+      Deposit Funds
+      </Menu.Item>
+      )}
+      {authState.isAuthenticated && (
+      <Menu.Item as ="a" header href="/PayBill">
+      Pay Bills
+      </Menu.Item>
+      )}
+      {authState.isAuthenticated && (
+      <Menu.Item as ="a" onClick={logout}>
+      Logout      
+      </Menu.Item>
+      )}
+      {!authState.isPending && !authState.isAuthenticated && (<Menu.Item as="a" onClick={login}>
+      Login
+      </Menu.Item>
+      )}
+      
+    </div>
   );
 }
 
