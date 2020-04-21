@@ -77,25 +77,12 @@ header {
 /* Specialised CSS for NavigationBar.js */
 .topnav {
     overflow: hidden;
-    text-transform: uppercase;
     font-family: 'robotolite';
     text-decoration: none;
     font-size: 14px;
     color: #5e5e5e;
     letter-spacing: 2px;
     padding-bottom: 3%;
-}
-
-#navlogout {
-    float: right;
-    margin-right: 2%;
-    margin-left: 2%;
-}
-
-#navlogin {
-    float: right;
-    margin-right: 2%;
-    margin-left: 2%;
 }
 
 .topnav a {
@@ -116,6 +103,7 @@ header {
 }
 
 .topnav a:visited {
+    color: #5e5e5e;
     text-decoration: none;
 }
 
@@ -233,7 +221,6 @@ a:hover {
 }
 
 #currency {
-    right: 5%;
     letter-spacing: 1px;
     font-size: 15px;
 }
@@ -242,9 +229,9 @@ a:hover {
     position: absolute;
     bottom: 0;
     right: 0;
-    margin-right: 5%;
+    margin-right: 4%;
     margin-bottom: 4%;
-    font-size: 18px;
+    font-size: 12px;
 }
 
 footer {
@@ -304,6 +291,13 @@ input, select {
 
 #table tr:nth-child(even){
     background-color: #f2f2f2;
+}
+
+hr { 
+    display: block; 
+    overflow: hidden; 
+    border-style: inset; 
+    border-width: 1px;
 }
 
 .footer {

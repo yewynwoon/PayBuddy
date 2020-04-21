@@ -1,21 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './client.css';
 import DP from './img/profilepic.png';
 
 class Dashboard extends React.Component {
 
     constructor(props) {
-
-
         super(props);
         this.state = {
             cust_acct_value: "",
             pastPayments: "",
-            cust_transacts: "",
+            cust_transacts: ""
         }
     }
-
-
 
     callAPI() {
         fetch('http://localhost:9000/dashboard/1')
@@ -56,32 +52,27 @@ class Dashboard extends React.Component {
             )
         })
     }
-    
-
 
     render () {
         return (
             <main id='dashboardHome'>
                 <div id='detailscontainer'>
-                    {/*}
                     <div id='customerbox'>
                         <span id='heading'>WELCOME BACK, </span>
                         <span id='customercontents'>
                             <img id='profilepic' src={DP}></img>
-                            
-                            <span id='name'>Jeremy</span>
+                            <span id='name'>THOMAS</span>
                         </span>
                         <a href="a" id='editacc'>EDIT ACCOUNT</a>
                     </div>
-                    */}
                     <div id='moneybox'>
                         <span id='heading'>CURRENT BALANCE</span>
                         <hr></hr>
                         <span id='moneycontents'>
-                            {/* <span id="currency">AUD</span> */}
+                            <span id="currency">AUD</span>
                             <span id='accbalance'>${parseFloat(this.state.cust_acct_value).toFixed(2)}</span>
                         </span>
-                        <a href="a" id='editfunds'>AUD</a>
+                        <a href="a" id='editfunds'>ADD FUNDS</a>
                     </div>
                 </div>
                 <b></b>
