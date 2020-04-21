@@ -46,7 +46,7 @@ const logout = async () => authService.logout('/');
           </Link>}
           {authState.isAuthenticated && 
           <Link id="logout" onClick={logout}>
-            LOGOUT
+            Logout
           </Link>}
           <br/>
 

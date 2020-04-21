@@ -47,3 +47,44 @@
     font-family: 'robotoboldita';
     src: url(./font/Roboto-BoldItalic.ttf);
   }
+
+  #welcomescreen {
+    width: 100%;
+    text-align: left;
+    margin-left: 2%;
+    font-family: 'robotolite';
+    letter-spacing: 1px;
+  }
+
+  #logoutscreen {
+    height: fit-content;
+    padding-top: 3%;
+    padding-bottom: 3%;
+  }
+
+  #logoutscreen button {
+    border-radius: 15px;
+    border: none;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    padding-left: 4%;
+    padding-right: 4%;
+    background-color: #f2b377;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    font-family: 'robotomed';
+    font-weight: normal;
+    font-size: 18px;
+  }
+
+  #logoutscreen img {
+    width: 25%;
+  }
+
+  #logoutmessage {
+    padding-top: 3%;
+    padding-bottom: 3%;
+    font-size: 18px;
+    letter-spacing: 1px;
+  }
