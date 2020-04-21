@@ -7,8 +7,10 @@ import NavigationBar from './NavigationBar';
 import Footer from './Footer';
 import Login from './Login';
 import Dashboard from './Dashboard';
+import PayBill from './PayBill';
 import config from './config';
 import Home from './Home';
+import FundsDeposit from './FundsDeposit';
 
 const HasAccessToRouter = () => 
 {
@@ -27,6 +29,8 @@ return (
     <Route path="/implicit/callback" component ={LoginCallback}/>
     <Route path="/login" exact component={Login} />
     <SecureRoute path="/Dashboard" component={Dashboard} />
+    <SecureRoute path="/FundsDeposit" component={FundsDeposit} />
+    <SecureRoute path="/PayBill" component={PayBill} />
     <Footer/>
   </div>
   </Security>
