@@ -113,6 +113,11 @@ header {
     font-family: 'robotoreg';
 }
 
+.topnav #logout {
+    margin-right: 2%;
+    float: right;
+} 
+
 a:hover {
     text-decoration: none;
 }

@@ -45,8 +45,8 @@ const logout = async () => authService.logout('/');
             <ActivePayBill />
           </Link>}
           {authState.isAuthenticated && 
-          <Link onClick={logout}>
-            Logout
+          <Link id="logout" onClick={logout}>
+            LOGOUT
           </Link>}
           <br/>
 
