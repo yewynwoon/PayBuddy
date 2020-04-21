@@ -11,6 +11,7 @@ import DashboardComp from './Dashboard';
 import FundsDepositComp from './FundsDeposit';
 import PayBillComp from './PayBill';
 import LoginPage from './Login';
+import './client.css';
 import { Container, Icon, Image , Menu} from 'semantic-ui-react';
 
 
@@ -30,31 +31,35 @@ const login = async () => authService.login('/');
 const logout = async () => authService.logout('/');
 
   return (
-    <div>
+    <div class='topnav'>
       {authState.isAuthenticated && (
       <Menu.Item as ="a" header href="/Dashboard">
-      Home
+        <ActiveHome />
       </Menu.Item>
       )}
       {authState.isAuthenticated && (
       <Menu.Item as ="a" header href="/FundsDeposit">
-      Deposit Funds
+        <ActiveFunds />
       </Menu.Item>
       )}
       {authState.isAuthenticated && (
       <Menu.Item as ="a" header href="/PayBill">
-      Pay Bills
+        <ActivePayBill />
       </Menu.Item>
       )}
-      {authState.isAuthenticated && (
-      <Menu.Item as ="a" onClick={logout}>
-      Logout      
-      </Menu.Item>
-      )}
-      {!authState.isPending && !authState.isAuthenticated && (<Menu.Item as="a" onClick={login}>
-      Login
-      </Menu.Item>
-      )}
+      <span id='navlogout'>
+        {authState.isAuthenticated && (
+        <Menu.Item as ="a" onClick={logout}>
+          Logout      
+        </Menu.Item>
+        )}
+      </span>
+      <span id='navlogin'>
+        {!authState.isPending && !authState.isAuthenticated && (<Menu.Item as="a" onClick={login}>
+        Login
+        </Menu.Item>
+        )}
+      </span>
       
     </div>
   );
