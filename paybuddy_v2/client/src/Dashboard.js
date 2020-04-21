@@ -63,6 +63,7 @@ class Dashboard extends React.Component {
         return (
             <main id='dashboardHome'>
                 <div id='detailscontainer'>
+                    {/*}
                     <div id='customerbox'>
                         <span id='heading'>WELCOME BACK, </span>
                         <span id='customercontents'>
@@ -72,14 +73,15 @@ class Dashboard extends React.Component {
                         </span>
                         <a href="a" id='editacc'>EDIT ACCOUNT</a>
                     </div>
+                    */}
                     <div id='moneybox'>
                         <span id='heading'>CURRENT BALANCE</span>
                         <hr></hr>
                         <span id='moneycontents'>
-                            <span id="currency">AUD</span>
+                            {/* <span id="currency">AUD</span> */}
                             <span id='accbalance'>${parseFloat(this.state.cust_acct_value).toFixed(2)}</span>
                         </span>
-                        <a href="a" id='editfunds'>ADD FUNDS</a>
+                        <a href="a" id='editfunds'>AUD</a>
                     </div>
                 </div>
                 <b></b>
