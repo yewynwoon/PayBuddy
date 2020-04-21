@@ -49,28 +49,22 @@ const Home = () => {
         <h1>E-Wallet Service</h1>
 
         { authState.isAuthenticated && !userInfo
-        && <div>Loading your information...</div>}
+        && <div>Loading user information...</div>}
 
-        {authState.isAuthenticated && userInfo
-        && (
-        <div id='welcomescreen'>
+        <span id='welcome'>
+          {authState.isAuthenticated && userInfo
+          && (
           <div>
-            Welcome back
-            <div>
-              {userInfo.name}
-            </div>
+              Welcome back, {userInfo.name}!
           </div>
-        </div>
-        )}
+          )}
+        </span>
 
         {!authState.isAuthenticated
         && (
-        <div id='logoutscreen'>
-          <img src={PayBuddyLogo}></img>
-          <div id='logoutmessage'>
-            Looks like you've logged out! Want to login again?
-          </div>
-          <div>
+        <div>
+          You have logged out, log in again to continue!
+          <div id='loginbutton'>
             <Button id="login-button" primary onClick={login}>Login</Button>
           </div>
         </div>

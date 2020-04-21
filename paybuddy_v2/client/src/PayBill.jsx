@@ -45,7 +45,7 @@ const PayBillForm = props => {
                             </div>
                         </div>
                         <div class='lower-inner-box'>
-                            <button type ='submit' class="IzjkL _2Y_WL FiOTW continue-button"id="submit-button">
+                            <button class="IzjkL _2Y_WL FiOTW continue-button"id="submit-button">
                                 Confirm
                             </button>
                         </div>
@@ -69,26 +69,27 @@ const PayBillConfirm = props => {
                 <hr></hr>
                     <div class='upper-inner-box'>
                         <div class='biller-details'>
-                            Biller Name: 
+                            Biller Name:
                             {props.bill.billerName}
                         </div>
                     </div>
                     <div class='middle-inner-box'>
-                        <div class='details-line'>
+                        <div class='payment-details'>
                             Biller Code:
-                            <div class='details'>{props.bill.billerCode.value}</div>
+                            <div class='payment-dexcription-text-box'>{props.bill.billerCode.value}</div>
                         </div>
-                        <div class='details-line'>
-                            CRN:
-                            <div class='details'>{props.bill.crn.value}</div>
+                    </div>
+                    <div class='middle-inner-box'>
+                        <div class='payment-details'>
+                            Reference Number:
+                            <div class='payment-dexcription-text-box'>{props.bill.crn.value}</div>
                         </div>
                     </div>
                     <hr></hr>
                     <div class='middle-inner-box'>
-                        <div class='details-line'>
+                        <div class='payment-details'>
                             Amount:
-                            <div class='details'>${props.bill.amount.value}</div>
-
+                            <div class='payment-dexcription-text-box'>${props.bill.amount.value}</div>
                         </div>
                     </div>
                     <div class='button-container'>
