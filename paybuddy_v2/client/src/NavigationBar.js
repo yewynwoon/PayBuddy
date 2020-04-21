@@ -1,16 +1,17 @@
 import React from "react";
 import { useLocation } from 'react-router-dom'
+import {useOktaAuth} from '@okta/okta-react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
-
 import DashboardComp from './Dashboard';
 import FundsDepositComp from './FundsDeposit';
 import PayBillComp from './PayBill';
 import LoginPage from './Login';
+
 
 // This site has 3 pages, all of which are rendered
 // dynamically in the browser (not server rendered).
@@ -21,24 +22,34 @@ import LoginPage from './Login';
 // making sure things like the back button and bookmarks
 // work properly.
 
-export default function NavigationBar() {
+
+const NavigationBar = () => {
+const {authState, authService} = useOktaAuth();
+const login = async () => authService.login('/');
+const logout = async () => authService.logout('/');
+
   return (
     <Router>
       <nav class='header'>
         <div class="topnav nav-text">
+          {authState.isAuthenticated && 
           <Link to="/Dashboard">
             <ActiveHome />
-          </Link>
+          </Link>}
+          {authState.isAuthenticated && 
           <Link to="/FundsDeposit">
             <ActiveFunds />
-          </Link>
+          </Link>}
+          {authState.isAuthenticated && 
           <Link to="/PayBill">
             <ActivePayBill />
-          </Link>
-          <Link to="/Login">
-            Login
-          </Link>
+          </Link>}
+          {authState.isAuthenticated && 
+          <Link onClick={logout}>
+            Logout
+          </Link>}
           <br/>
+
 
           {/*
             A <Switch> looks through all its children <Route>
@@ -140,3 +151,4 @@ function ActivePayBill() {
     )
   }
 }
+export default NavigationBar;
