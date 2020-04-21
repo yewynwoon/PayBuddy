@@ -79,6 +79,7 @@ header {
     overflow: hidden;
     text-transform: uppercase;
     font-family: 'robotolite';
+    text-transform: uppercase;
     text-decoration: none;
     font-size: 14px;
     color: #5e5e5e;
@@ -124,6 +125,11 @@ header {
     text-decoration: none;
     font-family: 'robotoreg';
 }
+
+.topnav #logout {
+    margin-right: 2%;
+    float: right;
+} 
 
 a:hover {
     text-decoration: none;

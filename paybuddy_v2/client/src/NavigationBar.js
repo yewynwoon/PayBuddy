@@ -31,37 +31,47 @@ const login = async () => authService.login('/');
 const logout = async () => authService.logout('/');
 
   return (
-    <div class='topnav'>
-      {authState.isAuthenticated && (
-      <Menu.Item as ="a" header href="/Dashboard">
-        <ActiveHome />
-      </Menu.Item>
-      )}
-      {authState.isAuthenticated && (
-      <Menu.Item as ="a" header href="/FundsDeposit">
-        <ActiveFunds />
-      </Menu.Item>
-      )}
-      {authState.isAuthenticated && (
-      <Menu.Item as ="a" header href="/PayBill">
-        <ActivePayBill />
-      </Menu.Item>
-      )}
-      <span id='navlogout'>
-        {authState.isAuthenticated && (
-        <Menu.Item as ="a" onClick={logout}>
-          Logout      
-        </Menu.Item>
-        )}
-      </span>
-      <span id='navlogin'>
-        {!authState.isPending && !authState.isAuthenticated && (<Menu.Item as="a" onClick={login}>
-        Login
-        </Menu.Item>
-        )}
-      </span>
-      
-    </div>
+    <Router>
+      <nav class='header'>
+        <div class="topnav nav-text">
+          {authState.isAuthenticated && 
+          <Link to="/Dashboard">
+            <ActiveHome />
+          </Link>}
+          {authState.isAuthenticated && 
+          <Link to="/FundsDeposit">
+            <ActiveFunds />
+          </Link>}
+          {authState.isAuthenticated && 
+          <Link to="/PayBill">
+            <ActivePayBill />
+          </Link>}
+          {authState.isAuthenticated && 
+          <Link id="logout" onClick={logout}>
+            Logout
+          </Link>}
+          <br/>
+
+
+          {/*
+            A <Switch> looks through all its children <Route>
+            elements and renders the first one whose path
+            matches the current URL. Use a <Switch> any time
+            you have multiple routes, but you want only one
+            of them to render at a time
+          */}
+          
+        </div>
+      </nav>
+      <body>
+        <Switch>
+          <Route path="/Dashboard"><Index /></Route>
+          <Route path="/FundsDeposit"><FundsDeposit /></Route>
+          <Route path="/PayBill"><PayBill /></Route>
+          <Route path="/Login"><Login /></Route>
+        </Switch>
+      </body>
+    </Router>
   );
 }
 

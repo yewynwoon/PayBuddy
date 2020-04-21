@@ -160,14 +160,6 @@
   padding: 1%;
 }
 
-.payment-details {
-  padding-top: 1%;
-  padding-bottom: 1%;
-  letter-spacing: 1px;
-  text-align: right;
-  font-weight: bolder;
-}
-
 .payment-line {
   height: fit-content;
   margin-bottom: 5px;
@@ -219,15 +211,13 @@
 }
 
 hr { 
+  margin-left: 2%;
+  margin-right: 2%;
+
   display: block; 
   overflow: hidden; 
   border-style: inset; 
   border-width: 0.5px;
-}
-
-.detail-line {
-  width: 100%;
-  height: fit-content;
 }
 
 .payment-amount-text-box {
@@ -237,14 +227,24 @@ hr {
   margin-bottom: 3px;
 }
 
-.payment-dexcription-text-box {
+.details-line {
+  height: fit-content;
+  margin-bottom: 5px;
+  padding-top: 10px;
+  padding-bottom: 1%;
+  color: #5e5e5e;
+  font-size: 18px;
+  text-align: right;
+  
+}
+
+.details {
   display: inline-block;
-  text-align: left;
-  letter-spacing: 1px;
   width: 50%;
-  margin-left: 20px;
-  font-family: 'robotoliteita';
-  font-weight: lighter;
+  margin-left: 5%;
+  text-align: left;
+  font-size: 20px;
+  font-family: 'robotoregita';
 }
 
 .button-container {
