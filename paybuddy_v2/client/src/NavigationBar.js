@@ -11,7 +11,8 @@ import DashboardComp from './Dashboard';
 import FundsDepositComp from './FundsDeposit';
 import PayBillComp from './PayBill';
 import LoginPage from './Login';
-
+import './client.css'
+import { Container, Icon, Image, Menu }  from 'semantic-ui-react'
 
 // This site has 3 pages, all of which are rendered
 // dynamically in the browser (not server rendered).

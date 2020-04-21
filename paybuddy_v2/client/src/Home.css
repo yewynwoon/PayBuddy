@@ -1,0 +1,59 @@
+@font-face {
+    font-family: 'robotothin';
+    src: url(./font/Roboto-Thin.ttf);
+}
+
+@font-face {
+    font-family: 'robotothinita';
+    src: url(./font/Roboto-ThinItalic.ttf);
+}
+
+@font-face {
+    font-family: 'robotolite';
+    src: url(./font/Roboto-Light.ttf);
+}
+
+@font-face {
+    font-family: 'robotoliteita';
+    src: url(./font/Roboto-LightItalic.ttf);
+}
+
+.homecontainer {
+    width: 100%;
+    height: fit-content;
+    padding-top: 5%;
+}
+
+.homecontainer img {
+    width: 40%;
+}
+
+.homecontainer h1 {
+    font-family: 'robotothinita';
+    letter-spacing: 3px;
+    color: #5e5e5e;
+}
+
+#loginbutton {
+    padding-top: 2%;
+}
+
+#loginbutton button {
+    padding: 1% 4% 1% 4%;
+    background-color: #f2b377;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+}
+
+#loginbutton button:hover {
+    background-color: #E3A971;
+}
+
+#welcome {
+    color: #5e5e5e;
+    letter-spacing: 1px;
+} 
