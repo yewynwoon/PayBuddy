@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './client.css';
 import DP from './img/profilepic.png';
 
 class Dashboard extends React.Component {
 
     constructor(props) {
+
+
         super(props);
         this.state = {
             cust_acct_value: "",
             pastPayments: "",
-            cust_transacts: ""
+            cust_transacts: "",
         }
     }
+
+
 
     callAPI() {
         fetch('http://localhost:9000/dashboard/1')
@@ -52,6 +56,8 @@ class Dashboard extends React.Component {
             )
         })
     }
+    
+
 
     render () {
         return (
@@ -61,7 +67,8 @@ class Dashboard extends React.Component {
                         <span id='heading'>WELCOME BACK, </span>
                         <span id='customercontents'>
                             <img id='profilepic' src={DP}></img>
-                            <span id='name'>THOMAS</span>
+                            
+                            <span id='name'>Jeremy</span>
                         </span>
                         <a href="a" id='editacc'>EDIT ACCOUNT</a>
                     </div>
