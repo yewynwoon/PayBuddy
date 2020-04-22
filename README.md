@@ -22,5 +22,3 @@ Client - React Project
         1. Naviagte to \PayBuddy_v2\client  in cmd line
         2. Type: 'npm install'
         3. Type: 'npm start'
-
-
