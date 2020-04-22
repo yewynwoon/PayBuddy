@@ -9,16 +9,17 @@ class AddFriend extends React.Component {
     }
 
     callAPI() {
-        fetch('http://localhost:9000/addfriend?user_id=1')
+        fetch('http://localhost:9000/addfriend/1/3')
             .then((response) => {
                 return response.json();
             })
 
             .then((data) => {
+                console.log(data);
 
                 this.setState({
                     ...this.state,
-                    friends_list: data.ReqFriendsList
+                    friends_list: data.testQueryResp
                 })
 
             });
@@ -31,15 +32,43 @@ class AddFriend extends React.Component {
 
 
     handleSubmit(event) {
-        alert('You Have Added a : ' + event);
         event.preventDefault();
+
+        alert('You Have Added a : ' + event);
+
+        fetch('http://localhost:9000/addfriend/friendRequest/1/3', {
+            method: 'POST',
+            headers: {
+
+            },
+            body: {
+
+            }
+        })
+            .then((response) => {
+                return response.json();
+            })
+
+            .then((data) => {
+                console.log(data);
+
+                this.setState({
+                    ...this.state,
+                    friends_list: data.testQueryResp
+                })
+
+            });
+        
     }
 
     renderFriendTable() {
         return Object.keys(this.state.friends_list).map((key) => {
             return (
                 <tr key={key}>
-                    <td>{this.state.friends_list[key].user_id}</td>
+                    <td>{this.state.friends_list[key].cust_id1}</td>
+                    <td>{this.state.friends_list[key].cust_id2}</td>
+                    <td>{this.state.friends_list[key].cust_1req}</td>
+                    <td>{this.state.friends_list[key].cust_2res}</td>
                 </tr>
 
             )
@@ -65,10 +94,13 @@ class AddFriend extends React.Component {
                     <table id='table'>
                         {
                             <thead>
-                                <tr>
-                                    <th>Friend List</th>
-                                </tr>
-                            </thead>
+                            <tr>
+                                <th>CUST ID 1</th>
+                                <th>CUST ID 2</th>
+                                <th>DFGFD</th>
+                                <th>TRANSACDFGDFGDFTION DATE</th>
+                            </tr>
+                        </thead>
                         }
                         <tbody>
                             {this.renderFriendTable()}
