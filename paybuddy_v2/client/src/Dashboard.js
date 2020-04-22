@@ -19,20 +19,11 @@ class Dashboard extends React.Component {
             return response.json();
         })
         .then((data) => {
-
-            //console.log(data.pastTransactions);
-
             this.setState({
                 ...this.state,
                 cust_acct_value: data.acctValue[0].account_value,
                 cust_transacts: data.pastPayments.concat(data.pastDeposits)
             })
-
-            /* console.log(this.state.cust_deposits);
-            console.log(this.state.cust_payments);
-            console.log(this.state.cust_deposits.concat(this.state.cust_payments)); */
-
-            //console.log(this.state.cust_deposits[0].deposit_id);
         });
     }
     

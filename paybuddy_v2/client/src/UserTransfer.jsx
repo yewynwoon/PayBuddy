@@ -1,34 +1,26 @@
 import React, { useState } from 'react';
 import './client.css';
-import './paybill.css'
-import BPayLogo from './img/bpay_logo.jpg';
-import { getAccBalance, checkBPayPayment } from './util/api-calls';
+import './paybill.css';
+import { getAccBalance } from './util/api-calls';
 
-const PayBillForm = props => {
+const TransferForm = props => {
     return (
         <main id='cous'>
             <div class='header-id'>
-                <h2 class='header-text'>Enter bill details</h2>
+                <h2 class='header-text'>Enter transfer details</h2>
             </div>
             <div class="box">
                 <div class="inner-box" id="box-body-id">
-                    <form onSubmit={props.onSubmit}>
-                        <div class="bpay-logo"> <img class="bpay-logo-img" src={BPayLogo} alt="paybuddy-logo"/></div>
+                    <form /* onSubmit={props.onSubmit} */>
                         <hr></hr>
                         <div class='upper-inner-box'>
                             <div class='text-line'>
-                                Biller Code:
-                                <input id='bllerCode' type="text" placeholder=' Biller Code *' onBlur={props.verifyBillerCode.bind(this)} required/>
+                                User Name:
+                                <input id='bllerCode' type="text" placeholder=' Biller Code *' /* onBlur={props.verifyBillerCode.bind(this)} */ required/>
                             </div>
                             <div class='text-line'>
-                                Reference Number:
+                                Account Number:
                                 <input id='crn' type="text" placeholder=' Ref Number *' required/>
-                            </div>
-                        </div>
-                        <div class='middle-inner-box'>
-                            <div class='biller-details'>
-                                Biller Name:
-                                <div class='biller-name'>{props.billerName}</div>
                             </div>
                         </div>
                         <hr></hr>
@@ -56,46 +48,45 @@ const PayBillForm = props => {
     );
 }
 
-const PayBillConfirm = props => {
+const TransferConfirm = props => {
     return (
         <main id='cous'>
             <div id='header-id'>
-                <h2 class='header-text'>Confirm your payment</h2>
+                <h2 class='header-text'>Confirm your transfer</h2>
             </div>
             <div class='box'>
                 <div class='inner-box' id='box-body-id'>
-                <div class="bpay-logo"> <img class="bpay-logo-img" src={BPayLogo} alt="paybuddy-logo"/></div>
                 <hr></hr>
                     <div class='upper-inner-box'>
                         <div class='biller-details'>
-                            Biller Name:
+                            User Name:
                             {props.bill.billerName}
                         </div>
                     </div>
                     <div class='middle-inner-box'>
                         <div class='payment-details'>
-                            Biller Code:
-                            <div class='payment-dexcription-text-box'>{props.bill.billerCode.value}</div>
-                        </div>
-                    </div>
-                    <div class='middle-inner-box'>
-                        <div class='payment-details'>
-                            Reference Number:
-                            <div class='payment-dexcription-text-box'>{props.bill.crn.value}</div>
+                            Account Number:
+                            <div class='payment-dexcription-text-box'>{/* {props.bill.billerCode.value} */}</div>
                         </div>
                     </div>
                     <hr></hr>
                     <div class='middle-inner-box'>
                         <div class='payment-details'>
                             Amount:
-                            <div class='payment-dexcription-text-box'>${props.bill.amount.value}</div>
+                            <div class='payment-dexcription-text-box'>${/* {props.bill.amount.value} */}</div>
+                        </div>
+                    </div>
+                    <div class='middle-inner-box'>
+                        <div class='payment-details'>
+                            Description:
+                            <div class='payment-dexcription-text-box'>${/* {props.bill.amount.value} */}</div>
                         </div>
                     </div>
                     <div class='button-container'>
-                        <button id="submit-button" onClick={props.onSubmit} class="_16apt _2Y_Wp">
+                        <button id="submit-button" /* onClick={props.onSubmit} */ class="_16apt _2Y_Wp">
                             <span>Make Payment</span>
                         </button>
-                        <button id="cancel-button" onClick={props.cancelPayment} class="_16apt _2Y_Wp">
+                        <button id="cancel-button" /* onClick={props.cancelPayment} */ class="_16apt _2Y_Wp">
                             <span>Cancel</span>
                         </button>
                     </div>
@@ -105,7 +96,7 @@ const PayBillConfirm = props => {
     )
 }
 
-function PayBill(props) {
+function UserTransfer(props) {
 
     const [show, setShow] = useState(false);
     const [err, setErr] = useState(false);
@@ -220,10 +211,10 @@ function PayBill(props) {
     return (
         <div>
             {
-                !show ? <PayBillForm verifyBillerCode={verifyBillerCode}
+                !show ? <TransferForm verifyBillerCode={verifyBillerCode}
                                      onSubmit={handleSubmit}
                                      billerName={bill}/>
-                      : <PayBillConfirm bill={bill}
+                      : <TransferConfirm bill={bill}
                                         onSubmit={validatePayment}
                                         error={err}
                                         cancelPayment={closeConfirm}/>
@@ -232,4 +223,4 @@ function PayBill(props) {
     );
 }
 
-export default PayBill;
+export default UserTransfer;
