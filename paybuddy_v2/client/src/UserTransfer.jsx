@@ -12,15 +12,16 @@ const TransferForm = props => {
             <div class="box">
                 <div class="inner-box" id="box-body-id">
                     <form /* onSubmit={props.onSubmit} */>
+                        <div class="bpay-logo">Funds Tranfer</div>
                         <hr></hr>
                         <div class='upper-inner-box'>
                             <div class='text-line'>
-                                User Name:
-                                <input id='bllerCode' type="text" placeholder=' Biller Code *' /* onBlur={props.verifyBillerCode.bind(this)} */ required/>
+                                Username:
+                                <input id='username' type="text" placeholder=' Username *' /* onBlur={props.verifyBillerCode.bind(this)} */ required/>
                             </div>
                             <div class='text-line'>
                                 Account Number:
-                                <input id='crn' type="text" placeholder=' Ref Number *' required/>
+                                <input id='accnumber' type="text" placeholder=' Acc Number *' required/>
                             </div>
                         </div>
                         <hr></hr>
@@ -60,7 +61,7 @@ const TransferConfirm = props => {
                     <div class='upper-inner-box'>
                         <div class='biller-details'>
                             User Name:
-                            {props.bill.billerName}
+                            {/* {props.bill.billerName} */}
                         </div>
                     </div>
                     <div class='middle-inner-box'>
@@ -114,24 +115,17 @@ function UserTransfer(props) {
         //debugger;
         
         event.preventDefault();
-        const { bllerCode, crn, amount, descrip } = event.target.elements;
-
-        if (bllerCode === '' || crn === '' || amount === '')
-        {
-            return;
-        }
-        else {
-            setBill({
-                userID: 1,
-                billerName: bill,
-                billerCode: bllerCode,
-                crn: crn,
-                amount: amount,
-                descrip: descrip
-            }); 
+        const { username, accnumber, amount, descrip } = event.target.elements;
+        
+        setBill({
+            userID: 1,
+            username: username,
+            accnumber: accnumber,
+            amount: amount,
+            descrip: descrip
+        }); 
     
-            showConfirm();
-        }
+        showConfirm();
     }
 
     function verifyBillerCode(event) {
@@ -177,10 +171,7 @@ function UserTransfer(props) {
                         payment: {
                             billerCode: bill.billerCode.value,
                             crn: bill.crn.value,
-                            amount: parseFloat(bill.amount.value),
-                            settlementDate: "2017-10-23",
-                            paymentMethod: "001",
-                            paymentDate: "2019-01-10"
+                            amount: parseFloat(bill.amount.value)
                         }
                     })
                 })
@@ -212,12 +203,11 @@ function UserTransfer(props) {
         <div>
             {
                 !show ? <TransferForm verifyBillerCode={verifyBillerCode}
-                                     onSubmit={handleSubmit}
-                                     billerName={bill}/>
+                                      onSubmit={handleSubmit}/>
                       : <TransferConfirm bill={bill}
-                                        onSubmit={validatePayment}
-                                        error={err}
-                                        cancelPayment={closeConfirm}/>
+                                         onSubmit={validatePayment}
+                                         error={err}
+                                         cancelPayment={closeConfirm}/>
             }
         </div>
     );

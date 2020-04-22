@@ -11,6 +11,7 @@ import PayBill from './PayBill';
 import config from './config';
 import Home from './Home';
 import FundsDeposit from './FundsDeposit';
+import UserTransfer from './UserTransfer';
 
 const HasAccessToRouter = () => 
 {
@@ -30,6 +31,7 @@ return (
     <Route path="/login" exact component={Login} />
     <SecureRoute path="/Dashboard" component={Dashboard} />
     <SecureRoute path="/FundsDeposit" component={FundsDeposit} />
+    <SecureRoute path="/UserTransfer" component={UserTransfer} />
     <SecureRoute path="/PayBill" component={PayBill} />
     <Footer/>
   </div>
