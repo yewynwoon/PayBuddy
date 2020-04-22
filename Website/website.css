@@ -1,0 +1,172 @@
+/*@font-face {
+    font-family: 'Sen', sans-serif;
+    src: url("https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap");
+}*/
+
+body
+{   
+    font-family: 'Times New Roman', Times, serif;
+    max-width:1000px;
+    margin: auto;
+    background-color:white
+}
+
+header
+{
+    font-weight: normal;
+	color: #5e5e5e;
+	height: 100px;
+	padding-left: 15px;
+	
+}
+
+
+
+/* Top navigation */
+.topnav {
+	margin-top:10px;
+    background-color: white;
+    overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    color: #5e5e5e;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Add a color to the active/current link */
+/* .topnav a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+ */
+
+.textbar {
+/* height:100px; */
+padding:10px;
+background-color: #00a97f;
+font-size:25px;
+color:white;
+border:1px solid
+}
+
+
+
+
+
+#cous {
+	background-color: #00a97f;
+	margin-top: 10px;
+	padding-left: 20px;
+	padding-bottom: 15px;
+	color: white;
+	padding-top: 15px;
+	padding-right: 20px;
+	
+}
+
+a:link {
+    text-decoration: none;
+	color:black;
+}
+
+a:visited {
+    text-decoration: none;
+	color:black;
+}
+
+a:hover {
+    text-decoration: underline;
+	color:black;
+}
+
+a:active {
+    text-decoration: underline;
+	color:black;
+}
+
+footer {
+	background-color: #00a97f;
+	margin-top: 10px;
+	padding-left: 20px;
+	padding-bottom: 15px;
+	color: white;
+	padding-top: 15px;
+	
+}
+
+/*
+input, select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+*/
+
+
+
+
+
+.header a:link {
+    text-decoration: none;
+	color:white;
+}
+
+.header a:visited {
+    text-decoration: none;
+	color:white;
+}
+
+.header a:hover {
+    text-decoration: underline;
+		color:white;
+}
+
+.header a:active {
+    text-decoration: underline;
+		color:white;
+}
+
+
+#tab {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#tab td, #tab th {
+    border: 1px solid #ddd;
+    padding: 8px;
+	background-color:White;
+	color:black;
+}
+
+#tab tr:nth-child(even){background-color: #f2f2f2;}
+
+#tab tr:hover {background-color: red}
+
+#tab th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: black;
+}
+
+
+

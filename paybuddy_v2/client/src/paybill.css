@@ -1,0 +1,270 @@
+@font-face {
+  font-family: 'robotoreg';
+  src: url(./font/Roboto-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'robotoregita';
+  src: url(./font/Roboto-Italic.ttf);
+}
+
+@font-face {
+  font-family: 'robotothin';
+  src: url(./font/Roboto-Thin.ttf);
+}
+
+@font-face {
+  font-family: 'robotothinita';
+  src: url(./font/Roboto-ThinItalic.ttf);
+}
+
+@font-face {
+  font-family: 'robotomed';
+  src: url(./font/Roboto-Medium.ttf);
+}
+
+@font-face {
+  font-family: 'robotomedita';
+  src: url(./font/Roboto-MediumItalic.ttf);
+}
+
+@font-face {
+  font-family: 'robotolite';
+  src: url(./font/Roboto-Light.ttf);
+}
+
+@font-face {
+  font-family: 'robotoliteita';
+  src: url(./font/Roboto-LightItalic.ttf);
+}
+
+@font-face {
+  font-family: 'robotobold';
+  src: url(./font/Roboto-Bold.ttf);
+}
+
+@font-face {
+  font-family: 'robotoboldita';
+  src: url(./font/Roboto-BoldItalic.ttf);
+}
+
+.header-text {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: calc(10px + 2vmin);
+  font-weight: lighter;
+  text-align: left;
+  margin-left: 2%;
+  color: #5e5e5e;
+}
+
+.header-id {
+  width: 100%;
+  padding-left: 1%;
+  display: inline-block;
+}
+
+.bpay-logo {
+  padding-top: 1%;
+  padding-bottom: 1%;
+  width: 100%;
+}
+
+.bpay-logo-img {
+  height: 70px;
+}
+
+.box  {
+  box-sizing: border-box;
+  display: block;
+  padding-top: 16px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-family: 'robotolite';
+  background-color: white;
+}
+
+.inner-box {
+  border-radius: 15px;
+  margin-left: 2%;
+  margin-right: 2%;
+  border: 1px solid #5e5e5e;
+  box-sizing: border-box;
+  display: block;
+  text-align: center;
+  overflow: auto;
+  padding: 2%;
+}
+
+.upper-inner-box {
+  height: fit-content;
+  min-width: 600px;
+  width: 100%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.text-line {
+  height: fit-content;
+  margin-bottom: 5px;
+  padding-top: 10px;
+  color: #5e5e5e;
+  font-size: 18px;
+  text-align: right;
+}
+
+.text-line input {
+  width: 30%;
+  margin-left: 5%;
+  margin-right: 25%;
+  border-radius: 5px;
+  font-size: 15px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border: 0.5px solid #aaa;
+}
+
+.text-line input::placeholder{
+  color: #bbb;
+  text-transform: uppercase;
+}
+
+.text-line input:focus::placeholder{
+  color: transparent;
+}
+
+.middle-inner-box {
+  height: fit-content;
+  color: #5e5e5e;
+}
+
+.biller-details {
+  text-align: center;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  font-size: 20px;
+  font-family: 'robotoregita';
+  color: #5e5e5e;
+}
+
+.biller-name {
+  padding-top: 5px;
+}
+
+.payment-details {
+  height: fit-content;
+  width: 100%;
+  min-width: 600px;
+  font-size: 18px;
+  padding: 1%;
+}
+
+.payment-details {
+  padding-top: 1%;
+  padding-bottom: 1%;
+  letter-spacing: 1px;
+  text-align: right;
+  font-weight: bolder;
+}
+
+.payment-line {
+  height: fit-content;
+  margin-bottom: 5px;
+  padding-top: 10px;
+  color: #5e5e5e;
+  font-size: 18px;
+  text-align: right;
+}
+
+.payment-line input {
+  width: 20%;
+  margin-left: 5%;
+  margin-right: 36%;
+  border-radius: 5px;
+  font-size: 15px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border: 0.5px solid #aaa;
+}
+
+.payment-line input::placeholder{
+  color: #bbb;
+  text-transform: uppercase;
+}
+
+.payment-line input:focus::placeholder{
+  color: transparent;
+}
+
+.lower-inner-box {
+  display: block;
+  height: fit-content;
+  width: 100%;
+}
+
+.continue-button {
+  margin: 2%;
+  background-color: #f2b377;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: white;
+  font-family: 'robotomed';
+  font-weight: normal;
+  font-size: 18px;
+}
+
+.continue-button:hover {
+  background-color: #E3A971;
+}
+
+hr { 
+  display: block; 
+  overflow: hidden; 
+  border-style: inset; 
+  border-width: 0.5px;
+}
+
+.detail-line {
+  width: 100%;
+  height: fit-content;
+}
+
+.payment-amount-text-box {
+  font-family: 'robotoregita';
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 3px;
+}
+
+.payment-dexcription-text-box {
+  display: inline-block;
+  text-align: left;
+  letter-spacing: 1px;
+  width: 50%;
+  margin-left: 20px;
+  font-family: 'robotoliteita';
+  font-weight: lighter;
+}
+
+.button-container {
+  width: 100%;
+  display: block;
+  padding-top: 2%;
+  padding-bottom: 1%;
+}
+
+#submit-button {
+  background-color: #f2b377;
+  color: white;
+  margin-right: 2%;
+}
+
+#submit-button:hover {
+  background-color: #E3A971;
+}
+
+#cancel-button {
+  margin-left: 2%;
+
+}

@@ -1,8 +1,24 @@
 # PayBuddy
+2020 Capstone Project
 
-To run:
-1. Open .bat file in file explorer
-2. Open 2 cmd lines
-  a. cd to api directory, then type "npm start"
-  b. cd to client directory, then type "npm start"
-3. Browser will open up with the webpage 👏
+
+API - Node.JS Express Project
+
+    Platform API
+        -Will be used by client gui and cmd line app
+        
+    Start Project:
+
+        1. Naviagte to \PayBuddy_v2\api in cmd line
+        2. Type: 'npm install'
+        3. Type: 'npm start'
+
+Client - React Project
+
+    User GUI
+    
+    Start Project:
+
+        1. Naviagte to \PayBuddy_v2\client  in cmd line
+        2. Type: 'npm install'
+        3. Type: 'npm start'
