@@ -566,18 +566,13 @@ body {
   background-color: #fff;
   font-family: 'robotolite';
   font-weight: lighter;
-  margin: 0;
   font-size: 16px;
   line-height: 1.2;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   text-size-adjust: 100%;
-}
-
-body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-weight: 400;
 }
 
 body a:hover {
