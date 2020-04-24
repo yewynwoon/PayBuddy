@@ -64,7 +64,7 @@ function Product({ product }) {
 
 const ProductSelection = props => {
   return (
-    <div class="_3o1Fr" id="block-id">
+    <div class="_3o1Fr fade-in-fast" id="block-id">
       <div class="_3mYpM" id="header-id">
         <h2 class="_00004">Select Deposit Amount</h2>
       </div>
@@ -183,7 +183,7 @@ const PayPalCheckout = props => {
 
   return (
     <div className="App">
-      <div class="_3o1Fr" id="block-id">
+      <div class="_3o1Fr fade-in-fast" id="block-id">
         <div class="_3mYpM" id="header-id">
           <h2 class="_00004">Confirm order and pay</h2>
         </div>

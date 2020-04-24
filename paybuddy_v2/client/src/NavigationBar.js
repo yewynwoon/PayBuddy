@@ -26,9 +26,6 @@ import { Container, Icon, Image, Menu }  from 'semantic-ui-react'
 
 const NavigationBar = () => {
 const {authState, authService} = useOktaAuth();
-const login = async () => authService.login('/');
-const logout = async () => authService.logout('/');
-
   return (
     <div class='topnav'>
       {authState.isAuthenticated && (
@@ -46,20 +43,6 @@ const logout = async () => authService.logout('/');
         <ActivePayBill />
       </Menu.Item>
       )}
-      <span id='navlogout'>
-        {authState.isAuthenticated && (
-        <Menu.Item as ="a" onClick={logout}>
-          Logout      
-        </Menu.Item>
-        )}
-      </span>
-      <span id='navlogin'>
-        {!authState.isPending && !authState.isAuthenticated && (<Menu.Item as="a" onClick={login}>
-        Login
-        </Menu.Item>
-        )}
-      </span>
-      
     </div>
   );
 }
@@ -87,14 +70,6 @@ function PayBill() {
   return (
     <div>
       <PayBillComp/>
-    </div>
-  );
-}
-
-function Login() {
-  return (
-    <div>
-      <LoginPage/>
     </div>
   );
 }
