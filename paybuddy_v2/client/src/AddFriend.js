@@ -15,11 +15,11 @@ class AddFriend extends React.Component {
             })
 
             .then((data) => {
-                console.log(data);
+                console.log(data.friendsList);
 
                 this.setState({
                     ...this.state,
-                    friends_list: data.testQueryResp
+                    friends_list: data.friendsList
                 })
 
             });
@@ -39,10 +39,12 @@ class AddFriend extends React.Component {
         fetch('http://localhost:9000/addfriend/friendRequest/1/3', {
             method: 'POST',
             headers: {
-
+                'content-type': 'application/json'
             },
             body: {
-
+                custID: 1
+                
+                
             }
         })
             .then((response) => {
@@ -58,6 +60,7 @@ class AddFriend extends React.Component {
                 })
 
             });
+            console.log(event);
         
     }
 
@@ -66,9 +69,7 @@ class AddFriend extends React.Component {
             return (
                 <tr key={key}>
                     <td>{this.state.friends_list[key].cust_id1}</td>
-                    <td>{this.state.friends_list[key].cust_id2}</td>
-                    <td>{this.state.friends_list[key].cust_1req}</td>
-                    <td>{this.state.friends_list[key].cust_2res}</td>
+                    <td>{this.state.friends_list[key].Full_Name}</td>
                 </tr>
 
             )
@@ -95,10 +96,8 @@ class AddFriend extends React.Component {
                         {
                             <thead>
                             <tr>
-                                <th>CUST ID 1</th>
-                                <th>CUST ID 2</th>
-                                <th>DFGFD</th>
-                                <th>TRANSACDFGDFGDFTION DATE</th>
+                                <th>Friend ID</th>
+                                <th>Friend Full Name</th>
                             </tr>
                         </thead>
                         }
