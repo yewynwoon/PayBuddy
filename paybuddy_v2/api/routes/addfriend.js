@@ -34,17 +34,18 @@ const createPool = async () => {
 };
 createPool();
 
-router.get('/:user_id/:user_id2', async (req, res) => {
+router.get('/:user_id', async (req, res) => {
+//router.get('/:user_id/:user_id2', async (req, res) => {
   
     const userID = req.param('user_id');
     const userID2 = req.param('user_id2');
   
     try {
         // Get Friends list of customer
-        //const getReqFriendsList = 'SELECT CustID_1 FROM Friends WHERE CustID_2 = ' + userID + 'AND Cust_2res = 1 UNION ALL SELECT CustID_2 FROM Friends WHERE CustID_1 = ' + userID + 'AND Cust_2res = 1';
-        const getFriendsList = 'SELECT cust_id1 , concat(fname, " ", lname) As Full_Name FROM friends f, users u WHERE cust_id2 = ' + userID + ' AND f.cust_id1  = u.cust_id UNION ALL SELECT cust_id2, concat(fname, " ", lname) As Full_Name FROM friends f, users u WHERE cust_id1  = ' + userID + ' AND f.cust_id2 = u.cust_id;';
+        const getFriendsList = 'SELECT cust_id1 , concat(fname, " ", lname) As Full_Name FROM friends f, users u WHERE cust_id2 = ' + userID + ' AND f.cust_id1  = u.cust_id AND cust_2res = 1 UNION ALL SELECT cust_id2, concat(fname, " ", lname) As Full_Name FROM friends f, users u WHERE cust_id1  = ' + userID + ' AND f.cust_id2 = u.cust_id AND cust_2res = 1;';
+        
         // Add Friends 
-        //const getAddFriend = 'INSERT INTO friends (CustID_1, CustID_2) VALUES (' + userID + ', '+ userID2 + ')';
+        //const insertAddFriend = 'INSERT INTO friends (cust_id1, cust_id2) VALUES (' + userID + ', '+ userID2 + ')';
         
         // Friend respons -not complete
         //const getFriendResp = 'UPDATE friends SET Cust_2res = 1 WHERE CustID_1 =  AND CustID_2 = ' + userID + '';
@@ -52,8 +53,8 @@ router.get('/:user_id/:user_id2', async (req, res) => {
 
             //Run query - fetch response
     //var ReqFriendsList = await pool.query(getReqFriendsList);
-    //var AddFriend = await pool.query(getAddFriend);
     //var FriendResp = await pool.query(getFriendResp);
+    //var addFriend = await pool.query(insertAddFriend);
     var testQueryResp = await pool.query(testQuery);
     var friendsList = await pool.query(getFriendsList);
 

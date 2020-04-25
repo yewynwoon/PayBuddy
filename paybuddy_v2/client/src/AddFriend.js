@@ -4,12 +4,16 @@ class AddFriend extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { friends_list: "" };
+        this.state = {
+            friends_list: "",
+            addfriend_id: ""
+        };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     callAPI() {
-        fetch('http://localhost:9000/addfriend/1/3')
+        fetch('http://localhost:9000/addfriend/1')
+        //fetch('http://localhost:9000/addfriend/1/3')
             .then((response) => {
                 return response.json();
             })
@@ -92,8 +96,8 @@ class AddFriend extends React.Component {
                         {
                             <thead>
                             <tr>
-                                <th>CUST ID 1</th>
-                                <th>CUST ID 2</th>
+                                <th>Friend ID</th>
+                                <th>Full Name</th>
                             </tr>
                         </thead>
                         }
@@ -109,8 +113,6 @@ class AddFriend extends React.Component {
 
 
     }
-
-
 
 
 }
