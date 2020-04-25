@@ -15,7 +15,7 @@ class AddFriend extends React.Component {
             })
 
             .then((data) => {
-                console.log(data.friendsList);
+                console.log(data);
 
                 this.setState({
                     ...this.state,
@@ -39,12 +39,10 @@ class AddFriend extends React.Component {
         fetch('http://localhost:9000/addfriend/friendRequest/1/3', {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+
             },
             body: {
-                custID: 1
-                
-                
+
             }
         })
             .then((response) => {
@@ -60,11 +58,10 @@ class AddFriend extends React.Component {
                 })
 
             });
-            console.log(event);
         
     }
 
-    renderFriendTable() {
+    renderFriendListTable() {
         return Object.keys(this.state.friends_list).map((key) => {
             return (
                 <tr key={key}>
@@ -79,7 +76,6 @@ class AddFriend extends React.Component {
     render() {
         return (
             <div>
-                <h1>Hello</h1>
                 <div>
                     <form onSubmit={this.handleSubmit}>
                         <label>
@@ -96,13 +92,13 @@ class AddFriend extends React.Component {
                         {
                             <thead>
                             <tr>
-                                <th>Friend ID</th>
-                                <th>Friend Full Name</th>
+                                <th>CUST ID 1</th>
+                                <th>CUST ID 2</th>
                             </tr>
                         </thead>
                         }
                         <tbody>
-                            {this.renderFriendTable()}
+                            {this.renderFriendListTable()}
                         </tbody>
                     </table>
                 </div>
