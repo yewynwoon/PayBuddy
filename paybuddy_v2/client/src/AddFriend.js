@@ -7,10 +7,51 @@ class AddFriend extends React.Component {
         this.state = {
             friends_list: "",
             newFriend_Request_list: "",
-            addfriend_id: ""
+            addfriend_id: "",
+            aa: " "
         };
+
+       // this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+    /*handleChange(event) {
+        this.setState({ aa: event.target.aa });
+    }*/
+    handleSubmit(event) {
+        const v = this.state.newFriend_Request_list.cust_id1;
+
+        alert('A name was submitted: ' + v);
+        event.preventDefault();
+        console.log(v);
+
+        fetch('http://localhost:9000/addfriend/respondfriendRequest', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                userID: 1,
+                friend_id: 2,                             
+              })
+        })
+            .then((response) => {
+                return response.json();
+            })
+
+            .then((data) => {
+                console.log(data);
+                
+
+                this.setState({
+                    ...this.state,
+                    friends_list: data.testQueryResp
+                })
+
+            });
+
+    }
+  
 
     callAPI() {
         fetch('http://localhost:9000/addfriend/1')
@@ -40,7 +81,7 @@ class AddFriend extends React.Component {
 
 
 
-    handleSubmit(event) {
+  /*  handleSubmit(event) {
         event.preventDefault();
 
         alert('You Have Added a : ' + event);
@@ -60,6 +101,7 @@ class AddFriend extends React.Component {
 
             .then((data) => {
                 console.log(data);
+                
 
                 this.setState({
                     ...this.state,
@@ -68,7 +110,7 @@ class AddFriend extends React.Component {
 
             });
         
-    }
+    }*/
 
     renderFriendListTable() {
         return Object.keys(this.state.friends_list).map((key) => {
@@ -82,12 +124,14 @@ class AddFriend extends React.Component {
         })
     }
 
+
     renderNewFriendListTable() {
         return Object.keys(this.state.newFriend_Request_list).map((key) => {
             return (
                 <tr key={key}>
                     <td>{this.state.newFriend_Request_list[key].cust_id1}</td>
                     <td>{this.state.newFriend_Request_list[key].Full_Name}</td>
+                    <td><button type="submit" value={this.state.newFriend_Request_list.cust_id1} onClick={this.handleSubmit}>Accept</button> </td>
                 </tr>
 
             )
@@ -142,8 +186,8 @@ class AddFriend extends React.Component {
                         </tbody>
                     </table>
                 </div>
-
-
+                    <h1>Hello{this.state.aa}</h1>
+                    
             </div>
         );
 

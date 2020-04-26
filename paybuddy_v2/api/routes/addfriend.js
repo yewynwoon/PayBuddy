@@ -74,7 +74,27 @@ router.get('/:user_id', async (req, res) => {
   res.send(JSON.stringify({testQueryResp: testQueryResp, friendsList: friendsList, friendReqList: friendReqList/* userID: userID, ReqFriendsList : ReqFriendsList, AddFriend : AddFriend, FriendResp : FriendResp */})).end();
 });
 
-router.post('/friendRequest/:user_id/:user_id2', async (req, res) => {
+router.post('/respondfriendRequest', async (req, res) => {
+
+  const userID = req.body.userID;
+  const friend_id = req.body.friend_id;
+
+  try {
+
+    const postacceptFriendRequest = 'Update friends set cust_2res = 1 where cust_id1 = ' + friend_id + ' AND cust_id2 = ' + userID + ';';
+
+    await pool.query(postacceptFriendRequest);
+
+  } catch (err) {
+    // If something goes wrong, handle the error in this section. This might
+    // involve retrying or adjusting parameters depending on the situation.
+    // [START_EXCLUDE]
+    res.status(500).send('Unable to successfully insert transaction!').end();
+    // [END_EXCLUDE]
+  }
+  // [END cloud_sql_mysql_mysql_connection]
+
+  res.status(200).send(`Succesfull insertion!`).end();
 
 });
 
