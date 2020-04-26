@@ -37,6 +37,16 @@ AND Cust_2res = 1
 
 SELECT cust_id1 , concat(fname, " ", lname) As Full_Name FROM friends f, users u WHERE cust_id2 = 4 AND f.cust_id1  = u.cust_id AND cust_2res = 1 UNION ALL SELECT cust_id2, concat(fname, " ", lname) As Full_Name FROM friends f, users u WHERE cust_id1  = 4 AND f.cust_id2 = u.cust_id AND cust_2res = 1;
 
-UPDATE friends
-SET cust_2res = 1
-WHERE ;
+
+---------------------------------------------------
+get new friend requests list 
+
+SELECT cust_id1 , concat(fname, " ", lname) As Full_Name FROM friends f, users u WHERE cust_id2 = 1 AND f.cust_id1  = u.cust_id AND cust_2res = 0;
+
+
+
+
+
+
+
+

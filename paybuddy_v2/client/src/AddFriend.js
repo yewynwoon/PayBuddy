@@ -6,6 +6,7 @@ class AddFriend extends React.Component {
         super(props);
         this.state = {
             friends_list: "",
+            newFriend_Request_list: "",
             addfriend_id: ""
         };
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,11 +21,15 @@ class AddFriend extends React.Component {
 
             .then((data) => {
                 console.log(data);
+                
 
                 this.setState({
                     ...this.state,
-                    friends_list: data.friendsList
+                    friends_list: data.friendsList,
+                    newFriend_Request_list: data.friendReqList
                 })
+                //console.log(this.state.newFriend_Request_list);
+                
 
             });
     }
@@ -77,6 +82,18 @@ class AddFriend extends React.Component {
         })
     }
 
+    renderNewFriendListTable() {
+        return Object.keys(this.state.newFriend_Request_list).map((key) => {
+            return (
+                <tr key={key}>
+                    <td>{this.state.newFriend_Request_list[key].cust_id1}</td>
+                    <td>{this.state.newFriend_Request_list[key].Full_Name}</td>
+                </tr>
+
+            )
+        })
+    }
+
     render() {
         return (
             <div>
@@ -88,7 +105,7 @@ class AddFriend extends React.Component {
                         <input type="submit" value="Submit" />
                     </form>
                 </div>
-
+           
                 <div id='tablecontainer'>
                     <div id='tableheading'>Friend List</div>
                     <hr></hr>
@@ -106,6 +123,25 @@ class AddFriend extends React.Component {
                         </tbody>
                     </table>
                 </div>
+                
+                <div id='tablecontainer'>
+                    <div id='tableheading'>New Friend Request</div>
+                    <hr></hr>
+                    <table id='table'>
+                        {
+                            <thead>
+                            <tr>
+                                <th>Friend ID</th>
+                                <th>Full Name</th>
+                                <th>Respond</th>
+                            </tr>
+                        </thead>
+                        }
+                        <tbody>
+                            {this.renderNewFriendListTable()}
+                        </tbody>
+                    </table>
+                </div>
 
 
             </div>
@@ -113,6 +149,7 @@ class AddFriend extends React.Component {
 
 
     }
+
 
 
 }

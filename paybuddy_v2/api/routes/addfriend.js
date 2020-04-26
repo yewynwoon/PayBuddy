@@ -43,12 +43,12 @@ router.get('/:user_id', async (req, res) => {
     try {
         // Get Friends list of customer
         const getFriendsList = 'SELECT cust_id1 , concat(fname, " ", lname) As Full_Name FROM friends f, users u WHERE cust_id2 = ' + userID + ' AND f.cust_id1  = u.cust_id AND cust_2res = 1 UNION ALL SELECT cust_id2, concat(fname, " ", lname) As Full_Name FROM friends f, users u WHERE cust_id1  = ' + userID + ' AND f.cust_id2 = u.cust_id AND cust_2res = 1;';
-        
+        // Get new Friends request
+        const getFriendsNewReq = 'SELECT cust_id1 , concat(fname, " ", lname) As Full_Name FROM friends f, users u WHERE cust_id2 = ' + userID + ' AND f.cust_id1  = u.cust_id AND cust_2res = 0;'
+
         // Add Friends 
         //const insertAddFriend = 'INSERT INTO friends (cust_id1, cust_id2) VALUES (' + userID + ', '+ userID2 + ')';
         
-        // Friend respons -not complete
-        //const getFriendResp = 'UPDATE friends SET Cust_2res = 1 WHERE CustID_1 =  AND CustID_2 = ' + userID + '';
         const testQuery = 'select * from friends;';
 
             //Run query - fetch response
@@ -57,9 +57,10 @@ router.get('/:user_id', async (req, res) => {
     //var addFriend = await pool.query(insertAddFriend);
     var testQueryResp = await pool.query(testQuery);
     var friendsList = await pool.query(getFriendsList);
+    var friendReqList = await pool.query(getFriendsNewReq);
 
 
-    console.log(userID);
+    console.log(friendReqList);
 
 } catch (err) {
     // If something goes wrong, handle the error in this section. This might
@@ -70,7 +71,7 @@ router.get('/:user_id', async (req, res) => {
   } 
   // [END cloud_sql_mysql_mysql_connection]
 
-  res.send(JSON.stringify({testQueryResp: testQueryResp, friendsList: friendsList/* userID: userID, ReqFriendsList : ReqFriendsList, AddFriend : AddFriend, FriendResp : FriendResp */})).end();
+  res.send(JSON.stringify({testQueryResp: testQueryResp, friendsList: friendsList, friendReqList: friendReqList/* userID: userID, ReqFriendsList : ReqFriendsList, AddFriend : AddFriend, FriendResp : FriendResp */})).end();
 });
 
 router.post('/friendRequest/:user_id/:user_id2', async (req, res) => {
