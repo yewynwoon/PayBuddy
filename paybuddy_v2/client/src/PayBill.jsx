@@ -6,7 +6,7 @@ import { getAccBalance, checkBPayPayment } from './util/api-calls';
 
 const PayBillForm = props => {
     return (
-        <main id='cous'>
+        <main class='fade-in-fast' id='cous'>
             <div class='header-id'>
                 <h2 class='header-text'>Enter bill details</h2>
             </div>
@@ -58,7 +58,7 @@ const PayBillForm = props => {
 
 const PayBillConfirm = props => {
     return (
-        <main id='cous'>
+        <main class='fade-in-fast' id='cous'>
             <div id='header-id'>
                 <h2 class='header-text'>Confirm your payment</h2>
             </div>

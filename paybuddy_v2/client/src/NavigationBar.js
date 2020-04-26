@@ -5,10 +5,7 @@ import './client.css'
 import { Menu }  from 'semantic-ui-react'
 
 const NavigationBar = () => {
-  const {authState, authService} = useOktaAuth();
-  const login = async () => authService.login('/');
-  const logout = async () => authService.logout('/');
-
+const {authState, authService} = useOktaAuth();
   return (
     <div class='topnav'>
       {authState.isAuthenticated && (
@@ -31,19 +28,33 @@ const NavigationBar = () => {
         <ActivePayBill />
       </Menu.Item>
       )}
-      <span id='navlogout'>
-        {authState.isAuthenticated && (
-        <Menu.Item as ="a" onClick={logout}>
-          Logout      
-        </Menu.Item>
-        )}
-      </span>
-      <span id='navlogin'>
-        {!authState.isPending && !authState.isAuthenticated && (<Menu.Item as="a" onClick={login}>
-        Login
-        </Menu.Item>
-        )}
-      </span>
+    </div>
+  );
+}
+
+// You can think of these components as "pages"
+// in your app.
+
+function Index() {
+  return (
+    <div>
+      <DashboardComp user_id='1'/>
+    </div>
+  );
+}
+
+function FundsDeposit() {
+  return (
+    <div>
+      <FundsDepositComp/>
+    </div>
+  );
+}
+
+function PayBill() {
+  return (
+    <div>
+      <PayBillComp/>
     </div>
   );
 }
