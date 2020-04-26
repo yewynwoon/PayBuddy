@@ -1,28 +1,8 @@
 import React from "react";
 import { useLocation } from 'react-router-dom'
 import {useOktaAuth} from '@okta/okta-react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-import DashboardComp from './Dashboard';
-import FundsDepositComp from './FundsDeposit';
-import PayBillComp from './PayBill';
-import LoginPage from './Login';
 import './client.css'
-import { Container, Icon, Image, Menu }  from 'semantic-ui-react'
-
-// This site has 3 pages, all of which are rendered
-// dynamically in the browser (not server rendered).
-//
-// Although the page does not ever refresh, notice how
-// React Router keeps the URL up to date as you navigate
-// through the site. This preserves the browser history,
-// making sure things like the back button and bookmarks
-// work properly.
-
+import { Menu }  from 'semantic-ui-react'
 
 const NavigationBar = () => {
 const {authState, authService} = useOktaAuth();
@@ -36,6 +16,11 @@ const {authState, authService} = useOktaAuth();
       {authState.isAuthenticated && (
       <Menu.Item as ="a" header href="/FundsDeposit">
         <ActiveFunds />
+      </Menu.Item>
+      )}
+      {authState.isAuthenticated && (
+      <Menu.Item as ="a" header href="/UserTransfer">
+        <ActiveTransfer />
       </Menu.Item>
       )}
       {authState.isAuthenticated && (
@@ -106,6 +91,18 @@ function ActiveFunds() {
   }
 }
 
+function ActiveTransfer() {
+  if (GetLocation() == '/UserTransfer') {
+    return (
+      <a id="activeNav">TRANSFER</a>
+    )
+  } else {
+    return (
+      <a>TRANSFER</a>
+    )
+  }
+}
+
 function ActivePayBill() {
   if (GetLocation() == '/PayBill') {
     return (
@@ -117,4 +114,5 @@ function ActivePayBill() {
     )
   }
 }
+
 export default NavigationBar;
