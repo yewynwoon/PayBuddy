@@ -37,45 +37,56 @@ createPool();
 router.post('/', async (req, res) => {
   var srcID = req.body.src_id;
   var destID = req.body.dest_id;
-  var amount = req.body.amount;
+  var amount = parseInt(req.body.amount);
   var descrip = req.body.descrip;
   var dateStamp = new Date();
 
   try {
-     
-    //Get current acct_value of customer
-    const query = 'insert into cust_transfer (src_cust_id, dest_cust_id, amount, description, date_stamp) values (?,?,?,?,?);';
+    //Get source user account value
+    const getSrcAcctValueQuery = 'select account_value from users where cust_id = ' + srcID + ';';
+    var srcAcctValue = await pool.query(getSrcAcctValueQuery);
 
-    //Get current acct_value of customer
-    const getAcctValueQuery = 'select account_value from users where cust_id = ' + srcID + ';';
+    //Ensure source user exists & has available funds
+    if (srcAcctValue[0] == null) {
+      console.log('Incorrect src id');
+      res.status(500).end('Incorrect src id');
+    } else if (parseInt(srcAcctValue[0].account_value) < amount) {
+      console.log('Insufficient Funds');
+      res.status(500).end('Insufficient Funds');
+    }
 
-    //Run query - fetch response
-    var oldAcctValue = await pool.query(getAcctValueQuery);
-    var newAcctTotal = oldAcctValue[0].account_value + amount;
+    //Get dest user account value
+    const getDstAcctValueQuery = 'select account_value from users where cust_id = ' + destID + ';';
+    var dstAcctValue = await pool.query(getDstAcctValueQuery);
 
-    //Get current acct_value of customer
-    const setAcctValueQuery = 'update users set account_value=' + newAcctTotal + ' where cust_id=' + srcID + ';';
-    await pool.query(setAcctValueQuery);
+    //Ensure source user exists
+    if (dstAcctValue[0] == null) {
+      console.log('Incorrect dst id');
+      res.status(500).end('Incorrect dst id');
+    }
 
-    //Run query - fetch response
-    await pool.query(query, [srcID,destID,amount,descrip,dateStamp]);
+    //Updated user account values
+    const newSrcCustAmt = parseInt(srcAcctValue[0].account_value) - parseInt(amount);
+    const newDstCustAmt = parseInt(dstAcctValue[0].account_value) + parseInt(amount);
 
-    /* console.log(userID);
-    console.log(acctValue);
-    console.log(pastDeposits);
-    console.log(pastPayments); */
-     
+    //Update user account balues
+    const updateSrcCust = 'update users set account_value=' + newSrcCustAmt + ' where cust_id=' + srcID + ';';
+    const updateDstCust = 'update users set account_value=' + newDstCustAmt + ' where cust_id=' + destID + ';';
+    
+    await pool.query(updateSrcCust);
+    await pool.query(updateDstCust);
+    
+    //Insert transaction record
+    const insertTransact = 'insert into cust_transfer (src_cust_id, dest_cust_id, amount, description, date_stamp) values (?,?,?,?,?);';
+    await pool.query(insertTransact, [srcID,destID,amount,descrip,dateStamp]);
+
+    console.log('Success!');
+    res.status(200).end('Success!');
+
   } catch (err) {
-    // If something goes wrong, handle the error in this section. This might
-    // involve retrying or adjusting parameters depending on the situation.
-    // [START_EXCLUDE]
     console.log(err);
-    res.status(500).end('Unable to successfully insert transaction!');
-    // [END_EXCLUDE]
-  } 
-  // [END cloud_sql_mysql_mysql_connection]
-
-  res.status(200).send(`Succesfull insertion!`).end();
+    res.status(500).end('Fail');
+  }
 });
 
 module.exports = router;

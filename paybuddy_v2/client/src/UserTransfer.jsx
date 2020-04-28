@@ -74,7 +74,7 @@ const TransferConfirm = props => {
                         </div>
                     </div>
                     <div class='button-container'>
-                        <button id="submit-button" /* onClick={props.onSubmit} */ class="_16apt _2Y_Wp">
+                        <button id="submit-button" onClick={props.onSubmit} class="_16apt _2Y_Wp">
                             <span>Transfer</span>
                         </button>
                         <button id="cancel-button" onClick={props.cancelPayment} class="_16apt _2Y_Wp">
@@ -119,50 +119,25 @@ function UserTransfer(props) {
 
        
     function validatePayment(event) {
-        debugger;
-        getAccBalance(1, function(response) {
-            debugger;
-            console.log(response[0].account_value);
+        fetch('http://localhost:9000/transferFunds', {
+            method: 'post',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                src_id: '1',
+                dest_id: transfer.destID.value,
+                amount: transfer.amount.value,
+                descrip: transfer.descrip.value
+            })
+        }).then(function (responseFromServer) {
+            if(responseFromServer.status === 200) {
+                console.log('responseFromServer');
 
-            var transferValue = transfer.amount.value;
-
-            if(parseInt(response[0].account_value) > parseInt(transferValue,10)) {
-
-                console.log('Sufficient funds');
-                debugger;
-                
-                fetch(`http://localhost:9000/transferFunds`, {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        srcID: '1',
-                        destID: transfer.destID.value,
-                        amount: transfer.amount.value,
-                        descrip: transfer.descrip.value
-                    })
-                })
-                .then((response) => {
-                    debugger;
-                    console.log(response);
-                    console.log(response.status);
-
-                    if(response.status === 200) {
-                        console.log('responseFromServer');
-
-                        //Page re-route
-                        window.location.href = "/Dashboard?user_id=1";
-                    } else {
-                        console.log('API error');
-                        setErr('API error');
-                    }
-                });
-                debugger;
+                //Page re-route
+                window.location.href = "/Dashboard?user_id=1";
             } else {
-                console.log('Not Valid');
-                setErr('Insufficient funds');
-                return;
+                console.log('API error');
             }
         });
     }
