@@ -11,17 +11,13 @@ const TransferForm = props => {
             </div>
             <div class="box">
                 <div class="inner-box" id="box-body-id">
-                    <form /* onSubmit={props.onSubmit} */>
+                    <form onSubmit={props.onSubmit}>
                         <div class="bpay-logo">Funds Tranfer</div>
                         <hr></hr>
                         <div class='upper-inner-box'>
                             <div class='text-line'>
-                                Username:
-                                <input id='username' type="text" placeholder=' Username *' /* onBlur={props.verifyBillerCode.bind(this)} */ required/>
-                            </div>
-                            <div class='text-line'>
-                                Account Number:
-                                <input id='accnumber' type="text" placeholder=' Acc Number *' required/>
+                                User ID:
+                                <input id='destID' type="text" placeholder=' User ID *' required/>
                             </div>
                         </div>
                         <hr></hr>
@@ -58,36 +54,30 @@ const TransferConfirm = props => {
             <div class='box'>
                 <div class='inner-box' id='box-body-id'>
                 <hr></hr>
-                    <div class='upper-inner-box'>
-                        <div class='biller-details'>
-                            User Name:
-                            {/* {props.bill.billerName} */}
-                        </div>
-                    </div>
                     <div class='middle-inner-box'>
                         <div class='payment-details'>
-                            Account Number:
-                            <div class='payment-dexcription-text-box'>{/* {props.bill.billerCode.value} */}</div>
+                            User ID:
+                            <div class='payment-dexcription-text-box'>{props.transfer.destID.value}</div>
                         </div>
                     </div>
                     <hr></hr>
                     <div class='middle-inner-box'>
                         <div class='payment-details'>
                             Amount:
-                            <div class='payment-dexcription-text-box'>${/* {props.bill.amount.value} */}</div>
+                            <div class='payment-dexcription-text-box'>${props.transfer.amount.value}</div>
                         </div>
                     </div>
                     <div class='middle-inner-box'>
                         <div class='payment-details'>
                             Description:
-                            <div class='payment-dexcription-text-box'>${/* {props.bill.amount.value} */}</div>
+                            <div class='payment-dexcription-text-box'>{props.transfer.descrip.value}</div>
                         </div>
                     </div>
                     <div class='button-container'>
-                        <button id="submit-button" /* onClick={props.onSubmit} */ class="_16apt _2Y_Wp">
-                            <span>Make Payment</span>
+                        <button id="submit-button" onClick={props.onSubmit} class="_16apt _2Y_Wp">
+                            <span>Transfer</span>
                         </button>
-                        <button id="cancel-button" /* onClick={props.cancelPayment} */ class="_16apt _2Y_Wp">
+                        <button id="cancel-button" onClick={props.cancelPayment} class="_16apt _2Y_Wp">
                             <span>Cancel</span>
                         </button>
                     </div>
@@ -101,13 +91,13 @@ function UserTransfer(props) {
 
     const [show, setShow] = useState(false);
     const [err, setErr] = useState(false);
-    const [bill, setBill] = useState('');
+    const [transfer, setTransfer] = useState('');
     const [api, setApi] = useState('');
 
     const showConfirm = () => setShow(true);
     const closeConfirm = () => {
         //debugger;
-        setBill('');
+        setTransfer('');
         setShow(false);
     };
 
@@ -115,86 +105,39 @@ function UserTransfer(props) {
         //debugger;
         
         event.preventDefault();
-        const { username, accnumber, amount, descrip } = event.target.elements;
+        const { destID, amount, description } = event.target.elements;
         
-        setBill({
+        setTransfer({
             userID: 1,
-            username: username,
-            accnumber: accnumber,
+            destID: destID,
             amount: amount,
-            descrip: descrip
+            descrip: description
         }); 
     
         showConfirm();
     }
 
-    function verifyBillerCode(event) {
-        if(event.target.value === '') {
-            setBill('');
-        } else {
-            fetch(`http://localhost:9000/payments/biller/${event.target.value}`)
-            .then((response) => {
-                return response.json();
-            })
-            .then((data) => {
-                setBill(data.longName);
-                return;
-            });
-        }
-    }
-    
+       
     function validatePayment(event) {
-        debugger;
-        getAccBalance(1, function(response) {
-            debugger;
-            console.log(response[0].account_value);
+        fetch('http://localhost:9000/transferFunds', {
+            method: 'post',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                src_id: '1',
+                dest_id: transfer.destID.value,
+                amount: transfer.amount.value,
+                descrip: transfer.descrip.value
+            })
+        }).then(function (responseFromServer) {
+            if(responseFromServer.status === 200) {
+                console.log('responseFromServer');
 
-            var billValue = bill.amount.value;
-
-            if(parseInt(response[0].account_value) > parseInt(billValue,10)) {
-
-                console.log('Sufficient funds');
-                debugger;
-
-                /* checkBPayPayment(bill, function(response) {
-                    console.log(response.text);
-                    debugger;
-                }); */
-                
-                fetch(`http://localhost:9000/payments/validatePayment`, {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        userID: '1',
-                        payment: {
-                            billerCode: bill.billerCode.value,
-                            crn: bill.crn.value,
-                            amount: parseFloat(bill.amount.value)
-                        }
-                    })
-                })
-                .then((response) => {
-                    debugger;
-                    console.log(response);
-                    console.log(response.status);
-
-                    if(response.status === 200) {
-                        console.log('responseFromServer');
-
-                        //Page re-route
-                        window.location.href = "/Dashboard?user_id=1";
-                    } else {
-                        console.log('API error');
-                        setErr('API error');
-                    }
-                });
-                debugger;
+                //Page re-route
+                window.location.href = "/Dashboard?user_id=1";
             } else {
-                console.log('Not Valid');
-                setErr('Insufficient funds');
-                return;
+                console.log('API error');
             }
         });
     }
@@ -202,9 +145,8 @@ function UserTransfer(props) {
     return (
         <div>
             {
-                !show ? <TransferForm verifyBillerCode={verifyBillerCode}
-                                      onSubmit={handleSubmit}/>
-                      : <TransferConfirm bill={bill}
+                !show ? <TransferForm onSubmit={handleSubmit}/>
+                      : <TransferConfirm transfer={transfer}
                                          onSubmit={validatePayment}
                                          error={err}
                                          cancelPayment={closeConfirm}/>

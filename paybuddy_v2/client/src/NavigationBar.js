@@ -32,33 +32,6 @@ const {authState, authService} = useOktaAuth();
   );
 }
 
-// You can think of these components as "pages"
-// in your app.
-
-function Index() {
-  return (
-    <div>
-      <DashboardComp user_id='1'/>
-    </div>
-  );
-}
-
-function FundsDeposit() {
-  return (
-    <div>
-      <FundsDepositComp/>
-    </div>
-  );
-}
-
-function PayBill() {
-  return (
-    <div>
-      <PayBillComp/>
-    </div>
-  );
-}
-
 function GetLocation() {
   let location = useLocation();
   console.log(location.pathname);
