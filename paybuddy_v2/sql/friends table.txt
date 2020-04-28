@@ -45,6 +45,15 @@ SELECT cust_id1 , concat(fname, " ", lname) As Full_Name FROM friends f, users u
 
 
 
+expirement------------
+Y(2) send friend request to J(1)
+insert into friends values(2, 1, 1, 0);
+delete ye from friends
+delete from friends where cust_id1 = 2 and cust_id2;
+
+
+
+
 
 
 

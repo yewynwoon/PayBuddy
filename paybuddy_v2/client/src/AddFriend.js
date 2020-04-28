@@ -8,20 +8,25 @@ class AddFriend extends React.Component {
             friends_list: "",
             newFriend_Request_list: "",
             addfriend_id: "",
-            aa: " "
+            aa: " ",
+          
+
         };
 
+        // for input form
+        this.handleChange1 = this.handleChange1.bind(this);
+        this.handleSubmit1 = this.handleSubmit1.bind(this);
+
+        //for accept friend form 
        // this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    /*handleChange(event) {
-        this.setState({ aa: event.target.aa });
-    }*/
-    handleSubmit(event) {
-        const v = this.state.newFriend_Request_list.cust_id1;
 
-        alert('A name was submitted: ' + v);
+    handleSubmit(event) {
+        const v = this.state.newFriend_Request_list.Full_Name;
+
+        alert('confirm');
         event.preventDefault();
         console.log(v);
 
@@ -79,9 +84,38 @@ class AddFriend extends React.Component {
         this.callAPI();
     }
 
+    // for input form
+    handleChange1(event) {
+        this.setState({ addfriend_id: event.target.value });
+    }
+    handleSubmit1(event) {
+        alert('A friend was added: ' + this.state.addfriend_id);
+        event.preventDefault();
+
+        fetch('http://localhost:9000/addfriend/addfriend-by-id', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                userID: 1,
+                friend_id: this.state.addfriend_id,                             
+              })
+        })
+            .then((response) => {
+                return response.json();
+            })
+
+            .then((data) => {
+                console.log(data);       
+
+            });
+    }
 
 
-  /*  handleSubmit(event) {
+/*
+
+    handleSubmit1(event) {
         event.preventDefault();
 
         alert('You Have Added a : ' + event);
@@ -110,7 +144,8 @@ class AddFriend extends React.Component {
 
             });
         
-    }*/
+    }
+    */
 
     renderFriendListTable() {
         return Object.keys(this.state.friends_list).map((key) => {
@@ -141,11 +176,12 @@ class AddFriend extends React.Component {
     render() {
         return (
             <div>
+
                 <div>
-                    <form onSubmit={this.handleSubmit}>
+                    <form onSubmit={this.handleSubmit1}>
                         <label>
                             Name:
-                        <input type="text" />        </label>
+          <input value={this.state.addfriend_id} onChange={this.handleChange1} />        </label>
                         <input type="submit" value="Submit" />
                     </form>
                 </div>
@@ -186,7 +222,6 @@ class AddFriend extends React.Component {
                         </tbody>
                     </table>
                 </div>
-                    <h1>Hello{this.state.aa}</h1>
                     
             </div>
         );
