@@ -85,30 +85,34 @@ router.post('/validatePayment', async (req, res) => {
             },
             json: true
         };
-        
-        request(options).then(function (response) {
-
+            
+        request(options)
+        .then(function(res1) {
             const options1 = {
                 url: 'https://sandbox.api.bpaygroup.com.au/payments/v1/validatepayments',
                 method: 'POST',
                 headers: {
-                    Authorization: 'Bearer ' + response.access_token,
+                    Authorization: 'Bearer ' + res1.access_token,
                     Accept: 'application/json',
                     'Content-Type': "application/json"
                 },
                 json: {
-                    'payments': [{
-                        'tid': 1,
-                        'payment': req.body.payment
+                    "payments": [{
+                        "tid": "1",
+                        "payment": req.body.payment
                     }]
                 }
             };
-        
-            request(options1).then(function (response1) {
-
-                console.log('Valid payment!');
-                console.log(response1);
+            request(options1)
+            .then(function(res2) {
+              console.log(res2);
+            }).catch(function(err1) {
+              console.log(err1);
+              res.end(err1);   //PAYMENT VERIFICATION ERROR
             });
+        }).catch(function(err) { 
+            console.log(err);
+            res.end(err);    //OAUTH ERROR
         });
 
     
