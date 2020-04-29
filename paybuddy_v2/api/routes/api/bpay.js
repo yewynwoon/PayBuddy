@@ -20,7 +20,7 @@ var request = require('request-promise');
   });
 } */
 
-var validateBillerCode =  function validateBillerCode(billerCode, cb) {
+var validateBillerCode = function validateBillerCode(billerCode, cb) {
   const options = {
     url: 'https://sandbox.api.bpaygroup.com.au/oauth/token',
     method: 'POST',

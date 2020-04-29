@@ -90,6 +90,10 @@ const PayBillConfirm = props => {
                             Amount:
                             <div class='payment-dexcription-text-box'>${props.bill.amount.value}</div>
                         </div>
+                        <div class='payment-details'>
+                            Description:
+                            <div class='payment-dexcription-text-box'>{props.bill.description.value}</div>
+                        </div>
                     </div>
                     <div class='button-container'>
                         <button id="submit-button" onClick={props.onSubmit} class="_16apt _2Y_Wp">
@@ -123,7 +127,7 @@ function PayBill(props) {
         //debugger;
         
         event.preventDefault();
-        const { bllerCode, crn, amount, descrip } = event.target.elements;
+        const { bllerCode, crn, amount, description } = event.target.elements;
 
         if (bllerCode === '' || crn === '' || amount === '')
         {
@@ -136,7 +140,7 @@ function PayBill(props) {
                 billerCode: bllerCode,
                 crn: crn,
                 amount: amount,
-                descrip: descrip
+                description: description
             }); 
     
             showConfirm();
@@ -159,7 +163,34 @@ function PayBill(props) {
     }
     
     function validatePayment(event) {
-        debugger;
+        fetch('http://localhost:9000/payments/validatePayment', {
+            method: 'post',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                userID: '1',
+                payment: {
+                    billerCode: 65284,//bill.billerCode.value,
+                    crn: 65112345672,//bill.crn.value, 
+                    amount: 1045.98,//parseFloat(bill.amount.value),
+                    settlementDate: "2017-10-23",
+                    paymentMethod: "001",
+                    paymentDate: "2019-01-10"
+                },
+                description: bill.description.value
+            })
+        }).then(function (responseFromServer) {
+            if(responseFromServer.status === 200) {
+                console.log('responseFromServer');
+
+                //Page re-route
+                //window.location.href = "/Dashboard?user_id=1";
+            } else {
+                console.log('API error');
+            }
+        });
+        /* debugger;
         getAccBalance(1, function(response) {
             debugger;
             console.log(response[0].account_value);
@@ -171,10 +202,10 @@ function PayBill(props) {
                 console.log('Sufficient funds');
                 debugger;
 
-                /* checkBPayPayment(bill, function(response) {
+                checkBPayPayment(bill, function(response) {
                     console.log(response.text);
                     debugger;
-                }); */
+                });
                 
                 fetch(`http://localhost:9000/payments/validatePayment`, {
                     method: 'POST',
@@ -214,7 +245,7 @@ function PayBill(props) {
                 setErr('Insufficient funds');
                 return;
             }
-        });
+        }); */
     }
 
     return (
