@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './client.css';
 import './paybill.css';
-import { getAccBalance } from './util/api-calls';
 
 const TransferForm = props => {
     return (

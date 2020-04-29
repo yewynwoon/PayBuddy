@@ -23,7 +23,7 @@ class Dashboard extends React.Component {
             this.setState({
                 ...this.state,
                 cust_acct_value: data.acctValue[0].account_value,
-                cust_transacts: data.pastPayments.concat(data.pastDeposits)
+                cust_transacts: data.transactions
             })
         });
     }
@@ -34,12 +34,29 @@ class Dashboard extends React.Component {
 
     renderTableData() {
         return Object.keys(this.state.cust_transacts).map((key) => {
+
+            var data = this.state.cust_transacts[key].date_stamp.substring(5, 10).split('-');
+            var date = data[1] + '-' + data[0];
+
+            var descrip = this.state.cust_transacts[key].description;
+
+            var amount;
+            var type;
+
+            if (this.state.cust_transacts[key].type == 'credit') {
+                amount = '+$' + this.state.cust_transacts[key].amount;
+                type = 'credit';
+            } else {
+                amount = '-$' + this.state.cust_transacts[key].amount;
+                type = 'debit';
+            }
+
             return (
                 <tr key={key}>
-                    <td>{this.state.cust_transacts[key].deposit_id}</td>
-                    <td>{this.state.cust_transacts[key].bpay_payment_id}</td>
-                    <td>{this.state.cust_transacts[key].amount}</td>
-                    <td>{this.state.cust_transacts[key].date_stamp}</td>
+                    <td>{date}</td>
+                    <td>{descrip}</td>
+                    <td>{type}</td>
+                    <td>{amount}</td>
                 </tr>
             )
         })
@@ -64,7 +81,7 @@ class Dashboard extends React.Component {
                             <span id='moneycontents'>
                                 <div id="currency">AUD</div>
                                 <div id='accbalance'>${parseFloat(this.state.cust_acct_value).toFixed(2)}</div>
-                                <a href="a" id='editfunds'>ADD FUNDS</a>
+                                <a href="/FundsDeposit" id='editfunds'>ADD FUNDS</a>
                             </span>
                         </div>
                     </div>
@@ -73,16 +90,14 @@ class Dashboard extends React.Component {
                         <div id='tableheading'>RECENT ACTIVITY</div>
                         <hr></hr>
                         <table id='table'>
-                            { 
-                                <thead>
-                                    <tr>
-                                        <th>DEPOSIT ID</th>
-                                        <th>PAYMENT ID</th>
-                                        <th>AMOUNT</th>
-                                        <th>TRANSACTION DATE</th>
-                                    </tr>
-                                </thead>
-                            }
+                            <thead>
+                                <tr>
+                                    <th>DATE</th>
+                                    <th>DESCRIPTION</th>
+                                    <th>TYPE</th>
+                                    <th>AMOUNT</th>
+                                </tr>
+                            </thead>
                             <tbody>
                                 {this.renderTableData()}
                             </tbody>
