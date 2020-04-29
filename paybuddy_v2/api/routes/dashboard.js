@@ -77,7 +77,7 @@ router.get('/:user_id', async (req, res) => {
 
     var lastTenTransacts = transactions.slice(0,13);
 
-    console.log(transactions);
+    //console.log(transactions);
 
     /* console.log(userID);
     console.log(acctValue);

@@ -90,6 +90,10 @@ const PayBillConfirm = props => {
                             Amount:
                             <div class='payment-dexcription-text-box'>${props.bill.amount.value}</div>
                         </div>
+                        <div class='payment-details'>
+                            Description:
+                            <div class='payment-dexcription-text-box'>{props.bill.description.value}</div>
+                        </div>
                     </div>
                     <div class='button-container'>
                         <button id="submit-button" onClick={props.onSubmit} class="_16apt _2Y_Wp">
@@ -98,6 +102,7 @@ const PayBillConfirm = props => {
                         <button id="cancel-button" onClick={props.cancelPayment} class="_16apt _2Y_Wp">
                             <span>Cancel</span>
                         </button>
+                        {props.err}
                     </div>
                 </div>
             </div>
@@ -123,24 +128,18 @@ function PayBill(props) {
         //debugger;
         
         event.preventDefault();
-        const { bllerCode, crn, amount, descrip } = event.target.elements;
+        const { bllerCode, crn, amount, description } = event.target.elements;
 
-        if (bllerCode === '' || crn === '' || amount === '')
-        {
-            return;
-        }
-        else {
-            setBill({
-                userID: 1,
-                billerName: bill,
-                billerCode: bllerCode,
-                crn: crn,
-                amount: amount,
-                descrip: descrip
-            }); 
-    
-            showConfirm();
-        }
+        setBill({
+            userID: 1,
+            billerName: bill,
+            billerCode: bllerCode,
+            crn: crn,
+            amount: amount,
+            description: description
+        });
+
+        showConfirm();
     }
 
     function verifyBillerCode(event) {
@@ -159,60 +158,34 @@ function PayBill(props) {
     }
     
     function validatePayment(event) {
-        debugger;
-        getAccBalance(1, function(response) {
+
+        fetch(`http://localhost:9000/payments/validatePayment`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify({
+                userID: '1',
+                payment: {
+                    billerCode: bill.billerCode.value,
+                    crn: bill.crn.value,
+                    amount: parseFloat(bill.amount.value),
+                    settlementDate: "2017-10-23",
+                    paymentMethod: "001",
+                    paymentDate: "2019-01-10"
+                },
+                description: bill.description.value
+            })
+        }).then((response) => {
             debugger;
-            console.log(response[0].account_value);
+            setApi(response);
+            console.log(response);
 
-            var billValue = bill.amount.value;
-
-            if(parseInt(response[0].account_value) > parseInt(billValue,10)) {
-
-                console.log('Sufficient funds');
-                debugger;
-
-                /* checkBPayPayment(bill, function(response) {
-                    console.log(response.text);
-                    debugger;
-                }); */
-                
-                fetch(`http://localhost:9000/payments/validatePayment`, {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        userID: '1',
-                        payment: {
-                            billerCode: bill.billerCode.value,
-                            crn: bill.crn.value,
-                            amount: parseFloat(bill.amount.value),
-                            settlementDate: "2017-10-23",
-                            paymentMethod: "001",
-                            paymentDate: "2019-01-10"
-                        }
-                    })
-                })
-                .then((response) => {
-                    debugger;
-                    console.log(response);
-                    console.log(response.status);
-
-                    if(response.status === 200) {
-                        console.log('responseFromServer');
-
-                        //Page re-route
-                        window.location.href = "/Dashboard?user_id=1";
-                    } else {
-                        console.log('API error');
-                        setErr('API error');
-                    }
-                });
-                debugger;
-            } else {
-                console.log('Not Valid');
-                setErr('Insufficient funds');
-                return;
+            if (response.status === 200) {
+                window.location.href = "/Dashboard?user_id=1";
+            }
+            else {
+                setErr('Error!');
             }
         });
     }
