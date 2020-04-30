@@ -39,8 +39,10 @@ function Product({ product }) {
               body: JSON.stringify({
                 custID: 1,
                 value: product.price,
+                description: product.description + ': AU$' + product.price
               })
             }).then(function (responseFromServer) {
+              console.log(responseFromServer.status);
               if(responseFromServer.status === 200) {
                 console.log('responseFromServer');
 
