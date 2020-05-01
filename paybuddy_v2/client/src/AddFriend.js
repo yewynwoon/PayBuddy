@@ -17,19 +17,21 @@ class AddFriend extends React.Component {
         this.handleChange1 = this.handleChange1.bind(this);
         this.handleSubmit1 = this.handleSubmit1.bind(this);
 
-        //for accept friend form 
-       // this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        //for accept friend button
+        this.handleClick = this.handleClick.bind(this);
+
+    
+
     }
 
 
-    handleSubmit(event) {
-        const v = this.state.newFriend_Request_list.Full_Name;
+    handleClick(event) {
+        const friend_idq = event.target.id
 
         alert('confirm');
         event.preventDefault();
-        console.log(v);
-
+        console.log(friend_idq);
+        window.location.reload(false);
         fetch('http://localhost:9000/addfriend/respondfriendRequest', {
             method: 'POST',
             headers: {
@@ -37,7 +39,7 @@ class AddFriend extends React.Component {
             },
             body: JSON.stringify({
                 userID: 1,
-                friend_id: 2,                             
+                friend_id: friend_idq,                             
               })
         })
             .then((response) => {
@@ -46,7 +48,6 @@ class AddFriend extends React.Component {
 
             .then((data) => {
                 console.log(data);
-                
 
                 this.setState({
                     ...this.state,
@@ -54,9 +55,9 @@ class AddFriend extends React.Component {
                 })
 
             });
-
     }
-  
+
+    
 
     callAPI() {
         fetch('http://localhost:9000/addfriend/1')
@@ -166,7 +167,8 @@ class AddFriend extends React.Component {
                 <tr key={key}>
                     <td>{this.state.newFriend_Request_list[key].cust_id1}</td>
                     <td>{this.state.newFriend_Request_list[key].Full_Name}</td>
-                    <td><button type="submit" value={this.state.newFriend_Request_list.cust_id1} onClick={this.handleSubmit}>Accept</button> </td>
+                    <td><button type="submit" id={this.state.newFriend_Request_list[key].cust_id1} onClick={this.handleClick}>Accept</button> </td>
+                    <td><button type="submit" id={this.state.newFriend_Request_list[key].cust_id1} onClick={this.handleClickD}>Decline</button> </td>
                 </tr>
 
             )

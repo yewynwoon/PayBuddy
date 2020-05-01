@@ -74,6 +74,8 @@ router.get('/:user_id', async (req, res) => {
   res.send(JSON.stringify({testQueryResp: testQueryResp, friendsList: friendsList, friendReqList: friendReqList/* userID: userID, ReqFriendsList : ReqFriendsList, AddFriend : AddFriend, FriendResp : FriendResp */})).end();
 });
 
+
+//Accept friend request
 router.post('/respondfriendRequest', async (req, res) => {
 
   const userID = req.body.userID;
@@ -99,6 +101,8 @@ router.post('/respondfriendRequest', async (req, res) => {
 });
 
 
+
+//Add friend By ID 
 router.post('/addfriend-by-id', async (req, res) => {
 
   const userID = req.body.userID;
