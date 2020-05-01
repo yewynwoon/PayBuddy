@@ -20,8 +20,44 @@ class AddFriend extends React.Component {
         //for accept friend button
         this.handleClick = this.handleClick.bind(this);
 
+        //for Decline friend button
+        this.handleClick1 = this.handleClick1.bind(this);
+
     
 
+    }
+
+    //for Decline friend button
+    handleClick1(event) {
+        const decline_friend_id = event.target.id
+
+        alert('confirm');
+        event.preventDefault();
+        console.log(decline_friend_id);
+        window.location.reload(false);
+        fetch('http://localhost:9000/addfriend/declinefriendRequest', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                userID: 1,
+                friend_id: decline_friend_id,
+            })
+        })
+            .then((response) => {
+                return response.json();
+            })
+
+            .then((data) => {
+                console.log(data);
+
+                this.setState({
+                    ...this.state,
+                    friends_list: data.testQueryResp
+                })
+
+            });
     }
 
 
@@ -168,7 +204,7 @@ class AddFriend extends React.Component {
                     <td>{this.state.newFriend_Request_list[key].cust_id1}</td>
                     <td>{this.state.newFriend_Request_list[key].Full_Name}</td>
                     <td><button type="submit" id={this.state.newFriend_Request_list[key].cust_id1} onClick={this.handleClick}>Accept</button> </td>
-                    <td><button type="submit" id={this.state.newFriend_Request_list[key].cust_id1} onClick={this.handleClickD}>Decline</button> </td>
+                    <td><button type="submit" id={this.state.newFriend_Request_list[key].cust_id1} onClick={this.handleClick1}>Decline</button> </td>
                 </tr>
 
             )
