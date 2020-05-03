@@ -1,17 +1,27 @@
+import { withOktaAuth } from '@okta/okta-react';
 import React from 'react';
 import './client.css';
 import './fade-in-fast.css';
 import DP from './img/profilepic.png';
 
-class Dashboard extends React.Component {
+async function checkUser() {
+    if (this.props.authState.isAuthenticated && !this.state.userInfo) {
+      const userInfo = await this.props.authService.getUser();
+      this.setState({ userInfo });
+    }
+  }
+
+  export default withOktaAuth (class Dashboard extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
             cust_acct_value: "",
             pastPayments: "",
-            cust_transacts: ""
+            cust_transacts: "",
+            userInfo: null
         }
+        this.checkUser = checkUser.bind(this);
     }
 
     callAPI() {
@@ -30,7 +40,12 @@ class Dashboard extends React.Component {
     
     componentWillMount() {
         this.callAPI();
+        this.checkUser();
     }
+
+     componentDidUpdate() {
+        this.checkUser();
+      }
 
     renderTableData() {
         return Object.keys(this.state.cust_transacts).map((key) => {
@@ -71,9 +86,11 @@ class Dashboard extends React.Component {
                             <span>WELCOME BACK,</span>
                             <span id='customercontents'>
                                 <img id='profilepic' src={DP}></img>
-                                <span id='name'>THOMAS</span>
+                                <span id='name'>
+                                    {this.state.userInfo &&<div>{this.state.userInfo.name}</div>}
                             </span>
-                            <a href="a" id='editacc'>EDIT ACCOUNT</a>
+                            </span>
+                            <a href="https://dev-203865.okta.com/enduser/settings" id='editacc'>EDIT ACCOUNT</a>
                         </div>
                         <div id='moneybox'>
                             <span id='heading'>CURRENT BALANCE</span>
@@ -108,6 +125,5 @@ class Dashboard extends React.Component {
             </main>
         )
     }
-}
+})
 
-export default Dashboard;
