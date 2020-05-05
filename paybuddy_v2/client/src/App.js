@@ -8,6 +8,7 @@ import Footer from './Footer';
 import Login from './Login';
 import Dashboard from './Dashboard';
 import PayBill from './PayBill';
+import AddFriend from './AddFriend';
 import config from './config';
 import Home from './Home';
 import FundsDeposit from './FundsDeposit';
@@ -31,6 +32,7 @@ const HasAccessToRouter = () => {
         <SecureRoute path="/FundsDeposit" component={FundsDeposit} />
         <SecureRoute path="/UserTransfer" component={UserTransfer} />
         <SecureRoute path="/PayBill" component={PayBill} />
+        <SecureRoute path="/AddFriend" component={AddFriend} />
         <Footer/>
       </div>
     </Security>
