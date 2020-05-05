@@ -186,21 +186,21 @@ a:hover {
 #customercontents {
     display: block;
     margin: 2%;
-    text-align: left;
 }
 
 #profilepic {
-    width: 80px;
-    border-radius: 50%;
-    border: 5px solid white;
-    vertical-align: middle;
+    width: 70px;
+    float: left;
+    margin: 10px 10px 0 0;
 }
 
 #name {
-    padding-left: 3%;
-    letter-spacing: 2px;
+    padding-top: 12%;
+    width: inherit;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     font-family: 'robotoreg';
-    font-size: 25px;
+    font-size: 15px;
 }
 
 #editacc {

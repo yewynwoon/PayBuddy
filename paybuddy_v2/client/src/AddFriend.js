@@ -1,4 +1,5 @@
 import React from 'react';
+import './AddFriend.css';
 
 class AddFriend extends React.Component {
 
@@ -213,62 +214,59 @@ class AddFriend extends React.Component {
 
     render() {
         return (
-            <div>
-
-                <div>
-                    <form onSubmit={this.handleSubmit1}>
-                        <label>
-                            Name:
-          <input value={this.state.addfriend_id} onChange={this.handleChange1} />        </label>
-                        <input type="submit" value="Submit" />
-                    </form>
-                </div>
-           
-                <div id='tablecontainer'>
-                    <div id='tableheading'>Friend List</div>
-                    <hr></hr>
-                    <table id='table'>
-                        {
-                            <thead>
-                            <tr>
-                                <th>Friend ID</th>
-                                <th>Full Name</th>
-                            </tr>
-                        </thead>
-                        }
-                        <tbody>
-                            {this.renderFriendListTable()}
-                        </tbody>
-                    </table>
-                </div>
-                
-                <div id='tablecontainer'>
-                    <div id='tableheading'>New Friend Request</div>
-                    <hr></hr>
-                    <table id='table'>
-                        {
-                            <thead>
-                            <tr>
-                                <th>Friend ID</th>
-                                <th>Full Name</th>
-                                <th>Respond</th>
-                            </tr>
-                        </thead>
-                        }
-                        <tbody>
-                            {this.renderNewFriendListTable()}
-                        </tbody>
-                    </table>
-                </div>
+            <div class='fade-in-fast'>
+                <h2 id='title'>Add Friend</h2>
+                <div class='main'>
+                    <div id='addfriend'>
+                        <form onSubmit={this.handleSubmit1}>
+                            <label>
+                                NAME:
+                                <input id='textbox' placeholder=' User-ID' value={this.state.addfriend_id} onChange={this.handleChange1} />
+                            </label>
+                            <input id='submit' type="submit" value="Submit" />
+                        </form>
+                    </div>
+            
+                    <div id='tablecontainer'>
+                        <div id='tableheading'>FRIEND LIST</div>
+                        <hr></hr>
+                        <table id='table'>
+                            {
+                                <thead>
+                                <tr>
+                                    <th>Friend ID</th>
+                                    <th>Full Name</th>
+                                </tr>
+                            </thead>
+                            }
+                            <tbody>
+                                {this.renderFriendListTable()}
+                            </tbody>
+                        </table>
+                    </div>
                     
+                    <div id='tablecontainer'>
+                        <div id='tableheading'>NEW FRIEND REQUEST</div>
+                        <hr></hr>
+                        <table id='table'>
+                            {
+                                <thead>
+                                <tr>
+                                    <th>Friend ID</th>
+                                    <th>Full Name</th>
+                                    <th>Response</th>
+                                </tr>
+                            </thead>
+                            }
+                            <tbody>
+                                {this.renderNewFriendListTable()}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>        
             </div>
         );
-
-
     }
-
-
-
 }
 
 export default AddFriend;

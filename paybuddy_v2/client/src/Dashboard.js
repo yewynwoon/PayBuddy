@@ -86,9 +86,9 @@ async function checkUser() {
                             <span>WELCOME BACK,</span>
                             <span id='customercontents'>
                                 <img id='profilepic' src={DP}></img>
-                                <span id='name'>
+                                <div id='name'>
                                     {this.state.userInfo &&<div>{this.state.userInfo.name}</div>}
-                            </span>
+                                </div>
                             </span>
                             <a href="https://dev-203865.okta.com/enduser/settings" id='editacc'>EDIT ACCOUNT</a>
                         </div>
