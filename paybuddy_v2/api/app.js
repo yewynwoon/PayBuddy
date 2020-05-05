@@ -9,8 +9,8 @@ var dashboard = require('./routes/dashboard');
 var depositFundsPost = require('./routes/depositFundsPost');
 var payments = require('./routes/payments');
 var user = require('./routes/user');
+var addFriend = require('./routes/addfriend');
 var transferFunds = require('./routes/transferFunds');
-
 var app = express();
 
 // view engine setup
@@ -30,6 +30,7 @@ app.use('/dashboard', dashboard);
 app.use('/depositFundsPost', depositFundsPost);
 app.use('/payments', payments);
 app.use('/user', user);
+app.use('/addFriend', addFriend);
 app.use('/transferFunds', transferFunds);
 
 // catch 404 and forward to error handler

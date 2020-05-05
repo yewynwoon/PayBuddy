@@ -32,6 +32,13 @@ const {authState, authService} = useOktaAuth();
   );
 }
 
+function AddFriend() {
+  return (
+    <div>
+      <AddFriendComp/>
+    </div>
+  );
+}
 function GetLocation() {
   let location = useLocation();
   console.log(location.pathname);
