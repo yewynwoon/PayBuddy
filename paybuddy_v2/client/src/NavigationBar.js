@@ -28,6 +28,11 @@ const {authState, authService} = useOktaAuth();
         <ActivePayBill />
       </Menu.Item>
       )}
+      {authState.isAuthenticated && (
+      <Menu.Item as ="a" header href='/AddFriend'>
+        <ActiveAddFriend />
+      </Menu.Item>
+      )}
     </div>
   );
 }
@@ -35,10 +40,11 @@ const {authState, authService} = useOktaAuth();
 function AddFriend() {
   return (
     <div>
-      <AddFriendComp/>
+      <AddFriend/>
     </div>
   );
 }
+
 function GetLocation() {
   let location = useLocation();
   console.log(location.pathname);
@@ -91,6 +97,18 @@ function ActivePayBill() {
   } else {
     return (
       <a>PAY BILL</a>
+    )
+  }
+}
+
+function ActiveAddFriend() {
+  if (GetLocation() == '/AddFriend') {
+    return (
+      <a id="activeNav">ADD FRIEND</a>
+    )
+  } else {
+    return (
+      <a>ADD FRIEND</a>
     )
   }
 }
