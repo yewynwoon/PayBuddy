@@ -6,7 +6,7 @@ import { getAccBalance, checkBPayPayment } from './util/api-calls';
 
 const PayBillForm = props => {
     return (
-        <main id='cous'>
+        <main class='fade-in-fast' id='cous'>
             <div class='header-id'>
                 <h2 class='header-text'>Enter bill details</h2>
             </div>
@@ -45,7 +45,9 @@ const PayBillForm = props => {
                             </div>
                         </div>
                         <div class='lower-inner-box'>
-                            <input type ='submit' class="IzjkL _2Y_WL FiOTW continue-button"id="submit-button"/>
+                            <button class="IzjkL _2Y_WL FiOTW continue-button"id="submit-button">
+                                Confirm
+                            </button>
                         </div>
                   </form>
                 </div>
@@ -55,9 +57,8 @@ const PayBillForm = props => {
 }
 
 const PayBillConfirm = props => {
-    //debugger;
     return (
-        <main id='cous'>
+        <main class='fade-in-fast' id='cous'>
             <div id='header-id'>
                 <h2 class='header-text'>Confirm your payment</h2>
             </div>
@@ -73,30 +74,35 @@ const PayBillConfirm = props => {
                     </div>
                     <div class='middle-inner-box'>
                         <div class='payment-details'>
-                            <div class='payment-amount-text-box'>CRN:</div>
-                            <div class='payment-dexcription-text-box'>{props.bill.crn.value}</div>
-                        </div>
-                    </div>
-                    <div class='middle-inner-box'>
-                        <div class='payment-details'>
-                            <div class='payment-amount-text-box'>Amount:</div>
-                            <div class='payment-dexcription-text-box'>${props.bill.amount.value}</div>
-                        </div>
-                    </div>
-                    <div class='middle-inner-box'>
-                        <div class='payment-details'>
-                            <div class='payment-amount-text-box'>Biller Code:</div>
+                            Biller Code:
                             <div class='payment-dexcription-text-box'>{props.bill.billerCode.value}</div>
                         </div>
                     </div>
+                    <div class='middle-inner-box'>
+                        <div class='payment-details'>
+                            Reference Number:
+                            <div class='payment-dexcription-text-box'>{props.bill.crn.value}</div>
+                        </div>
+                    </div>
                     <hr></hr>
+                    <div class='middle-inner-box'>
+                        <div class='payment-details'>
+                            Amount:
+                            <div class='payment-dexcription-text-box'>${props.bill.amount.value}</div>
+                        </div>
+                        <div class='payment-details'>
+                            Description:
+                            <div class='payment-dexcription-text-box'>{props.bill.description.value}</div>
+                        </div>
+                    </div>
                     <div class='button-container'>
                         <button id="submit-button" onClick={props.onSubmit} class="_16apt _2Y_Wp">
-                            <span>Submit</span>
+                            <span>Make Payment</span>
                         </button>
                         <button id="cancel-button" onClick={props.cancelPayment} class="_16apt _2Y_Wp">
                             <span>Cancel</span>
                         </button>
+                        {props.err}
                     </div>
                 </div>
             </div>
@@ -122,24 +128,18 @@ function PayBill(props) {
         //debugger;
         
         event.preventDefault();
-        const { bllerCode, crn, amount, descrip } = event.target.elements;
+        const { bllerCode, crn, amount, description } = event.target.elements;
 
-        if (bllerCode === '' || crn === '' || amount === '')
-        {
-            return;
-        }
-        else {
-            setBill({
-                userID: 1,
-                billerName: bill,
-                billerCode: bllerCode,
-                crn: crn,
-                amount: amount,
-                descrip: descrip
-            }); 
-    
-            showConfirm();
-        }
+        setBill({
+            userID: 1,
+            billerName: bill,
+            billerCode: bllerCode,
+            crn: crn,
+            amount: amount,
+            description: description
+        });
+
+        showConfirm();
     }
 
     function verifyBillerCode(event) {
@@ -158,60 +158,34 @@ function PayBill(props) {
     }
     
     function validatePayment(event) {
-        debugger;
-        getAccBalance(1, function(response) {
+
+        fetch(`http://localhost:9000/payments/validatePayment`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify({
+                userID: '1',
+                payment: {
+                    billerCode: bill.billerCode.value,
+                    crn: bill.crn.value,
+                    amount: parseFloat(bill.amount.value),
+                    settlementDate: "2017-10-23",
+                    paymentMethod: "001",
+                    paymentDate: "2019-01-10"
+                },
+                description: bill.description.value
+            })
+        }).then((response) => {
             debugger;
-            console.log(response[0].account_value);
+            setApi(response);
+            console.log(response);
 
-            var billValue = bill.amount.value;
-
-            if(parseInt(response[0].account_value) > parseInt(billValue,10)) {
-
-                console.log('Sufficient funds');
-                debugger;
-
-                /* checkBPayPayment(bill, function(response) {
-                    console.log(response.text);
-                    debugger;
-                }); */
-                
-                fetch(`http://localhost:9000/payments/validatePayment`, {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        userID: '1',
-                        payment: {
-                            billerCode: bill.billerCode.value,
-                            crn: bill.crn.value,
-                            amount: parseFloat(bill.amount.value),
-                            settlementDate: "2017-10-23",
-                            paymentMethod: "001",
-                            paymentDate: "2019-01-10"
-                        }
-                    })
-                })
-                .then((response) => {
-                    debugger;
-                    console.log(response);
-                    console.log(response.status);
-
-                    if(response.status === 200) {
-                        console.log('responseFromServer');
-
-                        //Page re-route
-                        window.location.href = "/Dashboard?user_id=1";
-                    } else {
-                        console.log('API error');
-                        setErr('API error');
-                    }
-                });
-                debugger;
-            } else {
-                console.log('Not Valid');
-                setErr('Insufficient funds');
-                return;
+            if (response.status === 200) {
+                window.location.href = "/Dashboard?user_id=1";
+            }
+            else {
+                setErr('Error!');
             }
         });
     }
