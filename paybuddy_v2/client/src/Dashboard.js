@@ -2,7 +2,7 @@ import { withOktaAuth } from '@okta/okta-react';
 import React from 'react';
 import './client.css';
 import './fade-in-fast.css';
-import DP from './img/profilepic.png';
+import DP from './img/profilepictemplate.png';
 
 async function checkUser() {
     if (this.props.authState.isAuthenticated && !this.state.userInfo) {
