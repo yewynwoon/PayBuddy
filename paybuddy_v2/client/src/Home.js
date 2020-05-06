@@ -14,6 +14,7 @@ import { useOktaAuth } from '@okta/okta-react';
 import React, { useState, useEffect } from 'react';
 import { Button, Header } from 'semantic-ui-react';
 import './Home.css';
+import './fade-in.css';
 import PayBuddyLogo from './img/paybuddy.png';
 
 const Home = () => {
@@ -37,37 +38,45 @@ const Home = () => {
 
   if (authState.isPending) {
     return (
-      <div>Loading...</div>
+      <div class='fade-in-fast' id='loading'>Loading...</div>
     );
   }
 
   return (
-    <div>
       <div>
         { authState.isAuthenticated && !userInfo
-        && <div>Loading user information...</div>}
+        && <div class='fade-in-fast' id='loading'>Loading your information...</div>}
 
-        <span id='welcome'>
-          {authState.isAuthenticated && userInfo
+        {authState.isAuthenticated && userInfo
           && (
-          <div>
-              Welcome back, {userInfo.name}!
+          <div class='fade-in' id='background'>
+            <div class='homecontainer'>
+                <img src={PayBuddyLogo}></img>
+                <h1>E-Wallet Application</h1>
+                <hr id='homehr'></hr>
+                <div id='welcomename'>
+                  Welcome back, {userInfo.name}!
+                </div>
+            </div>
           </div>
-          )}
-        </span>
+        )}
 
         {!authState.isAuthenticated
         && (
-        <div>
-          You have logged out, log in again to continue!
-          <div id='loginbutton'>
-            <Button id="login-button" primary onClick={login}>Login</Button>
+        <div class='fade-in' id='background'>  
+          <div class='homecontainer basic-font'>
+            <img src={PayBuddyLogo}></img>
+            <h1>E-Wallet Application</h1>
+            <hr id='homehr'></hr>
+            You have logged out, log in again to continue!
+            <div id='login-button'>
+              <Button id="login-button" primary onClick={login}>Login</Button>
+            </div>
           </div>
         </div>
         )}
 
       </div>
-    </div>
   );
 };
 export default Home;

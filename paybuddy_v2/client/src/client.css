@@ -58,20 +58,41 @@ body
 }
 
 header {
-    display: block;
+    width: 100%;
     height: 100px;
-    padding-top: 2%;
-    padding-left: 15px;
+    padding-top: 4%;
+    padding-left: 2%;
     text-align: left;
-    font-size: 30px;
-    font-family: 'robotoregita';
+}
+
+.header-log-out {
+    float: right;
+    margin-right: 4%;
+    margin-top: 2.5%;
+}
+
+#log-out-link {
+    text-decoration: none;
     color: #5e5e5e;
-    letter-spacing: 3px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 14px;
+
+    border-radius: 15px;
+    border: 1px solid #5e5e5e;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+#log-out-link:hover {
+    font-weight: bolder;
+    cursor: pointer; 
 }
 
 #homeimage {
     margin-right: 2%;
-    vertical-align: middle;
 }
 
 /* Specialised CSS for NavigationBar.js */
@@ -138,22 +159,22 @@ a:hover {
     font-family: 'robotoreg';
 }
 
-#heading {
-    font-family: 'robotoreg';
-    letter-spacing: 1px;
+#main-container {
+    display: flex;
 }
 
-#detailscontainer {
-    overflow: hidden;
+#left-container {
+    flex: 1;
+    display: flex;
+    margin-right: 6px;
+    flex-direction: column;
 }
 
 #customerbox {
+    height: 150px;
+    padding: 4%;
+    margin-bottom: 6px;
     position: relative;
-    width: 47%;
-    margin-right: 2%;
-    padding: 2%;
-    height: 140px;
-    float: left;
     border-radius: 15px;
     border: 1px solid #5e5e5e;
     background-color: #5e5e5e;
@@ -165,21 +186,21 @@ a:hover {
 #customercontents {
     display: block;
     margin: 2%;
-    text-align: left;
 }
 
 #profilepic {
-    width: 80px;
-    border-radius: 50%;
-    border: 5px solid white;
-    vertical-align: middle;
+    width: 70px;
+    float: left;
+    margin: 10px 10px 0 0;
 }
 
 #name {
-    padding-left: 3%;
-    letter-spacing: 2px;
+    padding-top: 12%;
+    width: inherit;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     font-family: 'robotoreg';
-    font-size: 25px;
+    font-size: 15px;
 }
 
 #editacc {
@@ -192,10 +213,10 @@ a:hover {
 }
 
 #moneybox {
+    height: 150px;
+    padding: 4%;
+    margin-top: 6px;
     position: relative;
-    overflow: hidden;
-    height: 140px;
-    padding: 2%;
     border-radius: 15px;
     border: 1px solid #5e5e5e;
     color: #5e5e5e;
@@ -210,11 +231,6 @@ a:hover {
 }
 
 #accbalance {
-    position: absolute;
-    right: 0;
-    bottom: 43%;
-    margin-right: 5%;
-
     letter-spacing: 2px;
     font-family: 'robotoreg';
     font-size: 25px;
@@ -227,19 +243,11 @@ a:hover {
 
 #editfunds {
     position: absolute;
-    bottom: 0;
     right: 0;
-    margin-right: 4%;
-    margin-bottom: 4%;
+    bottom: 0;
+    padding-right: 4%;
+    padding-bottom: 4%;
     font-size: 12px;
-}
-
-footer {
-	margin-top: 10px;
-	padding-left: 20px;
-	padding-bottom: 15px;
-	padding-top: 15px;
-	
 }
 
 /*
@@ -254,18 +262,18 @@ input, select {
 }
 */
 
-#tablecontainer {
-    width: 96%;
-    margin-top: 2%;
+#right-container {
+    flex: 2;
+    margin-left: 6px;
     padding-left: 2%;
     padding-right: 2%;
+    padding-top: 2%;
     padding-bottom: 15px;
     border-radius: 15px;
     border: 1px solid #5e5e5e;
 }
 
 #tableheading {
-    margin-top: 2%;
     text-align: left;
     font-family: 'robotoreg';
     letter-spacing: 1px;
@@ -300,14 +308,15 @@ hr {
     border-width: 1px;
 }
 
-.footer {
-    margin-left: 1%;
-    padding-bottom: 60px;
+footer {
+    margin-top: 3%;
+    margin-bottom: 3%;
 }
 
 .footerText {
     font-family: 'robotoliteita';
-    font-weight: normal;
-    text-align: left;
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 1px;
     text-decoration-color: #5e5e5e;
 }

@@ -1,16 +1,27 @@
+import { withOktaAuth } from '@okta/okta-react';
 import React from 'react';
 import './client.css';
-import DP from './img/profilepic.png';
+import './fade-in-fast.css';
+import DP from './img/profilepictemplate.png';
 
-class Dashboard extends React.Component {
+async function checkUser() {
+    if (this.props.authState.isAuthenticated && !this.state.userInfo) {
+      const userInfo = await this.props.authService.getUser();
+      this.setState({ userInfo });
+    }
+  }
+
+  export default withOktaAuth (class Dashboard extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
             cust_acct_value: "",
             pastPayments: "",
-            cust_transacts: ""
+            cust_transacts: "",
+            userInfo: null
         }
+        this.checkUser = checkUser.bind(this);
     }
 
     callAPI() {
@@ -19,35 +30,48 @@ class Dashboard extends React.Component {
             return response.json();
         })
         .then((data) => {
-
-            //console.log(data.pastTransactions);
-
             this.setState({
                 ...this.state,
                 cust_acct_value: data.acctValue[0].account_value,
-                cust_transacts: data.pastPayments.concat(data.pastDeposits)
+                cust_transacts: data.transactions
             })
-
-            /* console.log(this.state.cust_deposits);
-            console.log(this.state.cust_payments);
-            console.log(this.state.cust_deposits.concat(this.state.cust_payments)); */
-
-            //console.log(this.state.cust_deposits[0].deposit_id);
         });
     }
     
     componentWillMount() {
         this.callAPI();
+        this.checkUser();
     }
+
+     componentDidUpdate() {
+        this.checkUser();
+      }
 
     renderTableData() {
         return Object.keys(this.state.cust_transacts).map((key) => {
+
+            var data = this.state.cust_transacts[key].date_stamp.substring(5, 10).split('-');
+            var date = data[1] + '-' + data[0];
+
+            var descrip = this.state.cust_transacts[key].description;
+
+            var amount;
+            var type;
+
+            if (this.state.cust_transacts[key].type == 'credit') {
+                amount = '+$' + this.state.cust_transacts[key].amount;
+                type = 'credit';
+            } else {
+                amount = '-$' + this.state.cust_transacts[key].amount;
+                type = 'debit';
+            }
+
             return (
                 <tr key={key}>
-                    <td>{this.state.cust_transacts[key].deposit_id}</td>
-                    <td>{this.state.cust_transacts[key].bpay_payment_id}</td>
-                    <td>{this.state.cust_transacts[key].amount}</td>
-                    <td>{this.state.cust_transacts[key].date_stamp}</td>
+                    <td>{date}</td>
+                    <td>{descrip}</td>
+                    <td>{type}</td>
+                    <td>{amount}</td>
                 </tr>
             )
         })
@@ -55,52 +79,51 @@ class Dashboard extends React.Component {
 
     render () {
         return (
-            <main id='dashboardHome'>
-                <div id='detailscontainer'>
-                    <div id='customerbox'>
-                        <span id='heading'>WELCOME BACK, </span>
-                        <span id='customercontents'>
-                            <img id='profilepic' src={DP}></img>
-                            <span id='name'>THOMAS</span>
-                        </span>
-                        <a href="a" id='editacc'>EDIT ACCOUNT</a>
+            <main class='fade-in-fast' id='dashboardHome'>
+                <div id='main-container'>
+                    <div id='left-container'>
+                        <div id='customerbox'>
+                            <span>WELCOME BACK,</span>
+                            <span id='customercontents'>
+                                <img id='profilepic' src={DP}></img>
+                                <div id='name'>
+                                    {this.state.userInfo &&<div>{this.state.userInfo.name}</div>}
+                                </div>
+                            </span>
+                            <a href="https://dev-203865.okta.com/enduser/settings" id='editacc'>EDIT ACCOUNT</a>
+                        </div>
+                        <div id='moneybox'>
+                            <span id='heading'>CURRENT BALANCE</span>
+                            <hr></hr>
+                            <span id='moneycontents'>
+                                <div id="currency">AUD</div>
+                                <div id='accbalance'>${parseFloat(this.state.cust_acct_value).toFixed(2)}</div>
+                                <a href="/FundsDeposit" id='editfunds'>ADD FUNDS</a>
+                            </span>
+                        </div>
                     </div>
-                    <div id='moneybox'>
-                        <span id='heading'>CURRENT BALANCE</span>
+                    <b></b>
+                    <div id='right-container'>
+                        <div id='tableheading'>RECENT ACTIVITY</div>
                         <hr></hr>
-                        <span id='moneycontents'>
-                            <span id="currency">AUD</span>
-                            <span id='accbalance'>${parseFloat(this.state.cust_acct_value).toFixed(2)}</span>
-                        </span>
-                        <a href="a" id='editfunds'>ADD FUNDS</a>
-                    </div>
-                </div>
-                <b></b>
-                <div id='tablecontainer'>
-                    <div id='tableheading'>RECENT ACTIVITY</div>
-                    <hr></hr>
-                    <table id='table'>
-                        { 
+                        <table id='table'>
                             <thead>
                                 <tr>
-                                    <th>DEPOSIT ID</th>
-                                    <th>PAYMENT ID</th>
+                                    <th>DATE</th>
+                                    <th>DESCRIPTION</th>
+                                    <th>TYPE</th>
                                     <th>AMOUNT</th>
-                                    <th>TRANSACTION DATE</th>
                                 </tr>
                             </thead>
-                        }
-                        <tbody>
-                            {this.renderTableData()}
-                        </tbody>
-                    </table>
+                            <tbody>
+                                {this.renderTableData()}
+                            </tbody>
+                        </table>
+                    </div>
+                    {this.state.apiResponse}
                 </div>
-                {this.state.apiResponse}
             </main>
         )
     }
-}
+})
 
-
-
-export default Dashboard;

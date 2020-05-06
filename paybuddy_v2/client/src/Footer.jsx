@@ -1,7 +1,7 @@
 import React from 'react';
 import './client.css';
 
-class Header extends React.Component {
+class Footer extends React.Component {
 
     constructor(props) {
         super(props);
@@ -10,13 +10,11 @@ class Header extends React.Component {
 
     render () {
         return (
-            <div>
-                <footer class='footer'>
-		            <p  class='footerText'>&copy; 2020 PP1 Group 15</p>
-	            </footer>
-            </div>
+            <footer>
+                <p class='footerText'>&copy; 2020 PP1 Group 15</p>
+            </footer>
         )
     }
 }
 
-export default Header;
+export default Footer;
