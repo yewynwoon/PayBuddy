@@ -18,15 +18,17 @@
     src: url(./font/Roboto-LightItalic.ttf);
 }
 
-.homecontainer {
+.home-container {
     min-width: 600px;
+    display: inline-block;
+    text-align: center;
 }
 
-.homecontainer img {
+.home-container img {
     width: 40%;
 }
 
-.homecontainer h1 {
+.home-container h1 {
     font-family: 'robotothin';
     text-transform: uppercase;
     letter-spacing: 9px;
@@ -53,7 +55,7 @@
     background-color: #E3A971;
 }
 
-#homehr {
+#home-hr {
     width: 600px;
     min-width: 600px;
     margin-top: 2%;
@@ -73,6 +75,7 @@
     font-size: 20px;
     color: #5e5e5e;
     letter-spacing: 5px;
+    text-align: center;
     text-transform: uppercase;
 }
 

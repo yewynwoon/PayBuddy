@@ -43,31 +43,29 @@ const Home = () => {
   }
 
   return (
-      <div>
+      <div class='home-container'>
         { authState.isAuthenticated && !userInfo
         && <div class='fade-in-fast' id='loading'>Loading your information...</div>}
 
         {authState.isAuthenticated && userInfo
           && (
           <div class='fade-in' id='background'>
-            <div class='homecontainer'>
                 <img src={PayBuddyLogo}></img>
                 <h1>E-Wallet Application</h1>
-                <hr id='homehr'></hr>
+                <hr id='home-hr'></hr>
                 <div id='welcomename'>
                   Welcome back, {userInfo.name}!
                 </div>
-            </div>
           </div>
         )}
 
         {!authState.isAuthenticated
         && (
         <div class='fade-in' id='background'>  
-          <div class='homecontainer basic-font'>
+          <div class='basic-font'>
             <img src={PayBuddyLogo}></img>
             <h1>E-Wallet Application</h1>
-            <hr id='homehr'></hr>
+            <hr id='home-hr'></hr>
             You have logged out, log in again to continue!
             <div id='login-button'>
               <Button id="login-button" primary onClick={login}>Login</Button>
