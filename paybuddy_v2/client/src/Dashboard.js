@@ -79,26 +79,26 @@ async function checkUser() {
 
     render () {
         return (
-            <main class='fade-in-fast' id='dashboardHome'>
-                <div id='main-container'>
+            <main class='fade-in-fast'>
+                <div id='dashboard-container'>
                     <div id='left-container'>
-                        <div id='customerbox'>
+                        <div class='detailbox' id='customerbox'>
                             <span>WELCOME BACK,</span>
-                            <span id='customercontents'>
+                            <span class='innercontents'>
                                 <img id='profilepic' src={DP}></img>
                                 <div id='name'>
                                     {this.state.userInfo &&<div>{this.state.userInfo.name}</div>}
                                 </div>
                             </span>
-                            <a href="https://dev-203865.okta.com/enduser/settings" id='editacc'>EDIT ACCOUNT</a>
+                            <a href="https://dev-203865.okta.com/enduser/settings" class ='editdetails'>EDIT ACCOUNT</a>
                         </div>
-                        <div id='moneybox'>
+                        <div class='detailbox' id='moneybox'>
                             <span id='heading'>CURRENT BALANCE</span>
                             <hr></hr>
-                            <span id='moneycontents'>
+                            <span class='innercontents'>
                                 <div id="currency">AUD</div>
                                 <div id='accbalance'>${parseFloat(this.state.cust_acct_value).toFixed(2)}</div>
-                                <a href="/FundsDeposit" id='editfunds'>ADD FUNDS</a>
+                                <a href="/FundsDeposit" class ='editdetails'>ADD FUNDS</a>
                             </span>
                         </div>
                     </div>
@@ -106,13 +106,13 @@ async function checkUser() {
                     <div id='right-container'>
                         <div id='tableheading'>RECENT ACTIVITY</div>
                         <hr></hr>
-                        <table id='table'>
+                        <table class='table'>
                             <thead>
                                 <tr>
                                     <th>DATE</th>
                                     <th>DESCRIPTION</th>
-                                    <th>TYPE</th>
-                                    <th>AMOUNT</th>
+                                    <th id='align-right'>TYPE</th>
+                                    <th id='align-right'>AMOUNT</th>
                                 </tr>
                             </thead>
                             <tbody>

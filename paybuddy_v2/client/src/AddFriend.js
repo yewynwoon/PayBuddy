@@ -1,5 +1,6 @@
 import React from 'react';
 import './AddFriend.css';
+import './fade-in-fast.css';
 
 class AddFriend extends React.Component {
 

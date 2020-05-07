@@ -48,16 +48,6 @@
   src: url(./font/Roboto-BoldItalic.ttf);
 }
 
-.header-text {
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: calc(10px + 2vmin);
-  font-weight: lighter;
-  text-align: left;
-  margin-left: 2%;
-  color: #5e5e5e;
-}
-
 .header-id {
   width: 100%;
   padding-left: 1%;

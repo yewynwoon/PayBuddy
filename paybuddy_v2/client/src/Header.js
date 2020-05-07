@@ -2,7 +2,7 @@ import {useOktaAuth} from '@okta/okta-react';
 
 import React, { useDebugValue } from 'react';
 import './client.css';
-import Logo from './img/paybuddyicon.png';
+import Logo from './img/paybuddytext.png';
 import LoginPage from './Login';
 import { Menu }  from 'semantic-ui-react'
 
@@ -16,11 +16,8 @@ const Header = () => {
         <header>
                 <a href="/Dashboard" >
                     <img 
-                        id='homeimage' 
                         src={Logo} 
                         alt="paybuddy-logo" 
-                        height="70" 
-                        width="auto"
                     />
                 </a>
                 {authState.isAuthenticated && (

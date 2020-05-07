@@ -53,89 +53,70 @@ body
 {
     font-family: 'robotolite';
     max-width:1000px;
+    min-width: 800px;
     margin: auto;
-    background-color: white;
+    background-color: #1f1f1f;
 }
 
 header {
     width: 100%;
     height: 100px;
-    padding-top: 4%;
+    padding-top: 2%;
     padding-left: 2%;
     text-align: left;
 }
 
+header img {
+    height: 70px;
+}
+
 .header-log-out {
     float: right;
+    margin-top: 2%;
     margin-right: 4%;
-    margin-top: 2.5%;
 }
 
 #log-out-link {
     text-decoration: none;
-    color: #5e5e5e;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 14px;
+    letter-spacing: 2px;
+    font-size: 13px;
+    color: #cfcfcf;
+
+    transition: color 1s;
 
     border-radius: 15px;
-    border: 1px solid #5e5e5e;
-    padding-top: 0.5%;
-    padding-bottom: 0.5%;
-    padding-left: 1%;
-    padding-right: 1%;
+    border: 1px solid #cfcfcf;
+    padding: 0.5% 1.5% 0.5% 1.5%;
 }
 
 #log-out-link:hover {
     font-weight: bolder;
     cursor: pointer; 
-}
-
-#homeimage {
-    margin-right: 2%;
+    color: white;
 }
 
 /* Specialised CSS for NavigationBar.js */
 .topnav {
+    display: flex;
     overflow: hidden;
-    font-family: 'robotolite';
-    text-decoration: none;
     font-size: 14px;
-    color: #5e5e5e;
     letter-spacing: 2px;
+
+    margin-left: 2%;
     padding-bottom: 3%;
 }
 
 .topnav a {
+    color: #747474;
+    transition: color 0.5s;
     float: left;
-    text-align: center;
-    padding: 0 16px;
     text-decoration: none;
-}
-
-.topnav a:link {
-    color: #5e5e5e;
-    text-decoration: none;
+    padding-right: 20px;
 }
 
 .topnav a:hover {
     color: #f2b377;
-    text-decoration: none;
-}
-
-.topnav a:visited {
-    color: #5e5e5e;
-    text-decoration: none;
-}
-
-.topnav a:active {
-    color: #f2b377;
-    text-decoration: none;
-    font-family: 'robotoreg';
-}
-
-a:hover {
-    text-decoration: none;
 }
 
 #activeNav {
@@ -144,23 +125,19 @@ a:hover {
 }
 
 /* Specialised CSS for Dashboard.js */
-#dashboardHome {
-    font-family: 'robotolite';
-    margin-left: 2%;
-    margin-right: 2%;
-}
-
-#dashboardHome a {
-    text-decoration: none;
-    color: #f2b377;
-}
-
-#dashboardHome a:hover {
-    font-family: 'robotoreg';
-}
-
-#main-container {
+#dashboard-container {
     display: flex;
+}
+
+#dashboard-container a {
+    text-decoration: none;
+    font-family: 'robotolite';
+    color: #f2b377;
+    letter-spacing: 1px;
+}
+
+#dashboard-container a:hover {
+    font-family: 'robotoreg';
 }
 
 #left-container {
@@ -170,20 +147,23 @@ a:hover {
     flex-direction: column;
 }
 
-#customerbox {
+.detailbox {
     height: 150px;
     padding: 4%;
-    margin-bottom: 6px;
     position: relative;
     border-radius: 15px;
     border: 1px solid #5e5e5e;
+}
+
+#customerbox {
+    margin-bottom: 6px;
     background-color: #5e5e5e;
     color: white;
 
     text-align: left;
 }
 
-#customercontents {
+.innercontents {
     display: block;
     margin: 2%;
 }
@@ -203,7 +183,7 @@ a:hover {
     font-size: 15px;
 }
 
-#editacc {
+.editdetails {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -213,14 +193,8 @@ a:hover {
 }
 
 #moneybox {
-    height: 150px;
-    padding: 4%;
     margin-top: 6px;
-    position: relative;
-    border-radius: 15px;
-    border: 1px solid #5e5e5e;
     color: #5e5e5e;
-
     text-align: left;
 }
 
@@ -239,15 +213,6 @@ a:hover {
 #currency {
     letter-spacing: 1px;
     font-size: 15px;
-}
-
-#editfunds {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    padding-right: 4%;
-    padding-bottom: 4%;
-    font-size: 12px;
 }
 
 /*
@@ -280,24 +245,31 @@ input, select {
     color: #5e5e5e;
 }
 
-#table {
+.table {
+    table-layout: auto;
+    width: 100%;
     border-collapse: collapse;
-    width: 94%;
 }
 
-#table th {
+.table th {
     font-weight: normal;
     font-family: 'robotolite';
     text-align: left;
     color: #5e5e5e;
     font-size: 15px;
+
+    padding-right: 10px;
 }
 
-#table td {
+#align-right {
+    text-align: right;
+}
+
+.table td {
     color: #5e5e5e;
 }
 
-#table tr:nth-child(even){
+.table tr:nth-child(even){
     background-color: #f2f2f2;
 }
 
@@ -306,6 +278,7 @@ hr {
     overflow: hidden; 
     border-style: inset; 
     border-width: 1px;
+    border-color: #5e5e5e;
 }
 
 footer {
