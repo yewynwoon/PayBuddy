@@ -5,11 +5,73 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .collapsible {
+            background-color: #777;
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 855px;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            }
+
+            .active, .collapsible:hover {
+            background-color: #555;
+            }
+
+            .content {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            width: 850px;
+            background-color: #f1f1f1;
+            }
+        </style>
         <link rel=stylesheet href=website.css>
         <title>Admin</title>
+
+        
     </head>
 
     <body>
+        <main>
+
+            <h2>Okta</h2>
+
+            <p>User Account status</p>
+            <button type="button" class="collapsible">Open Collapsible</button>
+            <div class="content">
+                <iframe frameborder="0" height="500" width="855" scrolling="yes" src="https://dev-203865-admin.okta.com/admin/users"></iframe>
+            </div>
+
+
+            <script>
+            var coll = document.getElementsByClassName("collapsible");
+            var i;
+
+            for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                content.style.display = "none";
+                } else {
+                content.style.display = "block";
+                }
+            });
+            }
+            </script>
+    
+
+        </main>
+        
+        <main>
+            
+        </main>
+
         <main>
             <div>
                 <table>
