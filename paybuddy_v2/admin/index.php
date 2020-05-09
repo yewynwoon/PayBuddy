@@ -31,6 +31,8 @@
                         print "<td>{$row['fname']}</td>\n";
                         print "<td>{$row['lname']}</td>\n";
                         print "<td>{$row['email']}</td>\n";
+                        print "<td><button><a href='customer.php?id={$row['cust_id']}'>Edit</button></td>";
+                        print "<td><button>Suspend</button></td>";
                         print "</tr>\n";
                         
                     }
