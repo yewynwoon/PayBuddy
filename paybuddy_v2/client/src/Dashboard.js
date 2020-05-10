@@ -94,7 +94,7 @@ async function checkUser() {
                         </div>
                         <div class='detailbox' id='moneybox'>
                             <span id='detail-header'>CURRENT BALANCE</span>
-                            <hr></hr>
+                            <hr id='left-hr'></hr>
                             <span class='innercontents'>
                                 <div id='currency'>AUD</div>
                                 <div id='accbalance'>${parseFloat(this.state.cust_acct_value).toFixed(2)}</div>
@@ -105,7 +105,7 @@ async function checkUser() {
                     <b></b>
                     <div id='right-container'>
                         <div id='tableheading'>RECENT ACTIVITY</div>
-                        <hr></hr>
+                        <hr id='left-hr'></hr>
                         <table class='table'>
                             <thead>
                                 <tr>

@@ -141,6 +141,12 @@ hr {
   display: block; 
   overflow: hidden; 
   border-style: inset; 
-  border-width: 1px;
-  border-color: #888888;
+  border-width: 0.5px;
+  border-color: #5e5e5e;
+}
+
+#left-hr { 
+  border: 0px;
+  height: 1px;
+  background: linear-gradient(to right, rgb(94,94,94,1),rgb(255,255,255,0));
 }

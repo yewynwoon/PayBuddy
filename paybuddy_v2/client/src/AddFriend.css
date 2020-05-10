@@ -1,92 +1,12 @@
-@font-face {
-  font-family: 'monita';
-  src: url(./font/Montserrat-Italic.ttf);
-}
-
-@font-face {
-  font-family: 'monlite';
-  src: url(./font/Montserrat-Light.ttf);
-}
-
-@font-face {
-  font-family: 'monliteita';
-  src: url(./font/Montserrat-LightItalic.ttf);
-}
-
-@font-face {
-  font-family: 'mon';
-  src: url(./font/Montserrat-Regular.ttf);
-}
-
-@font-face {
-  font-family: 'monsbold';
-  src: url(./font/Montserrat-SemiBold.ttf);
-}
-
-@font-face {
-  font-family: 'monsboldita';
-  src: url(./font/Montserrat-SemiBoldItalic.ttf);
-}
-
-#title {
-    padding-left: 1%;
-    padding-bottom: 1%;
-
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: calc(10px + 2vmin);
-    font-weight: lighter;
-    text-align: left;
-    margin-left: 2%;
-    color: #5e5e5e;
-}
-
-.main {
-    border-radius: 15px;
-    border: 1px solid #5e5e5e;
-    padding: 2%;
-    margin-left: 2%;
-    margin-right: 2%;
-}
-
-#addfriend {
-    padding-top: 2%;
-    padding-bottom: 2%;
+#addfriends-img {
+  height: 120px;
+  margin-top: 1%;
+  margin-bottom: 1%;
 }
 
 label {
     display: block;
     width: 100%;
-}
-
-#textbox {
-    margin-left: 20px;
-    width: 30%;
-    border-radius: 5px;
-    font-size: 15px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    border: 0.5px solid #aaa;
-}
-
-#submit {
-    margin: 2%;
-    padding: 10px 40px 10px 40px;
-
-    background-color: #f2b377;
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-family: 'mon';
-    font-weight: normal;
-    font-size: 18px;
-    border-radius: 25px;
-    border: none;
-}
-
-#submit:hover {
-    background-color: #E3A971;
-    cursor: pointer;
 }
 
 #tablecontainer {

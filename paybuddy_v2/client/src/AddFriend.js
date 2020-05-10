@@ -1,6 +1,7 @@
 import React from 'react';
 import './AddFriend.css';
 import './fade-in-fast.css';
+import addfriend from './img/addfriends.png';
 
 class AddFriend extends React.Component {
 
@@ -216,22 +217,24 @@ class AddFriend extends React.Component {
     render() {
         return (
             <div class='fade-in-fast'>
-                <h2 id='title'>Add Friend</h2>
-                <div class='main'>
-                    <div id='addfriend'>
+                <div class='header-text'>Add Friend</div>
+                <div class='inner-box'>
+                    <img id='addfriends-img' src={addfriend}></img>
+                    <div class='title'>send friend request</div>
+                    <div id='spaceout'>
                         <form onSubmit={this.handleSubmit1}>
-                            <label>
-                                NAME:
-                                <input id='textbox' placeholder=' User-ID' value={this.state.addfriend_id} onChange={this.handleChange1} />
+                            <label class='text-line'>
+                                USER-ID:
+                                <input id='spaceout' placeholder=' user-id' value={this.state.addfriend_id} onChange={this.handleChange1} />
                             </label>
-                            <input id='submit' type="submit" value="Submit" />
+                            <input class='orange-button button-text' id='spaceout' type="submit" value="SEND REQUEST" />
                         </form>
                     </div>
             
                     <div id='tablecontainer'>
                         <div id='tableheading'>FRIEND LIST</div>
-                        <hr></hr>
-                        <table id='table'>
+                        <hr id='left-hr'></hr>
+                        <table class='table'>
                             {
                                 <thead>
                                 <tr>
@@ -247,9 +250,9 @@ class AddFriend extends React.Component {
                     </div>
                     
                     <div id='tablecontainer'>
-                        <div id='tableheading'>NEW FRIEND REQUEST</div>
+                        <div id='tableheading'>PENDING FRIEND REQUESTS</div>
                         <hr></hr>
-                        <table id='table'>
+                        <table class='table'>
                             {
                                 <thead>
                                 <tr>

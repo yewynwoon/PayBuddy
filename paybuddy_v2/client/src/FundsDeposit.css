@@ -45,7 +45,9 @@ ul {
     box-sizing: border-box;
     display: flex;
     width: 33.33333%;
-    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    
 }
 
 .box-design {
@@ -220,5 +222,5 @@ h2 {
 }
 
 .logo-image {
-    width: 50px;
+    width: 80px;
 }

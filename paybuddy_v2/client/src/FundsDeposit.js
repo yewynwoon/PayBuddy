@@ -73,7 +73,7 @@ const ProductSelection = props => {
           <li class='single-box-container'>
             <div class='box-design'>
               <div class='box-text'>
-                <img class='logo-image' src={Logo} alt='paybuddy-logo'/>
+                <img class='logo-image' id='spaceout' src={Logo} alt='paybuddy-logo'/>
                 <h3 class='box-inner-text'>
                   Australia
                   <small>PayBuddy Deposit</small>
@@ -88,7 +88,7 @@ const ProductSelection = props => {
           <li class='single-box-container'>
             <div class='box-design'>
               <div class='box-text'>
-                <img class='logo-image' src={Logo} alt='paybuddy-logo'/>
+                <img class='logo-image' id='spaceout' src={Logo} alt='paybuddy-logo'/>
                 <h3 class='box-inner-text'>
                   Australia
                   <small>PayBuddy Deposit</small>
@@ -103,7 +103,7 @@ const ProductSelection = props => {
           <li class='single-box-container'>
             <div class='box-design'>
               <div class='box-text'> 
-                <img class='logo-image' src={Logo} alt='paybuddy-logo'/>
+                <img class='logo-image' id='spaceout' src={Logo} alt='paybuddy-logo'/>
                 <h3 class='box-inner-text'>
                   Australia
                   <small>PayBuddy Deposit</small>
