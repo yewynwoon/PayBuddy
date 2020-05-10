@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from 'react-router-dom'
 import {useOktaAuth} from '@okta/okta-react';
-import './client.css'
+import './NavigationBar.css'
 import { Menu }  from 'semantic-ui-react'
 
 const NavigationBar = () => {

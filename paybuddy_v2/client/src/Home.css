@@ -1,36 +1,20 @@
-@font-face {
-    font-family: 'robotothin';
-    src: url(./font/Roboto-Thin.ttf);
+.home-container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    box-sizing: border-box;
 }
 
-@font-face {
-    font-family: 'robotothinita';
-    src: url(./font/Roboto-ThinItalic.ttf);
+.home-container img {
+    width: 400px;
 }
 
-@font-face {
-    font-family: 'robotolite';
-    src: url(./font/Roboto-Light.ttf);
-}
-
-@font-face {
-    font-family: 'robotoliteita';
-    src: url(./font/Roboto-LightItalic.ttf);
-}
-
-.homecontainer {
-    min-width: 600px;
-}
-
-.homecontainer img {
-    width: 40%;
-}
-
-.homecontainer h1 {
-    font-family: 'robotothin';
+.home-container h1 {
+    font-family: 'monlite';
     text-transform: uppercase;
     letter-spacing: 9px;
-    font-size: 14px;
+    font-size: 13px;
     color: #5e5e5e;
 }
 
@@ -47,17 +31,20 @@
     font-size: 18px;
     border: none;
     border-radius: 30px;
+
+    transition: background-color 0.5s;
 }
 
 #login-button button:hover {
-    background-color: #E3A971;
+    background-color: #e4944a;
+    cursor: pointer;
 }
 
-#homehr {
-    width: 600px;
-    min-width: 600px;
-    margin-top: 2%;
-    margin-bottom: 2%
+#home-hr {
+    width: 500px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    border: 0.5px solid #5e5e5e;
 }
 
 #welcomename {
@@ -68,25 +55,26 @@
 }
 
 #loading {
+    width: 100vw;
     margin-top: 20%;
     margin-bottom: 3%;
     font-size: 20px;
     color: #5e5e5e;
     letter-spacing: 5px;
+    text-align: center;
     text-transform: uppercase;
 }
 
 #background {
-    width: 100%;
-    min-height: fit-content;
+    box-sizing: border-box;
     background-image: url('./img/Background.jpg');
     background-color: #FFF;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    border-radius: 15px;
-    padding-top: 14%;
-    padding-bottom: 14%;
+    padding-top: 13%;
+    padding-bottom: 16%;
+    overflow: hidden;
 }
 
 #basic-font {

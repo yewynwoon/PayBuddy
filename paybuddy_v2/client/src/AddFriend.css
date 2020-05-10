@@ -1,116 +1,12 @@
-@font-face {
-    font-family: 'robotoreg';
-    src: url(./font/Roboto-Regular.ttf);
-  }
-  
-  @font-face {
-    font-family: 'robotoregita';
-    src: url(./font/Roboto-Italic.ttf);
-  }
-  
-  @font-face {
-    font-family: 'robotothin';
-    src: url(./font/Roboto-Thin.ttf);
-  }
-  
-  @font-face {
-    font-family: 'robotothinita';
-    src: url(./font/Roboto-ThinItalic.ttf);
-  }
-  
-  @font-face {
-    font-family: 'robotomed';
-    src: url(./font/Roboto-Medium.ttf);
-  }
-  
-  @font-face {
-    font-family: 'robotomedita';
-    src: url(./font/Roboto-MediumItalic.ttf);
-  }
-  
-  @font-face {
-    font-family: 'robotolite';
-    src: url(./font/Roboto-Light.ttf);
-  }
-  
-  @font-face {
-    font-family: 'robotoliteita';
-    src: url(./font/Roboto-LightItalic.ttf);
-  }
-  
-  @font-face {
-    font-family: 'robotobold';
-    src: url(./font/Roboto-Bold.ttf);
-  }
-  
-  @font-face {
-    font-family: 'robotoboldita';
-    src: url(./font/Roboto-BoldItalic.ttf);
-  }
-
-body {
-    font-family: 'robotoreg';
-}
-
-#title {
-    padding-left: 1%;
-    padding-bottom: 1%;
-
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: calc(10px + 2vmin);
-    font-weight: lighter;
-    text-align: left;
-    margin-left: 2%;
-    color: #5e5e5e;
-}
-
-.main {
-    border-radius: 15px;
-    border: 1px solid #5e5e5e;
-    padding: 2%;
-    margin-left: 2%;
-    margin-right: 2%;
-}
-
-#addfriend {
-    padding-top: 2%;
-    padding-bottom: 2%;
+#addfriends-img {
+  height: 120px;
+  margin-top: 1%;
+  margin-bottom: 1%;
 }
 
 label {
     display: block;
     width: 100%;
-}
-
-#textbox {
-    margin-left: 20px;
-    width: 30%;
-    border-radius: 5px;
-    font-size: 15px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    border: 0.5px solid #aaa;
-}
-
-#submit {
-    margin: 2%;
-    padding: 10px 40px 10px 40px;
-
-    background-color: #f2b377;
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-family: 'robotomed';
-    font-weight: normal;
-    font-size: 18px;
-    border-radius: 25px;
-    border: none;
-}
-
-#submit:hover {
-    background-color: #E3A971;
-    cursor: pointer;
 }
 
 #tablecontainer {

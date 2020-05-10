@@ -1,0 +1,29 @@
+.topnav {
+    display: flex;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-family: 'monsbold';
+    font-size: 14px;
+    letter-spacing: 2px;
+
+    margin-top: 2%;
+    margin-left: 6%;
+    margin-bottom: 2%;
+}
+
+.topnav a {
+    color: #888888;
+    text-decoration: none;
+    margin-right: 20px;
+
+    transition: color 0.3s;
+}
+
+.topnav a:hover {
+    color: #f2b377;
+}
+
+#activeNav {
+    color: #f2b377;
+    font-family: 'monsbold';
+}

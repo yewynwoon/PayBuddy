@@ -1,25 +1,25 @@
 import React, { useState } from 'react';
-import './client.css';
 import './paybill.css';
+import './fade-in-fast.css';
+import transfer from './img/Transfericon.png';
 
 const TransferForm = props => {
     return (
-        <main id='cous'>
-            <div class='header-id'>
-                <h2 class='header-text'>Enter transfer details</h2>
-            </div>
-            <div class="box">
+        <main class='fade-in-fast'>
+            <h2 class='header-text'>Transfer funds to user</h2>
+            <div>
                 <div class="inner-box" id="box-body-id">
                     <form onSubmit={props.onSubmit}>
-                        <div class="bpay-logo">Funds Tranfer</div>
-                        <hr></hr>
+                        <img id='transfer-img' src={transfer}></img>
+                        <div class='title'>Enter Transfer Details</div>
+                        <hr class='centre-hr centre-margin' id='spaceout'></hr>
                         <div class='upper-inner-box'>
                             <div class='text-line'>
                                 User ID:
                                 <input id='destID' type="text" placeholder=' User ID *' required/>
                             </div>
                         </div>
-                        <hr></hr>
+                        <hr class='centre-hr centre-margin' id='spaceout'></hr>
                         <div class='middle-inner-box'>
                             <div class='payment-details'>
                                 <div class='payment-line'>
@@ -33,8 +33,8 @@ const TransferForm = props => {
                             </div>
                         </div>
                         <div class='lower-inner-box'>
-                            <button class="IzjkL _2Y_WL FiOTW continue-button"id="submit-button">
-                                Confirm
+                            <button class='orange-button' id='spaceout'>
+                                <span class='button-text'>Confirm</span>
                             </button>
                         </div>
                   </form>
@@ -46,20 +46,22 @@ const TransferForm = props => {
 
 const TransferConfirm = props => {
     return (
-        <main id='cous'>
+        <main class='fade-in-fast' id='cous'>
             <div id='header-id'>
-                <h2 class='header-text'>Confirm your transfer</h2>
+                <h2 class='header-text'>Transfer funds to user</h2>
             </div>
-            <div class='box'>
-                <div class='inner-box' id='box-body-id'>
-                <hr></hr>
+            <div>
+                <div class='inner-box'>
+                    <img id='transfer-img' src={transfer}></img>
+                    <div class='title'>Confirm Transfer Details</div>
+                    <hr class='centre-hr centre-margin' id='spaceout'></hr>
                     <div class='middle-inner-box'>
                         <div class='payment-details'>
                             User ID:
                             <div class='payment-dexcription-text-box'>{props.transfer.destID.value}</div>
                         </div>
                     </div>
-                    <hr></hr>
+                    <hr class='centre-hr centre-margin' id='spaceout'></hr>
                     <div class='middle-inner-box'>
                         <div class='payment-details'>
                             Amount:
@@ -73,11 +75,11 @@ const TransferConfirm = props => {
                         </div>
                     </div>
                     <div class='button-container'>
-                        <button id="submit-button" onClick={props.onSubmit} class="_16apt _2Y_Wp">
-                            <span>Transfer</span>
+                        <button class='orange-button space-width' onClick={props.onSubmit}>
+                            <span class='button-text'>Transfer</span>
                         </button>
-                        <button id="cancel-button" onClick={props.cancelPayment} class="_16apt _2Y_Wp">
-                            <span>Cancel</span>
+                        <button class="white-button space-width" onClick={props.cancelPayment}>
+                            <span class='white-button-text'>Cancel</span>
                         </button>
                     </div>
                 </div>
