@@ -1,33 +1,3 @@
-@font-face {
-font-family: 'monita';
-src: url(./font/Montserrat-Italic.ttf);
-}
-
-@font-face {
-font-family: 'monlite';
-src: url(./font/Montserrat-Light.ttf);
-}
-
-@font-face {
-font-family: 'monliteita';
-src: url(./font/Montserrat-LightItalic.ttf);
-}
-
-@font-face {
-font-family: 'mon';
-src: url(./font/Montserrat-Regular.ttf);
-}
-
-@font-face {
-font-family: 'monsbold';
-src: url(./font/Montserrat-SemiBold.ttf);
-}
-
-@font-face {
-font-family: 'monsboldita';
-src: url(./font/Montserrat-SemiBoldItalic.ttf);
-}
-
 .home-container {
     width: 100%;
     margin: 0;

@@ -15,6 +15,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, Header } from 'semantic-ui-react';
 import './Home.css';
 import './fade-in.css';
+import './paybill.css';
 import PayBuddyLogo from './img/logotext.png';
 
 const Home = () => {
@@ -65,10 +66,10 @@ const Home = () => {
           <div class='basic-font'>
             <img src={PayBuddyLogo}></img>
             <h1>E-Wallet Application</h1>
-            <hr id='home-hr'></hr>
-            You have logged out, log in again to continue!
+            <hr class='centre-hr centre-margin'></hr>
+            <span id='spaceout'>You have logged out, log in again to continue!</span>
             <div id='login-button'>
-              <Button id="login-button" primary onClick={login}>Login</Button>
+              <Button class="login-button" id='spaceout' primary onClick={login}>Login</Button>
             </div>
           </div>
         </div>

@@ -111,8 +111,8 @@ async function checkUser() {
                                 <tr>
                                     <th>DATE</th>
                                     <th>DESCRIPTION</th>
-                                    <th id='align-right'>TYPE</th>
-                                    <th id='align-right'>AMOUNT</th>
+                                    <th>TYPE</th>
+                                    <th>AMOUNT</th>
                                 </tr>
                             </thead>
                             <tbody>

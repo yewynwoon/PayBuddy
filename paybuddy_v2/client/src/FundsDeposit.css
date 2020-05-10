@@ -1,12 +1,3 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
-}
-
-.App-link {
-    color: #f2b377;
-}
-
 .header-text {
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -39,6 +30,10 @@ ul {
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     padding-inline-start: 40px;
+}
+
+.logo-image {
+    width: 80px;
 }
 
 .single-box-container {
@@ -132,17 +127,6 @@ ul {
     -webkit-font-smoothing: antialiased;
 }
 
-h2 {
-    display: block;
-    font-size: 1.5em;
-    margin-block-start: 0.83em;
-    margin-block-end: 0.83em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: 200;
-    margin-top: 0;
-}
-
 .confirm-container {
     margin-top: 2%;
     margin-left: 20%;
@@ -219,8 +203,4 @@ h2 {
     font-size: 13px;
     font-family: 'monliteita';
     text-align: center;
-}
-
-.logo-image {
-    width: 80px;
 }

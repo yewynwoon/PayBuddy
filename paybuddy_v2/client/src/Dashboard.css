@@ -125,24 +125,17 @@
   padding-right: 10px;
 }
 
-#align-right {
-  text-align: right;
-}
-
 .table td {
   color: #ffffff;
 }
 
-.table tr:nth-child(even){
-  background-color: #f2f2f2;
+.table tr {
+  font-family: 'monlite';
+  color: #5e5e5e;
 }
 
-hr { 
-  display: block; 
-  overflow: hidden; 
-  border-style: inset; 
-  border-width: 0.5px;
-  border-color: #5e5e5e;
+.table tr:nth-child(even){
+  background-color: #f2f2f2;
 }
 
 #left-hr { 

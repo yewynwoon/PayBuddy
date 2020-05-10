@@ -140,20 +140,6 @@
   width: 100%;
 }
 
-.continue-button {
-  margin: 2%;
-  background-color: #f2b377;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: white;
-  font-family: 'mon';
-  font-weight: normal;
-  font-size: 18px;
-}
-
-.continue-button:hover {
-  background-color: #E3A971;
-}
 
 .centre-margin {
   width: 60%;
@@ -163,28 +149,6 @@
   border: 0px;
   height: 1px;
   background: linear-gradient(to right, rgb(255,255,255,0),rgb(94,94,94,1),rgb(255,255,255,0));
-}
-
-.detail-line {
-  width: 100%;
-  height: fit-content;
-}
-
-.payment-amount-text-box {
-  font-family: 'monita';
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 3px;
-}
-
-.payment-dexcription-text-box {
-  display: inline-block;
-  text-align: left;
-  letter-spacing: 1px;
-  width: 50%;
-  margin-left: 20px;
-  font-family: 'monliteita';
-  font-weight: lighter;
 }
 
 .button-container {

@@ -251,7 +251,7 @@ class AddFriend extends React.Component {
                     
                     <div id='tablecontainer'>
                         <div id='tableheading'>PENDING FRIEND REQUESTS</div>
-                        <hr></hr>
+                        <hr id='left-hr'></hr>
                         <table class='table'>
                             {
                                 <thead>

@@ -67,7 +67,7 @@ function Product({ product }) {
 const ProductSelection = props => {
   return (
     <div class='fade-in-fast'>
-        <h2 class='header-text'>Select Deposit Amount</h2>
+        <span class='header-text'>Select Deposit Amount</span>
       <div>
         <ul class='box-containers'>
           <li class='single-box-container'>
