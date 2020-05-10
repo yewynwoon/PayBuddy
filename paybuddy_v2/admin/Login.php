@@ -51,6 +51,7 @@
                     {
                             session_start();
                             header("Location:index.php");
+                            $_SESSION['admin'] = $varloginID;
                             exit(0);
 
                     }else{

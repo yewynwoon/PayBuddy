@@ -1,3 +1,15 @@
+<?php
+session_start();
+if(!isset($_SESSION['admin'])) // check if session variable exist
+{ header("Location:login.php");
+exit(0); } 
+
+else {
+print "Logged in as " . $_SESSION['admin'];
+
+}
+?>
+<br><br>
 <!DOCTYPE html>
 
 <html lang="en">
