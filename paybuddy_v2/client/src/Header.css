@@ -1,0 +1,37 @@
+header {
+    box-sizing: border-box;
+    height: fit-content;
+    margin-top: 2%;
+    margin-left: 6%;
+    padding-right: 6%;
+    text-align: left;
+}
+
+header img {
+    height: 30px;
+}
+
+.header-log-out {
+    float: right;
+}
+
+#log-out-link {
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bolder;
+    font-size: 13px;
+    color: #5e5e5e;
+
+    transition: color 0.3s, background-color 0.3s;
+
+    border-radius: 15px;
+    border: 1px solid #5e5e5e;
+    padding: 0.5% 1.5% 0.5% 1.5%;
+}
+
+#log-out-link:hover {
+    cursor: pointer; 
+    color: white;
+    background-color: #5e5e5e;
+}

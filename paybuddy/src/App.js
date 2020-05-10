@@ -1,4 +1,4 @@
-import './App.css';
+import './Dashboard.css';
 import React, { useState, useRef, useEffect } from 'react';
 import Logo from './Icon.png';
 

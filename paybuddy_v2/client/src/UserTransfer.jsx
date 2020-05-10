@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
-import './client.css';
-import './paybill.css';
+import './fade-in-fast.css';
 
 const TransferForm = props => {
     return (
-        <main id='cous'>
-            <div class='header-id'>
-                <h2 class='header-text'>Enter transfer details</h2>
-            </div>
+        <main class='fade-in-fast'>
+            <h2 class='header-text'>Enter transfer details</h2>
             <div class="box">
                 <div class="inner-box" id="box-body-id">
                     <form onSubmit={props.onSubmit}>

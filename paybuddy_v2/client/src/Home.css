@@ -1,38 +1,50 @@
 @font-face {
-    font-family: 'robotothin';
-    src: url(./font/Roboto-Thin.ttf);
+font-family: 'monita';
+src: url(./font/Montserrat-Italic.ttf);
 }
 
 @font-face {
-    font-family: 'robotothinita';
-    src: url(./font/Roboto-ThinItalic.ttf);
+font-family: 'monlite';
+src: url(./font/Montserrat-Light.ttf);
 }
 
 @font-face {
-    font-family: 'robotolite';
-    src: url(./font/Roboto-Light.ttf);
+font-family: 'monliteita';
+src: url(./font/Montserrat-LightItalic.ttf);
 }
 
 @font-face {
-    font-family: 'robotoliteita';
-    src: url(./font/Roboto-LightItalic.ttf);
+font-family: 'mon';
+src: url(./font/Montserrat-Regular.ttf);
+}
+
+@font-face {
+font-family: 'monsbold';
+src: url(./font/Montserrat-SemiBold.ttf);
+}
+
+@font-face {
+font-family: 'monsboldita';
+src: url(./font/Montserrat-SemiBoldItalic.ttf);
 }
 
 .home-container {
-    min-width: 600px;
-    display: inline-block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
     text-align: center;
+    box-sizing: border-box;
 }
 
 .home-container img {
-    width: 40%;
+    width: 400px;
 }
 
 .home-container h1 {
-    font-family: 'robotothin';
+    font-family: 'monlite';
     text-transform: uppercase;
     letter-spacing: 9px;
-    font-size: 14px;
+    font-size: 13px;
     color: #5e5e5e;
 }
 
@@ -49,17 +61,20 @@
     font-size: 18px;
     border: none;
     border-radius: 30px;
+
+    transition: background-color 0.5s;
 }
 
 #login-button button:hover {
-    background-color: #E3A971;
+    background-color: #e4944a;
+    cursor: pointer;
 }
 
 #home-hr {
-    width: 600px;
-    min-width: 600px;
-    margin-top: 2%;
-    margin-bottom: 2%
+    width: 500px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    border: 0.5px solid #5e5e5e;
 }
 
 #welcomename {
@@ -70,6 +85,7 @@
 }
 
 #loading {
+    width: 100vw;
     margin-top: 20%;
     margin-bottom: 3%;
     font-size: 20px;
@@ -80,16 +96,15 @@
 }
 
 #background {
-    width: 100%;
-    min-height: fit-content;
+    box-sizing: border-box;
     background-image: url('./img/Background.jpg');
     background-color: #FFF;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    border-radius: 15px;
-    padding-top: 14%;
-    padding-bottom: 14%;
+    padding-top: 13%;
+    padding-bottom: 16%;
+    overflow: hidden;
 }
 
 #basic-font {

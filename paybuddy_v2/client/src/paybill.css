@@ -1,51 +1,31 @@
 @font-face {
-  font-family: 'robotoreg';
-  src: url(./font/Roboto-Regular.ttf);
+  font-family: 'monita';
+  src: url(./font/Montserrat-Italic.ttf);
 }
 
 @font-face {
-  font-family: 'robotoregita';
-  src: url(./font/Roboto-Italic.ttf);
+  font-family: 'monlite';
+  src: url(./font/Montserrat-Light.ttf);
 }
 
 @font-face {
-  font-family: 'robotothin';
-  src: url(./font/Roboto-Thin.ttf);
+  font-family: 'monliteita';
+  src: url(./font/Montserrat-LightItalic.ttf);
 }
 
 @font-face {
-  font-family: 'robotothinita';
-  src: url(./font/Roboto-ThinItalic.ttf);
+  font-family: 'mon';
+  src: url(./font/Montserrat-Regular.ttf);
 }
 
 @font-face {
-  font-family: 'robotomed';
-  src: url(./font/Roboto-Medium.ttf);
+  font-family: 'monsbold';
+  src: url(./font/Montserrat-SemiBold.ttf);
 }
 
 @font-face {
-  font-family: 'robotomedita';
-  src: url(./font/Roboto-MediumItalic.ttf);
-}
-
-@font-face {
-  font-family: 'robotolite';
-  src: url(./font/Roboto-Light.ttf);
-}
-
-@font-face {
-  font-family: 'robotoliteita';
-  src: url(./font/Roboto-LightItalic.ttf);
-}
-
-@font-face {
-  font-family: 'robotobold';
-  src: url(./font/Roboto-Bold.ttf);
-}
-
-@font-face {
-  font-family: 'robotoboldita';
-  src: url(./font/Roboto-BoldItalic.ttf);
+  font-family: 'monsboldita';
+  src: url(./font/Montserrat-SemiBoldItalic.ttf);
 }
 
 .header-id {
@@ -71,8 +51,8 @@
   width: 100%;
   height: 100%;
   text-align: center;
-  font-family: 'robotolite';
-  background-color: white;
+  font-family: 'monlite';
+  background-color: transparent;
 }
 
 .inner-box {
@@ -134,7 +114,7 @@
   padding-top: 1%;
   padding-bottom: 1%;
   font-size: 20px;
-  font-family: 'robotoregita';
+  font-family: 'monita';
   color: #5e5e5e;
 }
 
@@ -199,7 +179,7 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   color: white;
-  font-family: 'robotomed';
+  font-family: 'mon';
   font-weight: normal;
   font-size: 18px;
 }
@@ -221,7 +201,7 @@ hr {
 }
 
 .payment-amount-text-box {
-  font-family: 'robotoregita';
+  font-family: 'monita';
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 3px;
@@ -233,7 +213,7 @@ hr {
   letter-spacing: 1px;
   width: 50%;
   margin-left: 20px;
-  font-family: 'robotoliteita';
+  font-family: 'monliteita';
   font-weight: lighter;
 }
 

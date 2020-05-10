@@ -1,6 +1,6 @@
-import './App.css';
 import React, { useState, useRef, useEffect } from 'react';
-import Logo from './img/paybuddyicon.png';
+import './FundsDeposit.css';
+import Logo from './img/icon.png';
 
 function Product({ product }) {
   const [error, setError] = useState(null);
@@ -47,7 +47,7 @@ function Product({ product }) {
                 console.log('responseFromServer');
 
                 //Page re-route
-                window.location.href = "/Dashboard?user_id=1";
+                window.location.href = '/Dashboard?user_id=1';
               } else {
                 console.log('API error');
               }})
@@ -66,51 +66,51 @@ function Product({ product }) {
 
 const ProductSelection = props => {
   return (
-    <div class="fade-in-fast">
-        <h2 class="header-text">Select Deposit Amount</h2>
+    <div class='fade-in-fast'>
+        <h2 class='header-text'>Select Deposit Amount</h2>
       <div>
-        <ul class="box-containers">
-          <li class="single-box-container">
-            <div class="box-design">
-              <div class="box-text">
-                <img class="logo-image" src={Logo} alt="paybuddy-logo"/>
-                <h3 class="box-inner-text">
+        <ul class='box-containers'>
+          <li class='single-box-container'>
+            <div class='box-design'>
+              <div class='box-text'>
+                <img class='logo-image' src={Logo} alt='paybuddy-logo'/>
+                <h3 class='box-inner-text'>
                   Australia
                   <small>PayBuddy Deposit</small>
                 </h3>
-                <div class="deposit-amount-text">AU$5.00</div>
-                <button class="orange-button" onClick={props.addToCart1}>
-                  <span class="button-text">CONTINUE</span>
+                <div class='deposit-amount-text'>AU$5.00</div>
+                <button class='orange-button' onClick={props.addToCart1}>
+                  <span class='button-text'>CONTINUE</span>
                 </button>
               </div>
             </div>
           </li>
-          <li class="single-box-container">
-            <div class="box-design">
-              <div class="box-text">
-                <img class="logo-image" src={Logo} alt="paybuddy-logo"/>
-                <h3 class="box-inner-text">
+          <li class='single-box-container'>
+            <div class='box-design'>
+              <div class='box-text'>
+                <img class='logo-image' src={Logo} alt='paybuddy-logo'/>
+                <h3 class='box-inner-text'>
                   Australia
                   <small>PayBuddy Deposit</small>
                 </h3>
-                <div class="deposit-amount-text">AU$10.00</div>
-                  <button class="orange-button" onClick={props.addToCart2}>
-                    <span class="button-text">CONTINUE</span>
+                <div class='deposit-amount-text'>AU$10.00</div>
+                  <button class='orange-button' onClick={props.addToCart2}>
+                    <span class='button-text'>CONTINUE</span>
                   </button>
                 </div>
             </div>
           </li>
-          <li class="single-box-container">
-            <div class="box-design">
-              <div class="box-text"> 
-                <img class="logo-image" src={Logo} alt="paybuddy-logo"/>
-                <h3 class="box-inner-text">
+          <li class='single-box-container'>
+            <div class='box-design'>
+              <div class='box-text'> 
+                <img class='logo-image' src={Logo} alt='paybuddy-logo'/>
+                <h3 class='box-inner-text'>
                   Australia
                   <small>PayBuddy Deposit</small>
                 </h3>
-                <div class="deposit-amount-text">AU$25.00</div>
-                <button class="orange-button" onClick={props.addToCart3}>
-                    <span class="button-text">CONTINUE</span>
+                <div class='deposit-amount-text'>AU$25.00</div>
+                <button class='orange-button' onClick={props.addToCart3}>
+                    <span class='button-text'>CONTINUE</span>
                 </button>
               </div>
             </div>
@@ -130,36 +130,36 @@ const PayPalCheckout = props => {
   };
 
   return (
-    <div className="App">
-      <div class="fade-in-fast">
-        <h2 class="header-text">Confirm order and pay</h2>
-        <div class="confirm-container">
-          <div class="thick-underline">
-            <div class="confirm-text left-text">Your order</div>
+    <div className='App'>
+      <div class='fade-in-fast'>
+        <h2 class='header-text'>Confirm order and pay</h2>
+        <div class='confirm-container'>
+          <div class='thick-underline'>
+            <div class='confirm-text left-text'>Your order</div>
           </div>
-          <div class="medium-underline">
-            <div class="left-text">PayBuddy Deposit</div>
-            <div class="right-text" data-basket-field="totalPrice">AU${props.cartValue}.00</div>
+          <div class='medium-underline'>
+            <div class='left-text'>PayBuddy Deposit</div>
+            <div class='right-text' data-basket-field='totalPrice'>AU${props.cartValue}.00</div>
           </div>
-          <div class="thick-underline">
-            <div class="confirm-text left-text">Total</div>
-            <div class="right-text" data-basket-field="totalPrice">AU${props.cartValue}.00</div>
+          <div class='thick-underline'>
+            <div class='confirm-text left-text'>Total</div>
+            <div class='right-text' data-basket-field='totalPrice'>AU${props.cartValue}.00</div>
           </div>
-          <div class="terms-text">
+          <div class='terms-text'>
             <span>
               In some cases, your default currency will not be supported by a payment method directly. To solve this we convert the cost of your order automatically at prevailing European Central Bank rates.
             </span>
           </div>
         </div>
-        <div class="confirm-container" aria-live="assertive">
-          By clicking "Pay now", you agree to the <a class="text-link" role="link" target="_blank">PayPuddy Services Agreement</a> and <a class="text-link" role="link" target="_blank">Privacy and Cookies policy</a>, and you authorize PayBuddy to store your payment details.
+        <div class='confirm-container' aria-live='assertive'>
+          By clicking 'Pay now', you agree to the <a class='text-link' role='link' target='_blank'>PayPuddy Services Agreement</a> and <a class='text-link' role='link' target='_blank'>Privacy and Cookies policy</a>, and you authorize PayBuddy to store your payment details.
         </div>
-        <div class="centre-button">
-          <div class="paypal-button space-button">
+        <div class='centre-button'>
+          <div class='paypal-button space-button'>
             <Product product={product} />
           </div>
-          <button class="orange-button" onClick={props.cancelCart}>
-            <span class="button-text">Cancel</span>
+          <button class='orange-button' onClick={props.cancelCart}>
+            <span class='button-text'>Cancel</span>
           </button>             
         </div>
       </div>
@@ -171,7 +171,7 @@ class FundsDeposit extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { showCheckout: false, cartValue: 10, apiResponse: ""}
+    this.state = { showCheckout: false, cartValue: 10, apiResponse: ''}
     this.addToCart = this.addToCart.bind(this);
     this.cancelCart = this.cancelCart.bind(this);
   }

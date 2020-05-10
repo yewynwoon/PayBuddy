@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route , useHistory} from 'react-router-dom';
 import {Security, SecureRoute, LoginCallback} from '@okta/okta-react';
-import './App.css';
 import Header from './Header';
 import NavigationBar from './NavigationBar';
 import Footer from './Footer';

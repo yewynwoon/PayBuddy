@@ -1,6 +1,6 @@
 import { withOktaAuth } from '@okta/okta-react';
 import React from 'react';
-import './client.css';
+import './Dashboard.css';
 import './fade-in-fast.css';
 import DP from './img/profilepictemplate.png';
 
@@ -16,9 +16,9 @@ async function checkUser() {
     constructor(props) {
         super(props);
         this.state = {
-            cust_acct_value: "",
-            pastPayments: "",
-            cust_transacts: "",
+            cust_acct_value: '',
+            pastPayments: '',
+            cust_transacts: '',
             userInfo: null
         }
         this.checkUser = checkUser.bind(this);
@@ -90,15 +90,15 @@ async function checkUser() {
                                     {this.state.userInfo &&<div>{this.state.userInfo.name}</div>}
                                 </div>
                             </span>
-                            <a href="https://dev-203865.okta.com/enduser/settings" class ='editdetails'>EDIT ACCOUNT</a>
+                            <a href='https://dev-203865.okta.com/enduser/settings' class ='editdetails'>EDIT ACCOUNT</a>
                         </div>
                         <div class='detailbox' id='moneybox'>
-                            <span id='heading'>CURRENT BALANCE</span>
+                            <span id='detail-header'>CURRENT BALANCE</span>
                             <hr></hr>
                             <span class='innercontents'>
-                                <div id="currency">AUD</div>
+                                <div id='currency'>AUD</div>
                                 <div id='accbalance'>${parseFloat(this.state.cust_acct_value).toFixed(2)}</div>
-                                <a href="/FundsDeposit" class ='editdetails'>ADD FUNDS</a>
+                                <a href='/FundsDeposit' class ='editdetails'>ADD FUNDS</a>
                             </span>
                         </div>
                     </div>

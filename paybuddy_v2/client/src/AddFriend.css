@@ -1,55 +1,31 @@
 @font-face {
-    font-family: 'robotoreg';
-    src: url(./font/Roboto-Regular.ttf);
-  }
-  
-  @font-face {
-    font-family: 'robotoregita';
-    src: url(./font/Roboto-Italic.ttf);
-  }
-  
-  @font-face {
-    font-family: 'robotothin';
-    src: url(./font/Roboto-Thin.ttf);
-  }
-  
-  @font-face {
-    font-family: 'robotothinita';
-    src: url(./font/Roboto-ThinItalic.ttf);
-  }
-  
-  @font-face {
-    font-family: 'robotomed';
-    src: url(./font/Roboto-Medium.ttf);
-  }
-  
-  @font-face {
-    font-family: 'robotomedita';
-    src: url(./font/Roboto-MediumItalic.ttf);
-  }
-  
-  @font-face {
-    font-family: 'robotolite';
-    src: url(./font/Roboto-Light.ttf);
-  }
-  
-  @font-face {
-    font-family: 'robotoliteita';
-    src: url(./font/Roboto-LightItalic.ttf);
-  }
-  
-  @font-face {
-    font-family: 'robotobold';
-    src: url(./font/Roboto-Bold.ttf);
-  }
-  
-  @font-face {
-    font-family: 'robotoboldita';
-    src: url(./font/Roboto-BoldItalic.ttf);
-  }
+  font-family: 'monita';
+  src: url(./font/Montserrat-Italic.ttf);
+}
 
-body {
-    font-family: 'robotoreg';
+@font-face {
+  font-family: 'monlite';
+  src: url(./font/Montserrat-Light.ttf);
+}
+
+@font-face {
+  font-family: 'monliteita';
+  src: url(./font/Montserrat-LightItalic.ttf);
+}
+
+@font-face {
+  font-family: 'mon';
+  src: url(./font/Montserrat-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'monsbold';
+  src: url(./font/Montserrat-SemiBold.ttf);
+}
+
+@font-face {
+  font-family: 'monsboldita';
+  src: url(./font/Montserrat-SemiBoldItalic.ttf);
 }
 
 #title {
@@ -101,7 +77,7 @@ label {
     color: white;
     text-transform: uppercase;
     letter-spacing: 1px;
-    font-family: 'robotomed';
+    font-family: 'mon';
     font-weight: normal;
     font-size: 18px;
     border-radius: 25px;

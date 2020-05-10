@@ -15,7 +15,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, Header } from 'semantic-ui-react';
 import './Home.css';
 import './fade-in.css';
-import PayBuddyLogo from './img/paybuddy.png';
+import PayBuddyLogo from './img/logotext.png';
 
 const Home = () => {
   const { authState, authService } = useOktaAuth();

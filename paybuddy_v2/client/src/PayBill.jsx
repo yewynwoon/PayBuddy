@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './client.css';
 import './paybill.css'
 import BPayLogo from './img/bpay_logo.jpg';
 import { getAccBalance, checkBPayPayment } from './util/api-calls';

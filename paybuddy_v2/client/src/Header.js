@@ -1,8 +1,8 @@
 import {useOktaAuth} from '@okta/okta-react';
 
 import React, { useDebugValue } from 'react';
-import './client.css';
-import Logo from './img/paybuddytext.png';
+import './Header.css';
+import Logo from './img/logoandtext.png';
 import LoginPage from './Login';
 import { Menu }  from 'semantic-ui-react'
 
