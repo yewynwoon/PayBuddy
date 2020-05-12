@@ -1,17 +1,3 @@
-<?php $customerId = $_GET['CustomerId']; ?>
-<?php
-session_start();
-if(!isset($_SESSION['admin'])) // check if session variable exist
-{ header("Location:login.php");
-exit(0); } 
-
-else {
-print "Logged in as " . $_SESSION['admin'];
-
-}
-?>
-<br><br>
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -19,7 +5,8 @@ print "Logged in as " . $_SESSION['admin'];
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin</title>
+    <link rel="stylesheet" type="text/css" href="edit-customer.css">
+    <title>Paybuddy Admin: Edit User Details</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -28,28 +15,48 @@ print "Logged in as " . $_SESSION['admin'];
 </head>
 
 <body>
-    <main>
-        <nav>
-            <div class="topnav">
-                <a href="index.php">Home</a>
-                <?php print "<a href='edit-customer.php?CustomerId={$customerId}'>Edit Customer Details</a>" ?>
-                <?php print "<a href='view-customer.php?CustomerId={$customerId}'>View Customer</a>" ?>
-                <a href="logout.php">admin Logout</a>
-            </div>
-        </nav>
+    <header>
+        <img src="./img/logoandtext.png">
+        <?php 
+            $customerId = $_GET['CustomerId']; 
+        ?>
+        <div class="admin-details">
+            <?php
+                session_start();
+                if(!isset($_SESSION['admin'])) // check if session variable exist
+                { header("Location:login.php");
+                exit(0); } 
 
-        </nav>
-    </main>
+                else {
+                print "Logged in as " . $_SESSION['admin'];
+
+                }
+            ?>
+            <input id="logout-button" type="button" onclick="location.href='logout.php';" value="Logout" />
+        </div>
+        <div class="topnav">
+            <a href="index.php">Home</a>
+            <div id="float-right">
+                <?php print "<a href='view-customer.php?CustomerId={$customerId}'>View Customer</a>" ?>
+                <a href="https://dev-203865-admin.okta.com/admin/users">Edit user access</a>
+            </div>
+        </div>
+    </header>
     <main>
-        <div class="container">
-            <table class="table">
-                <thead>
+        <div id="title">
+            <?php
+                print "USER ID: " . $customerId;
+            ?>
+        </div>
+        <div class="main-container">
+            <table>
+                <th>
                     <tr>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Email Address</th>
                     </tr>
-                </thead>
+                </th>
                 <tbody>
                     <?php
                     //connect to the SQL server in gcloud 
@@ -90,7 +97,7 @@ print "Logged in as " . $_SESSION['admin'];
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Modal Header</h4>
+                        <h4 class="modal-title">EDIT USER TITLE</h4>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
@@ -115,18 +122,11 @@ print "Logged in as " . $_SESSION['admin'];
                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
                     </div>
                 </div>
-
             </div>
         </div>
-
     </main>
-
-
-
-
     <footer>
-
-
+        <p>&copy; 2020 PP1 Group 15</p>
     </footer>
 </body>
 

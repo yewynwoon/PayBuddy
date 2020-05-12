@@ -1,0 +1,133 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: auto;
+    padding: 0;
+    color: #5e5e5e;
+
+    width: 100vw;
+}
+
+header {
+    padding-top: 4vh;
+    margin-left: 4vw;
+    margin-bottom: 2vh;
+}
+
+header img {
+    width: 15vw;
+    min-width: 200px;
+}
+
+.admin-details {
+    float: right;
+    padding-top: 0.5vh;
+
+    text-align: right;
+    margin-right: 5vw;
+    letter-spacing: 1px;
+    font-style: italic;
+}
+
+#logout-button {
+    margin-left: 1vw;
+    border-radius: 15px;
+    border: 1px solid #5e5e5e;
+    cursor: pointer;
+
+    background-color: white;
+    color: #5e5e5e;
+    text-transform: uppercase;
+
+    padding: 3px 15px 3px 15px;
+
+    transition: color 0.5s, background-color 0.5s;
+}
+
+#logout-button:hover {
+    color: white;
+    background-color: #5e5e5e;
+}
+
+h1 {
+    font-weight: lighter;
+    text-transform: uppercase;
+    font-size: 25px;
+}
+
+.main-container {
+    margin-left: 4vw;
+    margin-right: 4vw;
+    padding-top: 2vh;
+}
+
+table {
+    width: 100%;
+    table-layout: auto;
+}
+
+th {
+    text-align: left;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    padding-left: 15px;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+}
+
+#left-hr {
+    border: 0;
+    height: 1px;
+    background-image: 
+        linear-gradient(
+            to right,
+            rgb(94,94,94,1),
+            rgb(94,94,94,0)
+        );
+}
+
+tr:nth-child(2n+3) {
+    background-color: #eeeeee;
+}
+
+td {
+    padding-left: 15px;
+}
+
+td:nth-child(5) {
+    padding: 0;
+}
+
+button {
+    padding: 5px 20px 5px 20px;
+    width: 100%;
+    display: inline-block;
+    overflow: hidden;
+    background-color: transparent;
+    border: 1px solid #f2b377;
+
+    transition: background-color 0.5s;
+}
+
+button a {
+    width: 100%;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: #f2b377;
+}
+
+button:hover {
+    background-color: #e4944a;
+    cursor: pointer;
+    color: white;
+}
+
+footer {
+    text-align: center;
+    font-weight: lighter;
+    font-size: 12px;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+}
