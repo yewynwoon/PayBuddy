@@ -50,13 +50,17 @@ CREATE TABLE IF NOT EXISTS cust_bpay_payments (
 	FOREIGN KEY (cust_id) references users(cust_id)
 );
 
-insert into cust_transfer (cust_id, biller_code, crn, amount)
+CREATE TABLE IF NOT EXISTS merchants
+(
+	merchant_id int not null AUTO_INCREMENT,
+	fname varchar(25) NOT NULL,
+	lname varchar(25) NOT NULL,
+	account_value int default 0,
+	email varchar(25) NOT NULL,
+	password varchar(25) NOT NULL,
 
-select cust_bpay_payments.bpay_payment_id, cust_bpay_payments.amount, cust_bpay_payments.date_stamp from cust_bpay_payments and cust_bpay_payments where cust_id=
-
-select * from cust_deposit full outer join cust_bpay_payments on cust_deposit.cust_id=cust_bpay_payments=cust_id;
-
-
+	PRIMARY KEY (merchant_id)
+);
 
 
 describe users;
@@ -112,3 +116,15 @@ describe bpay_payment_details;
 | amount                  | int(11)   | NO   |     | NULL              |                             |
 | date_stamp              | timestamp | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
 +-------------------------+-----------+------+-----+-------------------+-----------------------------+
+
+describe merchants;
++---------------+-------------+------+-----+---------+----------------+
+| Field         | Type        | Null | Key | Default | Extra          |
++---------------+-------------+------+-----+---------+----------------+
+| merchant_id   | int(11)     | NO   | PRI | NULL    | auto_increment |
+| fname         | varchar(25) | NO   |     | NULL    |                |
+| lname         | varchar(25) | NO   |     | NULL    |                |
+| account_value | int(11)     | YES  |     | 0       |                |
+| email         | varchar(25) | NO   |     | NULL    |                |
+| password      | varchar(25) | NO   |     | NULL    |                |
++---------------+-------------+------+-----+---------+----------------+

@@ -24,5 +24,7 @@ values (2, 4, 20, 'test1');
 insert into cust_transfer (src_cust_id, dest_cust_id, amount, description)
 values (4, 3, 20, 'test2');
 
-select * from users;
-select * from cust_transfer;
+
+/*  Test merchants */
+insert into merchants (fname,lname,email,password)
+values ('jeremy', 'beresh', 'j.beresh@hotmail.com', 'hello');

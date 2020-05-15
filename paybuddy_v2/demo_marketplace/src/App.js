@@ -3,12 +3,16 @@ import React, { useState, useRef, useEffect } from 'react';
 import chair from './chair.jpg';
 import gif from './giphy.gif';
 
+function onClick() {
+  return window.open("http://www.google.com");
+}
+
 function Product({ product }) {
   const [paidFor, setPaidFor] = useState(false);
   const [error, setError] = useState(null);
-  const paypalRef = useRef();
+  /* const payBuddyRef = useRef() */
 
-  useEffect(() => {
+  /* useEffect(() => {
     window.paypal
       .Buttons({
         createOrder: (data, actions) => {
@@ -35,7 +39,7 @@ function Product({ product }) {
         },
       })
       .render(paypalRef.current);
-  }, [product.description, product.price]);
+  }, [product.description, product.price]); */
 
   if (paidFor) {
     return (
@@ -53,7 +57,10 @@ function Product({ product }) {
         {product.description} for ${product.price}
       </h1>
       <img alt={product.description} src={product.image} width="200" />
-      <div ref={paypalRef} />
+      
+      <button type="button" className="btn btn-primary" onClick={onClick} >
+        <span className="icon">Open</span>
+      </button>
     </div>
   );
 }
