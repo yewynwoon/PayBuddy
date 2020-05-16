@@ -3,12 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@okta/okta-auth-js": "^3.1.1",
+    "@okta/okta-react": "^3.0.1",
     "bootstrap": "^4.5.0",
-    "react": "^16.8.6",
+    "react": "^16.13.1",
     "react-async-script-loader": "^0.3.0",
-    "react-dom": "^16.8.6",
+    "react-dom": "^16.13.1",
     "react-helmet": "^5.2.1",
-    "react-scripts": "3.0.1"
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.0.1",
+    "semantic-ui-react": "^0.88.2"
   },
   "scripts": {
     "start": "react-scripts start",
