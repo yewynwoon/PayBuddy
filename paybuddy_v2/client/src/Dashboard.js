@@ -9,9 +9,9 @@ async function checkUser() {
       const userInfo = await this.props.authService.getUser();
       this.setState({ userInfo });
     }
-  }
+}
 
-  export default withOktaAuth (class Dashboard extends React.Component {
+export default withOktaAuth (class Dashboard extends React.Component {
 
     constructor(props) {
         super(props);

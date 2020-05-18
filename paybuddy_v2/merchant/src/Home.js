@@ -12,7 +12,7 @@ class Home extends Component {
   render() {
     // calls the isAuthenticated method in authentication service
     const { isAuthenticated } = this.props.auth;
-   // const isAuthenticated = true;
+    //const isAuthenticated = true;
 
     return (
       <div>
@@ -22,7 +22,7 @@ class Home extends Component {
         }
         {
           !isAuthenticated() && <UnAuthApp auth={this.props.auth}/>
-         // !isAuthenticated && <UnAuthApp auth={this.props.auth}/>
+          //!isAuthenticated && <UnAuthApp auth={this.props.auth}/>
         }
       </div>
     );

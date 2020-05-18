@@ -3,19 +3,21 @@ import { Link } from 'react-router-dom'
 
 class NewProjectForm extends Component {
     handleSubmit = (event) => {
-        var title = event.target.title.value /* !== '' ? event.target.title.value : this.state.title */
-        var description = event.target.description.value /* !== '' ? event.target.description.value : this.state.description */
-        var revision = event.target.revision.value /* !== '' ? event.target.revision.value : this.state.revision */
+        var name = event.target.name.value
+        var return_url = event.target.return_url.value
 
-        fetch('http://localhost:9000/project/new', {
+        console.log(localStorage.getItem('id_token'), name, return_url)
+
+
+        fetch('http://localhost:9000/merchant/new', {
             method: 'post',
             headers: {
                 'content-type': 'application/json'
             },
             body: JSON.stringify({
-                title: title,
-                description: description,
-                revision: revision
+                merchant_id: localStorage.getItem('id_token'),
+                name: name,
+                return_url: return_url
             })
         }).then((res) => {
             window.location.href = "/";
@@ -29,32 +31,24 @@ class NewProjectForm extends Component {
             <div className="container px-4 py-2">
                 <div className="row">
                     <h3>
-                        New Project
+                        New App
                     </h3>
                 </div>
                 <div className="row">
                     <form className="col" method="post" onSubmit={this.handleSubmit}>
                         <div className="form-group row">
-                            <label htmlFor="title" className="col-md-2 col-form-label text-md-right">Project Title: </label>
+                            <label htmlFor="title" className="col-md-2 col-form-label text-md-right">App Name: </label>
                             
                             <div className="col-md-6">
-                                <input type="text" className="form-control" id="title" required/>
+                                <input type="text" className="form-control" id="name" required/>
                             </div>
                         </div>
 
                         <div className="form-group row">
-                            <label htmlFor="title" className="col-md-2 col-form-label text-md-right">Project Description: </label>
+                            <label htmlFor="title" className="col-md-2 col-form-label text-md-right">Return URL: </label>
                             
                             <div className="col-md-6">
-                                <input type="text" className="form-control" id="description" />
-                            </div>
-                        </div>
-
-                        <div className="form-group row">
-                            <label htmlFor="title" className="col-md-2 col-form-label text-md-right">Project Revision: </label>
-                            
-                            <div className="col-md-6">
-                                <input type="text" className="form-control" id="revision" />
+                                <input type="text" className="form-control" id="return_url" />
                             </div>
                         </div>
 

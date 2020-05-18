@@ -62,7 +62,7 @@ router.post('/login', async (req, res) => {
 //Get merchant apps
 router.get('/apps/:merch_id', async (req, res) => {
   var merchID = req.params.merch_id;
-  var query = 'select merchant_app_id, name from merchant_apps where merchant_id="' + merchID + '";';
+  var query = 'select merchant_app_id, name, return_url from merchant_apps where merchant_id="' + merchID + '";';
 
   try {
 
@@ -75,43 +75,110 @@ router.get('/apps/:merch_id', async (req, res) => {
   
 });
 
-
-/* //Get user account balance
-router.get('/acctBalance/:user_id', async (req, res) => {
-  var userID = req.params.user_id;
-  var query = 'select account_value from users where cust_id=' + userID + ';';
-
-  sql.runQuery(query, function(err,response,data) {
-      if(!err) {
-          console.log(response)
-          res.send(response);
-      }
-  });
-});
-
-
-router.get('/accBalance/:user_id', async (req, res) => {
-  var userID = req.params.user_id;
-  var query = 'select account_value from users where cust_id=' + userID + ';';
+//Get merchant app
+router.get('/app/:app_id', async (req, res) => {
+  var appID = req.params.app_id;
+  var query = 'select name, return_url from merchant_apps where merchant_app_id="' + appID + '";';
 
   try {
-    //Run query - fetch response
-    var acctValue = await sqlPool.query(query);
 
-    console.log(userID);
-    console.log(acctValue);
+    var merchApp = await pool.query(query);
+    res.status(200).send({message: merchApp}).end();
+
   } catch (err) {
-    // If something goes wrong, handle the error in this section. This might
-    // involve retrying or adjusting parameters depending on the situation.
-    // [START_EXCLUDE]
-    res.status(500).end('Unable to successfully insert transaction!');
-    // [END_EXCLUDE]
-  } 
-  // [END cloud_sql_mysql_mysql_connection]
-
-  res.end(JSON.stringify({userID: userID, acctValue: acctValue}));
+    res.status(500).send('Connection error!').end();
+  }
+  
 });
- */
+
+router.post('/:appId/update', async (req, res) => {
+  var appID = req.params.app_id;
+
+  try {
+    const updateProjectQuery = 'UPDATE merchant_apps SET title=(?), return_url=(?) WHERE project_id=(?)';
+
+    await pool.query(updateProjectQuery, [req.body.title, req.body.return_url, appID]);
+
+    res.status(200).end(JSON.stringify({response: 'Succesful!'}));
+  } catch (err) {
+    res.status(500).send('Connection error!').end();
+  }
+});
+
+router.get('/deleteApp/:appID', async (req, res) => {
+  const appID = req.params.appID;
+
+  try {
+    //Get current acct_value of customer
+    const getProjectsQuery = 'delete from merchant_apps where merchant_app_id=(?);';
+
+    //Run query - fetch response
+    await pool.query(getProjectsQuery, [appID]);
+
+    //console.log(projectList);
+
+    res.status(200).end(JSON.stringify({response: 'Succesful!'}));
+  } catch (err) {
+      console.log(err);
+      res.status(500).end('Unable to retrieve projecs!');
+  }
+});
+
+router.post('/new', async (req, res) => {
+
+  console.log(req.body.merchant_id, req.body.name, req.body.return_url);
+
+  try {
+    const updateProjectQuery = 'insert into merchant_apps (merchant_id, name, return_url) values (?, ?, ?)';
+
+    await pool.query(updateProjectQuery, [req.body.merchant_id, req.body.name, req.body.return_url]);
+
+    res.status(200).end(JSON.stringify({response: 'Succesful!'}));
+  } catch (err) {
+    res.status(500).send('Connection error!').end();
+  }
+});
+
+router.get('/:merch_id', async (req, res) => {
+  var merch_id = req.params.merch_id;
+
+  try {
+     
+    //Get current acct_value of customer
+    const getAcctValueQuery = 'select account_value from merchants where merchant_id = ' + merch_id + ';';
+
+    //Get past deposits of customer
+    const getPastDepositQuery = 'select amount, date_stamp, description from cust_merchant_payment where merchant_id=' + merch_id + ';';
+    
+    //Run query - fetch response
+    var acctValue = await pool.query(getAcctValueQuery);
+    var transacts = await pool.query(getPastDepositQuery);
+
+    function compare(a, b) {
+
+      const bandA = a.date_stamp;
+      const bandB = b.date_stamp;
+
+      let comparison = 0;
+      if (bandA > bandB) {
+        comparison = 1;
+      } else if (bandA < bandB) {
+        comparison = -1;
+      }
+      return comparison * -1;
+    }
+    
+    transacts.sort(compare);
+
+    var lastTenTransacts = transacts.slice(0,13);
+
+    res.end(JSON.stringify({acctValue: acctValue, transactions: lastTenTransacts}));
+    
+  } catch (err) {
+    console.log(err);
+    res.status(500).end('Unable to successfully insert transaction!');
+  }
+});
 
 
 module.exports = router;

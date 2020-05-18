@@ -31,14 +31,17 @@ class Dashboard extends Component {
         return Object.keys(this.state.appList).map((key) => {
             var appID = this.state.appList[key].merchant_app_id;
             var title = this.state.appList[key].name;
+            var return_url = this.state.appList[key].return_url;
 
             return (
                 <tr key={key}>
                     <td>{title}</td>
+                    <td>{return_url
+                    }</td>
                     <td>
                         <p className='control-column'>
-                            <Link to={`/project/${appID}/`}>
-                                <button className="btn btn-primary">View</button>
+                            <Link to={`/app/${appID}/`}>
+                                <button className="btn btn-primary">Edit</button>
                             </Link>
                         </p>
                     </td>
@@ -69,6 +72,7 @@ class Dashboard extends Component {
                             <thead>
                                 <tr>
                                     <th>TITLE</th>
+                                    <th>RETURN URL</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>

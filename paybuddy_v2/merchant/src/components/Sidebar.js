@@ -19,12 +19,12 @@ class Sidebar extends Component {
                         </li>
                         <li className="nav-item">
                             <div className="nav-link">
-                                <Link to="/">
+                                <Link to="/dash">
                                     My Account
                                 </Link>
                             </div>
                         </li>
-                        <div className="nav-link">
+                        {/* <div className="nav-link">
                             Sandbox
                         </div>
                         <li className="nav-item">
@@ -40,7 +40,7 @@ class Sidebar extends Component {
                                     Notifications
                                 </Link>
                             </div>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
             </div>
