@@ -1,26 +1,43 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route , useHistory} from 'react-router-dom';
+import {Security, LoginCallback} from '@okta/okta-react';
+import Header from './Header';
+import Footer from './Footer';
+import Login from './Login';
+import config from './config';
+import Home from './Home';
 import './App.css';
 
-function App() {
+const HasAccessToRouter = () => {
+  const history = useHistory();
+
+  const customAuthHandler = () => {
+    history.push('/');
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Security {...config.oidc}oAuthRequired={customAuthHandler}>
+      <div className="App">
+        <Header/>
+        <Route path="/" exact component={Home} />
+        <Route path="/implicit/callback" component ={LoginCallback}/>
+        <Route path="/login" exact component={Login} />
+      </div>
+    </Security>
   );
+};
+
+class App extends React.Component {
+  render () {
+    return (
+    <div>
+      <Router>
+        <HasAccessToRouter/>
+      </Router>
+      <Footer/>
+    </div>
+    );
+  }
 }
 
 export default App;
