@@ -11,18 +11,18 @@ class Home extends Component {
 
   render() {
     // calls the isAuthenticated method in authentication service
-    //const { isAuthenticated } = this.props.auth;
-    const isAuthenticated = true;
+    const { isAuthenticated } = this.props.auth;
+   // const isAuthenticated = true;
 
     return (
       <div>
         {
-          //isAuthenticated() && <App logoutHandler={this.logout}/> 
-          isAuthenticated && <App logoutHandler={this.logout}/>
+          isAuthenticated() && <App logoutHandler={this.logout}/> 
+          //isAuthenticated && <App logoutHandler={this.logout}/>
         }
         {
-          //!isAuthenticated() && <UnAuthApp auth={this.props.auth}/>
-          !isAuthenticated && <UnAuthApp auth={this.props.auth}/>
+          !isAuthenticated() && <UnAuthApp auth={this.props.auth}/>
+         // !isAuthenticated && <UnAuthApp auth={this.props.auth}/>
         }
       </div>
     );

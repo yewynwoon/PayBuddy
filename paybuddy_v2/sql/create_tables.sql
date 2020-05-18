@@ -53,15 +53,38 @@ CREATE TABLE IF NOT EXISTS cust_bpay_payments (
 CREATE TABLE IF NOT EXISTS merchants
 (
 	merchant_id int not null AUTO_INCREMENT,
-	fname varchar(25) NOT NULL,
-	lname varchar(25) NOT NULL,
-	account_value int default 0,
+	cname varchar(50) NOT NULL,
+	account_value int not null default 0,
 	email varchar(25) NOT NULL,
 	password varchar(25) NOT NULL,
 
 	PRIMARY KEY (merchant_id)
 );
 
+CREATE TABLE IF NOT EXISTS merchant_apps
+(
+	merchant_app_id int not null AUTO_INCREMENT,
+	merchant_id int not null,
+	name varchar(25) NOT NULL,
+	return_url varchar(75) NOT NULL,
+
+	PRIMARY KEY (merchant_app_id),
+	FOREIGN KEY (merchant_id) references merchants(merchant_id)
+);
+
+CREATE TABLE IF NOT EXISTS cust_merchant_payment (
+
+	cust_merchant_payment_id int not null AUTO_INCREMENT,
+	cust_id int not null,
+	merchant_id int not null,
+	amount int NOT NULL,
+	description varchar(120),
+	date_stamp TIMESTAMP not null,
+
+	PRIMARY KEY (cust_merchant_payment_id),
+	FOREIGN KEY (cust_id) references users(cust_id),
+	FOREIGN KEY (merchant_id) references merchants(merchant_id)
+);
 
 describe users;
 +---------------+-------------+------+-----+---------+----------------+
@@ -122,9 +145,30 @@ describe merchants;
 | Field         | Type        | Null | Key | Default | Extra          |
 +---------------+-------------+------+-----+---------+----------------+
 | merchant_id   | int(11)     | NO   | PRI | NULL    | auto_increment |
-| fname         | varchar(25) | NO   |     | NULL    |                |
-| lname         | varchar(25) | NO   |     | NULL    |                |
+| cname         | varchar(50) | NO   |     | NULL    |                |
 | account_value | int(11)     | YES  |     | 0       |                |
 | email         | varchar(25) | NO   |     | NULL    |                |
 | password      | varchar(25) | NO   |     | NULL    |                |
 +---------------+-------------+------+-----+---------+----------------+
+
+describe merchant_apps;
++-----------------+-------------+------+-----+---------+----------------+
+| Field           | Type        | Null | Key | Default | Extra          |
++-----------------+-------------+------+-----+---------+----------------+
+| merchant_app_id | int(11)     | NO   | PRI | NULL    | auto_increment |
+| merchant_id     | int(11)     | NO   | MUL | NULL    |                |
+| name            | varchar(25) | NO   |     | NULL    |                |
+| return_url      | varchar(75) | NO   |     | NULL    |                |
++-----------------+-------------+------+-----+---------+----------------+
+
+describe cust_merchant_payment;
++--------------------------+--------------+------+-----+-------------------+-----------------------------+
+| Field                    | Type         | Null | Key | Default           | Extra                       |
++--------------------------+--------------+------+-----+-------------------+-----------------------------+
+| cust_merchant_payment_id | int(11)      | NO   | PRI | NULL              | auto_increment              |
+| cust_id                  | int(11)      | NO   | MUL | NULL              |                             |
+| merchant_id              | int(11)      | NO   | MUL | NULL              |                             |
+| amount                   | int(11)      | NO   |     | NULL              |                             |
+| description              | varchar(120) | YES  |     | NULL              |                             |
+| date_stamp               | timestamp    | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
++--------------------------+--------------+------+-----+-------------------+-----------------------------+

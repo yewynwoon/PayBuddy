@@ -20,7 +20,7 @@ function UnauthenticatedApp(props) {
     event.preventDefault();
     const {username, password} = event.target.elements;
 
-    fetch('http://localhost:9000/auth/login', {
+    fetch('http://localhost:9000/merchant/login', {
       method: 'post',
       headers: {
         'content-type': 'application/json'
@@ -31,12 +31,14 @@ function UnauthenticatedApp(props) {
       })
     })
     .then((response) => {
-
       if (response.status === 200) {
-        props.auth.handleAuthentication(response);
+        return response.json();
       } else {
         setErr(true);
       }
+    })
+    .then((response) => {
+      props.auth.handleAuthentication(response)
     })
   }
   

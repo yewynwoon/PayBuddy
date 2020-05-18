@@ -26,5 +26,9 @@ values (4, 3, 20, 'test2');
 
 
 /*  Test merchants */
-insert into merchants (fname,lname,email,password)
-values ('jeremy', 'beresh', 'j.beresh@hotmail.com', 'hello');
+insert into merchants (cname,email,password)
+values ('test company', 'test@hotmail.com', 'hello');
+
+/*  Test merchant apps */
+insert into merchant_apps (merchant_id, name,return_url)
+values (1, 'test app', 'test.com');

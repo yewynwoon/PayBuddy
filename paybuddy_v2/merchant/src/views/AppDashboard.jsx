@@ -7,16 +7,18 @@ class Dashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          projectList: ""
+            appList: ""
         }
     }
     
     callAPI() {
-        fetch('http://localhost:9000/dashboard/')
+        let url = 'http://localhost:9000/merchant/apps/' + localStorage.getItem('id_token')
+        
+        fetch(url)
         .then((response) => { return response.json(); })
         .then((data) => {
           this.setState({
-            projectList: data.projectList
+            appList: data.message
           })
         });
     }
@@ -26,18 +28,16 @@ class Dashboard extends Component {
     }
 
     renderTableData() {
-        return Object.keys(this.state.projectList).map((key) => {
-            var title = this.state.projectList[key].title;
-            var projectID = this.state.projectList[key].project_id;
-            var type = this.state.projectList[key].type;
+        return Object.keys(this.state.appList).map((key) => {
+            var appID = this.state.appList[key].merchant_app_id;
+            var title = this.state.appList[key].name;
 
             return (
                 <tr key={key}>
                     <td>{title}</td>
-                    <td>{type}</td>
                     <td>
                         <p className='control-column'>
-                            <Link to={`/project/${projectID}/`}>
+                            <Link to={`/project/${appID}/`}>
                                 <button className="btn btn-primary">View</button>
                             </Link>
                         </p>
@@ -69,7 +69,6 @@ class Dashboard extends Component {
                             <thead>
                                 <tr>
                                     <th>TITLE</th>
-                                    <th>TYPE</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
