@@ -12,6 +12,7 @@ var user = require('./routes/user');
 var addFriend = require('./routes/addfriend');
 var transferFunds = require('./routes/transferFunds');
 var merchant = require('./routes/merchant');
+var sdk = require('./routes/sdk');
 var app = express();
 
 // view engine setup
@@ -34,6 +35,7 @@ app.use('/user', user);
 app.use('/addFriend', addFriend);
 app.use('/transferFunds', transferFunds);
 app.use('/merchant', merchant);
+app.use('/sdk', sdk);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
