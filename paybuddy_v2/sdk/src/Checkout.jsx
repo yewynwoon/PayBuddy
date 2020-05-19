@@ -10,6 +10,7 @@ class Checkout extends React.Component {
             merchID: 1,
             amount: 5//'',
         }
+        this.submitPayment = this.submitPayment.bind(this)
     }
 
     componentDidMount() {

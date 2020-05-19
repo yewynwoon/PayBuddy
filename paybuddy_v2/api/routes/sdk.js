@@ -79,20 +79,20 @@ router.post('/verifyPayment', async (req, res) => {
   
     try {
       //Get source user account value
-      const getSrcAcctValueQuery = 'select cust_id, account_value from users where email = ' + srcEmail + ';';
+      const getSrcAcctValueQuery = 'select cust_id, account_value from users where email="'+srcEmail+'";';
       var srcAcctValue = await pool.query(getSrcAcctValueQuery);
 
-      console.log(srcAcctValue[0])
-
-      //var srcID = srcAcctValue[0]
+      var srcID = srcAcctValue[0].cust_id
   
       //Ensure source user exists & has available funds
       if (srcAcctValue[0] == null) {
         console.log('Incorrect src id');
         res.status(500).end('Incorrect src id');
+        return;
       } else if (parseInt(srcAcctValue[0].account_value) < amount) {
         console.log('Insufficient Funds');
         res.status(500).end('Insufficient Funds');
+        return;
       }
 
       //Get dest user account value
@@ -103,6 +103,7 @@ router.post('/verifyPayment', async (req, res) => {
       if (dstAcctValue[0] == null) {
         console.log('Incorrect dst id');
         res.status(500).end('Incorrect dst id');
+        return;
       }
   
       //Updated user account values
@@ -110,15 +111,15 @@ router.post('/verifyPayment', async (req, res) => {
       const newDstMerchAmt = parseInt(dstAcctValue[0].account_value) + parseInt(amount);
   
       //Update user account balues
-      const updateSrcCust = 'update users set account_value=' + newSrcCustAmt + ' where email=' + srcEmail + ';';
-      const updateMerchCust = 'update users set account_value=' + newDstMerchAmt + ' where cust_id=' + destID + ';';
+      const updateSrcCust = 'update users set account_value='+newSrcCustAmt+' where cust_id="'+srcID+'";';
+      const updateMerchCust = 'update merchants set account_value='+newDstMerchAmt+' where merchant_id="'+merchID+'";';
       
       await pool.query(updateSrcCust);
       await pool.query(updateMerchCust);
       
       //Insert transaction record
-      const insertTransact = 'insert into cust_merchant_payment (cust_id, merchant_id, amount, description) values (?,?,?,?,?);';
-      await pool.query(insertTransact, [srcID,merchID,amount,descrip]);
+      /* const insertTransact = 'insert into cust_merchant_payment (cust_id, merchant_id, amount, description) values (?,?,?,?,?);';
+      await pool.query(insertTransact, [srcID,merchID,amount,descrip]); */
   
       console.log('Success!');
       res.status(200).end('Success!');

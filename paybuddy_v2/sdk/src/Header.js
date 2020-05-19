@@ -11,15 +11,13 @@ const Header = () => {
 
     return (
         <header>
-            <a href="/Dashboard" >
-                <img 
-                    id='homeimage' 
-                    src={Logo} 
-                    alt="paybuddy-logo" 
-                    height="70" 
-                    width="auto"
-                />
-            </a>
+            <img 
+                id='homeimage' 
+                src={Logo} 
+                alt="paybuddy-logo" 
+                height="70" 
+                width="auto"
+            />
             {authState.isAuthenticated && (
                 <span class='header-log-out' id='log-out-link'>
                     <Menu.Item as="a" onClick={logout}>
