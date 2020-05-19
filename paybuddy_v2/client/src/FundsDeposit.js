@@ -261,7 +261,7 @@ class FundsDeposit extends React.Component {
   }
 
   addToCart3 = () => {
-    this.addToCart(25)
+    this.addToCart(250)
   }
 
   addToCart = (e) => {

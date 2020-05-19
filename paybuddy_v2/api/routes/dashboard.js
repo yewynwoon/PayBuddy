@@ -51,13 +51,17 @@ router.get('/:user_id', async (req, res) => {
     //Get past transfers of customer
     const getPastTransferQuery = 'select amount, date_stamp, concat("Transfer: ", description) as description, "debit" as type from cust_transfer where src_cust_id=' + userID + ';';
     
+    //Get past payments to merchants
+    const getPastMerchPayemntQuery = 'select amount, date_stamp, concat("Payment: ", description) as description, "debit" as type from cust_merchant_payment where cust_id=' + userID + ';';
+
     //Run query - fetch response
     var acctValue = await pool.query(getAcctValueQuery);
     var pastDeposits = await pool.query(getPastDepositQuery);
     var pastPayments = await pool.query(getPastPaymentQuery);
     var pastTransfers = await pool.query(getPastTransferQuery);
+    var pastMerchPayments = await pool.query(getPastMerchPayemntQuery);
 
-    var transactions = pastDeposits.concat(pastPayments).concat(pastTransfers);
+    var transactions = pastDeposits.concat(pastPayments).concat(pastTransfers).concat(pastMerchPayments);
 
     function compare(a, b) {
 

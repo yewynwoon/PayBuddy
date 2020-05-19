@@ -71,7 +71,6 @@ class Dashboard extends Component {
                             <tr>
                                 <th>DATE</th>
                                 <th>DESCRIPTION</th>
-                                <th>TYPE</th>
                                 <th>AMOUNT</th>
                             </tr>
                         </thead>

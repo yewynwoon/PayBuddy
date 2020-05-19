@@ -118,8 +118,8 @@ router.post('/verifyPayment', async (req, res) => {
       await pool.query(updateMerchCust);
       
       //Insert transaction record
-      /* const insertTransact = 'insert into cust_merchant_payment (cust_id, merchant_id, amount, description) values (?,?,?,?,?);';
-      await pool.query(insertTransact, [srcID,merchID,amount,descrip]); */
+      const insertTransact = 'insert into cust_merchant_payment (cust_id, merchant_id, amount, description) values (?,?,?,?);';
+      await pool.query(insertTransact, [srcID,merchID,amount,descrip]);
   
       console.log('Success!');
       res.status(200).end('Success!');
