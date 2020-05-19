@@ -55,9 +55,9 @@ class NewProjectForm extends Component {
                         <div className="form-group row mb-0">
                             <div className="col-md-8 offset-md-4">
                                 <Link to={`/`}>
-                                    <button className="btn btn-danger">Cancel</button>
+                                    <button className="btn btn-danger width-space">Cancel</button>
                                 </Link>
-                                <button type="submit" className="btn btn-success">
+                                <button type="submit" className="btn btn-success width-space">
                                     Create
                                 </button>
                             </div>

@@ -4,21 +4,21 @@ import { Link } from 'react-router-dom'
 class Sidebar extends Component {
     render() {
         return (
-            <div className="col-md-2 d-none d-md-block bg-light sidebar">
+            <div className="col-md-2 d-none d-md-block bg-light sidebar half-height">
                 <div className="sidebar-sticky">
                     <ul className="nav flex-column">
-                        <div className="nav-link">
+                        <div className="side-link">
                             Dashboard
                         </div>
                         <li className="nav-item">
-                            <div className="nav-link">
+                            <div className="side-link">
                                 <Link to="/">
                                     My Apps
                                 </Link>
                             </div>
                         </li>
                         <li className="nav-item">
-                            <div className="nav-link">
+                            <div className="side-link">
                                 <Link to="/dash">
                                     My Account
                                 </Link>

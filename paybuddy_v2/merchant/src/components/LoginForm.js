@@ -17,8 +17,8 @@ const LoginForm = (props) => (
                     <label htmlFor='password'>Password</label>
                     <input className='input' id='password' type='password'/>
                 </div>
-                <div className='loginButton'>
-                    <Button type='submit' variant='primary'>Login</Button>
+                <div>
+                    <Button id='loginButton' type='submit' variant='primary'>Login</Button>
                 </div>
                 {props.err ? 'Incorrect E-Mail or Password' : null}
             </form>

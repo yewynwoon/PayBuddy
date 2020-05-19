@@ -41,7 +41,7 @@ class Dashboard extends Component {
                     <td>
                         <p className='control-column'>
                             <Link to={`/app/${appID}/`}>
-                                <button className="btn btn-primary">Edit</button>
+                                <button className="orangeButton">Edit</button>
                             </Link>
                         </p>
                     </td>
@@ -58,11 +58,11 @@ class Dashboard extends Component {
                     <div className="page-header">
                         <div className="row justify-content-center">
                             <span className="col text-left">
-                                <h1 className='left'>Apps</h1>
+                                <h1 className='left padding heading spacing'>Apps</h1>
                             </span>
                             <span className="col text-right">
                                 <Link to={`/newProject/`}>
-                                    <button className="btn btn-success">New App</button>
+                                    <button className="orangeButton spacing">New App</button>
                                 </Link>
                             </span>
                         </div>

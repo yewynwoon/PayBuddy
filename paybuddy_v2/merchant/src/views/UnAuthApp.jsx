@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button'
-import Logo from '../imgs/photon_icon.png'
+import Logo from '../imgs/logoandtext.png'
 import LoginForm from '../components/LoginForm'
 import '../css/unAuthApp.css'
 
@@ -41,13 +41,13 @@ function UnauthenticatedApp(props) {
       props.auth.handleAuthentication(response)
     })
   }
-  
+
   return (
     <div className='content_pane'>
-      <img className="logo-image" src={Logo} alt="paybuddy-logo"/>
-      <h1>PayBuddy Merchant Portal</h1>
+      <img src={Logo} className='logo-image' alt="paybuddy-logo"/>
+      <h1 className='heading'>PayBuddy Merchant Portal</h1>
       <div>
-        <Button variant="primary" onClick={handleShow}>Login</Button>
+        <Button id='loginButton' variant="primary" onClick={handleShow}>Login</Button>
         <LoginForm show={show} close={closeForm} handleSubmit={handleSubmit} err={err} />
       </div>
     </div>

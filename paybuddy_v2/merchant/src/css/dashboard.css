@@ -22,3 +22,66 @@
     float: right;
     text-align: end;
 }
+
+.padding {
+    padding-left: 1vw;
+}
+
+.heading {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.spacing {
+    margin-top: 2vh;
+}
+
+.pad-vertical {
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+}
+
+.width-space {
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+.orangeButton {
+    padding-left: 2vw;
+    padding-right: 2vw;
+    background-color: #f2b377;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: normal;
+    font-size: 18px;
+    border-radius: 25px;
+    border: none;
+}
+
+.orangeButton:hover {
+    background-color: #E3A971;
+    cursor: pointer;
+}
+
+.half-height {
+    height: 50vh;
+}
+
+.side-link {
+    padding-left: 1vw;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.side-link:hover {
+    text-decoration: none;
+}
+
+.logo-image-dash {
+    float: left;
+    height: 20px;
+    width: auto;
+}

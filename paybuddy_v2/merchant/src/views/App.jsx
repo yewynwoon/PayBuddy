@@ -88,11 +88,11 @@ class App extends Component {
                         <div className="form-group row mb-0">
                             <div className="col-md-8 offset-md-4">
                                 <Link to={`/`}>
-                                    <button className="btn btn-warning">Cancel</button>
+                                    <button className="btn btn-warning width-space">Cancel</button>
                                 </Link>
                                 
-                                <button className="btn btn-danger" onClick={(e) => this.deleteApp(this.props.match.params.id, e)}>Delete</button>
-                                <button type="submit" className="btn btn-primary">
+                                <button className="btn btn-danger width-space" onClick={(e) => this.deleteApp(this.props.match.params.id, e)}>Delete</button>
+                                <button type="submit" className="btn btn-primary width-space">
                                     Update
                                 </button>
                             </div>
