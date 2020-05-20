@@ -25,6 +25,7 @@ export default withOktaAuth (class Dashboard extends React.Component {
     }
 
     callAPI() {
+        console.log(this.state.userInfo)
         fetch('http://localhost:9000/dashboard/1')
         .then((response) => {
             return response.json();
@@ -58,7 +59,7 @@ export default withOktaAuth (class Dashboard extends React.Component {
             var amount;
             var type;
 
-            if (this.state.cust_transacts[key].type == 'credit') {
+            if (this.state.cust_transacts[key].type === 'credit') {
                 amount = '+$' + this.state.cust_transacts[key].amount;
                 type = 'credit';
             } else {
@@ -85,7 +86,7 @@ export default withOktaAuth (class Dashboard extends React.Component {
                         <div id='customerbox'>
                             <span>WELCOME BACK,</span>
                             <span id='customercontents'>
-                                <img id='profilepic' src={DP}></img>
+                                <img id='profilepic' src={DP} alt=''></img>
                                 <div id='name'>
                                     {this.state.userInfo &&<div>{this.state.userInfo.name}</div>}
                                 </div>

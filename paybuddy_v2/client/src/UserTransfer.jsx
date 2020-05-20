@@ -5,35 +5,35 @@ import './paybill.css';
 const TransferForm = props => {
     return (
         <main id='cous'>
-            <div class='header-id'>
-                <h2 class='header-text'>Enter transfer details</h2>
+            <div className='header-id'>
+                <h2 className='header-text'>Enter transfer details</h2>
             </div>
-            <div class="box">
-                <div class="inner-box" id="box-body-id">
+            <div className="box">
+                <div className="inner-box" id="box-body-id">
                     <form onSubmit={props.onSubmit}>
-                        <div class="bpay-logo">Funds Tranfer</div>
+                        <div className="bpay-logo">Funds Tranfer</div>
                         <hr></hr>
-                        <div class='upper-inner-box'>
-                            <div class='text-line'>
+                        <div className='upper-inner-box'>
+                            <div className='text-line'>
                                 User ID:
                                 <input id='destID' type="text" placeholder=' User ID *' required/>
                             </div>
                         </div>
                         <hr></hr>
-                        <div class='middle-inner-box'>
-                            <div class='payment-details'>
-                                <div class='payment-line'>
+                        <div className='middle-inner-box'>
+                            <div className='payment-details'>
+                                <div className='payment-line'>
                                     Amount:
                                     <input id='amount' type="text" placeholder=' Amount *' required/>
                                 </div>
-                                <div class='payment-line'>
+                                <div className='payment-line'>
                                     Description:
                                     <input id='description' type="text" placeholder=' Description'/>
                                 </div>
                             </div>
                         </div>
-                        <div class='lower-inner-box'>
-                            <button class="IzjkL _2Y_WL FiOTW continue-button"id="submit-button">
+                        <div className='lower-inner-box'>
+                            <button className="IzjkL _2Y_WL FiOTW continue-button"id="submit-button">
                                 Confirm
                             </button>
                         </div>
@@ -48,31 +48,31 @@ const TransferConfirm = props => {
     return (
         <main id='cous'>
             <div id='header-id'>
-                <h2 class='header-text'>Confirm your transfer</h2>
+                <h2 className='header-text'>Confirm your transfer</h2>
             </div>
-            <div class='box'>
-                <div class='inner-box' id='box-body-id'>
+            <div className='box'>
+                <div className='inner-box' id='box-body-id'>
                 <hr></hr>
-                    <div class='middle-inner-box'>
-                        <div class='payment-details'>
+                    <div className='middle-inner-box'>
+                        <div className='payment-details'>
                             User ID:
-                            <div class='payment-dexcription-text-box'>{props.transfer.destID.value}</div>
+                            <div className='payment-dexcription-text-box'>{props.transfer.destID.value}</div>
                         </div>
                     </div>
                     <hr></hr>
-                    <div class='middle-inner-box'>
-                        <div class='payment-details'>
+                    <div className='middle-inner-box'>
+                        <div className='payment-details'>
                             Amount:
-                            <div class='payment-dexcription-text-box'>${props.transfer.amount.value}</div>
+                            <div className='payment-dexcription-text-box'>${props.transfer.amount.value}</div>
                         </div>
                     </div>
-                    <div class='middle-inner-box'>
-                        <div class='payment-details'>
+                    <div className='middle-inner-box'>
+                        <div className='payment-details'>
                             Description:
-                            <div class='payment-dexcription-text-box'>{props.transfer.descrip.value}</div>
+                            <div className='payment-dexcription-text-box'>{props.transfer.descrip.value}</div>
                         </div>
                     </div>
-                    <div class='button-container'>
+                    <div className='button-container'>
                         <button id="submit-button" onClick={props.onSubmit} class="_16apt _2Y_Wp">
                             <span>Transfer</span>
                         </button>
@@ -91,7 +91,6 @@ function UserTransfer(props) {
     const [show, setShow] = useState(false);
     const [err, setErr] = useState(false);
     const [transfer, setTransfer] = useState('');
-    const [api, setApi] = useState('');
 
     const showConfirm = () => setShow(true);
     const closeConfirm = () => {
@@ -115,7 +114,6 @@ function UserTransfer(props) {
     
         showConfirm();
     }
-
        
     function validatePayment(event) {
         fetch('http://localhost:9000/transferFunds', {
@@ -136,6 +134,7 @@ function UserTransfer(props) {
                 //Page re-route
                 window.location.href = "/Dashboard?user_id=1";
             } else {
+                setErr('API error');
                 console.log('API error');
             }
         });

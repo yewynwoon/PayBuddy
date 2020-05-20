@@ -49,6 +49,7 @@ function Product({ product }) {
                 //Page re-route
                 window.location.href = "/Dashboard?user_id=1";
               } else {
+                setError('API error');
                 console.log('API error');
               }})
           })
@@ -216,7 +217,7 @@ const PayPalCheckout = props => {
             <div class="_2OPBO">
               <div class="_2onyo">
                 <div class="_1zJje">
-                    By clicking "Pay now", you agree to the <a class="_2rLR4" role="link" target="_blank">PayPuddy Services Agreement</a> and <a class="_2rLR4" role="link" target="_blank">Privacy and Cookies policy</a>, and you authorize PayBuddy to store your payment details.
+                    By clicking "Pay now", you agree to the <a href="!#" class="_2rLR4" role="link" target="_blank">PayPuddy Services Agreement</a> and <a href="!#" class="_2rLR4" role="link" target="_blank">Privacy and Cookies policy</a>, and you authorize PayBuddy to store your payment details.
                 </div>
                 <div class="_1zJje">
                   <span></span>

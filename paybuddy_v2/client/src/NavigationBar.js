@@ -5,7 +5,7 @@ import './client.css'
 import { Menu }  from 'semantic-ui-react'
 
 const NavigationBar = () => {
-const {authState, authService} = useOktaAuth();
+const { authState } = useOktaAuth();
   return (
     <div class='topnav'>
       {authState.isAuthenticated && (
@@ -54,61 +54,61 @@ function GetLocation() {
 }
 
 function ActiveHome() {
-  if (GetLocation() == '/Dashboard') {
+  if (GetLocation() === '/Dashboard') {
     return (
-      <a id="activeNav">HOME</a>
+      <a href="!#" id="activeNav">HOME</a>
     )
   } else {
     return (
-      <a>HOME</a>
+      <a href="!#">HOME</a>
     )
   }
 }
 
 function ActiveFunds() {
-  if (GetLocation() == '/FundsDeposit') {
+  if (GetLocation() === '/FundsDeposit') {
     return (
-      <a id="activeNav">DEPOSIT FUNDS</a>
+      <a href="!#" id="activeNav">DEPOSIT FUNDS</a>
     )
   } else {
     return (
-      <a>DEPOSIT FUNDS</a>
+      <a href="!#">DEPOSIT FUNDS</a>
     )
   }
 }
 
 function ActiveTransfer() {
-  if (GetLocation() == '/UserTransfer') {
+  if (GetLocation() === '/UserTransfer') {
     return (
-      <a id="activeNav">TRANSFER</a>
+      <a href="!#" id="activeNav">TRANSFER</a>
     )
   } else {
     return (
-      <a>TRANSFER</a>
+      <a href="!#">TRANSFER</a>
     )
   }
 }
 
 function ActivePayBill() {
-  if (GetLocation() == '/PayBill') {
+  if (GetLocation() === '/PayBill') {
     return (
-      <a id="activeNav">PAY BILL</a>
+      <a href="!#" id="activeNav">PAY BILL</a>
     )
   } else {
     return (
-      <a>PAY BILL</a>
+      <a href="!#">PAY BILL</a>
     )
   }
 }
 
 function ActiveAddFriend() {
-  if (GetLocation() == '/AddFriend') {
+  if (GetLocation() === '/AddFriend') {
     return (
-      <a id="activeNav">ADD FRIEND</a>
+      <a href="!#" id="activeNav">ADD FRIEND</a>
     )
   } else {
     return (
-      <a>ADD FRIEND</a>
+      <a href="!#">ADD FRIEND</a>
     )
   }
 }
