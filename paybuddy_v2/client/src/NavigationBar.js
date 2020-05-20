@@ -56,11 +56,11 @@ function GetLocation() {
 function ActiveHome() {
   if (GetLocation() === '/Dashboard') {
     return (
-      <a href="!#" id="activeNav">HOME</a>
+      <a id="activeNav">HOME</a>
     )
   } else {
     return (
-      <a href="!#">HOME</a>
+      <a>HOME</a>
     )
   }
 }
@@ -68,11 +68,11 @@ function ActiveHome() {
 function ActiveFunds() {
   if (GetLocation() === '/FundsDeposit') {
     return (
-      <a href="!#" id="activeNav">DEPOSIT FUNDS</a>
+      <a id="activeNav">DEPOSIT FUNDS</a>
     )
   } else {
     return (
-      <a href="!#">DEPOSIT FUNDS</a>
+      <a>DEPOSIT FUNDS</a>
     )
   }
 }
@@ -80,11 +80,11 @@ function ActiveFunds() {
 function ActiveTransfer() {
   if (GetLocation() === '/UserTransfer') {
     return (
-      <a href="!#" id="activeNav">TRANSFER</a>
+      <a id="activeNav">TRANSFER</a>
     )
   } else {
     return (
-      <a href="!#">TRANSFER</a>
+      <a>TRANSFER</a>
     )
   }
 }
@@ -92,11 +92,11 @@ function ActiveTransfer() {
 function ActivePayBill() {
   if (GetLocation() === '/PayBill') {
     return (
-      <a href="!#" id="activeNav">PAY BILL</a>
+      <a id="activeNav">PAY BILL</a>
     )
   } else {
     return (
-      <a href="!#">PAY BILL</a>
+      <a>PAY BILL</a>
     )
   }
 }
@@ -104,11 +104,11 @@ function ActivePayBill() {
 function ActiveAddFriend() {
   if (GetLocation() === '/AddFriend') {
     return (
-      <a href="!#" id="activeNav">ADD FRIEND</a>
+      <a id="activeNav">ADD FRIEND</a>
     )
   } else {
     return (
-      <a href="!#">ADD FRIEND</a>
+      <a>ADD FRIEND</a>
     )
   }
 }
