@@ -14,35 +14,26 @@ class Checkout extends React.Component {
     }
 
     componentDidMount() {
-        this.getUserBalance()
-        this.getMerchantName()
+        this.paymentDetails()
     }
 
-    getMerchantName() {
-        let url = "http://localhost:9000/sdk/merchantName/" + this.state.merchID
-        fetch(url)
-        .then(res => {
-            if (res.status ===200) {
-                return res.json()
-            }
-        })
-        .then(res => {
-            this.setState({
-                merchName: res.name[0].cname
+    paymentDetails() {
+        fetch('http://localhost:9000/sdk/paymentDetails', {
+            method: 'post',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                user_email: this.state.userEmail,
+                merch_id: this.state.merchID
             })
-        });
-    }
-
-    getUserBalance() {
-        let url = "http://localhost:9000/sdk/accBalance/email/" + this.state.userEmail
-        fetch(url)
-        .then(res => {
+        }).then(res => {
             if (res.status ===200) {
                 return res.json()
             }
-        })
-        .then(res => {
+        }).then(res => {
             this.setState({
+                merchName: res.name[0].cname,
                 userBalance: res.acctValue[0].account_value
             })
         });

@@ -37,97 +37,81 @@ const createPool = async () => {
 };
 createPool();
 
-router.get('/accBalance/email/:user_email', async (req, res) => {
-    var userEmail = req.params.user_email;
-    var query = 'select account_value from users where email="' + userEmail + '";';
-    
-    try {
-      //Run query - fetch response
-      var acctValue = await pool.query(query);
-  
-      console.log(acctValue);
-  
-      res.status(200).end(JSON.stringify({acctValue: acctValue}));
-    } catch (err) {
-      res.status(500).end('Unable to successfully insert transaction!');
-    }
-});
+router.post('/paymentDetails', async (req, res) => {
+  var userEmail = req.body.user_email;
+  var merchID = req.body.merch_id;
 
-router.get('/merchantName/:merch_id', async (req, res) => {
-    var merchID = req.params.merch_id;
-    var query = 'select cname from merchants where merchant_id="' + merchID + '";';
-    
-    console.log(query)
+  var emailQuery = 'select account_value from users where email="' + userEmail + '";';
+  var merchIDquery = 'select cname from merchants where merchant_id="' + merchID + '";';
 
-    try {
-      //Run query - fetch response
-      var name = await pool.query(query);
-  
-      console.log(name);
-  
-      res.status(200).end(JSON.stringify({name: name}));
-    } catch (err) {
-      res.status(500).end('Unable to successfully insert transaction!');
-    }
+  try {
+    var acctValue = await pool.query(emailQuery);
+    var name = await pool.query(merchIDquery);
+    
+    res.status(200).end(JSON.stringify({name: name, acctValue: acctValue}));
+  } catch (err) {
+    console.log(err);
+    res.status(500).end('Error');
+  }
 });
 
 router.post('/verifyPayment', async (req, res) => {
-    var srcEmail = req.body.user_email;
-    var merchID = req.body.merch_id;
-    var amount = parseInt(req.body.amount);
-    var descrip = req.body.descrip;
+  var srcEmail = req.body.user_email;
+  var merchID = req.body.merch_id;
+  var amount = parseInt(req.body.amount);
+  var descrip = req.body.descrip;
   
-    try {
-      //Get source user account value
-      const getSrcAcctValueQuery = 'select cust_id, account_value from users where email="'+srcEmail+'";';
-      var srcAcctValue = await pool.query(getSrcAcctValueQuery);
+  try {
+    //Get source user account value
+    const getSrcAcctValueQuery = 'select cust_id, account_value from users where email="'+srcEmail+'";';
+    var srcAcctValue = await pool.query(getSrcAcctValueQuery);
 
-      var srcID = srcAcctValue[0].cust_id
-  
-      //Ensure source user exists & has available funds
-      if (srcAcctValue[0] == null) {
-        console.log('Incorrect src id');
-        res.status(500).end('Incorrect src id');
-        return;
-      } else if (parseInt(srcAcctValue[0].account_value) < amount) {
-        console.log('Insufficient Funds');
-        res.status(500).end('Insufficient Funds');
-        return;
-      }
+    var srcID = srcAcctValue[0].cust_id
 
-      //Get dest user account value
-      const getDstAcctValueQuery = 'select account_value from merchants where merchant_id="'+merchID+'";';
-      var dstAcctValue = await pool.query(getDstAcctValueQuery);
-  
-      //Ensure dest merch exists
-      if (dstAcctValue[0] == null) {
-        console.log('Incorrect dst id');
-        res.status(500).end('Incorrect dst id');
-        return;
-      }
-  
-      //Updated user account values
-      const newSrcCustAmt = parseInt(srcAcctValue[0].account_value) - parseInt(amount);
-      const newDstMerchAmt = parseInt(dstAcctValue[0].account_value) + parseInt(amount);
-  
-      //Update user account balues
-      const updateSrcCust = 'update users set account_value='+newSrcCustAmt+' where cust_id="'+srcID+'";';
-      const updateMerchCust = 'update merchants set account_value='+newDstMerchAmt+' where merchant_id="'+merchID+'";';
-      
-      await pool.query(updateSrcCust);
-      await pool.query(updateMerchCust);
-      
-      //Insert transaction record
-      const insertTransact = 'insert into cust_merchant_payment (cust_id, merchant_id, amount, description) values (?,?,?,?);';
-      await pool.query(insertTransact, [srcID,merchID,amount,descrip]);
-  
-      console.log('Success!');
-      res.status(200).end('Success!');
-  
-    } catch (err) {
-      console.log(err);
-      res.status(500).end('Fail');
+    //Ensure source user exists & has available funds
+    if (srcAcctValue[0] == null) {
+      console.log('Incorrect src id');
+      res.status(500).end('Incorrect src id');
+      return;
+    } else if (parseInt(srcAcctValue[0].account_value) < amount) {
+      console.log('Insufficient Funds');
+      res.status(500).end('Insufficient Funds');
+      return;
     }
-  });
+
+    //Get dest user account value
+    const getDstAcctValueQuery = 'select account_value from merchants where merchant_id="'+merchID+'";';
+    var dstAcctValue = await pool.query(getDstAcctValueQuery);
+
+    //Ensure dest merch exists
+    if (dstAcctValue[0] == null) {
+      console.log('Incorrect dst id');
+      res.status(500).end('Incorrect dst id');
+      return;
+    }
+
+    //Updated user account values
+    const newSrcCustAmt = parseInt(srcAcctValue[0].account_value) - parseInt(amount);
+    const newDstMerchAmt = parseInt(dstAcctValue[0].account_value) + parseInt(amount);
+
+    //Update user account balues
+    const updateSrcCust = 'update users set account_value='+newSrcCustAmt+' where cust_id="'+srcID+'";';
+    const updateMerchCust = 'update merchants set account_value='+newDstMerchAmt+' where merchant_id="'+merchID+'";';
+    
+    await pool.query(updateSrcCust);
+    await pool.query(updateMerchCust);
+    
+    //Insert transaction record
+    const insertTransact = 'insert into cust_merchant_payment (cust_id, merchant_id, amount, description) values (?,?,?,?);';
+    await pool.query(insertTransact, [srcID,merchID,amount,descrip]);
+
+    console.log('Success!');
+    res.status(200).end('Success!');
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).end('Fail');
+  }
+});
 
 module.exports = router;
