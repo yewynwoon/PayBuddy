@@ -1,21 +1,20 @@
 import React, { Component } from 'react'
+import '../css/Header.css'
 
 class Header extends Component {
 
     render() {
         return (
-            <nav className="navbar navbar-dark bg-dark flex-md-nowrap p-0">
-                <a href="/" className="navbar-brand col-sm-3 col md 2 mr-0">{process.env.REACT_APP_NAME}</a>
-                <ul className="navbar-nav px-3">
-                    {this.props.items.map((item, index) => (
-                        <li className="nav-item text-nowrap pad-vertical" key={index}>
-                            <a href={item.link} className="nav-link" onClick={item.onClick}>
+            <div class='header-container'>
+                <a class='header-header' href="/">{process.env.REACT_APP_NAME}</a>
+                {this.props.items.map((item, index) => (
+                        <span class='log-out' key={index}>
+                            <a href={item.link} onClick={item.onClick}>
                                 {item.title}
                             </a>
-                        </li>
+                        </span>
                     ))}
-                </ul>
-            </nav>
+            </div>
         )
     }
 }

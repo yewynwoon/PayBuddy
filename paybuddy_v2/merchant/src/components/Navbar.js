@@ -1,29 +1,22 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import '../css/Navbar.css'
 
-class Sidebar extends Component {
+class Navbar extends Component {
     render() {
         return (
-            <div className="col-md-2 d-none d-md-block bg-light sidebar half-height">
-                <div className="sidebar-sticky">
-                    <ul className="nav flex-column">
-                        <div className="side-link">
-                            Dashboard
-                        </div>
-                        <li className="nav-item">
-                            <div className="side-link">
+            <div class='nav-container'>
+                <ul>
+                            <li class='navbar-link'>
                                 <Link to="/">
                                     My Apps
                                 </Link>
-                            </div>
-                        </li>
-                        <li className="nav-item">
-                            <div className="side-link">
+                            </li>
+                            <li class='navbar-link'>
                                 <Link to="/dash">
                                     My Account
                                 </Link>
-                            </div>
-                        </li>
+                            </li>
                         {/* <div className="nav-link">
                             Sandbox
                         </div>
@@ -41,11 +34,10 @@ class Sidebar extends Component {
                                 </Link>
                             </div>
                         </li> */}
-                    </ul>
-                </div>
+                </ul>
             </div>
         )
     }
 }
 
-export default Sidebar;
+export default Navbar;

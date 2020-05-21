@@ -1,7 +1,8 @@
 footer {
+    position: absolute;
     bottom: 0;
     width: 100%;
-    text-anchor: middle;
+    text-align: center;
 }
 
 .left {

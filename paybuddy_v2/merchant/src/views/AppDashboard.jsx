@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import Sidebar from '../components/Sidebar'
-import '../css/dashboard.css';
+import Navbar from '../components/Navbar'
+import '../css/AppDashboard.css';
 
 class Dashboard extends Component {
     constructor(props) {
@@ -41,7 +41,7 @@ class Dashboard extends Component {
                     <td>
                         <p className='control-column'>
                             <Link to={`/app/${appID}/`}>
-                                <button className="orangeButton">Edit</button>
+                                <button class='white-button'>Edit</button>
                             </Link>
                         </p>
                     </td>
@@ -52,23 +52,19 @@ class Dashboard extends Component {
       
     render() {
         return (
-            <div className='row'>
-                <Sidebar id={this.props.match.params.id}/>
-                <div className="col-md-8 p-2">
-                    <div className="page-header">
-                        <div className="row justify-content-center">
-                            <span className="col text-left">
-                                <h1 className='left padding heading spacing'>Apps</h1>
-                            </span>
-                            <span className="col text-right">
+            <div>
+                <Navbar id={this.props.match.params.id}/>
+                <div class='content-container'>
+                    <div class='app-heading-container'>
+                            <h1>APPS</h1>
+                            <div class='new-app-btn'>
                                 <Link to={`/newProject/`}>
-                                    <button className="orangeButton spacing">New App</button>
+                                    <button class='white-button'>New App</button>
                                 </Link>
-                            </span>
-                        </div>
+                            </div>
                     </div>
-                    <div className='container'>
-                        <table className="table">
+                    <div class='main-content-container'>
+                        <table class='table'>
                             <thead>
                                 <tr>
                                     <th>TITLE</th>

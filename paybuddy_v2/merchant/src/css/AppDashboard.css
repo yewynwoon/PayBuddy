@@ -1,0 +1,39 @@
+@media only screen and (max-width: 600px) {
+    .content-container {
+        margin-left: 5vw;
+        margin-top: 2vh;
+    }
+
+    h1 {
+        display: block;
+        padding-top: 1vh;
+        padding-bottom: 1vh;
+    }
+
+    .new-app-btn {
+        display: block;
+        margin-right: 5vw;
+    }
+
+    .white-button{
+        width: 100%;
+        padding: 0.5vh 0 0.5vh 0;
+
+        color: #f2b377;
+        background-color: white;
+        border-radius: 15px;
+        border: 1px solid #f2b377;
+    }
+
+    .main-content-container {
+        margin-top: 3vh;
+        margin-right: 5vw;
+    }
+
+    .table {
+        border-spacing: 1px;
+    }
+
+    
+    
+}

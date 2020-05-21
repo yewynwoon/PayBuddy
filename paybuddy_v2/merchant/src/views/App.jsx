@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Sidebar from '../components/Sidebar'
+import Navbar from '../components/Navbar'
 import { Link } from 'react-router-dom'
 
 class App extends Component {
@@ -106,7 +106,7 @@ class App extends Component {
     render() {
         return (                
             <div className="row">
-                <Sidebar id={this.props.match.params.id}/>
+                <Navbar id={this.props.match.params.id}/>
                 <div className="col-md-8 p-2">
                     {this.renderProject()}
                 </div>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Sidebar from '../components/Sidebar'
+import Navbar from '../components/Navbar'
 import '../css/dashboard.css';
 
 class Dashboard extends Component {
@@ -52,32 +52,32 @@ class Dashboard extends Component {
       
     render() {
         return (
-            <div className='row'>
-                <Sidebar id={this.props.match.params.id}/>
-                <div className="col-md-8 p-2">
-                    <div className="page-header">
-                        <div className="row justify-content-center">
-                            <span className="col text-left">
-                                <h1 className='left'>Merchant Dashboard</h1>
+            <div>
+                <Navbar id={this.props.match.params.id}/>
+                <div>
+                    <div>
+                        <div>
+                            <span>
+                                <h1 >Merchant Dashboard</h1>
                             </span>
-                            <span className="col text-right">
+                            <span>
                                 Balance: ${this.state.acctValue}
                             </span>
                         </div>
                     </div>
-                    <div className='container'>
-                    <table className='table'>
-                        <thead>
-                            <tr>
-                                <th>DATE</th>
-                                <th>DESCRIPTION</th>
-                                <th>TYPE</th>
-                                <th>AMOUNT</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {this.renderTableData()}
-                        </tbody>
+                    <div>
+                        <table >
+                            <thead>
+                                <tr>
+                                    <th>DATE</th>
+                                    <th>DESCRIPTION</th>
+                                    <th>TYPE</th>
+                                    <th>AMOUNT</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.renderTableData()}
+                            </tbody>
                         </table>
                     </div>
                 </div>
