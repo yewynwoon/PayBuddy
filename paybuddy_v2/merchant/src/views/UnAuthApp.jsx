@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Logo from '../imgs/logoandtext.png'
 import LoginForm from '../components/LoginForm'
 import '../css/unAuthApp.css'
+import '../css/dashboard.css'
 
 function UnauthenticatedApp(props) {
 
@@ -43,11 +44,13 @@ function UnauthenticatedApp(props) {
 
   return (
     <div class='content-pane'>
-      <img src={Logo} class='logo-image space-3' alt="paybuddy-logo"/>
-      <h1 class='heading'>Merchant Portal</h1>
-      <div>
-        <button type='button' class='orange-button space-3' onClick={handleShow}>Login</button>
-        <LoginForm show={show} close={closeForm} handleSubmit={handleSubmit} err={err} />
+      <div class='text-container'>
+        <img src={Logo} class='logo-image space-3' alt="paybuddy-logo"/>
+        <h1 class='heading'>Merchant Portal</h1>
+        <div>
+          <button type='button' class='orange-button space-3' onClick={handleShow}>Login</button>
+          <LoginForm show={show} close={closeForm} handleSubmit={handleSubmit} err={err} />
+        </div>
       </div>
     </div>
   )

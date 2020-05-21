@@ -1,3 +1,35 @@
+.login-container {
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    border-radius: 25px;
+    border: 0px;
+
+    text-align: center;
+}
+
+.login-header {
+    font-size: 30px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.form-line {
+    text-align: right;
+    margin-bottom: 2vh;
+}
+
+.form-line input {
+    margin-right: 3vw;
+    margin-left: 1vw;
+
+    border-radius: 5px;
+    border: 1px solid #cccccc
+}
+
+.center-align {
+    text-align: center;
+}
+
 @media only screen and (max-width: 600px) {
     .login-container {
         padding-top: 5vh;
@@ -24,9 +56,5 @@
 
         border-radius: 5px;
         border: 1px solid #cccccc
-    }
-
-    .center-align {
-        text-align: center;
     }
 }
