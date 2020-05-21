@@ -41,7 +41,7 @@ class Dashboard extends Component {
                     <td>
                         <p className='control-column'>
                             <Link to={`/app/${appID}/`}>
-                                <button class='white-button'>Edit</button>
+                                <button class='white-button-small'>Edit</button>
                             </Link>
                         </p>
                     </td>
@@ -56,7 +56,7 @@ class Dashboard extends Component {
                 <Navbar id={this.props.match.params.id}/>
                 <div class='content-container'>
                     <div class='app-heading-container'>
-                            <h1>APPS</h1>
+                            <h1 class='apps-heading'>APPS</h1>
                             <div class='new-app-btn'>
                                 <Link to={`/newProject/`}>
                                     <button class='white-button'>New App</button>

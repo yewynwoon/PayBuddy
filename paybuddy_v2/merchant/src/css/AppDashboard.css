@@ -1,10 +1,74 @@
+.content-container {
+    margin-left: 5vw;
+    margin-top: 2vh;
+}
+
+.apps-heading {
+    display: inline;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+}
+
+.new-app-btn {
+    display: inline;
+    margin-right: 5vw;
+}
+
+.white-button {
+    padding: 0.5vh 3vw 0.5vh 3vw;
+    vertical-align: top;
+    float: right;
+    margin-right: 5vw;
+    margin-top: 0.5vh;
+
+    color: #f2b377;
+    background-color: white;
+    border-radius: 15px;
+    border: 1px solid #f2b377;
+
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.white-button:hover {
+    background-color: #f2b377;
+    color: white;
+    cursor: pointer;
+}
+
+.white-button-small {
+    padding: 0.5vh 3vw 0.5vh 3vw;
+    vertical-align: top;
+
+    color: #f2b377;
+    background-color: white;
+    border-radius: 15px;
+    border: 1px solid #f2b377;
+
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.white-button-small:hover {
+    background-color: #f2b377;
+    color: white;
+    cursor: pointer;
+}
+
+.main-content-container {
+    margin-top: 3vh;
+    margin-right: 5vw;
+}
+
+.table {
+    border-spacing: 1px;
+} 
+
 @media only screen and (max-width: 600px) {
     .content-container {
         margin-left: 5vw;
         margin-top: 2vh;
     }
 
-    h1 {
+    .apps-heading {
         display: block;
         padding-top: 1vh;
         padding-bottom: 1vh;
@@ -12,12 +76,16 @@
 
     .new-app-btn {
         display: block;
-        margin-right: 5vw;
+        margin-top: 2vh;
+        margin-bottom: 2vh;
     }
 
     .white-button{
+        float: none;
         width: 100%;
         padding: 0.5vh 0 0.5vh 0;
+        margin-right: 0;
+        margin-top: 0;
 
         color: #f2b377;
         background-color: white;
@@ -31,9 +99,7 @@
     }
 
     .table {
+        margin-top: 2vh;
         border-spacing: 1px;
-    }
-
-    
-    
+    }    
 }
