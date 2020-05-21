@@ -1,87 +1,46 @@
-.header {
-    margin-top: 40px;
-}
+@media only screen and (max-width: 600px) {
+    div {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 16px;
+    }
 
-.conrol-column {
-    float: right;
-}
+    .space-3 {
+        margin-top: 3vh;
+        margin-bottom: 3vh;
+    }
 
-.scroll-table {
-    overflow-y: auto;
-    max-height: 600px;
-}
+    .content-pane {
+        height: 100vh;
+        width: 100vw;
+        text-align: center;
 
-.left {
-    width: 50%;
-    float: left;
-    text-align: start;
-}
+        padding-top: 30vh;
+    }
 
-.right {
-    width: 50%;
-    float: right;
-    text-align: end;
-}
+    .logo-image {
+        width: 80vw;
+        height: auto;
+    }
 
-.padding {
-    padding-left: 1vw;
-}
+    .heading {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
 
-.heading {
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
+    .orange-button {
+        padding: 1vh 10vw 1vh 10vw;
 
-.spacing {
-    margin-top: 2vh;
-}
-
-.pad-vertical {
-    padding-top: 2vh;
-    padding-bottom: 2vh;
-}
-
-.width-space {
-    margin-left: 1vw;
-    margin-right: 1vw;
-}
-
-.orangeButton {
-    padding-left: 2vw;
-    padding-right: 2vw;
-    background-color: #f2b377;
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: normal;
-    font-size: 18px;
-    border-radius: 25px;
-    border: none;
-}
-
-.orangeButton:hover {
-    background-color: #E3A971;
-    cursor: pointer;
-}
-
-.half-height {
-    height: 50vh;
-}
-
-.side-link {
-    padding-left: 1vw;
-    padding-top: 1vh;
-    padding-bottom: 1vh;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.side-link:hover {
-    text-decoration: none;
-}
-
-.logo-image-dash {
-    float: left;
-    height: 20px;
-    width: auto;
+        background-color: #f2b377;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: bolder;
+        font-size: 18px;
+        border-radius: 25px;
+        border: none;
+    }
+    
+    .orange-button:hover {
+        background-color: #E3A971;
+    }
 }

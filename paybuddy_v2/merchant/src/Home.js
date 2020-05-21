@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import App from './App';
 import UnAuthApp from './views/UnAuthApp';
-import './css/Home.css';
 
 class Home extends Component {
   
@@ -16,7 +15,7 @@ class Home extends Component {
     //const isAuthenticated = true;
 
     return (
-      <div id='home'>
+      <div>
         {
           isAuthenticated() && <App logoutHandler={this.logout}/> 
           //isAuthenticated && <App logoutHandler={this.logout}/>

@@ -1,0 +1,32 @@
+@media only screen and (max-width: 600px) {
+    .login-container {
+        padding-top: 5vh;
+        padding-bottom: 5vh;
+
+        text-align: center;
+    }
+
+    .login-header {
+        font-size: 25px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+
+    .form-line {
+        text-align: right;
+        margin-bottom: 2vh;
+    }
+
+    .form-line input {
+        margin-right: 5vw;
+        margin-left: 5vw;
+        padding-left: 1vw;
+
+        border-radius: 5px;
+        border: 1px solid #cccccc
+    }
+
+    .center-align {
+        text-align: center;
+    }
+}

@@ -1,28 +1,30 @@
 import React from 'react'
 import Modal from 'react-bootstrap/Modal'
-import Button from 'react-bootstrap/Button'
+import '../css/LoginForm.css'
 
 const LoginForm = (props) => (
     <Modal show={props.show} onHide={props.close}>
-        <Modal.Header closeButton>
-            <Modal.Title>Login</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-            <form onSubmit={props.handleSubmit} className='form_css'>
-                <div className='form-item'>
-                    <label htmlFor='username'>E-Mail</label>
-                    <input className='input' id='username' type='text'/>
-                </div>
-                <div className='form-item'>
-                    <label htmlFor='password'>Password</label>
-                    <input className='input' id='password' type='password'/>
-                </div>
-                <div>
-                    <Button id='loginButton' type='submit' variant='primary'>Login</Button>
-                </div>
-                {props.err ? 'Incorrect E-Mail or Password' : null}
-            </form>
-        </Modal.Body>
+        <div class='login-container'>
+            <header class='login-header space-3' closeButton>
+                Login
+            </header>
+            <body>
+                <form onSubmit={props.handleSubmit}>
+                    <div class='form-line'>
+                        <label htmlFor='username'>E-Mail</label>
+                        <input className='input' id='username' type='text'/>
+                    </div>
+                    <div class='form-line'>
+                        <label htmlFor='password'>Password</label>
+                        <input className='input' id='password' type='password'/>
+                    </div>
+                    <div class='center-align'>
+                        <button class='orange-button space-3' type='submit' variant='primary'>Login</button>
+                    </div>
+                    {props.err ? 'Incorrect E-Mail or Password' : null}
+                </form>
+            </body>
+        </div>
     </Modal>
 )
 
