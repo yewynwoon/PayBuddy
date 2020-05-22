@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import '../css/NewProjectForm.css'
+
 
 class NewProjectForm extends Component {
     handleSubmit = (event) => {
@@ -28,36 +30,36 @@ class NewProjectForm extends Component {
 
     renderProject() {
         return (
-            <div className="container px-4 py-2">
-                <div className="row">
-                    <h3>
+            <div class='main-container'>
+                <div>
+                    <h3 class='title'>
                         New App
                     </h3>
                 </div>
-                <div className="row">
-                    <form className="col" method="post" onSubmit={this.handleSubmit}>
-                        <div className="form-group row">
-                            <label htmlFor="title" className="col-md-2 col-form-label text-md-right">App Name: </label>
+                <div>
+                    <form method="post" onSubmit={this.handleSubmit}>
+                        <div>
+                            <label class='subtitle' htmlFor="title">App Name: </label>
                             
-                            <div className="col-md-6">
-                                <input type="text" className="form-control" id="name" required/>
+                            <div>
+                                <input class='classic-input' type="text" id="name" required/>
                             </div>
                         </div>
 
-                        <div className="form-group row">
-                            <label htmlFor="title" className="col-md-2 col-form-label text-md-right">Return URL: </label>
+                        <div>
+                            <label class='subtitle' htmlFor="title" >Return URL: </label>
                             
-                            <div className="col-md-6">
-                                <input type="text" className="form-control" id="return_url" />
+                            <div>
+                                <input class='classic-input' type="text"/>
                             </div>
                         </div>
 
-                        <div className="form-group row mb-0">
-                            <div className="col-md-8 offset-md-4">
+                        <div class='button-container'>
+                            <div>
                                 <Link to={`/`}>
-                                    <button className="btn btn-danger width-space">Cancel</button>
+                                    <button class='grey-button space-right'>Cancel</button>
                                 </Link>
-                                <button type="submit" className="btn btn-success width-space">
+                                <button class='orange-button' type="submit">
                                     Create
                                 </button>
                             </div>
@@ -70,10 +72,8 @@ class NewProjectForm extends Component {
 
     render() {
         return (
-            <div className="row">
-                <div className="col-md-8 p-2">
-                    {this.renderProject()}
-                </div>
+            <div>
+                {this.renderProject()}
             </div>
         )
     }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Navbar from '../components/Navbar'
 import { Link } from 'react-router-dom'
+import '../css/Navbar.css'
 
 class App extends Component {
     constructor(props) {
@@ -62,37 +63,37 @@ class App extends Component {
 
     renderProject() {
         return (
-            <div className="container px-4 py-2">
-                <div className="row">
-                    <h3>
+            <div class='main-container'>
+                <div >
+                    <h3 class='title'>
                         {this.state.name}
                     </h3>
                 </div>
-                <div className="row">
-                    <form className="col" method="post" onSubmit={this.handleSubmit}>
-                        <div className="form-group row">
-                            <label htmlFor="title" className="col-md-2 col-form-label text-md-right">App Name: </label>
+                <div>
+                    <form method="post" onSubmit={this.handleSubmit}>
+                        <div>
+                            <label class='subtitle' htmlFor="title">App Name: </label>
                             
-                            <div className="col-md-6">
-                                <input type="text" className="form-control" id="title" placeholder={this.state.name} />
+                            <div>
+                                <input class='classic-input' type="text" placeholder={this.state.name} />
                             </div>
                         </div>
-                        <div className="form-group row">
-                            <label htmlFor="title" className="col-md-2 col-form-label text-md-right">Return URL: </label>
+                        <div>
+                            <label class='subtitle' htmlFor="title">Return URL: </label>
                             
-                            <div className="col-md-6">
-                                <input type="text" className="form-control" id="title" placeholder={this.state.return_url} />
+                            <div>
+                                <input class='classic-input' type="text" placeholder={this.state.return_url} />
                             </div>
                         </div>
 
-                        <div className="form-group row mb-0">
-                            <div className="col-md-8 offset-md-4">
+                        <div>
+                            <div>
                                 <Link to={`/`}>
-                                    <button className="btn btn-warning width-space">Cancel</button>
+                                    <button class='grey-button space-right'>Cancel</button>
                                 </Link>
                                 
-                                <button className="btn btn-danger width-space" onClick={(e) => this.deleteApp(this.props.match.params.id, e)}>Delete</button>
-                                <button type="submit" className="btn btn-primary width-space">
+                                <button class='red-button red space-right'onClick={(e) => this.deleteApp(this.props.match.params.id, e)}>Delete</button>
+                                <button class='orange-button space-right'type="submit">
                                     Update
                                 </button>
                             </div>
@@ -105,9 +106,9 @@ class App extends Component {
 
     render() {
         return (                
-            <div className="row">
+            <div>
                 <Navbar id={this.props.match.params.id}/>
-                <div className="col-md-8 p-2">
+                <div>
                     {this.renderProject()}
                 </div>
             </div>

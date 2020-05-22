@@ -39,7 +39,7 @@ div {
 }
 
 .orange-button {
-    padding: 1vh 5vw 1vh 5vw;
+    padding: 1vh 3vw 1vh 3vw;
     background-color: #f2b377;
     color: white;
     text-transform: uppercase;
@@ -59,7 +59,7 @@ div {
 
 @media only screen and (max-width: 600px) {
     .orange-button {
-        padding: 1vh 10vw 1vh 10vw;
+        padding: 1vh 5vw 1vh 5vw;
         background-color: #f2b377;
         color: white;
         text-transform: uppercase;
