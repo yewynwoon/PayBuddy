@@ -9,7 +9,7 @@ export default class Auth {
 
   setSession = (body) => {
     // Set the time that the access token will expire at
-  console.log(body);
+    console.log(body);
 
     let expiresAt = JSON.stringify((64000) + new Date().getTime());
     localStorage.setItem('id_token', body.response.merchant_id);
