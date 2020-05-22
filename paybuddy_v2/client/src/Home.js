@@ -12,7 +12,7 @@
 
 import { useOktaAuth } from '@okta/okta-react';
 import React, { useState, useEffect } from 'react';
-import { Button, Header } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 import './Home.css';
 import './fade-in.css';
 import PayBuddyLogo from './img/paybuddy.png';
@@ -51,7 +51,7 @@ const Home = () => {
           && (
           <div class='fade-in' id='background'>
             <div class='homecontainer'>
-                <img src={PayBuddyLogo}></img>
+                <img src={PayBuddyLogo} alt=''></img>
                 <h1>E-Wallet Application</h1>
                 <hr id='homehr'></hr>
                 <div id='welcomename'>
@@ -65,7 +65,7 @@ const Home = () => {
         && (
         <div class='fade-in' id='background'>  
           <div class='homecontainer basic-font'>
-            <img src={PayBuddyLogo}></img>
+            <img src={PayBuddyLogo} alt=''></img>
             <h1>E-Wallet Application</h1>
             <hr id='homehr'></hr>
             You have logged out, log in again to continue!

@@ -65,19 +65,18 @@ class Dashboard extends Component {
                             </span>
                         </div>
                     </div>
-                    <div>
-                        <table >
-                            <thead>
-                                <tr>
-                                    <th>DATE</th>
-                                    <th>DESCRIPTION</th>
-                                    <th>TYPE</th>
-                                    <th>AMOUNT</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.renderTableData()}
-                            </tbody>
+                    <div className='container'>
+                    <table className='table'>
+                        <thead>
+                            <tr>
+                                <th>DATE</th>
+                                <th>DESCRIPTION</th>
+                                <th>AMOUNT</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.renderTableData()}
+                        </tbody>
                         </table>
                     </div>
                 </div>

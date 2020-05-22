@@ -2,6 +2,7 @@ import { useOktaAuth } from '@okta/okta-react'
 import React, { useState, useEffect } from 'react'
 import { Button } from 'semantic-ui-react'
 import Checkout from './Checkout'
+import Confirm from './Confirm'
 import PayBuddyLogo from './img/paybuddy.png'
 import './Home.css'
 import './fade-in.css'
@@ -41,7 +42,7 @@ const Home = () => {
       }
 
       {
-        authState.isAuthenticated && userInfo && <Checkout user={userInfo}/>
+        authState.isAuthenticated && userInfo && <Confirm user={userInfo}/>
       }
 
       {!authState.isAuthenticated

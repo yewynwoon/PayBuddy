@@ -34,30 +34,40 @@ const createPool = async () => {
 };
 createPool();
 
-router.get('/:user_id', async (req, res) => {
-  var userID = req.params.user_id;
+router.get('/:user_email', async (req, res) => {
+  var userEmail = req.params.user_email;
 
   try {
+
+    const userIDQuery = 'select cust_id from users where email="'+userEmail+'";';
+    var userID = await pool.query(userIDQuery);
+    userID = userID[0].cust_id
+
+    console.log(userID)
      
     //Get current acct_value of customer
-    const getAcctValueQuery = 'select account_value from users where cust_id = ' + userID + ';';
+    const getAcctValueQuery = 'select account_value from users where cust_id='+userID+';';
 
     //Get past deposits of customer
-    const getPastDepositQuery = 'select amount, date_stamp, concat("Deposit: ", description) as description, "credit" as type from cust_deposit where cust_id=' + userID + ';';
+    const getPastDepositQuery = 'select amount, date_stamp, concat("Deposit: ", description) as description, "credit" as type from cust_deposit where cust_id='+userID+';';
 
     //Get past payments of customer
-    const getPastPaymentQuery = 'select amount, date_stamp, concat("Payemnts: ", description) as description, "debit" as type from cust_bpay_payments where cust_id=' + userID + ';';
+    const getPastPaymentQuery = 'select amount, date_stamp, concat("Payemnts: ", description) as description, "debit" as type from cust_bpay_payments where cust_id='+userID+';';
     
     //Get past transfers of customer
-    const getPastTransferQuery = 'select amount, date_stamp, concat("Transfer: ", description) as description, "debit" as type from cust_transfer where src_cust_id=' + userID + ';';
+    const getPastTransferQuery = 'select amount, date_stamp, concat("Transfer: ", description) as description, "debit" as type from cust_transfer where src_cust_id='+userID+';';
     
+    //Get past payments to merchants
+    const getPastMerchPayemntQuery = 'select amount, date_stamp, concat("Payment: ", description) as description, "debit" as type from cust_merchant_payment where cust_id='+userID+';';
+
     //Run query - fetch response
     var acctValue = await pool.query(getAcctValueQuery);
     var pastDeposits = await pool.query(getPastDepositQuery);
     var pastPayments = await pool.query(getPastPaymentQuery);
     var pastTransfers = await pool.query(getPastTransferQuery);
+    var pastMerchPayments = await pool.query(getPastMerchPayemntQuery);
 
-    var transactions = pastDeposits.concat(pastPayments).concat(pastTransfers);
+    var transactions = pastDeposits.concat(pastPayments).concat(pastTransfers).concat(pastMerchPayments);
 
     function compare(a, b) {
 
