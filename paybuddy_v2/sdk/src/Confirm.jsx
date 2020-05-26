@@ -76,7 +76,7 @@ class FundsDeposit extends React.Component {
             if (res.status ===200) {
                 return res.json()
             }
-        }).then(res => {
+        }).then(res => {    
             this.setState({
                 merchName: res.name[0].cname,
                 userBalance: res.acctValue[0].account_value
