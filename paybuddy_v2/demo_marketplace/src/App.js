@@ -1,45 +1,17 @@
 import './App.css';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import chair from './chair.jpg';
 import gif from './giphy.gif';
 
-function onClick() {
-  return window.open("http://www.google.com");
+function onClick(merchant_id, amount) {
+  let url = 'http://localhost:3000/' + merchant_id + '/' + amount
+
+  return window.open(url);
 }
 
 function Product({ product }) {
   const [paidFor, setPaidFor] = useState(false);
   const [error, setError] = useState(null);
-  /* const payBuddyRef = useRef() */
-
-  /* useEffect(() => {
-    window.paypal
-      .Buttons({
-        createOrder: (data, actions) => {
-          return actions.order.create({
-            purchase_units: [
-              {
-                description: product.description,
-                amount: {
-                  currency_code: 'USD',
-                  value: product.price,
-                },
-              },
-            ],
-          });
-        },
-        onApprove: async (data, actions) => {
-          const order = await actions.order.capture();
-          setPaidFor(true);
-          console.log(order);
-        },
-        onError: err => {
-          setError(err);
-          console.error(err);
-        },
-      })
-      .render(paypalRef.current);
-  }, [product.description, product.price]); */
 
   if (paidFor) {
     return (
@@ -57,20 +29,22 @@ function Product({ product }) {
         {product.description} for ${product.price}
       </h1>
       <img alt={product.description} src={product.image} width="200" />
-      
-      <button type="button" className="btn btn-primary" onClick={onClick} >
-        <span className="icon">Open</span>
-      </button>
+      <div>
+        <button type="button" className="btn btn-primary" onClick={(e) => onClick(product.merchant_id, product.price, e)} >
+          <span className="icon">Pay with PayBuddy</span>
+        </button>
+      </div>
     </div>
   );
 }
 
 function App() {
   const product = {
-    price: 777.77,
+    price: 122.22,
     name: 'comfy chair',
     description: 'fancy chair, like new',
     image: chair,
+    merchant_id: '1'
   };
 
   return (

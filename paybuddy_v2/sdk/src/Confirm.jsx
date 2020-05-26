@@ -51,8 +51,8 @@ class FundsDeposit extends React.Component {
             userEmail: props.user.email,
             userBalance: '',
             merchName: '',
-            merchID: 1,
-            amount: 5,//'',
+            merchID: localStorage.getItem('merchant_id'),
+            amount: localStorage.getItem('amount'),
             showConfirm: false
         }
         this.submitPayment = this.submitPayment.bind(this)

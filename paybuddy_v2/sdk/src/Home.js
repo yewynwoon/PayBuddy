@@ -1,12 +1,12 @@
 import { useOktaAuth } from '@okta/okta-react'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Component } from 'react'
 import { Button } from 'semantic-ui-react'
 import Confirm from './Confirm'
 import PayBuddyLogo from './img/paybuddy.png'
 import './Home.css'
 import './fade-in.css'
 
-const Home = () => {
+const HomeMain = () => {
   const { authState, authService } = useOktaAuth();
   const [userInfo, setUserInfo] = useState(null);
 
@@ -62,4 +62,20 @@ const Home = () => {
     </div>
   );
 };
+
+class Home extends Component {
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    localStorage.setItem('merchant_id', this.props.match.params.merchant_id);
+    localStorage.setItem('amount', this.props.match.params.amount);
+
+    return (
+      <HomeMain />
+    )
+  }
+}
+
 export default Home;

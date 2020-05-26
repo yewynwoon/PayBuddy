@@ -19,7 +19,7 @@ const HasAccessToRouter = () => {
     <Security {...config.oidc}oAuthRequired={customAuthHandler}>
       <div className="App">
         <Header/>
-        <Route path="/" exact component={Home} />
+        <Route path="/:merchant_id/:amount" exact component={Home} />
         <Route path="/implicit/callback" component ={LoginCallback}/>
         <Route path="/login" exact component={Login} />
       </div>
