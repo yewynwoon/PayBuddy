@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import '../css/AppDashboard.css';
@@ -7,7 +7,8 @@ class Dashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            appList: ""
+            appList: "",
+            merchID: ''
         }
     }
     
@@ -18,7 +19,8 @@ class Dashboard extends Component {
         .then((response) => { return response.json(); })
         .then((data) => {
           this.setState({
-            appList: data.message
+            appList: data.message,
+            merchID: data.message[0].merchant_id
           })
         });
     }
@@ -56,12 +58,13 @@ class Dashboard extends Component {
                 <Navbar id={this.props.match.params.id}/>
                 <div class='content-container'>
                     <div class='app-heading-container'>
-                            <h1 class='apps-heading'>APPS</h1>
-                            <div class='new-app-btn'>
-                                <Link to={`/newProject/`}>
-                                    <button class='white-button'>New App</button>
-                                </Link>
-                            </div>
+                        <h1 class='apps-heading'>APPS</h1>
+                        <h3>My Merchant ID: {this.state.merchID}</h3>
+                        <div class='new-app-btn'>
+                            <Link to={`/newProject/`}>
+                                <button class='white-button'>New App</button>
+                            </Link>
+                        </div>
                     </div>
                     <div class='main-content-container'>
                         <table class='table'>

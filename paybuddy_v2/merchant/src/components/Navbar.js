@@ -3,6 +3,12 @@ import { Link } from 'react-router-dom'
 import '../css/Navbar.css'
 
 class Navbar extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            'merchant_id': this.props.merchant_id
+        }
+    }
     render() {
         return (
             <div class='nav-container'>
@@ -17,6 +23,9 @@ class Navbar extends Component {
                                     My Account
                                 </Link>
                             </li>
+                            <span class='navbar-link'>
+                                    {this.props.id}
+                            </span>
                         {/* <div className="nav-link">
                             Sandbox
                         </div>

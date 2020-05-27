@@ -62,7 +62,7 @@ router.post('/login', async (req, res) => {
 //Get merchant apps
 router.get('/apps/:merch_id', async (req, res) => {
   var merchID = req.params.merch_id;
-  var query = 'select merchant_app_id, name, return_url from merchant_apps where merchant_id="' + merchID + '";';
+  var query = 'select merchant_app_id, merchant_id, name, return_url from merchant_apps where merchant_id="' + merchID + '";';
 
   try {
 
@@ -72,13 +72,12 @@ router.get('/apps/:merch_id', async (req, res) => {
   } catch (err) {
     res.status(500).send('Connection error!').end();
   }
-  
 });
 
 //Get merchant app
 router.get('/app/:app_id', async (req, res) => {
   var appID = req.params.app_id;
-  var query = 'select name, return_url from merchant_apps where merchant_app_id="' + appID + '";';
+  var query = 'selectname, return_url from merchant_apps where merchant_app_id="' + appID + '";';
 
   try {
 
