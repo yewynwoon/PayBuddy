@@ -43,10 +43,10 @@ const Confirm = props => {
     return (
         <div >
             <div class="fade-in-fast">
-                <div>
+                <div class="info-row">
                     Payment Complete!    
                 </div>
-                <div>
+                <div class="info-row">
                     You can now close this window.    
                 </div>                
             </div>
