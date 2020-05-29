@@ -1,10 +1,3 @@
-Create Table SHOPS_ITEMS(
-shop_ID NUMBER(1),
-item_ID NUMBER(3),
-shop_Quantity Number(2),
-PRIMARY KEY(shop_ID, item_ID),
-FOREIGN KEY(shop_ID) REFERENCES Shops (shop_ID),
-FOREIGN KEY(item_ID) REFERENCES Items (item_ID));
 
 Create Table friends(
 cust_id1 int(5),
