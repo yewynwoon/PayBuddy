@@ -1,26 +1,36 @@
 import React from 'react';
+import './App.css';
 
 const Checkout = props => {
     return (
-        <div className="row">
-            <div className="form-group row">
-                <label htmlFor="title" className="col-md-2 col-form-label text-md-right">Merchant: {props.merchName}</label>
+        <div>
+            <div class="info-row">
+                <div class="title-cont">
+                    <label class="info-title" htmlFor="title">Merchant:</label>
+                </div>
+                <div class="info-data">{props.merchName}</div>
             </div>
 
-            <div className="form-group row">
-                <label htmlFor="title" className="col-md-2 col-form-label text-md-right">Amount: {props.amount}</label>
+            <div class="info-row">
+                <div class="title-cont">
+                    <label class="info-title" htmlFor="title">Amount:</label>
+                </div>
+                <div class="info-data">${props.amount}</div>
             </div>
 
-            <div className="form-group row">
-                <label htmlFor="title" className="col-md-2 col-form-label text-md-right">Account Balance: {props.userBalance}</label>     
+            <div class="info-row">
+                <div class="title-cont">
+                    <label class="info-title" htmlFor="title">Account Balance:</label>
+                </div>
+                <div class="info-data">${props.userBalance}</div>
             </div>
 
-            <div className="form-group row mb-0">
-                <div className="col-md-8 offset-md-4">
+            <div class="info-row">
+                <div>
                     {/* <Link to={`/project/${this.props.match.params.id}`}>
                         <button className="btn btn-danger">Cancel</button>
                     </Link> */}
-                    <button type="submit" className="btn btn-primary" onClick={props.submitPayment}>
+                    <button class="orange-button" type="submit" onClick={props.submitPayment}>
                         Confirm Payment
                     </button>
                 </div>
@@ -31,8 +41,8 @@ const Checkout = props => {
 
 const Confirm = props => {
     return (
-        <div className="App">
-            <div class="_3o1Fr fade-in-fast" id="block-id">
+        <div >
+            <div class="fade-in-fast">
                 <div>
                     Payment Complete!    
                 </div>

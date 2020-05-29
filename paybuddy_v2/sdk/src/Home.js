@@ -2,7 +2,7 @@ import { useOktaAuth } from '@okta/okta-react'
 import React, { useState, useEffect } from 'react'
 import { Button } from 'semantic-ui-react'
 import Confirm from './Confirm'
-import PayBuddyLogo from './img/paybuddy.png'
+import PayBuddyLogo from './img/logoandtext.png'
 import './Home.css'
 import './fade-in.css'
 
