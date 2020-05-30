@@ -1,10 +1,22 @@
+
 # PayBuddy
+**RMIT University**
 2020 Capstone Project
-RMIT University
+
 
 PayBuddy
 E-Wallet Application
-Chee Wei Low - Jeremy Bereszkowski - Sameer Ayoob - Ye Wyn Woon
+*Authors*
+ - Chee Wei Low 
+ - Jeremy Bereszkowski
+ - Sameer Ayoob
+ - Ye Wyn Woon
+
+## Installation
+```bash
+git clone https://github.com/yewynwoon/PayBuddy
+```
+
 
 API - Node.JS Express Project
 
