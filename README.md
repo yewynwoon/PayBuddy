@@ -1,6 +1,10 @@
 # PayBuddy
 2020 Capstone Project
+RMIT University
 
+PayBuddy
+E-Wallet Application
+Chee Wei Low - Jeremy Bereszkowski - Sameer Ayoob - Ye Wyn Woon
 
 API - Node.JS Express Project
 
@@ -22,3 +26,8 @@ Client - React Project
         1. Navigate to \PayBuddy_v2\client  in cmd line
         2. Type: 'npm install'
         3. Type: 'npm start'
+        
+        
+        
+        
+ 
