@@ -9,7 +9,7 @@ API - Node.JS Express Project
         
     Start Project:
 
-        1. Naviagte to \PayBuddy_v2\api in cmd line
+        1. Navigate to \PayBuddy_v2\api in cmd line
         2. Type: 'npm install'
         3. Type: 'npm start'
 
@@ -19,6 +19,6 @@ Client - React Project
     
     Start Project:
 
-        1. Naviagte to \PayBuddy_v2\client  in cmd line
+        1. Navigate to \PayBuddy_v2\client  in cmd line
         2. Type: 'npm install'
         3. Type: 'npm start'
