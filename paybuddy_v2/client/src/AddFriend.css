@@ -12,3 +12,7 @@ label {
 #tablecontainer {
     padding: 2%;
 }
+
+tbody {
+  text-align: left;
+}
