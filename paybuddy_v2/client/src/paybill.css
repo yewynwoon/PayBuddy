@@ -97,14 +97,6 @@
   padding: 1%;
 }
 
-.payment-details {
-  padding-top: 1%;
-  padding-bottom: 1%;
-  letter-spacing: 1px;
-  text-align: right;
-  font-weight: bolder;
-}
-
 .payment-line {
   height: fit-content;
   margin-bottom: 5px;
