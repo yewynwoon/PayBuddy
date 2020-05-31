@@ -15,4 +15,9 @@ label {
 
 tbody {
   text-align: left;
+  color: #5e5e5e;
+}
+
+.table td {
+  color: #5e5e5e;
 }
