@@ -126,7 +126,9 @@
 }
 
 .table td {
-  color: #ffffff;
+  color: #5e5e5e;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .table tr {
