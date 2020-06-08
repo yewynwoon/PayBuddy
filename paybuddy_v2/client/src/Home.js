@@ -15,7 +15,8 @@ import React, { useState, useEffect } from 'react';
 import { Button, Header } from 'semantic-ui-react';
 import './Home.css';
 import './fade-in.css';
-import PayBuddyLogo from './img/paybuddy.png';
+import './paybill.css';
+import PayBuddyLogo from './img/logotext.png';
 
 const Home = () => {
   const { authState, authService } = useOktaAuth();
@@ -43,34 +44,32 @@ const Home = () => {
   }
 
   return (
-      <div>
+      <div class='home-container'>
         { authState.isAuthenticated && !userInfo
         && <div class='fade-in-fast' id='loading'>Loading your information...</div>}
 
         {authState.isAuthenticated && userInfo
           && (
           <div class='fade-in' id='background'>
-            <div class='homecontainer'>
                 <img src={PayBuddyLogo}></img>
                 <h1>E-Wallet Application</h1>
-                <hr id='homehr'></hr>
+                <hr id='home-hr'></hr>
                 <div id='welcomename'>
                   Welcome back, {userInfo.name}!
                 </div>
-            </div>
           </div>
         )}
 
         {!authState.isAuthenticated
         && (
         <div class='fade-in' id='background'>  
-          <div class='homecontainer basic-font'>
+          <div class='basic-font'>
             <img src={PayBuddyLogo}></img>
             <h1>E-Wallet Application</h1>
-            <hr id='homehr'></hr>
-            You have logged out, log in again to continue!
+            <hr class='centre-hr centre-margin'></hr>
+            <span id='spaceout'>You have logged out, log in again to continue!</span>
             <div id='login-button'>
-              <Button id="login-button" primary onClick={login}>Login</Button>
+              <Button class="login-button" id='spaceout' primary onClick={login}>Login</Button>
             </div>
           </div>
         </div>

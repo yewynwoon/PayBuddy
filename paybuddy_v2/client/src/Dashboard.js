@@ -1,6 +1,6 @@
 import { withOktaAuth } from '@okta/okta-react';
 import React from 'react';
-import './client.css';
+import './Dashboard.css';
 import './fade-in-fast.css';
 import DP from './img/profilepictemplate.png';
 
@@ -16,9 +16,9 @@ async function checkUser() {
     constructor(props) {
         super(props);
         this.state = {
-            cust_acct_value: "",
-            pastPayments: "",
-            cust_transacts: "",
+            cust_acct_value: '',
+            pastPayments: '',
+            cust_transacts: '',
             userInfo: null
         }
         this.checkUser = checkUser.bind(this);
@@ -79,34 +79,34 @@ async function checkUser() {
 
     render () {
         return (
-            <main class='fade-in-fast' id='dashboardHome'>
-                <div id='main-container'>
+            <main class='fade-in-fast'>
+                <div id='dashboard-container'>
                     <div id='left-container'>
-                        <div id='customerbox'>
+                        <div class='detailbox' id='customerbox'>
                             <span>WELCOME BACK,</span>
-                            <span id='customercontents'>
+                            <span class='innercontents'>
                                 <img id='profilepic' src={DP}></img>
                                 <div id='name'>
                                     {this.state.userInfo &&<div>{this.state.userInfo.name}</div>}
                                 </div>
                             </span>
-                            <a href="https://dev-203865.okta.com/enduser/settings" id='editacc'>EDIT ACCOUNT</a>
+                            <a href='https://dev-203865.okta.com/enduser/settings' class ='editdetails'>EDIT ACCOUNT</a>
                         </div>
-                        <div id='moneybox'>
-                            <span id='heading'>CURRENT BALANCE</span>
-                            <hr></hr>
-                            <span id='moneycontents'>
-                                <div id="currency">AUD</div>
+                        <div class='detailbox' id='moneybox'>
+                            <span id='detail-header'>CURRENT BALANCE</span>
+                            <hr id='left-hr'></hr>
+                            <span class='innercontents'>
+                                <div id='currency'>AUD</div>
                                 <div id='accbalance'>${parseFloat(this.state.cust_acct_value).toFixed(2)}</div>
-                                <a href="/FundsDeposit" id='editfunds'>ADD FUNDS</a>
+                                <a href='/FundsDeposit' class ='editdetails'>ADD FUNDS</a>
                             </span>
                         </div>
                     </div>
                     <b></b>
                     <div id='right-container'>
                         <div id='tableheading'>RECENT ACTIVITY</div>
-                        <hr></hr>
-                        <table id='table'>
+                        <hr id='left-hr'></hr>
+                        <table class='table'>
                             <thead>
                                 <tr>
                                     <th>DATE</th>

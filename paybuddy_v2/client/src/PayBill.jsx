@@ -1,26 +1,24 @@
 import React, { useState } from 'react';
-import './client.css';
 import './paybill.css'
-import BPayLogo from './img/bpay_logo.jpg';
+import BPayLogo from './img/bpaytransfer.png';
 import { getAccBalance, checkBPayPayment } from './util/api-calls';
 
 const PayBillForm = props => {
     return (
         <main class='fade-in-fast' id='cous'>
-            <div class='header-id'>
-                <h2 class='header-text'>Enter bill details</h2>
-            </div>
+            <h2 class='header-text'>Pay a bill</h2>
             <div class="box">
-                <div class="inner-box" id="box-body-id">
+                <div class="inner-box">
                     <form onSubmit={props.onSubmit}>
-                        <div class="bpay-logo"> <img class="bpay-logo-img" src={BPayLogo} alt="paybuddy-logo"/></div>
-                        <hr></hr>
+                        <img class="bpay-logo-img bpay-logo" src={BPayLogo} alt="paybuddy-logo"/>
+                        <div class='title'>Enter bill details</div>
+                        <hr class='centre-hr centre-margin' id='spaceout'></hr>
                         <div class='upper-inner-box'>
-                            <div class='text-line'>
+                            <div class='text-line' id='spaceout'>
                                 Biller Code:
                                 <input id='bllerCode' type="text" placeholder=' Biller Code *' onBlur={props.verifyBillerCode.bind(this)} required/>
                             </div>
-                            <div class='text-line'>
+                            <div class='text-line' id='spaceout'>
                                 Reference Number:
                                 <input id='crn' type="text" placeholder=' Ref Number *' required/>
                             </div>
@@ -31,22 +29,22 @@ const PayBillForm = props => {
                                 <div class='biller-name'>{props.billerName}</div>
                             </div>
                         </div>
-                        <hr></hr>
+                        <hr class='centre-hr centre-margin' id='spaceout'></hr>
                         <div class='middle-inner-box'>
                             <div class='payment-details'>
-                                <div class='payment-line'>
+                                <div class='text-line' id='spaceout'>
                                     Amount:
                                     <input id='amount' type="text" placeholder=' Amount *' required/>
                                 </div>
-                                <div class='payment-line'>
+                                <div class='text-line' id='spaceout'>
                                     Description:
                                     <input id='description' type="text" placeholder=' Description'/>
                                 </div>
                             </div>
                         </div>
-                        <div class='lower-inner-box'>
-                            <button class="IzjkL _2Y_WL FiOTW continue-button"id="submit-button">
-                                Confirm
+                        <div class='lower-inner-box' id='spaceout'>
+                            <button class="orange-button">
+                                <span class='button-text'>Confirm</span>
                             </button>
                         </div>
                   </form>
@@ -60,12 +58,13 @@ const PayBillConfirm = props => {
     return (
         <main class='fade-in-fast' id='cous'>
             <div id='header-id'>
-                <h2 class='header-text'>Confirm your payment</h2>
+                <h2 class='header-text'>Pay a bill</h2>
             </div>
             <div class='box'>
-                <div class='inner-box' id='box-body-id'>
-                <div class="bpay-logo"> <img class="bpay-logo-img" src={BPayLogo} alt="paybuddy-logo"/></div>
-                <hr></hr>
+                <div class='inner-box'>
+                <img class="bpay-logo-img bpay-logo" src={BPayLogo} alt="paybuddy-logo"/>
+                <div class='title'>confirm payment details</div>
+                <hr class='centre-hr centre-margin' id='spaceout'></hr>
                     <div class='upper-inner-box'>
                         <div class='biller-details'>
                             Biller Name:
@@ -84,7 +83,7 @@ const PayBillConfirm = props => {
                             <div class='payment-dexcription-text-box'>{props.bill.crn.value}</div>
                         </div>
                     </div>
-                    <hr></hr>
+                    <hr class='centre-hr centre-margin' id='spaceout'></hr>
                     <div class='middle-inner-box'>
                         <div class='payment-details'>
                             Amount:
@@ -96,11 +95,11 @@ const PayBillConfirm = props => {
                         </div>
                     </div>
                     <div class='button-container'>
-                        <button id="submit-button" onClick={props.onSubmit} class="_16apt _2Y_Wp">
-                            <span>Make Payment</span>
+                        <button class="orange-button space-width" onClick={props.onSubmit}>
+                            <span class='button-text'>Make Payment</span>
                         </button>
-                        <button id="cancel-button" onClick={props.cancelPayment} class="_16apt _2Y_Wp">
-                            <span>Cancel</span>
+                        <button class="white-button space-width" onClick={props.cancelPayment}>
+                            <span class='white-button-text'>Cancel</span>
                         </button>
                         {props.err}
                     </div>

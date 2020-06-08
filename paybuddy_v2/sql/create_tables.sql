@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS users
 	fname varchar(25) NOT NULL,
 	lname varchar(25) NOT NULL,
 	account_value int default 0,
-	email varchar(25) NOT NULL,
+	email varchar(30) NOT NULL,
 	password varchar(25) NOT NULL,
 
 	PRIMARY KEY (cust_id)

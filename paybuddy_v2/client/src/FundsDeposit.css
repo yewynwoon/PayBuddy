@@ -1,0 +1,206 @@
+.header-text {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 38px;
+    font-size: 28px;
+    color: #5e5e5e;
+
+    margin-bottom: 1%;
+    margin-left: 5%;
+}
+
+.box-containers {
+    padding: 0;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+.logo-image {
+    width: 80px;
+}
+
+.single-box-container {
+    box-sizing: border-box;
+    display: flex;
+    width: 33.33333%;
+    padding-left: 10px;
+    padding-right: 10px;
+    
+}
+
+.box-design {
+    max-width: 100%;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+
+    border-radius: 15px;
+    border: 1px solid #5e5e5e;
+    background-color: transparent;
+}
+
+.box-text {
+    text-align: center;
+    overflow: auto;
+    padding: 38px 5px;
+    border: 0 solid white;
+    border-radius: 0 0 6px 6px;
+}
+
+.box-inner-text {
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    font-size: 15px;
+    color: #5e5e5e;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.box-inner-text small {
+    display: block;
+    font-weight: 400;
+    margin-top: 3px;
+
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+}
+
+.deposit-amount-text {
+    color: #5e5e5e;
+    font-family: 'monlite';
+    font-weight: lighter;
+    font-size: 34px;
+    letter-spacing: 0;
+    margin-bottom: 20px;
+}
+
+.orange-button {
+    background-color: #f2b377;
+    padding: 5px 20px 5px 20px;
+    font-size: 18px;
+    font-weight: 700;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    border: none;
+    border-radius: 30px;
+
+    transition: background-color 0.5s;
+}
+
+.orange-button:hover {
+    background-color: #e4944a;
+    cursor: pointer;
+}
+
+.button-text {
+    min-width: 140px;
+    display: inline-block;
+    letter-spacing: 2px;
+    color: white;
+    font-family: 'monlite';
+    text-transform: uppercase;
+    -webkit-font-smoothing: antialiased;
+}
+
+.confirm-container {
+    margin-top: 2%;
+    margin-left: 20%;
+    margin-right: 20%;
+    text-align: center;
+}
+
+.thick-underline {
+    display: flex;
+    width: 100%;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #DDD;
+}
+
+.medium-underline {
+    display: flex;
+    width: 100%;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #5e5e5e;
+}
+
+.left-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 50%;
+    padding-left: 1%;
+}
+
+.right-text {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    padding-right: 1%;
+    width: 50%;
+}
+
+.confirm-text {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.text-link {
+    color: #f2b377;
+    cursor: pointer;
+}
+
+.centre-button {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+.paypal-button {
+    width: 300px;
+    margin: auto;
+}
+
+.space-button {
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.terms-text {  
+    margin-top: 2%;
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: 13px;
+    font-family: 'monliteita';
+    text-align: center;
+}
