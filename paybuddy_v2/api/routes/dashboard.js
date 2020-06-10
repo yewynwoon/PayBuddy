@@ -46,7 +46,7 @@ router.get('/:user_id', async (req, res) => {
     const getPastDepositQuery = 'select amount, date_stamp, concat("Deposit: ", description) as description, "credit" as type from cust_deposit where cust_id=' + userID + ';';
 
     //Get past payments of customer
-    const getPastPaymentQuery = 'select amount, date_stamp, concat("Payemnts: ", description) as description, "debit" as type from cust_bpay_payments where cust_id=' + userID + ';';
+    const getPastPaymentQuery = 'select amount, date_stamp, concat("Payments: ", description) as description, "debit" as type from cust_bpay_payments where cust_id=' + userID + ';';
     
     //Get past transfers of customer
     const getPastTransferQuery = 'select amount, date_stamp, concat("Transfer: ", description) as description, "debit" as type from cust_transfer where src_cust_id=' + userID + ';';
