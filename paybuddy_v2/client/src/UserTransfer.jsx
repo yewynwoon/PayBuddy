@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {useOktaAuth} from '@okta/okta-react'
 import './paybill.css';
 import './fade-in-fast.css';
 import transfer from './img/Transfericon.png';
@@ -74,6 +75,11 @@ const TransferConfirm = props => {
                             <div class='payment-dexcription-text-box'>{props.transfer.descrip.value}</div>
                         </div>
                     </div>
+                    <div class='middle-inner-box'>
+                        <div class='payment-details'>
+                            <div class='payment-dexcription-text-box'>{props.error ? 'Error, please check transfer details' : ''}</div>
+                        </div>
+                    </div>
                     <div class='button-container'>
                         <button class='orange-button space-width' onClick={props.onSubmit}>
                             <span class='button-text'>Transfer</span>
@@ -88,18 +94,22 @@ const TransferConfirm = props => {
     )
 }
 
+
+
 function UserTransfer(props) {
 
     const [show, setShow] = useState(false);
     const [err, setErr] = useState(false);
     const [transfer, setTransfer] = useState('');
-    const [api, setApi] = useState('');
+
+    const {authState, authService} = useOktaAuth();
 
     const showConfirm = () => setShow(true);
     const closeConfirm = () => {
         //debugger;
         setTransfer('');
         setShow(false);
+        setErr(false);
     };
 
     function handleSubmit(event) {
@@ -117,30 +127,36 @@ function UserTransfer(props) {
     
         showConfirm();
     }
-
        
-    function validatePayment(event) {
-        fetch('http://localhost:9000/transferFunds', {
-            method: 'post',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify({
-                src_id: '1',
-                dest_id: transfer.destID.value,
-                amount: transfer.amount.value,
-                descrip: transfer.descrip.value
-            })
-        }).then(function (responseFromServer) {
-            if(responseFromServer.status === 200) {
-                console.log('responseFromServer');
+    async function validatePayment(event) {
+        if (authState.isAuthenticated) {
+            const userInfo = await authService.getUser();
 
-                //Page re-route
-                window.location.href = "/Dashboard?user_id=1";
-            } else {
-                console.log('API error');
-            }
-        });
+            console.log(userInfo)
+
+            fetch('http://localhost:9000/transferFunds', {
+                method: 'post',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    src_email: userInfo.email,
+                    dest_id: transfer.destID.value,
+                    amount: transfer.amount.value,
+                    descrip: transfer.descrip.value
+                })
+            })
+            .then(function (responseFromServer) {
+                if(responseFromServer.status === 200) {
+                    console.log('responseFromServer');
+
+                    //Page re-route
+                    window.location.href = "/Dashboard?user_id=1";
+                } else {
+                    setErr(true)
+                }
+            });
+        }
     }
 
     return (

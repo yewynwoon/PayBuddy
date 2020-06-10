@@ -7,11 +7,26 @@ import DP from './img/profilepictemplate.png';
 async function checkUser() {
     if (this.props.authState.isAuthenticated && !this.state.userInfo) {
       const userInfo = await this.props.authService.getUser();
-      this.setState({ userInfo });
+      
+      
+      fetch('http://localhost:9000/dashboard/' + userInfo.email)
+        .then((response) => {
+            if (response.status === 200) {
+                return response.json();
+            }
+        })
+        .then((data) => {
+            console.log(data)
+            this.setState({
+                ...this.state,
+                cust_acct_value: data.acctValue[0].account_value,
+                cust_transacts: data.transactions
+            })
+        });
     }
-  }
+}
 
-  export default withOktaAuth (class Dashboard extends React.Component {
+export default withOktaAuth (class Dashboard extends React.Component {
 
     constructor(props) {
         super(props);
@@ -23,29 +38,15 @@ async function checkUser() {
         }
         this.checkUser = checkUser.bind(this);
     }
-
-    callAPI() {
-        fetch('http://localhost:9000/dashboard/1')
-        .then((response) => {
-            return response.json();
-        })
-        .then((data) => {
-            this.setState({
-                ...this.state,
-                cust_acct_value: data.acctValue[0].account_value,
-                cust_transacts: data.transactions
-            })
-        });
-    }
     
     componentWillMount() {
-        this.callAPI();
         this.checkUser();
+        console.log(this.state.userInfo)
     }
 
-     componentDidUpdate() {
+    componentDidUpdate() {
         this.checkUser();
-      }
+    }
 
     renderTableData() {
         return Object.keys(this.state.cust_transacts).map((key) => {
