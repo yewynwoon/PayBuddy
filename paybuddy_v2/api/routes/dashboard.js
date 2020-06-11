@@ -34,22 +34,22 @@ const createPool = async () => {
 };
 createPool();
 
-router.get('/:user_id', async (req, res) => {
-  var userID = req.params.user_id;
+router.get('/:email', async (req, res) => {
+  var email = req.params.email;
 
   try {
      
     //Get current acct_value of customer
-    const getAcctValueQuery = 'select account_value from users where cust_id = ' + userID + ';';
+    const getAcctValueQuery = 'select account_value from users where email="'+email+'";';
 
     //Get past deposits of customer
-    const getPastDepositQuery = 'select amount, date_stamp, concat("Deposit: ", description) as description, "credit" as type from cust_deposit where cust_id=' + userID + ';';
-
+    const getPastDepositQuery = 'select cust_deposit.amount as amount, cust_deposit.date_stamp as date_stamp, concat("Deposit: ", cust_deposit.description) as description, "credit" as type from users inner join cust_deposit on users.cust_id = cust_deposit.cust_id where users.email="'+email+'";';
+    
     //Get past payments of customer
-    const getPastPaymentQuery = 'select amount, date_stamp, concat("Payemnts: ", description) as description, "debit" as type from cust_bpay_payments where cust_id=' + userID + ';';
+    const getPastPaymentQuery = 'select cust_bpay_payments.amount as amount, cust_bpay_payments.date_stamp as date_stamp, concat("Payemnts: ", cust_bpay_payments.description) as description, "debit" as type from users inner join cust_bpay_payments on users.cust_id = cust_bpay_payments.cust_id where users.email="'+email+'";';
     
     //Get past transfers of customer
-    const getPastTransferQuery = 'select amount, date_stamp, concat("Transfer: ", description) as description, "debit" as type from cust_transfer where src_cust_id=' + userID + ';';
+    const getPastTransferQuery = 'select cust_transfer.amount as amount, cust_transfer.date_stamp as date_stamp, concat("Transfer: ", cust_transfer.description) as description, "debit" as type from users inner join cust_transfer on users.cust_id = cust_transfer.src_cust_id where users.email="'+email+'";';
     
     //Run query - fetch response
     var acctValue = await pool.query(getAcctValueQuery);
@@ -77,15 +77,7 @@ router.get('/:user_id', async (req, res) => {
 
     var lastTenTransacts = transactions.slice(0,13);
 
-    //console.log(transactions);
-
-    /* console.log(userID);
-    console.log(acctValue);
-    console.log(pastDeposits);
-    console.log(pastPayments);
-    console.log(pastTransfers); */
-
-    res.end(JSON.stringify({userID: userID, acctValue: acctValue, transactions: lastTenTransacts}));
+    res.end(JSON.stringify({acctValue: acctValue, transactions: lastTenTransacts}));
     
   } catch (err) {
     console.log(err);
