@@ -1,0 +1,23 @@
+#addfriends-img {
+  height: 120px;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+label {
+    display: block;
+    width: 100%;
+}
+
+#tablecontainer {
+    padding: 2%;
+}
+
+tbody {
+  text-align: left;
+  color: #5e5e5e;
+}
+
+.table td {
+  color: #5e5e5e;
+}

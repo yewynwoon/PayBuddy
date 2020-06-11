@@ -1,0 +1,126 @@
+body {
+    margin: auto;
+    padding: 0;
+    height: 100vh;
+    text-align: center;
+    font-family: 'Montserrat', sans serif;
+    color: #5e5e5e;
+}
+
+#background-image {
+    box-sizing: border-box;
+    background-image: url('./img/Background.jpg');
+    background-color: #FFF;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.main-container {
+    box-sizing: border-box;
+    min-width: 600px;
+    margin-top: 23vh;
+    margin-left: 25vw;
+    margin-right: 25vw;
+    padding: 40px;
+    border-radius: 15px;
+    background-color: white;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+
+    text-transform: uppercase;
+    letter-spacing: 15px;
+    font-weight: lighter;
+    font-size: 15px;
+}
+
+#login-logo {
+    width: 350px;
+    height: auto;
+}
+
+#centre-fade {
+    border: 0;
+    width: 500px;
+    height: 1px;
+    background-image: linear-gradient(
+        to right, 
+        rgb(94,94,94,0),
+        rgb(94,94,94,1),
+        rgb(94,94,94,0)
+    );
+}
+
+.input-box {
+    width: 250px;
+    height: 40px;
+    padding-left: 1vw;
+    box-sizing: border-box;
+    
+    border: 1px solid #cccccc;
+}
+
+#top {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 0.5px solid #cccccc;
+    margin-top: 1vh;
+}
+
+#bottom {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top: 0.5px solid #cccccc;
+}
+
+.spaceout {
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+.spaceout-more {
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+}
+
+.orange-button {
+    background-color: #f2b377;
+    padding: 5px 20px 5px 20px;
+    font-size: 18px;
+    font-weight: 700;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    border: none;
+    border-radius: 30px;
+
+    transition: background-color 0.5s;
+}
+
+.orange-button:hover {
+    background-color: #e4944a;
+    cursor: pointer;
+}
+
+.button-text {
+    min-width: 140px;
+    display: inline-block;
+    letter-spacing: 2px;
+    color: white;
+    font-weight: 400;
+    text-transform: uppercase;
+    -webkit-font-smoothing: antialiased;
+}
+
+#error-message {
+    color: red;
+}
+
+footer {
+    font-weight: lighter;
+    font-size: 12px;
+}

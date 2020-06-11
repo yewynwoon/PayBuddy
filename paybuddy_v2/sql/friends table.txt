@@ -1,0 +1,54 @@
+
+Create Table friends(
+cust_id1 int(5),
+cust_id2 int(5),
+cust_1req int(1) DEFAULT 1,
+cust_2res int(1) DEFAULT 0,
+PRIMARY KEY(cust_id1, cust_id2),
+FOREIGN KEY(cust_id1) REFERENCES users (cust_id),
+FOREIGN KEY(cust_id2) REFERENCES users (cust_id));
+
+file:///C:/Users/samer/OneDrive/Rmit%204/Buss%20data%20management%20&%20Ana/Week%204/2019_s1_db_L4_SQL-Relationships.pdf
+
+
+INSERT INTO friends (cust_id1, cust_id2) VALUES ('2', '3')
+
+INSERT INTO friends VALUES ('2', '3', '1', '1')
+
+
+query we want Jerrmy friends and his id is 4
+
+SELECT  Cust_id1
+FROM    Friends
+WHERE   Cust_id2 = 4
+AND Cust_2res = 1
+UNION ALL
+SELECT  Cust_id2
+FROM    Friends
+WHERE   Cust_id1 = 4
+AND Cust_2res = 1
+
+SELECT cust_id1 , concat(fname, " ", lname) As Full_Name FROM friends f, users u WHERE cust_id2 = 4 AND f.cust_id1  = u.cust_id AND cust_2res = 1 UNION ALL SELECT cust_id2, concat(fname, " ", lname) As Full_Name FROM friends f, users u WHERE cust_id1  = 4 AND f.cust_id2 = u.cust_id AND cust_2res = 1;
+
+
+---------------------------------------------------
+get new friend requests list 
+
+SELECT cust_id1 , concat(fname, " ", lname) As Full_Name FROM friends f, users u WHERE cust_id2 = 1 AND f.cust_id1  = u.cust_id AND cust_2res = 0;
+
+
+
+expirement------------
+Y(2) send friend request to J(1)
+insert into friends values(2, 1, 1, 0);
+delete ye from friends
+delete from friends where cust_id1 = 2 and cust_id2;
+
+
+
+
+
+
+
+
+

@@ -38,12 +38,13 @@ router.post('/', async (req, res) => {
   
   const custID = req.body.custID;
   const amount = req.body.value;
+  const description = req.body.description;
   const dateStamp = new Date();
 
   try {
      
     //Create new deposit record
-    const depositTableQuery = 'insert into cust_deposit (cust_id, amount, date_stamp) values (?, ?, ?);';
+    const depositTableQuery = 'insert into cust_deposit (cust_id, amount, description, date_stamp) values (?, ?, ?, ?);';
 
     //Get current acct_value of customer
     const getAcctValueQuery = 'select account_value from users where cust_id = ' + custID + ';';
@@ -56,19 +57,19 @@ router.post('/', async (req, res) => {
     const setAcctValueQuery = 'update users set account_value=' + newAcctTotal + ' where cust_id=' + custID + ';';
 
     //Run queries
-    await pool.query(depositTableQuery, [custID, amount, dateStamp]);
+    await pool.query(depositTableQuery, [custID, amount, description, dateStamp]);
     await pool.query(setAcctValueQuery);
+
+    res.status(200).end(`Succesfull insertion!`);
     
   } catch (err) {
     // If something goes wrong, handle the error in this section. This might
     // involve retrying or adjusting parameters depending on the situation.
     // [START_EXCLUDE]
-    res.status(500).send('Unable to successfully insert transaction!').end();
+    res.status(500).end('Unable to successfully insert transaction!');
     // [END_EXCLUDE]
   }
   // [END cloud_sql_mysql_mysql_connection]
-
-  res.status(200).send(`Succesfull insertion!`).end();
 });
 
 module.exports = router;

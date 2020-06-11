@@ -1,0 +1,21 @@
+CREATE TABLE admins(
+    adminId int not null AUTO_INCREMENT,
+    loginID varchar(8) not null,
+    f_Name varchar(25) NOT NULL,
+	l_Name varchar(25) NOT NULL,
+    admin_Pass varchar(25) NOT NULL,
+
+	PRIMARY KEY (adminId)
+);
+
+INSERT INTO admins (
+    loginID,
+    f_Name,
+    l_Name,
+    admin_Pass
+) VALUES(
+    'a3683154',
+    'Bill',
+    'Gates',
+    '0000'
+);

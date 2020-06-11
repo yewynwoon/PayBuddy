@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS users
 	fname varchar(25) NOT NULL,
 	lname varchar(25) NOT NULL,
 	account_value int default 0,
-	email varchar(25) NOT NULL,
+	email varchar(30) NOT NULL,
 	password varchar(25) NOT NULL,
 
 	PRIMARY KEY (cust_id)
@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS cust_transfer (
 	dest_cust_id int not null,
 	amount int NOT NULL,
 	description varchar(120),
+	date_stamp TIMESTAMP not null,
 
 	PRIMARY KEY (transact_id),
 	FOREIGN KEY (src_cust_id) references users(cust_id),
@@ -71,15 +72,16 @@ describe users;
 +---------------+-------------+------+-----+---------+----------------+
 
 describe cust_transfer;
-+--------------+--------------+------+-----+---------+----------------+
-| Field        | Type         | Null | Key | Default | Extra          |
-+--------------+--------------+------+-----+---------+----------------+
-| transact_id  | int(11)      | NO   | PRI | NULL    | auto_increment |
-| src_cust_id  | int(11)      | NO   | MUL | NULL    |                |
-| dest_cust_id | int(11)      | NO   | MUL | NULL    |                |
-| amount       | int(11)      | NO   |     | NULL    |                |
-| description  | varchar(120) | YES  |     | NULL    |                |
-+--------------+--------------+------+-----+---------+----------------+
++--------------+--------------+------+-----+-------------------+-----------------------------+
+| Field        | Type         | Null | Key | Default           | Extra                       |
++--------------+--------------+------+-----+-------------------+-----------------------------+
+| transact_id  | int(11)      | NO   | PRI | NULL              | auto_increment              |
+| src_cust_id  | int(11)      | NO   | MUL | NULL              |                             |
+| dest_cust_id | int(11)      | NO   | MUL | NULL              |                             |
+| amount       | int(11)      | NO   |     | NULL              |                             |
+| description  | varchar(120) | YES  |     | NULL              |                             |
+| date_stamp   | timestamp    | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
++--------------+--------------+------+-----+-------------------+-----------------------------+
 
 describe cust_deposit;
 +------------+-----------+------+-----+-------------------+-----------------------------+

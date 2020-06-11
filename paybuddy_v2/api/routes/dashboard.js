@@ -34,41 +34,55 @@ const createPool = async () => {
 };
 createPool();
 
-router.get('/:user_id', async (req, res) => {
-  var userID = req.params.user_id;
+router.get('/:email', async (req, res) => {
+  var email = req.params.email;
 
   try {
      
     //Get current acct_value of customer
-    const getAcctValueQuery = 'select account_value from users where cust_id = ' + userID + ';';
+    const getAcctValueQuery = 'select account_value from users where email="'+email+'";';
 
-    //Get past transactions of customer
-    const getPastDepositQuery = 'select deposit_id, amount, date_stamp from cust_deposit where cust_id=' + userID + ';';
-
-    //Get past transactions of customer
-    const getPastPaymentQuery = 'select bpay_payment_id, amount, date_stamp from cust_bpay_payments where cust_id=' + userID + ';';
+    //Get past deposits of customer
+    const getPastDepositQuery = 'select cust_deposit.amount as amount, cust_deposit.date_stamp as date_stamp, concat("Deposit: ", cust_deposit.description) as description, "credit" as type from users inner join cust_deposit on users.cust_id = cust_deposit.cust_id where users.email="'+email+'";';
+    
+    //Get past payments of customer
+    const getPastPaymentQuery = 'select cust_bpay_payments.amount as amount, cust_bpay_payments.date_stamp as date_stamp, concat("Payemnts: ", cust_bpay_payments.description) as description, "debit" as type from users inner join cust_bpay_payments on users.cust_id = cust_bpay_payments.cust_id where users.email="'+email+'";';
+    
+    //Get past transfers of customer
+    const getPastTransferQuery = 'select cust_transfer.amount as amount, cust_transfer.date_stamp as date_stamp, concat("Transfer: ", cust_transfer.description) as description, "debit" as type from users inner join cust_transfer on users.cust_id = cust_transfer.src_cust_id where users.email="'+email+'";';
     
     //Run query - fetch response
     var acctValue = await pool.query(getAcctValueQuery);
     var pastDeposits = await pool.query(getPastDepositQuery);
     var pastPayments = await pool.query(getPastPaymentQuery);
+    var pastTransfers = await pool.query(getPastTransferQuery);
 
-    console.log(userID);
-    console.log(acctValue);
-    console.log(pastDeposits);
-    console.log(pastPayments);
+    var transactions = pastDeposits.concat(pastPayments).concat(pastTransfers);
+
+    function compare(a, b) {
+
+      const bandA = a.date_stamp;
+      const bandB = b.date_stamp;
+
+      let comparison = 0;
+      if (bandA > bandB) {
+        comparison = 1;
+      } else if (bandA < bandB) {
+        comparison = -1;
+      }
+      return comparison * -1;
+    }
+    
+    transactions.sort(compare);
+
+    var lastTenTransacts = transactions.slice(0,13);
+
+    res.end(JSON.stringify({acctValue: acctValue, transactions: lastTenTransacts}));
     
   } catch (err) {
-    // If something goes wrong, handle the error in this section. This might
-    // involve retrying or adjusting parameters depending on the situation.
-    // [START_EXCLUDE]
     console.log(err);
     res.status(500).end('Unable to successfully insert transaction!');
-    // [END_EXCLUDE]
-  } 
-  // [END cloud_sql_mysql_mysql_connection]
-
-  res.end(JSON.stringify({userID: userID, acctValue: acctValue, pastDeposits: pastDeposits, pastPayments: pastPayments}));
+  }
 });
 
 module.exports = router;

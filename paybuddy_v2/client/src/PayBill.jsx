@@ -1,26 +1,24 @@
 import React, { useState } from 'react';
-import './client.css';
 import './paybill.css'
-import BPayLogo from './img/bpay_logo.jpg';
+import BPayLogo from './img/bpaytransfer.png';
 import { getAccBalance, checkBPayPayment } from './util/api-calls';
 
 const PayBillForm = props => {
     return (
-        <main id='cous'>
-            <div class='header-id'>
-                <h2 class='header-text'>Enter bill details</h2>
-            </div>
+        <main class='fade-in-fast' id='cous'>
+            <h2 class='header-text'>Pay a bill</h2>
             <div class="box">
-                <div class="inner-box" id="box-body-id">
+                <div class="inner-box">
                     <form onSubmit={props.onSubmit}>
-                        <div class="bpay-logo"> <img class="bpay-logo-img" src={BPayLogo} alt="paybuddy-logo"/></div>
-                        <hr></hr>
+                        <img class="bpay-logo-img bpay-logo" src={BPayLogo} alt="paybuddy-logo"/>
+                        <div class='title'>Enter bill details</div>
+                        <hr class='centre-hr centre-margin' id='spaceout'></hr>
                         <div class='upper-inner-box'>
-                            <div class='text-line'>
+                            <div class='text-line' id='spaceout'>
                                 Biller Code:
                                 <input id='bllerCode' type="text" placeholder=' Biller Code *' onBlur={props.verifyBillerCode.bind(this)} required/>
                             </div>
-                            <div class='text-line'>
+                            <div class='text-line' id='spaceout'>
                                 Reference Number:
                                 <input id='crn' type="text" placeholder=' Ref Number *' required/>
                             </div>
@@ -31,22 +29,22 @@ const PayBillForm = props => {
                                 <div class='biller-name'>{props.billerName}</div>
                             </div>
                         </div>
-                        <hr></hr>
+                        <hr class='centre-hr centre-margin' id='spaceout'></hr>
                         <div class='middle-inner-box'>
                             <div class='payment-details'>
-                                <div class='payment-line'>
+                                <div class='text-line' id='spaceout'>
                                     Amount:
                                     <input id='amount' type="text" placeholder=' Amount *' required/>
                                 </div>
-                                <div class='payment-line'>
+                                <div class='text-line' id='spaceout'>
                                     Description:
                                     <input id='description' type="text" placeholder=' Description'/>
                                 </div>
                             </div>
                         </div>
-                        <div class='lower-inner-box'>
-                            <button class="IzjkL _2Y_WL FiOTW continue-button"id="submit-button">
-                                Confirm
+                        <div class='lower-inner-box' id='spaceout'>
+                            <button class="orange-button">
+                                <span class='button-text'>Confirm</span>
                             </button>
                         </div>
                   </form>
@@ -57,16 +55,16 @@ const PayBillForm = props => {
 }
 
 const PayBillConfirm = props => {
-    //debugger;
     return (
-        <main id='cous'>
+        <main class='fade-in-fast' id='cous'>
             <div id='header-id'>
-                <h2 class='header-text'>Confirm your payment</h2>
+                <h2 class='header-text'>Pay a bill</h2>
             </div>
             <div class='box'>
-                <div class='inner-box' id='box-body-id'>
-                <div class="bpay-logo"> <img class="bpay-logo-img" src={BPayLogo} alt="paybuddy-logo"/></div>
-                <hr></hr>
+                <div class='inner-box'>
+                <img class="bpay-logo-img bpay-logo" src={BPayLogo} alt="paybuddy-logo"/>
+                <div class='title'>confirm payment details</div>
+                <hr class='centre-hr centre-margin' id='spaceout'></hr>
                     <div class='upper-inner-box'>
                         <div class='biller-details'>
                             Biller Name:
@@ -85,20 +83,25 @@ const PayBillConfirm = props => {
                             <div class='payment-dexcription-text-box'>{props.bill.crn.value}</div>
                         </div>
                     </div>
-                    <hr></hr>
+                    <hr class='centre-hr centre-margin' id='spaceout'></hr>
                     <div class='middle-inner-box'>
                         <div class='payment-details'>
                             Amount:
                             <div class='payment-dexcription-text-box'>${props.bill.amount.value}</div>
                         </div>
+                        <div class='payment-details'>
+                            Description:
+                            <div class='payment-dexcription-text-box'>{props.bill.description.value}</div>
+                        </div>
                     </div>
                     <div class='button-container'>
-                        <button id="submit-button" onClick={props.onSubmit} class="_16apt _2Y_Wp">
-                            <span>Make Payment</span>
+                        <button class="orange-button space-width" onClick={props.onSubmit}>
+                            <span class='button-text'>Make Payment</span>
                         </button>
-                        <button id="cancel-button" onClick={props.cancelPayment} class="_16apt _2Y_Wp">
-                            <span>Cancel</span>
+                        <button class="white-button space-width" onClick={props.cancelPayment}>
+                            <span class='white-button-text'>Cancel</span>
                         </button>
+                        {props.error ? 'Error' : ''}
                     </div>
                 </div>
             </div>
@@ -115,33 +118,24 @@ function PayBill(props) {
 
     const showConfirm = () => setShow(true);
     const closeConfirm = () => {
-        //debugger;
         setBill('');
         setShow(false);
     };
 
-    function handleSubmit(event) {
-        //debugger;
-        
+    function handleSubmit(event) {        
         event.preventDefault();
-        const { bllerCode, crn, amount, descrip } = event.target.elements;
+        const { bllerCode, crn, amount, description } = event.target.elements;
 
-        if (bllerCode === '' || crn === '' || amount === '')
-        {
-            return;
-        }
-        else {
-            setBill({
-                userID: 1,
-                billerName: bill,
-                billerCode: bllerCode,
-                crn: crn,
-                amount: amount,
-                descrip: descrip
-            }); 
-    
-            showConfirm();
-        }
+        setBill({
+            userID: 1,
+            billerName: bill,
+            billerCode: bllerCode,
+            crn: crn,
+            amount: amount,
+            description: description
+        });
+
+        showConfirm();
     }
 
     function verifyBillerCode(event) {
@@ -160,60 +154,32 @@ function PayBill(props) {
     }
     
     function validatePayment(event) {
-        debugger;
-        getAccBalance(1, function(response) {
-            debugger;
-            console.log(response[0].account_value);
+        fetch(`http://localhost:9000/payments/validatePayment`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify({
+                userID: '1',
+                payment: {
+                    billerCode: bill.billerCode.value,
+                    crn: bill.crn.value,
+                    amount: parseFloat(bill.amount.value),
+                    settlementDate: "2017-10-23",
+                    paymentMethod: "001",
+                    paymentDate: "2019-01-10"
+                },
+                description: bill.description.value
+            })
+        }).then((response) => {
+            setApi(response);
+            console.log(response);
 
-            var billValue = bill.amount.value;
-
-            if(parseInt(response[0].account_value) > parseInt(billValue,10)) {
-
-                console.log('Sufficient funds');
-                debugger;
-
-                /* checkBPayPayment(bill, function(response) {
-                    console.log(response.text);
-                    debugger;
-                }); */
-                
-                fetch(`http://localhost:9000/payments/validatePayment`, {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        userID: '1',
-                        payment: {
-                            billerCode: bill.billerCode.value,
-                            crn: bill.crn.value,
-                            amount: parseFloat(bill.amount.value),
-                            settlementDate: "2017-10-23",
-                            paymentMethod: "001",
-                            paymentDate: "2019-01-10"
-                        }
-                    })
-                })
-                .then((response) => {
-                    debugger;
-                    console.log(response);
-                    console.log(response.status);
-
-                    if(response.status === 200) {
-                        console.log('responseFromServer');
-
-                        //Page re-route
-                        window.location.href = "/Dashboard?user_id=1";
-                    } else {
-                        console.log('API error');
-                        setErr('API error');
-                    }
-                });
-                debugger;
-            } else {
-                console.log('Not Valid');
-                setErr('Insufficient funds');
-                return;
+            if (response.status === 200) {
+                window.location.href = "/Dashboard?user_id=1";
+            }
+            else {
+                setErr('Error!');
             }
         });
     }
