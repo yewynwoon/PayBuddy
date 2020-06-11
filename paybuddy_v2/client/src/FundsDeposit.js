@@ -39,7 +39,7 @@ function Product({ product }) {
               body: JSON.stringify({
                 custID: 1,
                 value: product.price,
-                description: product.description + ': AU$' + product.price
+                description: product.description + ': USD$' + product.price
               })
             }).then(function (responseFromServer) {
               console.log(responseFromServer.status);
@@ -78,7 +78,7 @@ const ProductSelection = props => {
                   Australia
                   <small>PayBuddy Deposit</small>
                 </h3>
-                <div class='deposit-amount-text'>AU$5.00</div>
+                <div class='deposit-amount-text'>USD$5.00</div>
                 <button class='orange-button' onClick={props.addToCart1}>
                   <span class='button-text'>CONTINUE</span>
                 </button>
@@ -93,7 +93,7 @@ const ProductSelection = props => {
                   Australia
                   <small>PayBuddy Deposit</small>
                 </h3>
-                <div class='deposit-amount-text'>AU$10.00</div>
+                <div class='deposit-amount-text'>USD$10.00</div>
                   <button class='orange-button' onClick={props.addToCart2}>
                     <span class='button-text'>CONTINUE</span>
                   </button>
@@ -108,7 +108,7 @@ const ProductSelection = props => {
                   Australia
                   <small>PayBuddy Deposit</small>
                 </h3>
-                <div class='deposit-amount-text'>AU$25.00</div>
+                <div class='deposit-amount-text'>USD$2500.00</div>
                 <button class='orange-button' onClick={props.addToCart3}>
                     <span class='button-text'>CONTINUE</span>
                 </button>
@@ -139,11 +139,11 @@ const PayPalCheckout = props => {
           </div>
           <div class='medium-underline'>
             <div class='left-text'>PayBuddy Deposit</div>
-            <div class='right-text' data-basket-field='totalPrice'>AU${props.cartValue}.00</div>
+            <div class='right-text' data-basket-field='totalPrice'>USD${props.cartValue}.00</div>
           </div>
           <div class='thick-underline'>
             <div class='confirm-text left-text'>Total</div>
-            <div class='right-text' data-basket-field='totalPrice'>AU${props.cartValue}.00</div>
+            <div class='right-text' data-basket-field='totalPrice'>USD${props.cartValue}.00</div>
           </div>
           <div class='terms-text'>
             <span>
@@ -185,7 +185,7 @@ class FundsDeposit extends React.Component {
   }
 
   addToCart3 = () => {
-    this.addToCart(25)
+    this.addToCart(2500)
   }
 
   addToCart = (e) => {

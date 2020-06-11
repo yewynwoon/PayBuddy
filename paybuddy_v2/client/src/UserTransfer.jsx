@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import {useOktaAuth} from '@okta/okta-react'
-import './paybill.css';
-import './fade-in-fast.css';
-import transfer from './img/Transfericon.png';
+import transfer from './img/Transfericon.png'
+import './paybill.css'
+import './fade-in-fast.css'
 
 const TransferForm = props => {
     return (
@@ -106,20 +106,16 @@ function UserTransfer(props) {
 
     const showConfirm = () => setShow(true);
     const closeConfirm = () => {
-        //debugger;
         setTransfer('');
         setShow(false);
         setErr(false);
     };
 
     function handleSubmit(event) {
-        //debugger;
-        
         event.preventDefault();
         const { destID, amount, description } = event.target.elements;
         
         setTransfer({
-            userID: 1,
             destID: destID,
             amount: amount,
             descrip: description
@@ -129,6 +125,7 @@ function UserTransfer(props) {
     }
        
     async function validatePayment(event) {
+        event.preventDefault();
         if (authState.isAuthenticated) {
             const userInfo = await authService.getUser();
 
