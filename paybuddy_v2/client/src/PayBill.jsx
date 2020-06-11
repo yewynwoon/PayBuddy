@@ -101,7 +101,7 @@ const PayBillConfirm = props => {
                         <button class="white-button space-width" onClick={props.cancelPayment}>
                             <span class='white-button-text'>Cancel</span>
                         </button>
-                        {props.err}
+                        {props.error ? 'Error' : ''}
                     </div>
                 </div>
             </div>
@@ -118,14 +118,11 @@ function PayBill(props) {
 
     const showConfirm = () => setShow(true);
     const closeConfirm = () => {
-        //debugger;
         setBill('');
         setShow(false);
     };
 
-    function handleSubmit(event) {
-        //debugger;
-        
+    function handleSubmit(event) {        
         event.preventDefault();
         const { bllerCode, crn, amount, description } = event.target.elements;
 
@@ -157,7 +154,6 @@ function PayBill(props) {
     }
     
     function validatePayment(event) {
-
         fetch(`http://localhost:9000/payments/validatePayment`, {
             method: 'POST',
             headers: {
@@ -176,7 +172,6 @@ function PayBill(props) {
                 description: bill.description.value
             })
         }).then((response) => {
-            debugger;
             setApi(response);
             console.log(response);
 

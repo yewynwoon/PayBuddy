@@ -68,9 +68,11 @@ router.post('/validatePayment', async (req, res) => {
         if (acctValue[0] == null) {
           console.log('Incorrect src id');
           res.status(500).end('Incorrect src id');
+          return;
         } else if (parseInt(acctValue[0].account_value) < amount) {
           console.log('Insufficient Funds');
           res.status(500).end('Insufficient Funds');
+          return;
         }
 
         const options = {
@@ -108,11 +110,13 @@ router.post('/validatePayment', async (req, res) => {
               console.log(res2);
             }).catch(function(err1) {
               console.log(err1);
-              res.end(err1);   //PAYMENT VERIFICATION ERROR
+              res.status(500).end(err1);   //PAYMENT VERIFICATION ERROR
+              return;
             });
         }).catch(function(err) { 
             console.log(err);
-            res.end(err);    //OAUTH ERROR
+            res.status(500).end(err);    //OAUTH ERROR
+            return;
         });
 
     
