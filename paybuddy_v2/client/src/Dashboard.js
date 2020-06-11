@@ -97,7 +97,7 @@ export default withOktaAuth (class Dashboard extends React.Component {
                             <span id='detail-header'>CURRENT BALANCE</span>
                             <hr id='left-hr'></hr>
                             <span class='innercontents'>
-                                <div id='currency'>AUD</div>
+                                <div id='currency'>USD</div>
                                 <div id='accbalance'>${parseFloat(this.state.cust_acct_value).toFixed(2)}</div>
                                 <a href='/FundsDeposit' class ='editdetails'>ADD FUNDS</a>
                             </span>
