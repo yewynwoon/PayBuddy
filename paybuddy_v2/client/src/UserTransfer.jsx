@@ -131,7 +131,7 @@ function UserTransfer(props) {
 
             console.log(userInfo)
 
-            fetch('http://localhost:9000/transferFunds', {
+            fetch('https://paybuddy-2020.ts.r.appspot.com/transferFunds', {
                 method: 'post',
                 headers: {
                     'content-type': 'application/json'

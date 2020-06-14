@@ -31,7 +31,7 @@ function Product({ product }) {
         },
         onApprove: async function (data, actions) {
           return actions.order.capture().then(function (details) {
-            fetch('http://localhost:9000/depositFundsPost', {
+            fetch('https://paybuddy-2020.ts.r.appspot.com/depositFundsPost', {
               method: 'post',
               headers: {
                 'content-type': 'application/json'

@@ -9,7 +9,7 @@ async function checkUser() {
       const userInfo = await this.props.authService.getUser();
       
       
-      fetch('http://localhost:9000/dashboard/' + userInfo.email)
+      fetch('https://paybuddy-2020.ts.r.appspot.com/dashboard/' + userInfo.email)
         .then((response) => {
             if (response.status === 200) {
                 return response.json();

@@ -38,7 +38,7 @@ class AddFriend extends React.Component {
         event.preventDefault();
         console.log(decline_friend_id);
         window.location.reload(false);
-        fetch('http://localhost:9000/addfriend/declinefriendRequest', {
+        fetch('https://paybuddy-2020.ts.r.appspot.com/addfriend/declinefriendRequest', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
