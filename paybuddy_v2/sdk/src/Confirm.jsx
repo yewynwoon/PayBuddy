@@ -115,8 +115,8 @@ class FundsDeposit extends React.Component {
 
     showConfirm = () => {
         this.setState({
-        ...this.state,
-        showConfirm: true
+            ...this.state,
+            showConfirm: true
         })
     }
 
