@@ -40,6 +40,19 @@ Client - React Project
         3. Type: 'npm start'
         
         
+GitHub URL
+
+    https://github.com/yewynwoon/PayBuddy
+    
+Web Application
+
+    https://pay-buddy.com
+    http://35.244.127.181/
+
+
+Admin Application
+
+    https://35.189.37.177/login.php
         
         
  
