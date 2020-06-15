@@ -170,7 +170,6 @@ function PayBill(props) {
                 description: bill.description.value
             })
         }).then((response) => {
-            setApi(response);
             console.log(response);
 
             if (response.status === 200) {
