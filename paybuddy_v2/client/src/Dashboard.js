@@ -8,7 +8,6 @@ async function checkUser() {
     if (this.props.authState.isAuthenticated && !this.state.userInfo) {
       const userInfo = await this.props.authService.getUser();
       
-      
       fetch('http://localhost:9000/dashboard/' + userInfo.email)
         .then((response) => {
             if (response.status === 200) {
@@ -121,10 +120,8 @@ export default withOktaAuth (class Dashboard extends React.Component {
                             </tbody>
                         </table>
                     </div>
-                    {this.state.apiResponse}
                 </div>
             </main>
         )
-    }
+    };
 })
-
