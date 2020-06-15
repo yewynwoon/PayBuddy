@@ -1,0 +1,92 @@
+.main-container {
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+
+.title {
+    margin-top: 3vh;
+    margin-bottom: 2vh;
+    font-size: 3vh;
+
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    font-size: 2vh;
+}
+
+.classic-input {
+    width: 40%;
+    padding: 1vh 1vw 1vh 1vw;
+    margin-bottom: 3vh;
+
+    border-radius: 10px;
+    border: 1px solid #cccccc;
+}
+
+.grey-button {
+    border-radius: 20px;
+    border: 1px solid #5e5e5e;
+    background-color: transparent;
+    padding: 1vh 3vw 1vh 3vw;
+
+    text-transform: uppercase;
+    font-weight: bolder;
+    color: #5e5e5e;
+
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.grey-button:hover {
+    background-color: #5e5e5e;
+    color: white;
+}
+
+.space-right {
+    margin-right: 2vw;
+}
+
+.red-button {
+    padding: 1vh 3vw 1vh 3vw;
+    background-color: #ac1010;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bolder;
+    font-size: 18px;
+    border-radius: 25px;
+    border: none;
+
+    transition: background-color 0.5s;
+}
+
+.red-button:hover {
+    background-color: #790b0b;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+    
+    .classic-input {
+        width: 100%;
+        padding: 1vh 2vw 1vh 2vw;
+    }
+
+    .grey-button {
+        padding: 1vh 5vw 1vh 5vw;
+    }
+
+    .space-right {
+        margin-right: 1vw;
+    }
+    
+    .button-container {
+        text-align: center;
+    }
+
+    .red-button {
+        padding: 1vh 5vw 1vh 5vw;
+    }
+
+}

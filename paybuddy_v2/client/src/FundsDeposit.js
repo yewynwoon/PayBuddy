@@ -49,6 +49,7 @@ function Product({ product }) {
                 //Page re-route
                 window.location.href = '/Dashboard?user_id=1';
               } else {
+                setError('API error');
                 console.log('API error');
               }})
           })

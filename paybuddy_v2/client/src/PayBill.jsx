@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './paybill.css'
 import BPayLogo from './img/bpaytransfer.png';
-import { getAccBalance, checkBPayPayment } from './util/api-calls';
 
 const PayBillForm = props => {
     return (
@@ -114,7 +113,6 @@ function PayBill(props) {
     const [show, setShow] = useState(false);
     const [err, setErr] = useState(false);
     const [bill, setBill] = useState('');
-    const [api, setApi] = useState('');
 
     const showConfirm = () => setShow(true);
     const closeConfirm = () => {

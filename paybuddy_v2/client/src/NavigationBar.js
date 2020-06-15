@@ -5,7 +5,7 @@ import './NavigationBar.css'
 import { Menu }  from 'semantic-ui-react'
 
 const NavigationBar = () => {
-const {authState, authService} = useOktaAuth();
+const { authState } = useOktaAuth();
   return (
     <div class='topnav'>
       {authState.isAuthenticated && (
@@ -54,7 +54,7 @@ function GetLocation() {
 }
 
 function ActiveHome() {
-  if (GetLocation() == '/Dashboard') {
+  if (GetLocation() === '/Dashboard') {
     return (
       <a id="activeNav">HOME</a>
     )
@@ -66,7 +66,7 @@ function ActiveHome() {
 }
 
 function ActiveFunds() {
-  if (GetLocation() == '/FundsDeposit') {
+  if (GetLocation() === '/FundsDeposit') {
     return (
       <a id="activeNav">DEPOSIT FUNDS</a>
     )
@@ -78,7 +78,7 @@ function ActiveFunds() {
 }
 
 function ActiveTransfer() {
-  if (GetLocation() == '/UserTransfer') {
+  if (GetLocation() === '/UserTransfer') {
     return (
       <a id="activeNav">TRANSFER</a>
     )
@@ -90,7 +90,7 @@ function ActiveTransfer() {
 }
 
 function ActivePayBill() {
-  if (GetLocation() == '/PayBill') {
+  if (GetLocation() === '/PayBill') {
     return (
       <a id="activeNav">PAY BILL</a>
     )
@@ -102,7 +102,7 @@ function ActivePayBill() {
 }
 
 function ActiveAddFriend() {
-  if (GetLocation() == '/AddFriend') {
+  if (GetLocation() === '/AddFriend') {
     return (
       <a id="activeNav">ADD FRIEND</a>
     )

@@ -1,0 +1,21 @@
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.left {
+    width: 50%;
+    float: left;
+    text-align: start;
+    margin-bottom: 20px;
+}
+
+
+.right {
+    width: 50%;
+    float: right;
+    text-align: end;
+    margin-bottom: 20px;
+}

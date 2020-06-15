@@ -1,0 +1,84 @@
+div {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+}
+
+.content-pane {
+    height: 100vh;
+    width: 100vw;
+    text-align: center;
+
+    padding-top: 30vh;
+    background-image: url('../imgs/Background.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.text-container {
+    margin: 0 30vw 0 30vw;
+    padding: 3vh 0 3vh 0;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.space-3 {
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+}
+
+.heading {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 30px;
+}
+
+.logo-image {
+    width: 30vw;
+    height: auto;
+}
+
+.orange-button {
+    padding: 1vh 3vw 1vh 3vw;
+    background-color: #f2b377;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bolder;
+    font-size: 18px;
+    border-radius: 25px;
+    border: none;
+
+    transition: background-color 0.5s;
+}
+
+.orange-button:hover {
+    background-color: #E3A971;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+    .orange-button {
+        padding: 1vh 5vw 1vh 5vw;
+        background-color: #f2b377;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: bolder;
+        font-size: 18px;
+        border-radius: 25px;
+        border: none;
+    }
+
+    .logo-image {
+        width: 80vw;
+        height: auto;
+    }
+
+    .text-container {
+        margin: 0;
+        padding: 3vh 0 3vh 0;
+        background-color: white;
+        border-radius: 0;
+    }
+}

@@ -1,0 +1,80 @@
+
+.homecontainer {
+    min-width: 600px;
+}
+
+.homecontainer img {
+    width: 40%;
+}
+
+.homecontainer h1 {
+    text-transform: uppercase;
+    letter-spacing: 9px;
+    font-size: 14px;
+    color: #5e5e5e;
+}
+
+#login-button {
+    margin-top: 1%;
+}
+
+#login-button button {
+    padding: 1% 4% 1% 4%;
+    background-color: #f2b377;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+}
+
+#login-button button:hover {
+    background-color: #E3A971;
+    cursor: pointer;
+}
+
+#homehr {
+    width: 600px;
+    min-width: 600px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, rgb(94,94,94,0), rgb(94,94,94,1),rgb(94,94,94,0));
+}
+
+#welcomename {
+    font-size: 35px;
+    letter-spacing: 1px;
+    color: #5e5e5e;
+    margin-bottom: 5%;
+}
+
+#loading {
+    margin-top: 20%;
+    margin-bottom: 3%;
+    font-size: 20px;
+    color: #5e5e5e;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+#background {
+    width: 100%;
+    min-height: fit-content;
+    background-image: url('./img/Background.jpg');
+    background-color: #FFF;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 15px;
+    padding-top: 14%;
+    padding-bottom: 14%;
+}
+
+#basic-font {
+    font-size: 20px;
+    color: #5e5e5e;
+    letter-spacing: 1px;
+}

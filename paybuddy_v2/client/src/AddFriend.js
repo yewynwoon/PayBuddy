@@ -152,41 +152,6 @@ class AddFriend extends React.Component {
             });
     }
 
-
-/*
-
-    handleSubmit1(event) {
-        event.preventDefault();
-
-        alert('You Have Added a : ' + event);
-
-        fetch('http://localhost:9000/addfriend/friendRequest/1/3', {
-            method: 'POST',
-            headers: {
-
-            },
-            body: {
-
-            }
-        })
-            .then((response) => {
-                return response.json();
-            })
-
-            .then((data) => {
-                console.log(data);
-                
-
-                this.setState({
-                    ...this.state,
-                    friends_list: data.testQueryResp
-                })
-
-            });
-        
-    }
-    */
-
     renderFriendListTable() {
         return Object.keys(this.state.friends_list).map((key) => {
             return (

@@ -38,6 +38,12 @@ router.get('/:email', async (req, res) => {
   var email = req.params.email;
 
   try {
+
+    const userIDQuery = 'select cust_id from users where email="'+email+'";';
+    var userID = await pool.query(userIDQuery);
+    userID = userID[0].cust_id
+
+    console.log(userID)
      
     //Get current acct_value of customer
     const getAcctValueQuery = 'select account_value from users where email="'+email+'";';
@@ -51,13 +57,17 @@ router.get('/:email', async (req, res) => {
     //Get past transfers of customer
     const getPastTransferQuery = 'select cust_transfer.amount as amount, cust_transfer.date_stamp as date_stamp, concat("Transfer: ", cust_transfer.description) as description, "debit" as type from users inner join cust_transfer on users.cust_id = cust_transfer.src_cust_id where users.email="'+email+'";';
     
+    //Get past payments to merchants
+    const getPastMerchPayemntQuery = 'select amount, date_stamp, concat("Payment: ", description) as description, "debit" as type from cust_merchant_payment where cust_id='+userID+';';
+
     //Run query - fetch response
     var acctValue = await pool.query(getAcctValueQuery);
     var pastDeposits = await pool.query(getPastDepositQuery);
     var pastPayments = await pool.query(getPastPaymentQuery);
     var pastTransfers = await pool.query(getPastTransferQuery);
+    var pastMerchPayments = await pool.query(getPastMerchPayemntQuery);
 
-    var transactions = pastDeposits.concat(pastPayments).concat(pastTransfers);
+    var transactions = pastDeposits.concat(pastPayments).concat(pastTransfers).concat(pastMerchPayments);
 
     function compare(a, b) {
 
