@@ -148,7 +148,7 @@ function UserTransfer(props) {
                     console.log('responseFromServer');
 
                     //Page re-route
-                    window.location.href = "/Dashboard?user_id=1";
+                    window.location.href = "/Dashboard";
                 } else {
                     setErr(true)
                 }

@@ -45,7 +45,6 @@ export default withOktaAuth (class Dashboard extends React.Component {
     
     componentWillMount() {
         this.checkUser();
-        console.log(this.state.userInfo)
     }
 
     componentDidUpdate() {
@@ -54,7 +53,7 @@ export default withOktaAuth (class Dashboard extends React.Component {
 
     renderTableData() {
         return (
-            <table class='table'>
+            <table className='table'>
                 <thead>
                     <tr>
                         <th>DATE</th>
@@ -99,26 +98,26 @@ export default withOktaAuth (class Dashboard extends React.Component {
 
     render () {
         return (
-            <main class='fade-in-fast'>
+            <main className='fade-in-fast'>
                 <div id='dashboard-container'>
                     <div id='left-container'>
-                        <div class='detailbox' id='customerbox'>
+                        <div className='detailbox' id='customerbox'>
                             <span>WELCOME BACK,</span>
-                            <span class='innercontents'>
+                            <span className='innercontents'>
                                 <img id='profilepic' src={DP}></img>
                                 <div id='name'>
                                     {this.state.userInfo &&<div>{this.state.userInfo.name}</div>}
                                 </div>
                             </span>
-                            <a href='https://dev-203865.okta.com/enduser/settings' class ='editdetails'>EDIT ACCOUNT</a>
+                            <a href='https://dev-203865.okta.com/enduser/settings' className ='editdetails'>EDIT ACCOUNT</a>
                         </div>
-                        <div class='detailbox' id='moneybox'>
+                        <div className='detailbox' id='moneybox'>
                             <span id='detail-header'>CURRENT BALANCE</span>
                             <hr id='left-hr'></hr>
-                            <span class='innercontents'>
+                            <span className='innercontents'>
                                 <div id='currency'>USD</div>
                                 <div id='accbalance'>${parseFloat(this.state.cust_acct_value).toFixed(2)}</div>
-                                <a href='/FundsDeposit' class ='editdetails'>ADD FUNDS</a>
+                                <a href='/FundsDeposit' className ='editdetails'>ADD FUNDS</a>
                             </span>
                         </div>
                     </div>

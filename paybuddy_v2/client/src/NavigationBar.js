@@ -7,7 +7,7 @@ import { Menu }  from 'semantic-ui-react'
 const NavigationBar = () => {
 const { authState } = useOktaAuth();
   return (
-    <div class='topnav'>
+    <div className='topnav'>
       {authState.isAuthenticated && (
       <Menu.Item as ="a" header href="/Dashboard">
         <ActiveHome />
@@ -47,7 +47,6 @@ function AddFriend() {
 
 function GetLocation() {
   let location = useLocation();
-  console.log(location.pathname);
   return (
     location.pathname
   );

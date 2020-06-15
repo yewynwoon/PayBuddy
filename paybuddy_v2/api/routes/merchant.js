@@ -22,11 +22,11 @@ const createPool = async () => {
     database: "test",
     
     // If connecting via unix domain socket, specify the path
-    //socketPath: '/cloudsql/paybuddy-jeremy:australia-southeast1:paybuddy-mysql-db',//${process.env.CLOUD_SQL_CONNECTION_NAME}',
+    socketPath: '/cloudsql/paybuddy-2020:australia-southeast1:paybuddy-mysql-db',//${process.env.CLOUD_SQL_CONNECTION_NAME}',
     
     // If connecting via TCP, enter the IP and port instead
-    host: '127.0.0.1',
-    port: 1433,
+    //host: '127.0.0.1',
+    //port: 1433,
 
     connectionLimit: 5,
     connectTimeout: 10000,
