@@ -140,7 +140,7 @@ function PayBill(props) {
         if(event.target.value === '') {
             setBill('');
         } else {
-            fetch(`http://localhost:9000/payments/biller/${event.target.value}`)
+            fetch(`https://paybuddy-2020.ts.r.appspot.com/payments/biller/${event.target.value}`)
             .then((response) => {
                 return response.json();
             })
@@ -152,7 +152,7 @@ function PayBill(props) {
     }
     
     function validatePayment(event) {
-        fetch(`http://localhost:9000/payments/validatePayment`, {
+        fetch(`https://paybuddy-2020.ts.r.appspot.com/payments/validatePayment`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

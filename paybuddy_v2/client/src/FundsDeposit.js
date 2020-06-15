@@ -1,6 +1,17 @@
-import React, { useState, useRef, useEffect } from 'react';
-import './FundsDeposit.css';
-import Logo from './img/icon.png';
+import React, { useState, useRef, useEffect } from 'react'
+import Logo from './img/icon.png'
+import './FundsDeposit.css'
+
+async function checkUser() {
+  if (this.props.authState.isAuthenticated && !this.state.userInfo) {
+    const userInfo = await this.props.authService.getUser();
+
+    this.setState({
+      ...this.state,
+      userInfo: userInfo
+    })
+  }
+}
 
 function Product({ product }) {
   const [error, setError] = useState(null);
@@ -30,8 +41,9 @@ function Product({ product }) {
           });
         },
         onApprove: async function (data, actions) {
+          console.log(this.state)
           return actions.order.capture().then(function (details) {
-            fetch('http://localhost:9000/depositFundsPost', {
+            fetch('https://paybuddy-2020.ts.r.appspot.com/depositFundsPost', {
               method: 'post',
               headers: {
                 'content-type': 'application/json'
@@ -39,7 +51,7 @@ function Product({ product }) {
               body: JSON.stringify({
                 custID: 1,
                 value: product.price,
-                description: product.description + ': USD$' + product.price
+                description: product.description + ': $' + product.price +'USD'
               })
             }).then(function (responseFromServer) {
               console.log(responseFromServer.status);

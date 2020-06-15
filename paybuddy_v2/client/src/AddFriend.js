@@ -25,9 +25,6 @@ class AddFriend extends React.Component {
 
         //for Decline friend button
         this.handleClick1 = this.handleClick1.bind(this);
-
-    
-
     }
 
     //for Decline friend button
@@ -38,7 +35,7 @@ class AddFriend extends React.Component {
         event.preventDefault();
         console.log(decline_friend_id);
         window.location.reload(false);
-        fetch('http://localhost:9000/addfriend/declinefriendRequest', {
+        fetch('https://paybuddy-2020.ts.r.appspot.com/addfriend/declinefriendRequest', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -71,7 +68,7 @@ class AddFriend extends React.Component {
         event.preventDefault();
         console.log(friend_idq);
         window.location.reload(false);
-        fetch('http://localhost:9000/addfriend/respondfriendRequest', {
+        fetch('https://paybuddy-2020.ts.r.appspot.com/addfriend/respondfriendRequest', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -99,25 +96,21 @@ class AddFriend extends React.Component {
     
 
     callAPI() {
-        fetch('http://localhost:9000/addfriend/1')
-        //fetch('http://localhost:9000/addfriend/1/3')
-            .then((response) => {
-                return response.json();
-            })
+        fetch('https://paybuddy-2020.ts.r.appspot.com/addfriend/1')
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            console.log(data);
+            
 
-            .then((data) => {
-                console.log(data);
-                
+            this.setState({
+                ...this.state,
+                friends_list: data.friendsList,
+                newFriend_Request_list: data.friendReqList
+            })             
 
-                this.setState({
-                    ...this.state,
-                    friends_list: data.friendsList,
-                    newFriend_Request_list: data.friendReqList
-                })
-                //console.log(this.state.newFriend_Request_list);
-                
-
-            });
+        });
     }
 
     componentWillMount() {
@@ -132,7 +125,7 @@ class AddFriend extends React.Component {
         alert('A friend was added: ' + this.state.addfriend_id);
         event.preventDefault();
 
-        fetch('http://localhost:9000/addfriend/addfriend-by-id', {
+        fetch('https://paybuddy-2020.ts.r.appspot.com/addfriend/addfriend-by-id', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

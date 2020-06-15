@@ -7,8 +7,13 @@ import DP from './img/profilepictemplate.png';
 async function checkUser() {
     if (this.props.authState.isAuthenticated && !this.state.userInfo) {
       const userInfo = await this.props.authService.getUser();
+
+      this.setState({
+        ...this.state,
+        userInfo: userInfo
+    })
       
-      fetch('http://localhost:9000/dashboard/' + userInfo.email)
+      fetch('https://paybuddy-2020.ts.r.appspot.com/dashboard/' + userInfo.email)
         .then((response) => {
             if (response.status === 200) {
                 return response.json();
@@ -33,7 +38,7 @@ export default withOktaAuth (class Dashboard extends React.Component {
             cust_acct_value: '',
             pastPayments: '',
             cust_transacts: '',
-            userInfo: null
+            userInfo: ''
         }
         this.checkUser = checkUser.bind(this);
     }
@@ -48,33 +53,48 @@ export default withOktaAuth (class Dashboard extends React.Component {
     }
 
     renderTableData() {
-        return Object.keys(this.state.cust_transacts).map((key) => {
+        return (
+            <table class='table'>
+                <thead>
+                    <tr>
+                        <th>DATE</th>
+                        <th>DESCRIPTION</th>
+                        <th>TYPE</th>
+                        <th>AMOUNT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    { 
+                        Object.keys(this.state.cust_transacts).map((key) => {
 
-            var data = this.state.cust_transacts[key].date_stamp.substring(5, 10).split('-');
-            var date = data[1] + '-' + data[0];
+                        var data = this.state.cust_transacts[key].date_stamp.substring(5, 10).split('-');
+                        var date = data[1] + '-' + data[0];
 
-            var descrip = this.state.cust_transacts[key].description;
+                        var descrip = this.state.cust_transacts[key].description;
 
-            var amount;
-            var type;
+                        var amount;
+                        var type;
 
-            if (this.state.cust_transacts[key].type == 'credit') {
-                amount = '+$' + this.state.cust_transacts[key].amount;
-                type = 'credit';
-            } else {
-                amount = '-$' + this.state.cust_transacts[key].amount;
-                type = 'debit';
-            }
+                        if (this.state.cust_transacts[key].type == 'credit') {
+                            amount = '+$' + this.state.cust_transacts[key].amount;
+                            type = 'credit';
+                        } else {
+                            amount = '-$' + this.state.cust_transacts[key].amount;
+                            type = 'debit';
+                        }
 
-            return (
-                <tr key={key}>
-                    <td>{date}</td>
-                    <td>{descrip}</td>
-                    <td>{type}</td>
-                    <td>{amount}</td>
-                </tr>
-            )
-        })
+                        return (
+                            <tr key={key}>
+                                <td>{date}</td>
+                                <td>{descrip}</td>
+                                <td>{type}</td>
+                                <td>{amount}</td>
+                            </tr>
+                        )
+                    })}
+                </tbody>
+            </table>
+        )
     }
 
     render () {
@@ -106,19 +126,7 @@ export default withOktaAuth (class Dashboard extends React.Component {
                     <div id='right-container'>
                         <div id='tableheading'>RECENT ACTIVITY</div>
                         <hr id='left-hr'></hr>
-                        <table class='table'>
-                            <thead>
-                                <tr>
-                                    <th>DATE</th>
-                                    <th>DESCRIPTION</th>
-                                    <th>TYPE</th>
-                                    <th>AMOUNT</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.renderTableData()}
-                            </tbody>
-                        </table>
+                        {this.renderTableData()}
                     </div>
                 </div>
             </main>
