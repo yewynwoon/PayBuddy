@@ -1,10 +1,13 @@
-import React, { useState, useRef, useEffect } from 'react';
-import './FundsDeposit.css';
-import Logo from './img/icon.png';
+import React, { useState, useRef, useEffect } from 'react'
+import { withOktaAuth } from '@okta/okta-react';
+import Logo from './img/icon.png'
+import './FundsDeposit.css'
 
-function Product({ product }) {
+function Product({ product, userInfo }) {
   const [error, setError] = useState(null);
   const paypalRef = useRef();
+
+  console.log(userInfo)
 
   useEffect(() => {
     window.paypal
@@ -31,26 +34,25 @@ function Product({ product }) {
         },
         onApprove: async function (data, actions) {
           return actions.order.capture().then(function (details) {
-            fetch('http://localhost:9000/depositFundsPost', {
+            fetch('https://paybuddy-2020.ts.r.appspot.com/depositFundsPost', {
               method: 'post',
               headers: {
                 'content-type': 'application/json'
               },
               body: JSON.stringify({
-                custID: 1,
+                cust_email: userInfo.email,
                 value: product.price,
-                description: product.description + ': USD$' + product.price
+                description: product.description + ': $' + product.price +'USD'
               })
             }).then(function (responseFromServer) {
               console.log(responseFromServer.status);
               if(responseFromServer.status === 200) {
-                console.log('responseFromServer');
-
                 //Page re-route
-                window.location.href = '/Dashboard?user_id=1';
+                window.location.href = '/Dashboard';
               } else {
-                console.log('API error');
-              }})
+                setError('API error');
+              }
+            })
           })
         }
       }).render(paypalRef.current);
@@ -66,51 +68,51 @@ function Product({ product }) {
 
 const ProductSelection = props => {
   return (
-    <div class='fade-in-fast'>
-        <span class='header-text'>Select Deposit Amount</span>
+    <div className='fade-in-fast'>
+        <span className='header-text'>Select Deposit Amount</span>
       <div>
-        <ul class='box-containers'>
-          <li class='single-box-container'>
-            <div class='box-design'>
-              <div class='box-text'>
-                <img class='logo-image' id='spaceout' src={Logo} alt='paybuddy-logo'/>
-                <h3 class='box-inner-text'>
+        <ul className='box-containers'>
+          <li className='single-box-container'>
+            <div className='box-design'>
+              <div className='box-text'>
+                <img className='logo-image' id='spaceout' src={Logo} alt='paybuddy-logo'/>
+                <h3 className='box-inner-text'>
                   Australia
                   <small>PayBuddy Deposit</small>
                 </h3>
-                <div class='deposit-amount-text'>USD$5.00</div>
-                <button class='orange-button' onClick={props.addToCart1}>
-                  <span class='button-text'>CONTINUE</span>
+                <div className='deposit-amount-text'>USD$5.00</div>
+                <button className='orange-button' onClick={props.addToCart1}>
+                  <span className='button-text'>CONTINUE</span>
                 </button>
               </div>
             </div>
           </li>
-          <li class='single-box-container'>
-            <div class='box-design'>
-              <div class='box-text'>
-                <img class='logo-image' id='spaceout' src={Logo} alt='paybuddy-logo'/>
-                <h3 class='box-inner-text'>
+          <li className='single-box-container'>
+            <div className='box-design'>
+              <div className='box-text'>
+                <img className='logo-image' id='spaceout' src={Logo} alt='paybuddy-logo'/>
+                <h3 className='box-inner-text'>
                   Australia
                   <small>PayBuddy Deposit</small>
                 </h3>
-                <div class='deposit-amount-text'>USD$10.00</div>
-                  <button class='orange-button' onClick={props.addToCart2}>
-                    <span class='button-text'>CONTINUE</span>
+                <div className='deposit-amount-text'>USD$10.00</div>
+                  <button className='orange-button' onClick={props.addToCart2}>
+                    <span className='button-text'>CONTINUE</span>
                   </button>
                 </div>
             </div>
           </li>
-          <li class='single-box-container'>
-            <div class='box-design'>
-              <div class='box-text'> 
-                <img class='logo-image' id='spaceout' src={Logo} alt='paybuddy-logo'/>
-                <h3 class='box-inner-text'>
+          <li className='single-box-container'>
+            <div className='box-design'>
+              <div className='box-text'> 
+                <img className='logo-image' id='spaceout' src={Logo} alt='paybuddy-logo'/>
+                <h3 className='box-inner-text'>
                   Australia
                   <small>PayBuddy Deposit</small>
                 </h3>
-                <div class='deposit-amount-text'>USD$2500.00</div>
-                <button class='orange-button' onClick={props.addToCart3}>
-                    <span class='button-text'>CONTINUE</span>
+                <div className='deposit-amount-text'>USD$2500.00</div>
+                <button className='orange-button' onClick={props.addToCart3}>
+                    <span className='button-text'>CONTINUE</span>
                 </button>
               </div>
             </div>
@@ -122,7 +124,6 @@ const ProductSelection = props => {
 }
 
 const PayPalCheckout = props => {
-
   const product = {
     price: props.cartValue,
     name: 'PayBuddy deposit',
@@ -131,35 +132,35 @@ const PayPalCheckout = props => {
 
   return (
     <div className='App'>
-      <div class='fade-in-fast'>
-        <h2 class='header-text'>Confirm order and pay</h2>
-        <div class='confirm-container'>
-          <div class='thick-underline'>
-            <div class='confirm-text left-text'>Your order</div>
+      <div className='fade-in-fast'>
+        <h2 className='header-text'>Confirm order and pay</h2>
+        <div className='confirm-container'>
+          <div className='thick-underline'>
+            <div className='confirm-text left-text'>Your order</div>
           </div>
-          <div class='medium-underline'>
-            <div class='left-text'>PayBuddy Deposit</div>
-            <div class='right-text' data-basket-field='totalPrice'>USD${props.cartValue}.00</div>
+          <div className='medium-underline'>
+            <div className='left-text'>PayBuddy Deposit</div>
+            <div className='right-text' data-basket-field='totalPrice'>USD${props.cartValue}.00</div>
           </div>
-          <div class='thick-underline'>
-            <div class='confirm-text left-text'>Total</div>
-            <div class='right-text' data-basket-field='totalPrice'>USD${props.cartValue}.00</div>
+          <div className='thick-underline'>
+            <div className='confirm-text left-text'>Total</div>
+            <div className='right-text' data-basket-field='totalPrice'>USD${props.cartValue}.00</div>
           </div>
-          <div class='terms-text'>
+          <div className='terms-text'>
             <span>
               In some cases, your default currency will not be supported by a payment method directly. To solve this we convert the cost of your order automatically at prevailing European Central Bank rates.
             </span>
           </div>
         </div>
-        <div class='confirm-container' aria-live='assertive'>
-          By clicking 'Pay now', you agree to the <a class='text-link' role='link' target='_blank'>PayPuddy Services Agreement</a> and <a class='text-link' role='link' target='_blank'>Privacy and Cookies policy</a>, and you authorize PayBuddy to store your payment details.
+        <div className='confirm-container' aria-live='assertive'>
+          By clicking 'Pay now', you agree to the <a className='text-link' role='link' target='_blank'>PayPuddy Services Agreement</a> and <a className='text-link' role='link' target='_blank'>Privacy and Cookies policy</a>, and you authorize PayBuddy to store your payment details.
         </div>
-        <div class='centre-button'>
-          <div class='paypal-button space-button'>
-            <Product product={product} />
+        <div className='centre-button'>
+          <div className='paypal-button space-button'>
+            <Product product={product} userInfo={props.userInfo}/>
           </div>
-          <button class='orange-button' onClick={props.cancelCart}>
-            <span class='button-text'>Cancel</span>
+          <button className='orange-button' onClick={props.cancelCart}>
+            <span className='button-text'>Cancel</span>
           </button>             
         </div>
       </div>
@@ -167,13 +168,30 @@ const PayPalCheckout = props => {
   );
 }
 
-class FundsDeposit extends React.Component {
+async function getUserInfo() {
+  if (this.props.authState.isAuthenticated) {
+    const userInfo = await this.props.authService.getUser();
 
+    this.setState({
+      ...this.state,
+      userInfo: userInfo
+    })
+  }
+}
+
+
+export default withOktaAuth (class FundsDeposit extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { showCheckout: false, cartValue: 10, apiResponse: ''}
+    this.state = { 
+      showCheckout: false,
+      userInfo: ''
+    }
     this.addToCart = this.addToCart.bind(this);
     this.cancelCart = this.cancelCart.bind(this);
+    this.getUserInfo = getUserInfo.bind(this);
+    
+    this.getUserInfo();
   }
 
   addToCart1 = () => {
@@ -207,12 +225,9 @@ class FundsDeposit extends React.Component {
     return (
       <div>
        {!this.state.showCheckout ? <ProductSelection addToCart1={this.addToCart1} addToCart2={this.addToCart2} addToCart3={this.addToCart3} />
-                                 : <PayPalCheckout cartValue={this.state.cartValue} cancelCart={this.cancelCart} />}
+                                 : <PayPalCheckout cartValue={this.state.cartValue} cancelCart={this.cancelCart} userInfo={this.state.userInfo}/>}
       
-      { this.state.apiResponse }
       </div>
     );
   }
-}
-
-export default FundsDeposit;
+})

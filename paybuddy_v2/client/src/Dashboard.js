@@ -7,9 +7,13 @@ import DP from './img/profilepictemplate.png';
 async function checkUser() {
     if (this.props.authState.isAuthenticated && !this.state.userInfo) {
       const userInfo = await this.props.authService.getUser();
+
+      this.setState({
+        ...this.state,
+        userInfo: userInfo
+    })
       
-      
-      fetch('http://localhost:9000/dashboard/' + userInfo.email)
+      fetch('https://paybuddy-2020.ts.r.appspot.com/dashboard/' + userInfo.email)
         .then((response) => {
             if (response.status === 200) {
                 return response.json();
@@ -34,14 +38,13 @@ export default withOktaAuth (class Dashboard extends React.Component {
             cust_acct_value: '',
             pastPayments: '',
             cust_transacts: '',
-            userInfo: null
+            userInfo: ''
         }
         this.checkUser = checkUser.bind(this);
     }
     
     componentWillMount() {
         this.checkUser();
-        console.log(this.state.userInfo)
     }
 
     componentDidUpdate() {
@@ -49,57 +52,72 @@ export default withOktaAuth (class Dashboard extends React.Component {
     }
 
     renderTableData() {
-        return Object.keys(this.state.cust_transacts).map((key) => {
+        return (
+            <table className='table'>
+                <thead>
+                    <tr>
+                        <th>DATE</th>
+                        <th>DESCRIPTION</th>
+                        <th>TYPE</th>
+                        <th>AMOUNT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    { 
+                        Object.keys(this.state.cust_transacts).map((key) => {
 
-            var data = this.state.cust_transacts[key].date_stamp.substring(5, 10).split('-');
-            var date = data[1] + '-' + data[0];
+                        var data = this.state.cust_transacts[key].date_stamp.substring(5, 10).split('-');
+                        var date = data[1] + '-' + data[0];
 
-            var descrip = this.state.cust_transacts[key].description;
+                        var descrip = this.state.cust_transacts[key].description;
 
-            var amount;
-            var type;
+                        var amount;
+                        var type;
 
-            if (this.state.cust_transacts[key].type == 'credit') {
-                amount = '+$' + this.state.cust_transacts[key].amount;
-                type = 'credit';
-            } else {
-                amount = '-$' + this.state.cust_transacts[key].amount;
-                type = 'debit';
-            }
+                        if (this.state.cust_transacts[key].type == 'credit') {
+                            amount = '+$' + this.state.cust_transacts[key].amount;
+                            type = 'credit';
+                        } else {
+                            amount = '-$' + this.state.cust_transacts[key].amount;
+                            type = 'debit';
+                        }
 
-            return (
-                <tr key={key}>
-                    <td>{date}</td>
-                    <td>{descrip}</td>
-                    <td>{type}</td>
-                    <td>{amount}</td>
-                </tr>
-            )
-        })
+                        return (
+                            <tr key={key}>
+                                <td>{date}</td>
+                                <td>{descrip}</td>
+                                <td>{type}</td>
+                                <td>{amount}</td>
+                            </tr>
+                        )
+                    })}
+                </tbody>
+            </table>
+        )
     }
 
     render () {
         return (
-            <main class='fade-in-fast'>
+            <main className='fade-in-fast'>
                 <div id='dashboard-container'>
                     <div id='left-container'>
-                        <div class='detailbox' id='customerbox'>
+                        <div className='detailbox' id='customerbox'>
                             <span>WELCOME BACK,</span>
-                            <span class='innercontents'>
+                            <span className='innercontents'>
                                 <img id='profilepic' src={DP}></img>
                                 <div id='name'>
                                     {this.state.userInfo &&<div>{this.state.userInfo.name}</div>}
                                 </div>
                             </span>
-                            <a href='https://dev-203865.okta.com/enduser/settings' class ='editdetails'>EDIT ACCOUNT</a>
+                            <a href='https://dev-203865.okta.com/enduser/settings' className ='editdetails'>EDIT ACCOUNT</a>
                         </div>
-                        <div class='detailbox' id='moneybox'>
+                        <div className='detailbox' id='moneybox'>
                             <span id='detail-header'>CURRENT BALANCE</span>
                             <hr id='left-hr'></hr>
-                            <span class='innercontents'>
+                            <span className='innercontents'>
                                 <div id='currency'>USD</div>
                                 <div id='accbalance'>${parseFloat(this.state.cust_acct_value).toFixed(2)}</div>
-                                <a href='/FundsDeposit' class ='editdetails'>ADD FUNDS</a>
+                                <a href='/FundsDeposit' className ='editdetails'>ADD FUNDS</a>
                             </span>
                         </div>
                     </div>
@@ -107,24 +125,10 @@ export default withOktaAuth (class Dashboard extends React.Component {
                     <div id='right-container'>
                         <div id='tableheading'>RECENT ACTIVITY</div>
                         <hr id='left-hr'></hr>
-                        <table class='table'>
-                            <thead>
-                                <tr>
-                                    <th>DATE</th>
-                                    <th>DESCRIPTION</th>
-                                    <th>TYPE</th>
-                                    <th>AMOUNT</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.renderTableData()}
-                            </tbody>
-                        </table>
+                        {this.renderTableData()}
                     </div>
-                    {this.state.apiResponse}
                 </div>
             </main>
         )
-    }
+    };
 })
-

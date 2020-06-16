@@ -50,14 +50,41 @@ CREATE TABLE IF NOT EXISTS cust_bpay_payments (
 	FOREIGN KEY (cust_id) references users(cust_id)
 );
 
-insert into cust_transfer (cust_id, biller_code, crn, amount)
+CREATE TABLE IF NOT EXISTS merchants
+(
+	merchant_id int not null AUTO_INCREMENT,
+	cname varchar(50) NOT NULL,
+	account_value int not null default 0,
+	email varchar(25) NOT NULL,
+	password varchar(25) NOT NULL,
 
-select cust_bpay_payments.bpay_payment_id, cust_bpay_payments.amount, cust_bpay_payments.date_stamp from cust_bpay_payments and cust_bpay_payments where cust_id=
+	PRIMARY KEY (merchant_id)
+);
 
-select * from cust_deposit full outer join cust_bpay_payments on cust_deposit.cust_id=cust_bpay_payments=cust_id;
+CREATE TABLE IF NOT EXISTS merchant_apps
+(
+	merchant_app_id int not null AUTO_INCREMENT,
+	merchant_id int not null,
+	name varchar(25) NOT NULL,
+	return_url varchar(75) NOT NULL,
 
+	PRIMARY KEY (merchant_app_id),
+	FOREIGN KEY (merchant_id) references merchants(merchant_id)
+);
 
+CREATE TABLE IF NOT EXISTS cust_merchant_payment (
 
+	cust_merchant_payment_id int not null AUTO_INCREMENT,
+	cust_id int not null,
+	merchant_id int not null,
+	amount int NOT NULL,
+	description varchar(120),
+	date_stamp TIMESTAMP not null,
+
+	PRIMARY KEY (cust_merchant_payment_id),
+	FOREIGN KEY (cust_id) references users(cust_id),
+	FOREIGN KEY (merchant_id) references merchants(merchant_id)
+);
 
 describe users;
 +---------------+-------------+------+-----+---------+----------------+
@@ -112,3 +139,36 @@ describe bpay_payment_details;
 | amount                  | int(11)   | NO   |     | NULL              |                             |
 | date_stamp              | timestamp | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
 +-------------------------+-----------+------+-----+-------------------+-----------------------------+
+
+describe merchants;
++---------------+-------------+------+-----+---------+----------------+
+| Field         | Type        | Null | Key | Default | Extra          |
++---------------+-------------+------+-----+---------+----------------+
+| merchant_id   | int(11)     | NO   | PRI | NULL    | auto_increment |
+| cname         | varchar(50) | NO   |     | NULL    |                |
+| account_value | int(11)     | YES  |     | 0       |                |
+| email         | varchar(25) | NO   |     | NULL    |                |
+| password      | varchar(25) | NO   |     | NULL    |                |
++---------------+-------------+------+-----+---------+----------------+
+
+describe merchant_apps;
++-----------------+-------------+------+-----+---------+----------------+
+| Field           | Type        | Null | Key | Default | Extra          |
++-----------------+-------------+------+-----+---------+----------------+
+| merchant_app_id | int(11)     | NO   | PRI | NULL    | auto_increment |
+| merchant_id     | int(11)     | NO   | MUL | NULL    |                |
+| name            | varchar(25) | NO   |     | NULL    |                |
+| return_url      | varchar(75) | NO   |     | NULL    |                |
++-----------------+-------------+------+-----+---------+----------------+
+
+describe cust_merchant_payment;
++--------------------------+--------------+------+-----+-------------------+-----------------------------+
+| Field                    | Type         | Null | Key | Default           | Extra                       |
++--------------------------+--------------+------+-----+-------------------+-----------------------------+
+| cust_merchant_payment_id | int(11)      | NO   | PRI | NULL              | auto_increment              |
+| cust_id                  | int(11)      | NO   | MUL | NULL              |                             |
+| merchant_id              | int(11)      | NO   | MUL | NULL              |                             |
+| amount                   | int(11)      | NO   |     | NULL              |                             |
+| description              | varchar(120) | YES  |     | NULL              |                             |
+| date_stamp               | timestamp    | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
++--------------------------+--------------+------+-----+-------------------+-----------------------------+

@@ -27,7 +27,7 @@ const TransferForm = props => {
                                     Amount:
                                     <input id='amount' type="text" placeholder=' Amount *' required/>
                                 </div>
-                                <div class='payment-line'>
+                                <div className='payment-line'>
                                     Description:
                                     <input id='description' type="text" placeholder=' Description'/>
                                 </div>
@@ -59,20 +59,20 @@ const TransferConfirm = props => {
                     <div class='middle-inner-box'>
                         <div class='payment-details'>
                             User ID:
-                            <div class='payment-dexcription-text-box'>{props.transfer.destID.value}</div>
+                            <div className='payment-dexcription-text-box'>{props.transfer.destID.value}</div>
                         </div>
                     </div>
                     <hr class='centre-hr centre-margin' id='spaceout'></hr>
                     <div class='middle-inner-box'>
                         <div class='payment-details'>
                             Amount:
-                            <div class='payment-dexcription-text-box'>${props.transfer.amount.value}</div>
+                            <div className='payment-dexcription-text-box'>${props.transfer.amount.value}</div>
                         </div>
                     </div>
-                    <div class='middle-inner-box'>
-                        <div class='payment-details'>
+                    <div className='middle-inner-box'>
+                        <div className='payment-details'>
                             Description:
-                            <div class='payment-dexcription-text-box'>{props.transfer.descrip.value}</div>
+                            <div className='payment-dexcription-text-box'>{props.transfer.descrip.value}</div>
                         </div>
                     </div>
                     <div class='middle-inner-box'>
@@ -131,7 +131,7 @@ function UserTransfer(props) {
 
             console.log(userInfo)
 
-            fetch('http://localhost:9000/transferFunds', {
+            fetch('https://paybuddy-2020.ts.r.appspot.com/transferFunds', {
                 method: 'post',
                 headers: {
                     'content-type': 'application/json'
@@ -148,7 +148,7 @@ function UserTransfer(props) {
                     console.log('responseFromServer');
 
                     //Page re-route
-                    window.location.href = "/Dashboard?user_id=1";
+                    window.location.href = "/Dashboard";
                 } else {
                     setErr(true)
                 }

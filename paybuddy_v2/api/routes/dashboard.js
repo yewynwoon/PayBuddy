@@ -19,11 +19,11 @@ const createPool = async () => {
     database: "test",
     
     // If connecting via unix domain socket, specify the path
-    //socketPath: '/cloudsql/paybuddy-jeremy:australia-southeast1:paybuddy-mysql-db',//${process.env.CLOUD_SQL_CONNECTION_NAME}',
+    socketPath: '/cloudsql/paybuddy-2020:australia-southeast1:paybuddy-mysql-db',//${process.env.CLOUD_SQL_CONNECTION_NAME}',
     
     // If connecting via TCP, enter the IP and port instead
-    host: '127.0.0.1',
-    port: 1433,
+    //host: '127.0.0.1',
+    //port: 1433,
 
     connectionLimit: 5,
     connectTimeout: 10000,
@@ -38,6 +38,12 @@ router.get('/:email', async (req, res) => {
   var email = req.params.email;
 
   try {
+
+    const userIDQuery = 'select cust_id from users where email="'+email+'";';
+    var userID = await pool.query(userIDQuery);
+    userID = userID[0].cust_id
+
+    console.log(userID)
      
     //Get current acct_value of customer
     const getAcctValueQuery = 'select account_value from users where email="'+email+'";';
@@ -51,13 +57,17 @@ router.get('/:email', async (req, res) => {
     //Get past transfers of customer
     const getPastTransferQuery = 'select cust_transfer.amount as amount, cust_transfer.date_stamp as date_stamp, concat("Transfer: ", cust_transfer.description) as description, "debit" as type from users inner join cust_transfer on users.cust_id = cust_transfer.src_cust_id where users.email="'+email+'";';
     
+    //Get past payments to merchants
+    const getPastMerchPayemntQuery = 'select amount, date_stamp, concat("Payment: ", description) as description, "debit" as type from cust_merchant_payment where cust_id='+userID+';';
+
     //Run query - fetch response
     var acctValue = await pool.query(getAcctValueQuery);
     var pastDeposits = await pool.query(getPastDepositQuery);
     var pastPayments = await pool.query(getPastPaymentQuery);
     var pastTransfers = await pool.query(getPastTransferQuery);
+    var pastMerchPayments = await pool.query(getPastMerchPayemntQuery);
 
-    var transactions = pastDeposits.concat(pastPayments).concat(pastTransfers);
+    var transactions = pastDeposits.concat(pastPayments).concat(pastTransfers).concat(pastMerchPayments);
 
     function compare(a, b) {
 

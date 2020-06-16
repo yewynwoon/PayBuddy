@@ -19,11 +19,11 @@ const createPool = async () => {
     database: "test",
     
     // If connecting via unix domain socket, specify the path
-    //socketPath: '/cloudsql/paybuddy-jeremy:australia-southeast1:paybuddy-mysql-db',//${process.env.CLOUD_SQL_CONNECTION_NAME}',
+    socketPath: '/cloudsql/paybuddy-2020:australia-southeast1:paybuddy-mysql-db',//${process.env.CLOUD_SQL_CONNECTION_NAME}',
     
     // If connecting via TCP, enter the IP and port instead
-    host: '127.0.0.1',
-    port: 1433,
+    //host: '127.0.0.1',
+    //port: 1433,
 
     connectionLimit: 5,
     connectTimeout: 10000,
@@ -36,10 +36,12 @@ createPool();
 
 router.post('/', async (req, res) => {
   
-  const custID = req.body.custID;
+  const email = req.body.cust_email;
   const amount = req.body.value;
   const description = req.body.description;
   const dateStamp = new Date();
+
+  console.log(email)
 
   try {
      
@@ -47,11 +49,12 @@ router.post('/', async (req, res) => {
     const depositTableQuery = 'insert into cust_deposit (cust_id, amount, description, date_stamp) values (?, ?, ?, ?);';
 
     //Get current acct_value of customer
-    const getAcctValueQuery = 'select account_value from users where cust_id = ' + custID + ';';
+    const getAcctValueQuery = 'select account_value, cust_id from users where email="'+email+'";';
 
     //Run query - fetch response
     var oldAcctValue = await pool.query(getAcctValueQuery);
     var newAcctTotal = oldAcctValue[0].account_value + amount;
+    const custID = oldAcctValue[0].cust_id;
 
     //Get current acct_value of customer
     const setAcctValueQuery = 'update users set account_value=' + newAcctTotal + ' where cust_id=' + custID + ';';
