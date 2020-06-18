@@ -15,7 +15,7 @@ if (fs.existsSync(TESTENV)) {
   });
 }
 process.env.CLIENT_ID = process.env.CLIENT_ID || process.env.SPA_CLIENT_ID;
-process.env.OKTA_TESTING_DISABLEHTTPSCHECK = process.env.OKTA_TESTING_DISABLEHTTPSCHECK || false;
+process.env.OKTA_TESTING_DISABLEHTTPSCHECK = true;
 
 const webpack = require('webpack');
 
