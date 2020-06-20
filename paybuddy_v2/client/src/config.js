@@ -6,7 +6,7 @@ export default {
   oidc: {
     clientId: CLIENT_ID,
     issuer: ISSUER,
-    redirectUri: 'http://pay-buddy.com/implicit/callback',
+    redirectUri: 'https://pay-buddy.com/implicit/callback',
     scopes: ['openid', 'profile', 'email'],
     pkce: true,
     disableHttpsCheck: OKTA_TESTING_DISABLEHTTPSCHECK,
