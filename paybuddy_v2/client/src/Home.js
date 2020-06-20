@@ -67,7 +67,7 @@ const Home = () => {
             <img src={PayBuddyLogo}></img>
             <h1>E-Wallet Application</h1>
             <hr class='centre-hr centre-margin'></hr>
-            <span id='spaceout'>You have logged out, log in again to continue!</span>
+            <span id='spaceout'>You have been logged out, log in again to continue!</span>
             <div id='login-button'>
               <Button class="login-button" id='spaceout' primary onClick={login}>Login</Button>
             </div>
